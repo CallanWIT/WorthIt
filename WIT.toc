@@ -1,0 +1,19 @@
+## Interface: 80205
+## Title: |c00ffff00WorthIt|r
+## Author: DALAGG
+## Version: 08.30.01.01
+## DefaultState: enabled
+## SavedVariables: WITDB
+## Dependencies: TradeSkillMaster
+## OptionalDeps: Routes
+
+Libs\Libs.xml
+
+Locale\Locale.xml
+Enums\Enums.xml
+Data\Data.xml
+Utilities\Utilities.xml
+core.lua
+Config\Config.lua
+Modules\Modules.xml
+UI\UI.xml

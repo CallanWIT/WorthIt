@@ -1,0 +1,13 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="GridColumns.lua"/>
+
+    <Script file="GridColumn.lua"/>
+    <Script file="ItemNameColumn.lua"/>
+    <Script file="LocationsColumn.lua"/>
+    <Script file="ResultsValueColumn.lua"/>
+    <Script file="CostColumn.lua"/>
+    <Script file="ItemSellRateColumn.lua"/>
+    <Script file="ItemSoldPerDayColumn.lua"/>
+    <Script file="RoutesColumn.lua"/>
+</Ui>

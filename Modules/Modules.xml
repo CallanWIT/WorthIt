@@ -1,0 +1,27 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+    <Include file="GridColumns\GridColumns.xml"/>
+    
+    <Script file="GuideSection.lua"/>
+    
+    <Script file="Module.lua"/>
+    <Script file="GuideModule.lua"/>
+    <Script file="GridModule.lua"/>
+    <Script file="FarmResultModule.lua"/>
+    <Script file="FlipResultModule.lua"/>
+    
+    <Script file="Modules.lua"/>
+    
+    <Script file="Farming\MiningModule.lua"/>
+    <Script file="Farming\HerbModule.lua"/>
+    <Script file="Farming\FishingModule.lua"/>
+
+    <Script file="Flipping\SpiritOfHarmonyFlipsModule.lua"/>
+    <Script file="Flipping\FrozenOrbFlipsModule.lua"/>
+
+    <Script file="Guides\InstallationGuide.lua"/>
+    <Script file="Guides\PetsGuide.lua"/>
+
+    <Script file="DashboardModule.lua"/>
+    <Script file="ConfigurationModule.lua"/>
+</Ui>
