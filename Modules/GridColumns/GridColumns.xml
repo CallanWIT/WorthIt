@@ -10,4 +10,5 @@
     <Script file="ItemSellRateColumn.lua"/>
     <Script file="ItemSoldPerDayColumn.lua"/>
     <Script file="RoutesColumn.lua"/>
+    <Script file="TomTomColumn.lua"/>
 </Ui>

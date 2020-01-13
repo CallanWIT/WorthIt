@@ -2,6 +2,7 @@
 ..\FrameXML\UI.xsd">
     <Script file="UI.lua"/>
     <Script file="NavigationMenu.lua"/>
+    <Script file="Header.lua"/>
     <Script file="MainWindow.lua"/>
     <Script file="MinimapIcon.lua"/>
 </Ui>

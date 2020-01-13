@@ -1,7 +1,7 @@
 local WIT, core = ...
 
-local sohDataData = {
+local sohData = {
     core.Data.Results.Flips.SoHWhiteTrilliumOre
 }
 
-table.insert(core.Modules, core.FlipResultModule('SpiritOfHarmonyFlips', sohDataData, 'Flipping'))
+table.insert(core.Modules, core.FlipResultModule('SpiritOfHarmonyFlips', sohData, 'Flipping'))

@@ -10,10 +10,15 @@ function Config.Initialize()
         WITDB = WITDB or {}
     end
 
-    if not WITDB.Version then
+    if not WITDB.Version or true then
         WITDB.Settings = WITDB.Settings or {}
         WITDB.Settings.PricingSelect = WITDB.Settings.PricingSelect or core.TSMHelper.DefaultPriceSource()
         WITDB.Settings.MinimapIcon = WITDB.minimap or WITDB.Settings.MinimapIcon or {}
+
+        if WITDB.Settings.PricingSelect == 'DBMinBuyout' then
+            WITDB.Settings.PricingSelect = core.TSMHelper.DefaultPriceSource()
+            print(core.GetString("PriceSourceSetToDefault"):format(core.TSMHelper.ToMoneyString(value)))
+        end
 
         WITDB.minimap = nil
     end

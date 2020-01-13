@@ -4,4 +4,5 @@
     <Script file="TsmHelper.lua"/>
     <Script file="LocationHelper.lua"/>
     <Script file="RoutesHelper.lua"/>
+    <Script file="TomTomHelper.lua"/>
 </Ui>

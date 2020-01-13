@@ -9,6 +9,7 @@
     <Script file="GridModule.lua"/>
     <Script file="FarmResultModule.lua"/>
     <Script file="FlipResultModule.lua"/>
+    <Script file="DestroyingResultModule.lua"/>
     
     <Script file="Modules.lua"/>
     
@@ -16,11 +17,16 @@
     <Script file="Farming\HerbModule.lua"/>
     <Script file="Farming\FishingModule.lua"/>
 
+    <Script file="Destroying\DisenchantingModule.lua"/>
+    <Script file="Destroying\ProspectingModule.lua"/>
+    <Script file="Destroying\MillingModule.lua"/>
+    
     <Script file="Flipping\SpiritOfHarmonyFlipsModule.lua"/>
     <Script file="Flipping\FrozenOrbFlipsModule.lua"/>
 
     <Script file="Guides\InstallationGuide.lua"/>
-    <Script file="Guides\PetsGuide.lua"/>
+    <Script file="Guides\BattlePetGuide.lua"/>
+    <Script file="Guides\TransmogGuide.lua"/>
 
     <Script file="DashboardModule.lua"/>
     <Script file="ConfigurationModule.lua"/>

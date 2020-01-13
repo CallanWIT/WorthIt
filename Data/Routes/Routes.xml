@@ -4,5 +4,8 @@
     
     <Script file="Herb.lua"/>
     <Script file="Mining.lua"/>
+    <Script file="Skinning.lua"/>
+    <Script file="Fishing.lua"/>
+    <Script file="Cloth.lua"/>
     <Script file="Misc.lua"/>
 </Ui>

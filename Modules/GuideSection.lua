@@ -21,3 +21,19 @@ function core.GuideSections.Text(resourceKey)
 
     return self
 end
+
+function core.GuideSections.Heading(resourceKey)
+    local self = {
+        ResourceKey = resourceKey,
+    }
+
+    function self.Draw(frame)
+        self.Text = self.Text or core.GetString(self.ResourceKey)
+        local widget = AceGUI:Create("Heading")
+        widget:SetFullWidth(true)
+        widget:SetText(self.Text)
+        frame:AddChild(widget)
+    end
+
+    return self
+end

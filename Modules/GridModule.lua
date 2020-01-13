@@ -41,6 +41,18 @@ function core.GridModule(name, data, category)
         header:SetLayout("Flow")
         header:SetFullWidth(true)
 
+        --header.frame:SetBackdropColor(1,0,0,0.5)
+        --header.frame:SetBackdrop({bgFile = "Interface/Tooltips/UI-Tooltip-Background", 
+        --                                    edgeFile = "Interface/Tooltips/UI-Tooltip-Border", 
+        --                                    tile = true, tileSize = 16, edgeSize = 16, 
+        --                                    insets = { left = 4, right = 4, top = 4, bottom = 4 }});
+        --header.frame:SetBackdropColor(0,0,0,1);
+        header.frame:SetBackdrop({bgFile = "Interface/RaidFrame/Raid-Bar-Resource-Fill",
+            insets = { left = 0, right = 0, top = 0, bottom = -4 }})
+        header.frame:SetBackdropColor(0.4,0.4,0.4,0.8)
+
+        --Interface/RaidFrame/Raid-Bar-Resource-Fill
+
         for key, column in pairs(visibleColumns) do
             columnWidth[key] = column.GetColumnMinWidth(rows) + 5
             totalWidth = totalWidth + columnWidth[key]
@@ -65,10 +77,18 @@ function core.GridModule(name, data, category)
 
         frame:AddChild(header)
 
+        local isAlternateRow = false
+
         for _, row in pairs(rows) do
             local group = AceGUI:Create("SimpleGroup")
             group:SetLayout("Flow")
             group:SetFullWidth(true)
+
+            if isAlternateRow == true then
+                group.frame:SetBackdrop({bgFile = "Interface/RaidFrame/Raid-Bar-Resource-Fill",
+                    insets = { left = 0, right = 0, top = 0, bottom = -4 }})
+                group.frame:SetBackdropColor(0.3,0.3,0.3,0.5)
+            end
 
             for key, column in pairs(visibleColumns) do
                 local cell = column.GetCell(row)
@@ -77,6 +97,7 @@ function core.GridModule(name, data, category)
             end
 
             frame:AddChild(group)
+            isAlternateRow = not isAlternateRow
         end
     end
 

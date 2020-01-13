@@ -1,7 +1,7 @@
 local WIT, core = ...
 
-local foDataData = {
+local foData = {
     core.Data.Results.Flips.FOEternalFire
 }
 
-table.insert(core.Modules, core.FlipResultModule('FrozenOrbFlips', foDataData, 'Flipping'))
+table.insert(core.Modules, core.FlipResultModule('FrozenOrbFlips', foData, 'Flipping'))

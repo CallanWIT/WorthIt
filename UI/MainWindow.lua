@@ -9,26 +9,28 @@ local navMenu = nil
 
 local AceGUI = LibStub("AceGUI-3.0")
 
+local function setCloseOnEscPress()
+    local oldCloseSpecialWindows = CloseSpecialWindows
+    CloseSpecialWindows = function()
+		if window:IsShown() then
+			window:Hide()
+			return true
+		end
+
+		return oldCloseSpecialWindows()
+	end
+end
+
 local function createWindow()
-    -- Create the frame container
     window = AceGUI:Create("Window")
     window:SetWidth(GetScreenWidth()*0.6)
     window:SetHeight(GetScreenHeight() * 0.6)
     window:SetTitle(core.GetString("WorthItTitle"))
-    
     window:SetLayout("Flow")
+    window:EnableResize(false)
+    window:AddChild(core.UI.Header(window))
 
-    local header = AceGUI:Create("SimpleGroup")
-    header:SetFullWidth(true)
-    header:SetHeight(35)
-
-    navMenu = core.UI.NavigationMenu()
-
-    header:AddChild(navMenu)
-
-    window:AddChild(header)
-
-    local scrollcontainer = AceGUI:Create("SimpleGroup") -- "InlineGroup" is also good
+    local scrollcontainer = AceGUI:Create("SimpleGroup")
     scrollcontainer:SetFullWidth(true)
     scrollcontainer:SetFullHeight(true)
     scrollcontainer:SetLayout("Fill")
@@ -41,15 +43,7 @@ local function createWindow()
 
     core.UI.SelectModule(core.DashboardModule)
 
-    local oldCloseSpecialWindows = CloseSpecialWindows
-    CloseSpecialWindows = function()
-		if window:IsShown() then
-			window:Hide()
-			return true
-		end
-
-		return oldCloseSpecialWindows()
-	end
+    setCloseOnEscPress()
 
     return window
 end
@@ -77,16 +71,16 @@ end
 function MainWindow.ShowModule(module)
     if not frame then return end
 
+    for _, child in ipairs(frame.children) do
+        child.frame:SetBackdrop(nil)
+    end
+
     frame:ReleaseChildren()
 
     if not core.TSMHelper.IsTSMAPIAvailable() or not core.TSMHelper.IsTSMDBAvailable() then
         core.InstallationGuide.Draw(frame)
-        if navMenu then
-            navMenu:SetDisabled(true)
-        end
+        core.UI.DisableHeader()
     elseif module.Draw then
         module.Draw(frame)
     end
 end
-
-

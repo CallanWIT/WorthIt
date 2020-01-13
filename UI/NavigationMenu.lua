@@ -96,8 +96,6 @@ function core.UI.NavigationMenu()
 	
     buildNavigationMenu()
 
-    --core.UI.SelectModule(core.DashboardModule)
-
     return navigationMenu
 end
 

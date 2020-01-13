@@ -4,7 +4,7 @@ local TSMHelper = {}
 
 core.TSMHelper = TSMHelper
 
-local cache = { ItemValues = {}, ItemVendorBuyPrice = {}, ItemSellRates = {}, ItemNames = {}, ItemLinks = {} }
+local cache = { ItemValues = {}, ItemVendorBuyPrice = {}, ItemVendorSellPrice = {}, ItemSellRates = {}, ItemNames = {}, ItemLinks = {} }
 local version = nil
 local priceSource = nil
 
@@ -62,6 +62,22 @@ function TSMHelper.GetItemVendorBuyPrice(item)
     cache.ItemVendorBuyPrice[item] = TSM_API.GetCustomPriceValue('vendorBuy', itemId)
 
     return cache.ItemVendorBuyPrice[item]
+end
+
+function TSMHelper.GetItemVendorSellPrice(item)
+    if not TSM_API then
+        error("TSM addon not found")
+    end
+
+    if cache.ItemVendorSellPrice[item] ~= nil then
+        return cache.ItemVendorSellPrice[item]
+    end
+
+    local itemId = type(item) == "number" and "i:" .. item or item
+
+    cache.ItemVendorSellPrice[item] = TSM_API.GetCustomPriceValue('vendorSell', itemId)
+
+    return cache.ItemVendorSellPrice[item]
 end
 
 function TSMHelper.GetItemSellRate(item)
@@ -136,6 +152,36 @@ function TSMHelper.ToMoneyString(value)
     return value ~= nil and TSM_API.FormatMoneyString(value) or ''
 end
 
+function TSMHelper.GetInventoryValue()
+    local sum = 0;
+    
+    for bag = 0, 4 do
+        local slots=GetContainerNumSlots(bag)
+
+        for i=1,slots do
+            local _,q,_,_,_,_,link,_,_,id = GetContainerItemInfo(bag,i);
+            if q and id then
+                local isBound = C_Item.IsBound(ItemLocation:CreateFromBagAndSlot(bag, i))
+                local price = nil
+
+                if isBound then
+                    price = core.TSMHelper.GetItemVendorSellPrice(id)
+                else
+                    price = core.TSMHelper.GetItemPrice(id)
+                end
+
+                if price then
+                    sum = sum + price * q;
+                elseif not isBound then
+                    core.GetString("NoPriceForItem"):format(link)
+                end
+            end 
+        end
+    end
+    
+    return sum
+end
+
 function TSMHelper.GetPriceSources()
     return priceSources
 end
@@ -155,6 +201,5 @@ end
 
 function TSMHelper.ClearValueCache()
     cache.ItemValues = {}
-    cache.ItemVendorBuyPrice = {}
     cache.ItemSellRates = {}
 end

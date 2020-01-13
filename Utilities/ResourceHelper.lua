@@ -1,12 +1,7 @@
 local WIT, core = ...
 
-local L = LibStub("AceLocale-3.0"):GetLocale("WorthIt")
+local L = LibStub("AceLocale-3.0"):GetLocale("WorthIt", true)
 
 function core.GetString(key)
-    --for key, value in pairs(L) do
-    --    print(key)
-    --    print(value)
-    --end
-
-    return L[key]
+    return L[key] or key
 end
