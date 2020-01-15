@@ -23,8 +23,9 @@ end
 
 local function createWindow()
     window = AceGUI:Create("Window")
-    window:SetWidth(GetScreenWidth()*0.6)
-    window:SetHeight(GetScreenHeight() * 0.6)
+    window.frame:SetScale(core.Config.GetScaling())
+    window:SetWidth(MainWindow.GetWindowWidth())
+    window:SetHeight(MainWindow.GetWindowHeight())
     window:SetTitle(core.GetString("WorthItTitle"))
     window:SetLayout("Flow")
     window:EnableResize(false)
@@ -46,6 +47,14 @@ local function createWindow()
     setCloseOnEscPress()
 
     return window
+end
+
+function MainWindow.GetWindowWidth()
+    return GetScreenWidth()*0.6 / core.Config.GetScaling()
+end
+
+function MainWindow.GetWindowHeight()
+    return GetScreenHeight()*0.6 / core.Config.GetScaling()
 end
 
 function MainWindow.Show()
@@ -70,10 +79,6 @@ end
 
 function MainWindow.ShowModule(module)
     if not frame then return end
-
-    for _, child in ipairs(frame.children) do
-        child.frame:SetBackdrop(nil)
-    end
 
     frame:ReleaseChildren()
 

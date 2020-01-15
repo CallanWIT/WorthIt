@@ -10,6 +10,7 @@ local function ConfigurationModule()
         local selectedPriceSource = core.Config.GetPriceSource()
         local priceSourceDropDown = AceGUI:Create("Dropdown")
         priceSourceDropDown:SetLabel(core.GetString("PriceSource"))
+        priceSourceDropDown.pullout.frame:SetScale(core.Config.GetScaling())
 
         priceSourceDropDown:SetList(priceSources)
 

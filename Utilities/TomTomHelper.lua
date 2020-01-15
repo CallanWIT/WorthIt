@@ -16,6 +16,7 @@ end
 
 --{ MapId = core.Maps.ValeOfEternalBlossoms, X = 61.69, Y = 21.68, Name = "Vendor", Faction = core.Factions.Horde }
 --{ MapId = core.Maps.ValeOfEternalBlossoms, 390, X = 84.60, Y = 60.38, Name = "Vendor", Faction = core.Factions.Alliance }
+--/script TomTom:DebugListLocalWaypoints()
 function TomTomHelper.AddWaypoint(waypoint)
     CheckIfTomTomIsEnabled()
 

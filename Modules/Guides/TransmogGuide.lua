@@ -1,7 +1,6 @@
 local WIT, core = ...
 
 local sections = {
-    --core.GuideSections.Text('TransmogGuideTitle'),
     core.GuideSections.Heading('TransmogGuideSection_1'),
     core.GuideSections.Text('TransmogGuideSection_2'),
     core.GuideSections.Text('TransmogGuideSection_3'),

@@ -4,7 +4,7 @@ core.Data.Routes.Skinning = {}
 
 core.Data.Routes.Skinning.LightMediumLeatherWetlands = {
     Name = "RouteLightMediumLeather",
-    MapId = 56,
+    MapId = core.Maps.Wetlands,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -24,7 +24,7 @@ core.Data.Routes.Skinning.LightMediumLeatherWetlands = {
 
 core.Data.Routes.Skinning.HeavyThickLeatherFeralas = {
     Name = "RouteHeavyThickLeather",
-    MapId = 69,
+    MapId = core.Maps.Feralas,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -44,7 +44,7 @@ core.Data.Routes.Skinning.HeavyThickLeatherFeralas = {
 
 core.Data.Routes.Skinning.RuggedLeatherSwampOfSorrows = {
     Name = "RouteRuggedLeather",
-    MapId = 51,
+    MapId = core.Maps.SwampOfSorrows,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -66,7 +66,7 @@ core.Data.Routes.Skinning.RuggedLeatherSwampOfSorrows = {
 
 core.Data.Routes.Skinning.KnothideLeatherNetherstorm = {
     Name = "RouteKnothideLeather",
-    MapId = 109,
+    MapId = core.Maps.Netherstorm,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -88,7 +88,7 @@ core.Data.Routes.Skinning.KnothideLeatherNetherstorm = {
 
 core.Data.Routes.Skinning.BoreanLeatherBoreanTundra = {
     Name = "RouteBoreanLeather",
-    MapId = 114,
+    MapId = core.Maps.BoreanTundra,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -110,7 +110,7 @@ core.Data.Routes.Skinning.BoreanLeatherBoreanTundra = {
 
 core.Data.Routes.Skinning.SavageLeatherMountHyjal = {
     Name = "RouteSavageLeather",
-    MapId = 198,
+    MapId = core.Maps.MountHyjal,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -132,7 +132,7 @@ core.Data.Routes.Skinning.SavageLeatherMountHyjal = {
 
 core.Data.Routes.Skinning.ExoticLeatherIsleOfGiants = {
     Name = "RouteExoticLeather",
-    MapId = 507,
+    MapId = core.Maps.IsleOfGiants,
     Data = {
 	    ["color"] = {
 		    0, -- [1]
@@ -164,7 +164,7 @@ core.Data.Routes.Skinning.ExoticLeatherIsleOfGiants = {
 
 core.Data.Routes.Skinning.SumptousFurShadowmoonValley = {
     Name = "RouteSumptousFur",
-    MapId = 539,
+    MapId = core.Maps.WODShadowmoonValley,
     Data = {
 		["color"] = {
 			0.9803921568627451, -- [1]
@@ -184,7 +184,7 @@ core.Data.Routes.Skinning.SumptousFurShadowmoonValley = {
 
 core.Data.Routes.Skinning.RawBeastHideShadowmoonValley = {
     Name = "RouteRawBeastHide",
-    MapId = 539,
+    MapId = core.Maps.WODShadowmoonValley,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -206,7 +206,7 @@ core.Data.Routes.Skinning.RawBeastHideShadowmoonValley = {
 
 core.Data.Routes.Skinning.StonehideLeatherAzsuna = {
     Name = "RouteStonehideLeather",
-    MapId = 630,
+    MapId = core.Maps.Azsuna,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -226,7 +226,7 @@ core.Data.Routes.Skinning.StonehideLeatherAzsuna = {
 
 core.Data.Routes.Skinning.StormscaleHighmountain = {
     Name = "RouteStormscale",
-    MapId = 650,
+    MapId = core.Maps.Highmountain,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -247,7 +247,7 @@ core.Data.Routes.Skinning.StormscaleHighmountain = {
 
 core.Data.Routes.Skinning.FiendishLeatherKrokuun = {
     Name = "RouteFiendishLeather",
-    MapId = 830,
+    MapId = core.Maps.Krokuun,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -270,7 +270,7 @@ core.Data.Routes.Skinning.FiendishLeatherKrokuun = {
 
 core.Data.Routes.Skinning.CoarseLeatherDrustvar = {
     Name = "RouteCoarseLeather",
-    MapId = 896,
+    MapId = core.Maps.Drustvar,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -290,7 +290,7 @@ core.Data.Routes.Skinning.CoarseLeatherDrustvar = {
 
 core.Data.Routes.Skinning.DredgedLeatherNazjatar = {
     Name = "RouteDredgedLeather",
-    MapId = 1355,
+    MapId = core.Maps.Nazjatar,
     Data = {
 		["color"] = {
 			0, -- [1]

@@ -4,7 +4,7 @@ core.Data.Routes.Mining = {}
 
 core.Data.Routes.Mining.CopperOreDurotar = {
     Name = "RouteCopperOre",
-    MapId = 1,
+    MapId = core.Maps.Durotar,
     Data = {
 		["route"] = {
 			54011143, -- [1]
@@ -37,7 +37,7 @@ core.Data.Routes.Mining.CopperOreDurotar = {
 
 core.Data.Routes.Mining.TinOreAshenvale = {
     Name = "RouteTinOre",
-    MapId = 63,
+    MapId = core.Maps.Ashenvale,
     Data = {
 		["route"] = {
 			93553717, -- [1]
@@ -72,7 +72,7 @@ core.Data.Routes.Mining.TinOreAshenvale = {
 
 core.Data.Routes.Mining.IronOreWesternPlaguelands = {
     Name = "RouteIronOre",
-    MapId = 22,
+    MapId = core.Maps.WesternPlaguelands,
     Data = {
 		["route"] = {
 			55334767, -- [1]
@@ -104,7 +104,7 @@ core.Data.Routes.Mining.IronOreWesternPlaguelands = {
 
 core.Data.Routes.Mining.ThoriumOreSilithus = {
     Name = "RouteThoriumOre",
-    MapId = 81,
+    MapId = core.Maps.Silithus,
     Data = {
 		["route"] = {
 			30381430, -- [1]
@@ -141,7 +141,7 @@ core.Data.Routes.Mining.ThoriumOreSilithus = {
 
 core.Data.Routes.Mining.FelIronOreTerokkarForest = {
     Name = "RouteFelIronOre",
-    MapId = 108,
+    MapId = core.Maps.TerokkarForest,
     Data = {
 		["route"] = {
 			49051479, -- [1]
@@ -181,7 +181,7 @@ core.Data.Routes.Mining.FelIronOreTerokkarForest = {
 
 core.Data.Routes.Mining.CobaltOreBoreanTundra = {
     Name = "RouteCobaltOre",
-    MapId = 114,
+    MapId = core.Maps.BoreanTundra,
     Data = {
         ["route"] = {
 		    72691499, -- [1]
@@ -220,7 +220,7 @@ core.Data.Routes.Mining.CobaltOreBoreanTundra = {
 
 core.Data.Routes.Mining.SaroniteOreWintergrasp = {
     Name = "RouteSaroniteOre",
-    MapId = 123,
+    MapId = core.Maps.Wintergrasp,
     Data = {
 		["route"] = {
 			30511618, -- [1]
@@ -262,7 +262,7 @@ core.Data.Routes.Mining.SaroniteOreWintergrasp = {
 
 core.Data.Routes.Mining.ObsidiumOreAbyssalDepths = {
     Name = "RouteObsidiumOre",
-    MapId = 204,
+    MapId = core.Maps.AbyssalDepths,
     Data = {
 		["route"] = {
 			57712865, -- [1]
@@ -294,7 +294,7 @@ core.Data.Routes.Mining.ObsidiumOreAbyssalDepths = {
 
 core.Data.Routes.Mining.PyriteOreUldum = {
     Name = "RoutePyriteOre",
-    MapId = 249,
+    MapId = core.Maps.Uldum,
     Data = {
 		["route"] = {
 			65261296, -- [1]
@@ -326,7 +326,7 @@ core.Data.Routes.Mining.PyriteOreUldum = {
 
 core.Data.Routes.Mining.GhostIronOreValleyoftheFourWinds = {
     Name = "RouteGhostIronOre",
-    MapId = 376,
+    MapId = core.Maps.ValleyoftheFourWinds,
     Data = {
 		["route"] = {
 			37182529, -- [1]
@@ -363,7 +363,7 @@ core.Data.Routes.Mining.GhostIronOreValleyoftheFourWinds = {
 
 core.Data.Routes.Mining.BlackrockOreTanaanJungle = {
     Name = "RouteBlackrockOre",
-    MapId = 534,
+    MapId = core.Maps.TanaanJungle,
     Data = {
 		["route"] = {
 			54602311, -- [1]
@@ -401,7 +401,7 @@ core.Data.Routes.Mining.BlackrockOreTanaanJungle = {
 
 core.Data.Routes.Mining.FelslateSuramar = {
     Name = "RouteFelslate",
-    MapId = 680,
+    MapId = core.Maps.Suramar,
     Data = {
 		["route"] = {
 			27280984, -- [1]
@@ -441,7 +441,7 @@ core.Data.Routes.Mining.FelslateSuramar = {
 
 core.Data.Routes.Mining.EmpyriumOreKrokuun = {
     Name = "RouteEmpyriumOre",
-    MapId = 830,
+    MapId = core.Maps.Krokuun,
     Data = {
 		["route"] = {
 			65303796, -- [1]
@@ -475,7 +475,7 @@ core.Data.Routes.Mining.EmpyriumOreKrokuun = {
 
 core.Data.Routes.Mining.AllBFAOreTiragardeSound = {
     Name = "RouteAllBFAOre",
-    MapId = 895,
+    MapId = core.Maps.TiragardeSound,
     Data = {
 		["route"] = {
 			76385083, -- [1]
@@ -509,7 +509,7 @@ core.Data.Routes.Mining.AllBFAOreTiragardeSound = {
 
 core.Data.Routes.Mining.OsmeniteOreNazjatar = {
     Name = "RouteOsmeniteOre",
-    MapId = 1355,
+    MapId = core.Maps.Nazjatar,
     Data = {
 	    ["route"] = {
 		    40021549, -- [1]

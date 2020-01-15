@@ -4,7 +4,7 @@ core.Data.Routes.Herb = {}
 
 core.Data.Routes.Herb.MageroyalDarkshore = {
     Name = "RouteMageroyal",
-    MapId = 62,
+    MapId = core.Maps.Darkshore,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -43,7 +43,7 @@ core.Data.Routes.Herb.MageroyalDarkshore = {
 
 core.Data.Routes.Herb.GromsbloodFelwood = {
     Name = "RouteGromsblood",
-    MapId = 77,
+    MapId = core.Maps.Felwood,
     Data = {
 		["route"] = {
 			62720875, -- [1]
@@ -88,7 +88,7 @@ core.Data.Routes.Herb.GromsbloodFelwood = {
 
 core.Data.Routes.Herb.FadeleafFeralas = {
     Name = "RouteFadeleaf",
-    MapId = 69,
+    MapId = core.Maps.Feralas,
     Data = {
 		["route"] = {
 			75793618, -- [1]
@@ -127,7 +127,7 @@ core.Data.Routes.Herb.FadeleafFeralas = {
 
 core.Data.Routes.Herb.DreamingGloryTerokkarForest = {
     Name = "RouteDreamingGlory",
-    MapId = 108,
+    MapId = core.Maps.TerokkarForest,
     Data = {
 		["route"] = {
 			38100460, -- [1]
@@ -166,7 +166,7 @@ core.Data.Routes.Herb.DreamingGloryTerokkarForest = {
 
 core.Data.Routes.Herb.WOTLKHerbsWintergrasp = {
     Name = "RouteWOTLKHerbs",
-    MapId = 123,
+    MapId = core.Maps.Wintergrasp,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -198,7 +198,7 @@ core.Data.Routes.Herb.WOTLKHerbsWintergrasp = {
 
 core.Data.Routes.Herb.AddersTongueSholazarBasin = {
     Name = "RouteAddersTongue",
-    MapId = 119,
+    MapId = core.Maps.SholazarBasin,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -232,7 +232,7 @@ core.Data.Routes.Herb.AddersTongueSholazarBasin = {
 
 core.Data.Routes.Herb.AzsharasVeilAbyssalDepths = {
     Name = "RouteAzsharasVeil",
-    MapId = 204,
+    MapId = core.Maps.AbyssalDepths,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -259,7 +259,7 @@ core.Data.Routes.Herb.AzsharasVeilAbyssalDepths = {
 
 core.Data.Routes.Herb.WhiptailUldum = {
     Name = "RouteWhiptail",
-    MapId = 249,
+    MapId = core.Maps.Uldum,
     Data = {
 		["route"] = {
 			58521596, -- [1]
@@ -295,7 +295,7 @@ core.Data.Routes.Herb.WhiptailUldum = {
 
 core.Data.Routes.Herb.CinderbloomMountHyjal = {
     Name = "RouteCinderbloom",
-    MapId = 198,
+    MapId = core.Maps.MountHyjal,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -330,7 +330,7 @@ core.Data.Routes.Herb.CinderbloomMountHyjal = {
 
 core.Data.Routes.Herb.HeartblossomDeepholm = {
     Name = "RouteHeartblossom",
-    MapId = 207,
+    MapId = core.Maps.Deepholm,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -357,7 +357,7 @@ core.Data.Routes.Herb.HeartblossomDeepholm = {
 
 core.Data.Routes.Herb.TwilightJasmineTwilightHighlands = {
     Name = "RouteTwilightJasmine",
-    MapId = 241,
+    MapId = core.Maps.TwilightHighlands,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -394,7 +394,7 @@ core.Data.Routes.Herb.TwilightJasmineTwilightHighlands = {
 
 core.Data.Routes.Herb.FoolsCapDreadWastes = {
     Name = "RouteFoolsCap",
-    MapId = 422,
+    MapId = core.Maps.DreadWastes,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -430,7 +430,7 @@ core.Data.Routes.Herb.FoolsCapDreadWastes = {
 
 core.Data.Routes.Herb.GreenTeaLeafTheJadeForest = {
     Name = "RouteGreenTeaLeaf",
-    MapId = 371,
+    MapId = core.Maps.TheJadeForest,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -459,7 +459,7 @@ core.Data.Routes.Herb.GreenTeaLeafTheJadeForest = {
 
 core.Data.Routes.Herb.SilkweedValleyoftheFourWinds = {
     Name = "RouteSilkweed",
-    MapId = 376,
+    MapId = core.Maps.ValleyoftheFourWinds,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -491,7 +491,7 @@ core.Data.Routes.Herb.SilkweedValleyoftheFourWinds = {
 
 core.Data.Routes.Herb.SnowLillyKunLaiSummit = {
     Name = "RouteSnowLilly",
-    MapId = 379,
+    MapId = core.Maps.KunLaiSummit,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -523,7 +523,7 @@ core.Data.Routes.Herb.SnowLillyKunLaiSummit = {
 
 core.Data.Routes.Herb.WODHerbsTanaanJungle = {
     Name = "RouteWODHerbs",
-    MapId = 534,
+    MapId = core.Maps.TanaanJungle,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -557,7 +557,7 @@ core.Data.Routes.Herb.WODHerbsTanaanJungle = {
 
 core.Data.Routes.Herb.AstralGloryKrokuun = {
     Name = "RouteAstralGlory",
-    MapId = 830,
+    MapId = core.Maps.Krokuun,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -596,7 +596,7 @@ core.Data.Routes.Herb.AstralGloryKrokuun = {
 
 core.Data.Routes.Herb.AethrilAzsuna = {
     Name = "RouteAethril",
-    MapId = 630,
+    MapId = core.Maps.Azsuna,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -624,7 +624,7 @@ core.Data.Routes.Herb.AethrilAzsuna = {
 
 core.Data.Routes.Herb.FoxflowerHighmountain = {
     Name = "RouteFoxflower",
-    MapId = 650,
+    MapId = core.Maps.Highmountain,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -657,7 +657,7 @@ core.Data.Routes.Herb.FoxflowerHighmountain = {
 
 core.Data.Routes.Herb.FjarnskagglStormheim = {
     Name = "RouteFjarnskaggl",
-    MapId = 630,
+    MapId = core.Maps.Stormheim,
     Data = {
 	    ["color"] = {
 		    1, -- [1]
@@ -687,7 +687,7 @@ core.Data.Routes.Herb.FjarnskagglStormheim = {
 
 core.Data.Routes.Herb.DreamleafValsharah = {
     Name = "RouteDreamleaf",
-    MapId = 641,
+    MapId = core.Maps.Valsharah,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -718,7 +718,7 @@ core.Data.Routes.Herb.DreamleafValsharah = {
 
 core.Data.Routes.Herb.StarlightRoseSuramar = {
     Name = "RouteStarlightRose",
-    MapId = 680,
+    MapId = core.Maps.Suramar,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -748,7 +748,7 @@ core.Data.Routes.Herb.StarlightRoseSuramar = {
 
 core.Data.Routes.Herb.ZinAnthidNazjatar = {
     Name = "RouteZinAnthid",
-    MapId = 1355,
+    MapId = core.Maps.Nazjatar,
     Data = {
 	    ["color"] = {
 		    1, -- [1]
@@ -777,7 +777,7 @@ core.Data.Routes.Herb.ZinAnthidNazjatar = {
 
 core.Data.Routes.Herb.WintersKissDrustvar = {
     Name = "RouteWintersKiss",
-    MapId = 896,
+    MapId = core.Maps.Drustvar,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -810,7 +810,7 @@ core.Data.Routes.Herb.WintersKissDrustvar = {
 
 core.Data.Routes.Herb.AkundasBiteVoldun = {
     Name = "RouteAkundasBite",
-    MapId = 864,
+    MapId = core.Maps.Voldun,
     Data = {
 		["color"] = {
 			1, -- [1]

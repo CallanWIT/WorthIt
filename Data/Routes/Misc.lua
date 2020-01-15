@@ -4,7 +4,7 @@ core.Data.Routes.Misc = {}
 
 core.Data.Routes.Misc.EssenceOfAirSilithus = {
     Name = "RouteEssenceOfAir",
-    MapId = 81,
+    MapId = core.Maps.Silithus,
     Data = {
 		["color"] = {
 			0.1294117647058823, -- [1]
@@ -24,7 +24,7 @@ core.Data.Routes.Misc.EssenceOfAirSilithus = {
 
 core.Data.Routes.Misc.EssenceOfUndeathWinterspring = {
     Name = "RouteEssenceOfUndeath",
-    MapId = 83,
+    MapId = core.Maps.Winterspring,
     Data = {
 		["color"] = {
 			0.1803921568627451, -- [1]
@@ -44,7 +44,7 @@ core.Data.Routes.Misc.EssenceOfUndeathWinterspring = {
 
 core.Data.Routes.Misc.LivingEssenceBlastedLands = {
     Name = "RouteLivingEssence",
-    MapId = 17,
+    MapId = core.Maps.BlastedLands,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -64,7 +64,7 @@ core.Data.Routes.Misc.LivingEssenceBlastedLands = {
 
 core.Data.Routes.Misc.EssenceOfWaterSwampOfSorrows = {
     Name = "RouteEssenceOfWater",
-    MapId = 51,
+    MapId = core.Maps.SwampOfSorrows,
     Data = {
 		["color"] = {
 			0.09803921568627451, -- [1]
@@ -84,7 +84,7 @@ core.Data.Routes.Misc.EssenceOfWaterSwampOfSorrows = {
 
 core.Data.Routes.Misc.EssenceOfFireEarthBurningSteppes = {
     Name = "RouteEssenceOfFireEarth",
-    MapId = 36,
+    MapId = core.Maps.BurningSteppes,
     Data = {
 		["color"] = {
 			0.03137254901960784, -- [1]
@@ -106,7 +106,7 @@ core.Data.Routes.Misc.EssenceOfFireEarthBurningSteppes = {
 
 core.Data.Routes.Misc.PrimalFireHellfirePeninsula = {
     Name = "RoutePrimalFire",
-    MapId = 100,
+    MapId = core.Maps.HellfirePeninsula,
     Data = {
 	    ["color"] = {
 		    0.03137254901960784, -- [1]
@@ -126,7 +126,7 @@ core.Data.Routes.Misc.PrimalFireHellfirePeninsula = {
 
 core.Data.Routes.Misc.PrimalEarthNagrand = {
     Name = "RoutePrimalEarth",
-    MapId = 107,
+    MapId = core.Maps.Nagrand,
     Data = {
 		["color"] = {
 			0.1882352941176471, -- [1]
@@ -146,7 +146,7 @@ core.Data.Routes.Misc.PrimalEarthNagrand = {
 
 core.Data.Routes.Misc.PrimalAirShadowmoonValley = {
     Name = "RoutePrimalAir",
-    MapId = 104,
+    MapId = core.Maps.ShadowmoonValley,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -167,7 +167,7 @@ core.Data.Routes.Misc.PrimalAirShadowmoonValley = {
 
 core.Data.Routes.Misc.PrimalWaterShadowmoonValley = {
     Name = "RoutePrimalWater",
-    MapId = 104,
+    MapId = core.Maps.ShadowmoonValley,
     Data = {
 		["color"] = {
 			0.1607843137254902, -- [1]
@@ -186,7 +186,7 @@ core.Data.Routes.Misc.PrimalWaterShadowmoonValley = {
 
 core.Data.Routes.Misc.PrimalLifeZangarmarsh = {
     Name = "RoutePrimalLife",
-    MapId = 102,
+    MapId = core.Maps.Zangarmarsh,
     Data = {
 		["color"] = {
 			0.02352941176470588, -- [1]
@@ -206,7 +206,7 @@ core.Data.Routes.Misc.PrimalLifeZangarmarsh = {
 
 core.Data.Routes.Misc.PrimalShadowHellfirePeninsula = {
     Name = "RoutePrimalShadow",
-    MapId = 100,
+    MapId = core.Maps.HellfirePeninsula,
     Data = {
 	    ["color"] = {
 		    0, -- [1]
@@ -226,7 +226,7 @@ core.Data.Routes.Misc.PrimalShadowHellfirePeninsula = {
 
 core.Data.Routes.Misc.PrimalManaNetherstorm = {
     Name = "RoutePrimalMana",
-    MapId = 109,
+    MapId = core.Maps.Netherstorm,
     Data = {
 		["color"] = {
 			0.06274509803921569, -- [1]
@@ -248,7 +248,7 @@ core.Data.Routes.Misc.PrimalManaNetherstorm = {
 
 core.Data.Routes.Misc.EternalFireTheStormPeaks = {
     Name = "RouteEternalFire",
-    MapId = 120,
+    MapId = core.Maps.TheStormPeaks,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -267,7 +267,7 @@ core.Data.Routes.Misc.EternalFireTheStormPeaks = {
 
 core.Data.Routes.Misc.EternalWaterZulDrak = {
     Name = "RouteEternalWater",
-    MapId = 121,
+    MapId = core.Maps.ZulDrak,
     Data = {
 		["color"] = {
 			0.05098039215686274, -- [1]
@@ -287,7 +287,7 @@ core.Data.Routes.Misc.EternalWaterZulDrak = {
 
 core.Data.Routes.Misc.EternalLifeHowlingFjord = {
     Name = "RouteEternalLife",
-    MapId = 117,
+    MapId = core.Maps.HowlingFjord,
     Data = {
 		["color"] = {
 			0.01568627450980392, -- [1]
@@ -309,7 +309,7 @@ core.Data.Routes.Misc.EternalLifeHowlingFjord = {
 
 core.Data.Routes.Misc.VolatileAirUldum = {
     Name = "RouteVolatileAir",
-    MapId = 249,
+    MapId = core.Maps.Uldum,
     Data = {
 		["color"] = {
 			0.1176470588235294, -- [1]
@@ -329,7 +329,7 @@ core.Data.Routes.Misc.VolatileAirUldum = {
 
 core.Data.Routes.Misc.VolatileEarthMountHyjal = {
     Name = "RouteVolatileEarth",
-    MapId = 198,
+    MapId = core.Maps.MountHyjal,
     Data = {
 		["color"] = {
 			0.1725490196078431, -- [1]
@@ -349,7 +349,7 @@ core.Data.Routes.Misc.VolatileEarthMountHyjal = {
 
 core.Data.Routes.Misc.VolatileFireMountHyjal = {
     Name = "RouteVolatileFire",
-    MapId = 198,
+    MapId = core.Maps.MountHyjal,
     Data = {
 		["color"] = {
 			0.1490196078431373, -- [1]
@@ -371,7 +371,7 @@ core.Data.Routes.Misc.VolatileFireMountHyjal = {
 
 core.Data.Routes.Misc.VolatileWaterTwilightHighlands = {
     Name = "RouteVolatileWater",
-    MapId = 241,
+    MapId = core.Maps.TwilightHighlands,
     Data = {
 		["color"] = {
 			0, -- [1]
@@ -393,7 +393,7 @@ core.Data.Routes.Misc.VolatileWaterTwilightHighlands = {
 
 core.Data.Routes.Misc.SpiritOfHarmonyDreadWastes = {
     Name = "RouteSpiritOfHarmony",
-    MapId = 422,
+    MapId = core.Maps.DreadWastes,
     Data = {
 		["color"] = {
 			0, -- [1]

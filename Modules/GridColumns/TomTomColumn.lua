@@ -8,6 +8,7 @@ function GridColumns.TomTomColumn()
     local self = GridColumns.GridColumn('Waypoints')
 
     self.Description = core.GetString('WaypointsDescription')
+    self.Sortable = false
 
     function self.Value(data)
         return data.Waypoints and core.TomTomHelper.IsTomTomAvailable()

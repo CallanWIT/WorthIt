@@ -7,6 +7,39 @@ function core.GridModule(name, data, category)
 
     self.Data = data
     self.Columns = {}
+    self.Sort = {
+        Column = nil,
+        Direction = nil,
+    }
+
+    local function onColumnClicked(column)
+        if not column.IsSortable() then return end
+
+        if self.Sort.Column == column then
+            self.Sort.Direction = self.Sort.Direction ~= "ASC" and "ASC" or "DESC"
+        else
+            self.Sort = {
+                Column = column,
+                Direction = "ASC",
+            }
+        end
+
+        core.UI.MainWindow.ShowModule(self)
+    end
+
+    local function sortRows(rows)
+        if not self.Sort.Column then return rows end
+
+        table.sort(rows, function(a, b)
+            if self.Sort.Direction == "ASC" then
+                return self.Sort.Column.GetSortValue(a) < self.Sort.Column.GetSortValue(b)
+            else
+                return self.Sort.Column.GetSortValue(a) > self.Sort.Column.GetSortValue(b)
+            end
+        end)
+
+        return rows
+    end
 
     function self.ClearCache()
         self.Rows = nil
@@ -27,7 +60,7 @@ function core.GridModule(name, data, category)
             end
         end
 
-        return self.Rows
+        return sortRows(self.Rows)
     end
 
     function self.Draw(frame)
@@ -41,17 +74,12 @@ function core.GridModule(name, data, category)
         header:SetLayout("Flow")
         header:SetFullWidth(true)
 
-        --header.frame:SetBackdropColor(1,0,0,0.5)
-        --header.frame:SetBackdrop({bgFile = "Interface/Tooltips/UI-Tooltip-Background", 
-        --                                    edgeFile = "Interface/Tooltips/UI-Tooltip-Border", 
-        --                                    tile = true, tileSize = 16, edgeSize = 16, 
-        --                                    insets = { left = 4, right = 4, top = 4, bottom = 4 }});
-        --header.frame:SetBackdropColor(0,0,0,1);
         header.frame:SetBackdrop({bgFile = "Interface/RaidFrame/Raid-Bar-Resource-Fill",
             insets = { left = 0, right = 0, top = 0, bottom = -4 }})
         header.frame:SetBackdropColor(0.4,0.4,0.4,0.8)
-
-        --Interface/RaidFrame/Raid-Bar-Resource-Fill
+        header:SetCallback("OnRelease", function()
+            header.frame:SetBackdrop(nil)
+        end)
 
         for key, column in pairs(visibleColumns) do
             columnWidth[key] = column.GetColumnMinWidth(rows) + 5
@@ -59,7 +87,7 @@ function core.GridModule(name, data, category)
             columnCount = columnCount + 1
         end
 
-        local diff = GetScreenWidth()*0.6 - 45 - totalWidth
+        local diff = core.UI.MainWindow.GetWindowWidth() - 45 - totalWidth
 
         if diff > 0 then
             diff = math.floor(diff / columnCount)
@@ -70,7 +98,7 @@ function core.GridModule(name, data, category)
         end
 
         for key, column in pairs(visibleColumns) do
-            local headerCell = column.GetHeaderCell()
+            local headerCell = column.GetHeaderCell(onColumnClicked)
             headerCell:SetWidth(columnWidth[key])
             header:AddChild(headerCell)
         end
@@ -88,6 +116,9 @@ function core.GridModule(name, data, category)
                 group.frame:SetBackdrop({bgFile = "Interface/RaidFrame/Raid-Bar-Resource-Fill",
                     insets = { left = 0, right = 0, top = 0, bottom = -4 }})
                 group.frame:SetBackdropColor(0.3,0.3,0.3,0.5)
+                group:SetCallback("OnRelease", function()
+                    group.frame:SetBackdrop(nil)
+                end)
             end
 
             for key, column in pairs(visibleColumns) do

@@ -26,11 +26,11 @@ function RoutesHelper.IsRoutesAvailable()
 end
 
 -- requires reloading ui
-function RoutesHelper.ImportRoute(route)
+function RoutesHelper.ImportRoute(route, name)
     CheckIfRoutesIsEnabled()
 
     --route.Data["color"] = { 0, 0.2470588235294118, 1, 1 }
 
     Routes.db.global.routes[route.MapId] = Routes.db.global.routes[route.MapId] or {}
-    Routes.db.global.routes[route.MapId][core.GetString(route.Name)] = route.Data
+    Routes.db.global.routes[route.MapId][name or core.GetString(route.Name)] = route.Data
 end

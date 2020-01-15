@@ -8,12 +8,12 @@ local bagValueButton = nil
 local function updateBagValue(label)
     local value = core.TSMHelper.GetInventoryValue()
 
-    for bag = 0, 3 do
-        value = core.TSMHelper.GetInventoryValue()
+    if value ~= nil then
+        local text = core.GetString("InventoryValue"):format(core.TSMHelper.ToMoneyString(value))
+        label:SetText(text)
+    else
+        C_Timer.After(0.3, function() updateBagValue(label) end)
     end
-
-    local text = core.GetString("InventoryValue"):format(core.TSMHelper.ToMoneyString(value))
-    label:SetText(text)
 end
 
 function core.UI.Header(window)

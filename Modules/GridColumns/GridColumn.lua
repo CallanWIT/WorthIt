@@ -9,6 +9,7 @@ function GridColumns.GridColumn(name)
         Visible = true,
         Name = name,
         DisplayName = core.GetString(name),
+        Sortable = true
     }
 
     function self.Value(data)
@@ -25,6 +26,16 @@ function GridColumns.GridColumn(name)
 
     function self.IsVisible()
         return self.Visible
+    end
+
+    function self.IsSortable()
+        return self.Sortable
+    end
+
+    function self.GetSortValue(row)
+        row[self.Name] = row[self.Name] or self.Value(row.Data)
+
+        return row[self.Name]
     end
 
     function self.GetRowText(row)
@@ -53,7 +64,7 @@ function GridColumns.GridColumn(name)
         return maxWidth
     end
 
-    function self.GetHeaderCell()
+    function self.GetHeaderCell(onClickHandler)
         local container = AceGUI:Create("SimpleGroup")
         local cell = AceGUI:Create("InteractiveLabel")
             
@@ -75,7 +86,9 @@ function GridColumns.GridColumn(name)
         end
 
         cell:SetCallback("OnClick", function()
-            -- sort
+            if onClickHandler then
+                onClickHandler(self)
+            end
         end)
 
         container:AddChild(cell)

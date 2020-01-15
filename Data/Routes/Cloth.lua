@@ -4,7 +4,7 @@ core.Data.Routes.Cloth = {}
 
 core.Data.Routes.Cloth.LinenWoolClothWetlands = {
     Name = "RouteLinenWoolCloth",
-    MapId = 56,
+    MapId = core.Maps.Wetlands,
     Data = {
 	    ["color"] = {
 		    0.9568627450980391, -- [1]
@@ -24,7 +24,7 @@ core.Data.Routes.Cloth.LinenWoolClothWetlands = {
 
 core.Data.Routes.Cloth.SilkClothDustwallowMarsh = {
     Name = "RouteSilkCloth",
-    MapId = 70,
+    MapId = core.Maps.DustwallowMarsh,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -44,7 +44,7 @@ core.Data.Routes.Cloth.SilkClothDustwallowMarsh = {
 
 core.Data.Routes.Cloth.RuneclothBurningSteppes = {
     Name = "RouteRunecloth",
-    MapId = 36,
+    MapId = core.Maps.BurningSteppes,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -64,7 +64,7 @@ core.Data.Routes.Cloth.RuneclothBurningSteppes = {
 
 core.Data.Routes.Cloth.MageweaveClothTanaris = {
     Name = "RouteMageweaveCloth",
-    MapId = 71,
+    MapId = core.Maps.Tanaris,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -86,7 +86,7 @@ core.Data.Routes.Cloth.MageweaveClothTanaris = {
 
 core.Data.Routes.Cloth.NetherweaveClothQuelDanas = {
     Name = "RouteNetherweaveCloth",
-    MapId = 122,
+    MapId = core.Maps.QuelDanas,
     Data = {
 		["color"] = {
 			0.9725490196078431, -- [1]
@@ -106,9 +106,9 @@ core.Data.Routes.Cloth.NetherweaveClothQuelDanas = {
 
 -- WotLK
 
-core.Data.Routes.Cloth.FrostweaveClothIcecrown = {
+core.Data.Routes.Cloth.FrostweaveCloth = {
     Name = "RouteFrostweaveCloth",
-    MapId = 118,
+    MapId = core.Maps.Icecrown,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -130,7 +130,7 @@ core.Data.Routes.Cloth.FrostweaveClothIcecrown = {
 
 core.Data.Routes.Cloth.EmbersilkClothTwilightHighlands = {
     Name = "RouteEmbersilkCloth",
-    MapId = 241,
+    MapId = core.Maps.TwilightHighlands,
     Data = {
 		["color"] = {
 			0.9803921568627451, -- [1]
@@ -150,9 +150,9 @@ core.Data.Routes.Cloth.EmbersilkClothTwilightHighlands = {
 
 -- MOP
 
-core.Data.Routes.Cloth.WindwoolClothTownlongSteppes = {
+core.Data.Routes.Cloth.WindwoolCloth = {
     Name = "RouteWindwoolCloth",
-    MapId = 388,
+    MapId = core.Maps.TownlongSteppes,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -174,7 +174,7 @@ core.Data.Routes.Cloth.WindwoolClothTownlongSteppes = {
 
 core.Data.Routes.Cloth.ShalDoreiSilkHighmountain = {
     Name = "RouteShalDoreiSilk",
-    MapId = 650,
+    MapId = core.Maps.Highmountain,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -197,7 +197,7 @@ core.Data.Routes.Cloth.ShalDoreiSilkHighmountain = {
 
 core.Data.Routes.Cloth.TidesprayLinenStormsongValley = {
     Name = "RouteTidesprayLinen",
-    MapId = 942,
+    MapId = core.Maps.StormsongValley,
     Data = {
 		["color"] = {
 			1, -- [1]
@@ -217,7 +217,7 @@ core.Data.Routes.Cloth.TidesprayLinenStormsongValley = {
 
 core.Data.Routes.Cloth.GildedSeaweaveNazjatar = {
     Name = "RouteGildedSeaweave",
-    MapId = 1355,
+    MapId = core.Maps.Nazjatar,
     Data = {
 		["color"] = {
 			1, -- [1]

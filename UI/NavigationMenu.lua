@@ -29,6 +29,7 @@ local function CreateGroupItem(group)
     menuItem:SetUserData("group", group)
 
     local submenu = AceGUI:Create("Dropdown-Pullout")
+    submenu.frame:SetScale(core.Config.GetScaling())
     local hasModules = false
 
     for _, module in pairs(core.Modules) do
@@ -92,6 +93,7 @@ function core.UI.NavigationMenu()
     if navigationMenu then return navigationMenu end
 
     navigationMenu = AceGUI:Create("Dropdown")
+    navigationMenu.pullout.frame:SetScale(core.Config.GetScaling())
     navigationMenu.multiselect = true
 	
     buildNavigationMenu()

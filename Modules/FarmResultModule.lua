@@ -3,12 +3,19 @@ local WIT, core = ...
 function core.FarmResultModule(name, data, category)
     local self = core.GridModule(name, data, category)
 
+    local resultColumn = core.GridColumns.ResultsValueColumn()
+
     self.Columns = {
         core.GridColumns.ItemNameColumn(),
-        core.GridColumns.ResultsValueColumn(),
+        resultColumn,
         core.GridColumns.LocationsColumn(),
         core.GridColumns.ItemSoldPerDayColumn(),
         core.GridColumns.RoutesColumn(),
+    }
+
+    self.Sort = {
+        Column = resultColumn,
+        Direction = "DESC",
     }
     
     return self

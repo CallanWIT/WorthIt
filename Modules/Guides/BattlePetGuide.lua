@@ -1,7 +1,6 @@
 local WIT, core = ...
 
 local sections = {
-    --core.GuideSections.Text('BattlePetGuideTitle'),
     core.GuideSections.Heading('BattlePetGuideSection_Fishing1'),
     core.GuideSections.Text('BattlePetGuideSection_Fishing2'),
     core.GuideSections.Text('BattlePetGuideSection_Fishing3'),

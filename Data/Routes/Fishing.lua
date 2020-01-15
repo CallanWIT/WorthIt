@@ -4,7 +4,7 @@ core.Data.Routes.Fishing = {}
 
 core.Data.Routes.Fishing.AlbinoCavefishDeepholm = {
     Name = "RouteAlbinoCavefish",
-    MapId = 207,
+    MapId = core.Maps.Deepholm,
     Data = {
 		["color"] = {
 			1, -- [1]

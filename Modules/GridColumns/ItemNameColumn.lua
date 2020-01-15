@@ -7,6 +7,19 @@ local GridColumns = core.GridColumns
 function GridColumns.ItemNameColumn()
     local self = GridColumns.GridColumn('Name')
 
+    function self.GetSortValue(row)
+        local key = self.Name .. "_Order"
+        if not row[key] then
+            if row.Data.ItemId then
+                row[key] = core.TSMHelper.GetItemName(row.Data.ItemId)
+            else
+                row[key] = row.Data.Name
+            end
+        end
+
+        return row[key]
+    end
+
     function self.Value(data)
         if data.ItemId then
             return core.TSMHelper.GetItemLink(data.ItemId)
