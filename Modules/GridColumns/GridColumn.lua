@@ -35,7 +35,7 @@ function GridColumns.GridColumn(name)
     function self.GetSortValue(row)
         row[self.Name] = row[self.Name] or self.Value(row.Data)
 
-        return row[self.Name]
+        return row[self.Name] or 0
     end
 
     function self.GetRowText(row)

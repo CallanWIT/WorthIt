@@ -3,7 +3,7 @@ local WIT, core = ...
 local data = { }
 
 for _, farm in pairs(core.Data.Results.Farms) do
-    if farm.Content == core.Content.Vanilla then
+    if farm.Content == core.Content.BFA then
         table.insert(data, farm)
     end
 end

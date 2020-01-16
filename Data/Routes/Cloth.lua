@@ -106,7 +106,7 @@ core.Data.Routes.Cloth.NetherweaveClothQuelDanas = {
 
 -- WotLK
 
-core.Data.Routes.Cloth.FrostweaveCloth = {
+core.Data.Routes.Cloth.FrostweaveClothIcecrown = {
     Name = "RouteFrostweaveCloth",
     MapId = core.Maps.Icecrown,
     Data = {

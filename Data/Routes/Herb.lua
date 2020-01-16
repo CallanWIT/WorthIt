@@ -457,9 +457,9 @@ core.Data.Routes.Herb.GreenTeaLeafTheJadeForest = {
 	}
 }
 
-core.Data.Routes.Herb.SilkweedValleyoftheFourWinds = {
+core.Data.Routes.Herb.SilkweedValleyOfTheFourWinds = {
     Name = "RouteSilkweed",
-    MapId = core.Maps.ValleyoftheFourWinds,
+    MapId = core.Maps.ValleyOfTheFourWinds,
     Data = {
 		["color"] = {
 			1, -- [1]

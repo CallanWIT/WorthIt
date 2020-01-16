@@ -47,6 +47,7 @@ core.Items.Herbs = {
 	Silkweed = 72235,
 	FoolsCap = 79011, 
 	SnowLily = 79010,
+    GoldenLotus = 72238,
 
     -- WOD
 	

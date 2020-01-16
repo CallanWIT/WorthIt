@@ -54,7 +54,7 @@ core.Maps = {
     TheJadeForest = 371,
     TownlongSteppes = 388,
     ValeOfEternalBlossoms = 390,
-    ValleyoftheFourWinds = 376,
+    ValleyOfTheFourWinds = 376,
 
     -- WOD
 

@@ -17,7 +17,7 @@ function GridColumns.ItemNameColumn()
             end
         end
 
-        return row[key]
+        return row[key] or ''
     end
 
     function self.Value(data)

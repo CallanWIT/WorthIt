@@ -82,8 +82,8 @@ core.Data.Results.Farms.FelIronOre = {
         { Id = core.Items.Ores.Adamantite, Quantity = 168 },
         { Id = core.Items.Ores.Eternium, Quantity = 21 },
         { Id = core.Items.Ores.Khorium, Quantity = 18 },
-        { Id = core.Items.Elements.MoteOfEarth, Quantity = 150 },
-        { Id = core.Items.Elements.MoteOfFire, Quantity = 43 },
+        { Id = core.Items.Misc.PrimalEarth, Quantity = 15 },
+        { Id = core.Items.Misc.PrimalFire, Quantity = 4.3 },
         { Id = core.Items.Gems.AzureMoonstone, Quantity = 2 },
         { Id = core.Items.Gems.NobleTopaz, Quantity = 1 },
         { Id = core.Items.Gems.FlameSpessarite, Quantity = 2 },
@@ -109,10 +109,10 @@ core.Data.Results.Farms.SaroniteOre = {
     Results = {
         { Id = core.Items.Ores.Saronite, Quantity = 425 },
         { Id = core.Items.Ores.Titanium, Quantity = 31 },
-        { Id = core.Items.Elements.CrystallizedWater, Quantity = 37 },
-        { Id = core.Items.Elements.CrystallizedAir, Quantity = 29 },
-        { Id = core.Items.Elements.CrystallizedEarth, Quantity = 155 },
-        { Id = core.Items.Elements.CrystallizedFire, Quantity = 21 },
+        { Id = core.Items.Misc.EternalWater, Quantity = 3.7 },
+        { Id = core.Items.Misc.EternalAir, Quantity = 2.9 },
+        { Id = core.Items.Misc.EternalEarth, Quantity = 15.5 },
+        { Id = core.Items.Misc.EternalFire, Quantity = 2.1 },
         { Id = core.Items.Gems.SkySapphire, Quantity = 1 },
         { Id = core.Items.Gems.TwilightOpal, Quantity = 1 },
         { Id = core.Items.Gems.ScarletRuby, Quantity = 1 },
@@ -132,7 +132,7 @@ core.Data.Results.Farms.ObsidiumOre = {
     Routes = { core.Data.Routes.Mining.ObsidiumOreAbyssalDepths },
     Results = {
         { Id = core.Items.Ores.Obsidium, Quantity = 403 },
-        { Id = core.Items.Elements.VolatileEarth, Quantity = 18 },
+        { Id = core.Items.Misc.VolatileEarth, Quantity = 18 },
         { Id = core.Items.Gems.Alicite, Quantity = 1 },
         { Id = core.Items.Gems.Carnelian, Quantity = 2 },
         { Id = core.Items.Gems.Zephyrite, Quantity = 1 },
@@ -151,9 +151,9 @@ core.Data.Results.Farms.ElementiumOre = {
     Results = {
         { Id = core.Items.Ores.Elementium, Quantity = 447 },
         { Id = core.Items.Ores.Pyrite, Quantity = 59 },
-        { Id = core.Items.Elements.VolatileEarth, Quantity = 23 },
-        { Id = core.Items.Elements.VolatileWater, Quantity = 12 },
-        { Id = core.Items.Elements.VolatileFire, Quantity = 17 },
+        { Id = core.Items.Misc.VolatileEarth, Quantity = 23 },
+        { Id = core.Items.Misc.VolatileWater, Quantity = 12 },
+        { Id = core.Items.Misc.VolatileFire, Quantity = 17 },
         { Id = core.Items.Gems.Alicite, Quantity = 1 },
         { Id = core.Items.Gems.Nightstone, Quantity = 2 },
         { Id = core.Items.Gems.Amberjewel, Quantity = 1 },
@@ -166,8 +166,8 @@ core.Data.Results.Farms.ElementiumOre = {
 core.Data.Results.Farms.GhostIronOre = {
     ItemId = core.Items.Ores.GhostIron,
     Content = core.Content.MoP,
-    Locations = { core.Locations.Pandaria.ValleyoftheFourWinds },
-    Routes = { core.Data.Routes.Mining.GhostIronOreValleyoftheFourWinds },
+    Locations = { core.Locations.Pandaria.ValleyOfTheFourWinds },
+    Routes = { core.Data.Routes.Mining.GhostIronOreValleyOfTheFourWinds },
     Results = {
         { Id = core.Items.Ores.GhostIron, Quantity = 706 },
     }

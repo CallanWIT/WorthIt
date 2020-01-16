@@ -9,7 +9,7 @@ function core.FarmResultModule(name, data, category)
         core.GridColumns.ItemNameColumn(),
         resultColumn,
         core.GridColumns.LocationsColumn(),
-        core.GridColumns.ItemSoldPerDayColumn(),
+        core.GridColumns.ItemSellRateColumn(),
         core.GridColumns.RoutesColumn(),
     }
 

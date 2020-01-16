@@ -91,7 +91,7 @@ function TSMHelper.GetItemSellRate(item)
 
     local itemId = type(item) == "number" and "i:" .. item or item
 
-    cache.ItemSellRates[item] = TSM_API.GetCustomPriceValue('DBregionsaleRate', itemId)
+    cache.ItemSellRates[item] = TSM_API.GetCustomPriceValue('DBregionsaleRate*100', itemId)
 
     return cache.ItemSellRates[item]
 end

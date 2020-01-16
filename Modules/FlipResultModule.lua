@@ -12,7 +12,7 @@ function core.FlipResultModule(name, data, category)
         profitColumn,
         costColumn, 
         resultColumn,
-        core.GridColumns.ItemSoldPerDayColumn(),
+        core.GridColumns.ItemSellRateColumn(),
         core.GridColumns.TomTomColumn(),
     }
 

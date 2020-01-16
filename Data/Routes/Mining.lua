@@ -324,9 +324,9 @@ core.Data.Routes.Mining.PyriteOreUldum = {
 
 -- MOP
 
-core.Data.Routes.Mining.GhostIronOreValleyoftheFourWinds = {
+core.Data.Routes.Mining.GhostIronOreValleyOfTheFourWinds = {
     Name = "RouteGhostIronOre",
-    MapId = core.Maps.ValleyoftheFourWinds,
+    MapId = core.Maps.ValleyOfTheFourWinds,
     Data = {
 		["route"] = {
 			37182529, -- [1]
