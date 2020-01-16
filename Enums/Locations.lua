@@ -10,32 +10,74 @@ core.Locations.Kalimdor = {
     Ashenvale = 331,
     Silithus = 1377,
     Uldum = 5034,
+	Feralas = 357,
+	Felwood = 361,
+	MtHyjal = 616,
+	DustwallowMarsh = 6043,
+	ZulFarrak = 1176,
+	Winterspring = 618,
+	VortexPininacle = 5583,
 }
 
 core.Locations.EasternKingdoms = {
     HillsbradFoothills = 267,
-    MoltenCore = 2717,
+	TwilightHighlands = 4922,
+	SunkenTemple = 1417,
+	Wetlands = 11,
+	BlackrockDepths = 1584,
+	Sunwell = 4075,
+	BastionOfTwilight = 5334,
+	MoltenCore = 2717,
+	SwampOfSorrows = 8,
+	BlastedLands = 4,
 }
 
 core.Locations.Outlands = {
     TerokkarForest = 3519,
+	Netherstorm = 3523,
+	Nagrand = 3518,
+	Underbog = 3716,
+	HellfirePeninsula = 3483,
+	BlackTemple = 3840,
+	ShadowmoonValleyOld = 3520,
 }
 
 core.Locations.Northrend = {
     BoreanTundra = 3537,
     Wintergrasp = 4197,
+	SholzarBasin = 3711,
+	Oculus = 5562,
+	Icecrown = 210,
+	ZulDrak = 66,
+	StormPeaks = 67,
+	HowlingFjord = 495,
+}
+
+core.Locations.Cata = {
+    Firelands = 5723,
 }
 
 core.Locations.Pandaria = {
-    ValleyoftheFourWinds = 5805,
+    ValleyOfTheFourWinds = 5805,
+	JadeForest = 5785,
+	Dreadwastes = 6138,
+	KunLiSummit = 6650,
+	IsleOfGiants = 6661,
+	TownlongSteppes = 5842,
+	HeartOfFear = 6297,
 }
 
 core.Locations.Draenor = {
     TanaanJungle = 6723,
+	ShadowmoonValley = 6719,
 }
 
 core.Locations.BrokenIsles = {
     Suramar = 7637,
+	Azsuna = 7334,
+	ValShara = 7558,
+	Highmountain = 7503,
+	Stormheim = 7541,
 }
 
 core.Locations.Argus = {
@@ -45,8 +87,15 @@ core.Locations.Argus = {
 core.Locations.BFA = {
     TiragardeSound = 8567,
     Nazjatar = 10052,
+	Voldun = 8501,
+	Drustvar = 8721,
+	Zandalar = 8665,
+	KulTiras = 21,
+	
 }
 
 core.Locations.Others = {
     Vashjir = 5146,
+	Deepholm = 5042,
+	DarkmoonIsland = 5861,
 }

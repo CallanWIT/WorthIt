@@ -12,8 +12,9 @@
     <Script file="Items\Stones.lua"/>
     <Script file="Items\Herbs.lua"/>
     <Script file="Items\Cloths.lua"/>
-    <Script file="Items\Elements.lua"/>
     <Script file="Items\Misc.lua"/>
+	<Script file="Items\Fish.lua"/>
+	<Script file="Items\Skins.lua"/>
 
     <Script file="Items\Profession\Enchanting.lua"/>
     <Script file="Items\Profession\Inscription.lua"/>

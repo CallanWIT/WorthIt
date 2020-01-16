@@ -16,6 +16,9 @@
     <Script file="Farming\MiningModule.lua"/>
     <Script file="Farming\HerbModule.lua"/>
     <Script file="Farming\FishingModule.lua"/>
+	<Script file="Farming\SkinningModule.lua"/>
+	<Script file="Farming\ClothModule.lua"/>
+	<Script file="Farming\MiscModule.lua"/>
 
     <Script file="Destroying\DisenchantingModule.lua"/>
     <Script file="Destroying\ProspectingModule.lua"/>

@@ -2,4 +2,8 @@
 ..\FrameXML\UI.xsd">
     <Script file="Herb.lua"/>
     <Script file="Mining.lua"/>
+	<Script file="Fishing.lua"/>
+	<Script file="Skinning.lua"/>
+	<Script file="Cloth.lua"/>
+	<Script file="Misc.lua"/>
 </Ui>
