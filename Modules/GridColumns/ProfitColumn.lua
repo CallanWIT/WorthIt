@@ -22,7 +22,7 @@ function GridColumns.ProfitColumn(costColumn, valueColumn)
         row[self.Name] = row[self.Name] or self.Value(row.Data)
         local moneyString = core.TSMHelper.ToMoneyString(row[self.Name])
 
-        if row[self.Name] < 0 then
+        if row[self.Name] ~= nil and row[self.Name] < 0 then
             moneyString = "|cFFFF0000" .. moneyString:gsub("|r", "|cFFFF0000") .. "|r"
         end
 

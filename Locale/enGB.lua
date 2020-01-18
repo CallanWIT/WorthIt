@@ -55,6 +55,15 @@ L["RoutesDescription"] = "Action that imports suggested route for Routes addon|n
 L["WaypointsDescription"] = "Action that adds related TomTom waypoints|nThose waypoints can direct you to points like a vendor location or an entrance to a dungeon"
 
 L["PriceSource"] = "Price Source"
+L["BagValueTreshold"] = "Bag Value Treshold"
+L["MinItemValue"] = "Min item value"
+L["MinQuality"] = "Min Quality"
+L["UnderTresholdPrice"] = "Under treshold price"
+
+L["None"] = "None"
+L["Destroying>Vendor"] = "Destroying > Vendor"
+
+L["TSM"] = "TSM"
 
 L["Vendor"] = "Vendor"
 

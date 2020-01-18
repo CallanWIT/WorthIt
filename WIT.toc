@@ -1,7 +1,7 @@
 ## Interface: 80205
 ## Title: |c00ffff00WorthIt|r
 ## Author: DALAGG
-## Version: v3.0.1
+## Version: v3.0.2
 ## DefaultState: enabled
 ## SavedVariables: WITDB
 ## Dependencies: TradeSkillMaster

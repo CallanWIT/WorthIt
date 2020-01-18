@@ -3,6 +3,7 @@ local WIT, core = ...
 local AceGUI = LibStub("AceGUI-3.0")
 local header = nil
 local navMenu = nil
+local bagValue = nil
 local bagValueButton = nil
 
 local function updateBagValue(label)
@@ -36,7 +37,7 @@ function core.UI.Header(window)
     bagValueContainer:SetHeight(30)
     bagValueContainer:SetWidth(370)
 
-    local bagValue = AceGUI:Create("Label")
+    bagValue = AceGUI:Create("Label")
     bagValue:SetWidth(200)
     bagValueContainer:AddChild(bagValue)
   
@@ -59,4 +60,10 @@ function core.UI.DisableHeader()
 
     navMenu:SetDisabled(true)
     bagValueButton:SetDisabled(true)
+end
+
+function core.UI.ClearBagValue()
+    if not bagValue then return end
+
+    bagValue:SetText("")
 end

@@ -23,6 +23,10 @@ function Config.Initialize()
         WITDB.minimap = nil
     end
 
+    WITDB.Settings.BagValueMinPrice = WITDB.Settings.BagValueMinPrice or 0
+    WITDB.Settings.BagValueMinQuality = WITDB.Settings.BagValueMinQuality or 1
+    WITDB.Settings.BelowTresholdValue = WITDB.Settings.BelowTresholdValue or 1
+
     WITDB.Version = version
 end
 
@@ -38,4 +42,34 @@ function Config.SetPriceSource(priceSource)
     WITDB.Settings.PricingSelect = priceSource
 
     core.ClearCache()
+end
+
+function Config.GetBagValueMinPrice()
+    return WITDB.Settings.BagValueMinPrice
+end
+
+function Config.SetBagValueMinPrice(price)
+    WITDB.Settings.BagValueMinPrice = price
+
+    core.UI.ClearBagValue()
+end
+
+function Config.GetBagValueMinQuality()
+    return WITDB.Settings.BagValueMinQuality
+end
+
+function Config.SetBagValueMinQuality(quality)
+    WITDB.Settings.BagValueMinQuality = quality
+
+    core.UI.ClearBagValue()
+end
+
+function Config.GetBelowTresholdValue()
+    return WITDB.Settings.BelowTresholdValue
+end
+
+function Config.SetBelowTresholdValue(value)
+    WITDB.Settings.BelowTresholdValue = value
+
+    core.UI.ClearBagValue()
 end

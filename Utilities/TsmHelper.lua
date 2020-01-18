@@ -4,7 +4,7 @@ local TSMHelper = {}
 
 core.TSMHelper = TSMHelper
 
-local cache = { ItemValues = {}, ItemVendorBuyPrice = {}, ItemVendorSellPrice = {}, ItemSellRates = {}, ItemNames = {}, ItemLinks = {} }
+local cache = { ItemValues = {}, ItemVendorBuyPrice = {}, ItemVendorSellPrice = {}, ItemDestroyingPrice = {}, ItemSellRates = {}, ItemNames = {}, ItemLinks = {} }
 local version = nil
 local priceSource = nil
 
@@ -80,6 +80,22 @@ function TSMHelper.GetItemVendorSellPrice(item)
     return cache.ItemVendorSellPrice[item]
 end
 
+function TSMHelper.GetItemDestroyingPrice(item)
+    if not TSM_API then
+        error("TSM addon not found")
+    end
+
+    if cache.ItemDestroyingPrice[item] ~= nil then
+        return cache.ItemDestroyingPrice[item]
+    end
+
+    local itemId = type(item) == "number" and "i:" .. item or item
+
+    cache.ItemDestroyingPrice[item] = TSM_API.GetCustomPriceValue('Destroy', itemId)
+
+    return cache.ItemDestroyingPrice[item]
+end
+
 function TSMHelper.GetItemSellRate(item)
     if not TSM_API then
         error("TSM addon not found")
@@ -152,6 +168,10 @@ function TSMHelper.ToMoneyString(value)
     return value ~= nil and TSM_API.FormatMoneyString(value) or ''
 end
 
+local function GetItemBelowTresholdValue()
+    local price = core.TSMHelper.GetItemVendorSellPrice(id)
+end
+
 function TSMHelper.GetInventoryValue()
     local sum = 0
     local isValidData = true
@@ -160,30 +180,32 @@ function TSMHelper.GetInventoryValue()
         local slots=GetContainerNumSlots(bag)
 
         for slot=1,slots do
-            local _,q,locked,_,_,_,link,_,_,id = GetContainerItemInfo(bag,slot)
+            local _,c,locked,q,_,_,link,_,_,id = GetContainerItemInfo(bag,slot)
 
-            if q and id then
+            if c and id then
                 local isBound = C_Item.IsBound(ItemLocation:CreateFromBagAndSlot(bag, slot))
                 local price = nil
 
-                if isBound then
-                    price = core.TSMHelper.GetItemVendorSellPrice(id)
+                if isBound or (q ~= nil and q or -1) < core.Config.GetBagValueMinQuality() or (core.TSMHelper.GetItemPrice(id) or 0) < core.Config.GetBagValueMinPrice() * 10000 then
+                    local belowTresholdValue = core.Config.GetBelowTresholdValue()
+                    if belowTresholdValue == 1 then
+                        price = core.TSMHelper.GetItemVendorSellPrice(id) or 0
+                    elseif belowTresholdValue == 2 then
+                        price = core.TSMHelper.GetItemDestroyingPrice(id) or core.TSMHelper.GetItemVendorSellPrice(id) or 0
+                    else
+                        price = 0
+                    end
                 else
                     price = core.TSMHelper.GetItemPrice(id)
                 end
 
-                if price then
-                    sum = sum + price * q;
+                if price ~= nil then
+                    sum = sum + price * c;
                 elseif not isBound then
                     core.GetString("NoPriceForItem"):format(link)
                 end
             elseif GetContainerItemID(bag,slot) then
                 isValidData = false
-                --print("--------")
-                --print("locked: " .. (locked and "true" or "false"))
-                --print("q: " .. (q ~= nil and q or "nil"))
-                --print("id: " .. (id ~= nil and id or "nil"))
-                --print("link: " .. (link ~= nil and link or "nil"))
             end
         end
     end
@@ -193,43 +215,6 @@ function TSMHelper.GetInventoryValue()
     else
         return nil
     end
-end
-
-function TSMHelper.GetInventoryValue2()
-    local sum = 0;
-    
-    for bag = 0, 4 do
-        local slots=GetContainerNumSlots(bag)
-
-        for slot=1,slots do
-            local _,q,locked,_,_,_,link,_,_,id = GetContainerItemInfo(bag,slot)
-
-            if q and id then
-                local isBound = C_Item.IsBound(ItemLocation:CreateFromBagAndSlot(bag, slot))
-                local price = nil
-
-                if isBound then
-                    price = core.TSMHelper.GetItemVendorSellPrice(id)
-                else
-                    price = core.TSMHelper.GetItemPrice(id)
-                end
-
-                if price then
-                    sum = sum + price * q;
-                elseif not isBound then
-                    core.GetString("NoPriceForItem"):format(link)
-                end
-            else
-                --print("--------")
-                --print("locked: " .. (locked and "true" or "false"))
-                --print("q: " .. (q ~= nil and q or "nil"))
-                --print("id: " .. (id ~= nil and id or "nil"))
-                --print("link: " .. (link ~= nil and link or "nil"))
-            end
-        end
-    end
-    
-    return sum
 end
 
 function TSMHelper.GetPriceSources()

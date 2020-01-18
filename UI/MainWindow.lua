@@ -80,6 +80,10 @@ end
 function MainWindow.ShowModule(module)
     if not frame then return end
 
+    for _, child in ipairs(frame.children) do
+        child.frame:SetBackdrop(nil)
+    end
+
     frame:ReleaseChildren()
 
     if not core.TSMHelper.IsTSMAPIAvailable() or not core.TSMHelper.IsTSMDBAvailable() then
