@@ -2,11 +2,11 @@ local WIT, core = ...
 
 core.Content = {}
 
-core.Content.Vanilla = 'Vanilla'
-core.Content.TBC = 'TBC'
-core.Content.WotLK = 'WotLK'
-core.Content.Cata = 'Cata'
-core.Content.MoP = 'MoP'
-core.Content.WoD = 'WoD'
-core.Content.Legion = 'Legion'
-core.Content.BFA = 'BFA'
+core.Content.Vanilla = 1
+core.Content.TBC = 2
+core.Content.WotLK = 3
+core.Content.Cata = 4
+core.Content.MoP = 5
+core.Content.WoD = 6
+core.Content.Legion = 7
+core.Content.BFA = 8

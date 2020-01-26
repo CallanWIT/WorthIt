@@ -45,11 +45,15 @@ function core.GridModule(name, data, category)
         self.Rows = nil
     end
 
+    function self.GetData()
+        return self.Data
+    end
+
     function self.GetRows()
         if not self.Rows then
             self.Rows = {}
 
-            for _, data in pairs(self.Data) do
+            for _, data in pairs(self.GetData()) do
                 local row = { Data = data }
 
                 for _, column in pairs(self.Columns) do
@@ -63,7 +67,10 @@ function core.GridModule(name, data, category)
         return sortRows(self.Rows)
     end
 
-    function self.Draw(frame)
+    function self.Draw(container)
+        local frame = AceGUI:Create("ScrollFrame")
+        container:AddChild(frame)
+
         local rows = self.GetRows()
         local visibleColumns = self.GetVisibleColumns(rows)
         local columnWidth = {}
@@ -74,11 +81,12 @@ function core.GridModule(name, data, category)
         header:SetLayout("Flow")
         header:SetFullWidth(true)
 
-        header.frame:SetBackdrop({bgFile = "Interface/RaidFrame/Raid-Bar-Resource-Fill",
-            insets = { left = 0, right = 0, top = 0, bottom = -4 }})
-        header.frame:SetBackdropColor(0.4,0.4,0.4,0.8)
-        header:SetCallback("OnRelease", function()
-            header.frame:SetBackdrop(nil)
+        header.background = header.frame:CreateTexture(nil, "BACKGROUND")
+        header.background:SetPoint("TOPLEFT", header.frame, "TOPLEFT", 0, -2)
+        header.background:SetPoint("BOTTOMRIGHT", header.frame, "BOTTOMRIGHT", 0, -1)
+        header.background:SetColorTexture(0.5, 0.5, 0.5, 0.5)
+        header:SetCallback("OnRelease", function(self)
+            self.background:Hide()
         end)
 
         for key, column in pairs(visibleColumns) do
@@ -90,11 +98,14 @@ function core.GridModule(name, data, category)
         local diff = core.UI.MainWindow.GetWindowWidth() - 45 - totalWidth
 
         if diff > 0 then
-            diff = math.floor(diff / columnCount)
+            local additionalWidth = math.floor(diff / columnCount)
 
             for key, width in pairs(columnWidth) do
-                columnWidth[key] = width + diff
+                columnWidth[key] = width + additionalWidth
             end
+        else
+            header:SetFullWidth(false)
+            header:SetWidth(totalWidth + 45)
         end
 
         for key, column in pairs(visibleColumns) do
@@ -112,12 +123,18 @@ function core.GridModule(name, data, category)
             group:SetLayout("Flow")
             group:SetFullWidth(true)
 
+            if diff <= 0 then
+                group:SetFullWidth(false)
+                group:SetWidth(totalWidth + 45)
+            end
+
             if isAlternateRow == true then
-                group.frame:SetBackdrop({bgFile = "Interface/RaidFrame/Raid-Bar-Resource-Fill",
-                    insets = { left = 0, right = 0, top = 0, bottom = -4 }})
-                group.frame:SetBackdropColor(0.3,0.3,0.3,0.5)
-                group:SetCallback("OnRelease", function()
-                    group.frame:SetBackdrop(nil)
+                group.background = group.frame:CreateTexture(nil, "BACKGROUND")
+                group.background:SetPoint("TOPLEFT", group.frame, "TOPLEFT", 0, -2)
+                group.background:SetPoint("BOTTOMRIGHT", group.frame, "BOTTOMRIGHT", 0, -2)
+                group.background:SetColorTexture(0.5, 0.5, 0.5, 0.5)
+                group:SetCallback("OnRelease", function(self)
+                    self.background:Hide()
                 end)
             end
 

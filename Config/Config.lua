@@ -27,6 +27,8 @@ function Config.Initialize()
     WITDB.Settings.BagValueMinQuality = WITDB.Settings.BagValueMinQuality or 1
     WITDB.Settings.BelowTresholdValue = WITDB.Settings.BelowTresholdValue or 1
 
+    WITDB.Settings.Modules = WITDB.Settings.Modules or { Dashboard = { ShowCurrentContent = true, Farms = {} }}
+
     WITDB.Version = version
 end
 
@@ -72,4 +74,8 @@ function Config.SetBelowTresholdValue(value)
     WITDB.Settings.BelowTresholdValue = value
 
     core.UI.ClearBagValue()
+end
+
+function Config.GetModulesConfig()
+    return WITDB.Settings.Modules
 end

@@ -26,11 +26,7 @@ local function ConfigurationModule()
         return dropDown
     end
 
-    function createBagValueGroup()
-        local group = AceGUI:Create("InlineGroup")
-        group:SetTitle(core.GetString("BagValueTreshold"))
-        group:SetLayout("List")
-
+    function drawBagValueConfiguration(frame)
         local minValueTextBox = AceGUI:Create("EditBox")
         minValueTextBox:SetLabel(core.GetString("MinItemValue"))
         minValueTextBox:SetText(core.Config.GetBagValueMinPrice())
@@ -44,7 +40,7 @@ local function ConfigurationModule()
             end
         end)
 
-        group:AddChild(minValueTextBox)
+        frame:AddChild(minValueTextBox)
 
         local itemQualities = {
             "|cFF9D9D9D"..ITEM_QUALITY0_DESC,
@@ -62,7 +58,7 @@ local function ConfigurationModule()
             end
         end)
 
-        group:AddChild(minQualityDropDown)
+        frame:AddChild(minQualityDropDown)
 
         local priceSources = {
             core.GetString("None"),
@@ -77,15 +73,12 @@ local function ConfigurationModule()
             end
         end)
 
-        group:AddChild(minValueDropDown)
-
-        return group
+        frame:AddChild(minValueDropDown)
     end
 
-    function createPriceSourceGroup()
-        local group = AceGUI:Create("InlineGroup")
-        group:SetTitle(core.GetString("TSM"))
-        group:SetLayout("List")
+    function drawPriceSourceConfiguration(frame)
+        local group = AceGUI:Create("SimpleGroup")
+        group:SetFullWidth(true)
 
         local priceSourcesLabel = core.GetString("PriceSource")
         local priceSources = core.TSMHelper.GetPriceSources()
@@ -98,33 +91,204 @@ local function ConfigurationModule()
             end
         end)
 
-        group:AddChild(priceSorceDropDown)
+        frame:AddChild(priceSorceDropDown)
+    end
 
-        return group
+    function drawFarm(frame, farm)
+        local group = AceGUI:Create("SimpleGroup")
+        group:SetLayout("Flow")
+        group:SetFullWidth(true)
+
+        local checkbox = AceGUI:Create("CheckBox")
+        checkbox:SetWidth(30)
+        checkbox:SetValue(core.Config.GetModulesConfig().Dashboard.Farms[farm.Id] or false)
+        checkbox:SetCallback("OnValueChanged", function(self, name, value)
+            core.Config.GetModulesConfig().Dashboard.Farms[farm.Id] = value or nil
+            core.DashboardModule.ClearCache()
+        end)
+        group:AddChild(checkbox)
+
+        local label = AceGUI:Create("InteractiveLabel")
+        local text = farm.ItemId and core.TSMHelper.GetItemLink(farm.ItemId) or core.GetString(farm.Name)
+        label:SetText(text)
+        label:SetWidth(label.label:GetStringWidth() + 5)
+
+        if farm.ItemId then
+            label:SetCallback("OnEnter", function()
+                GameTooltip:SetOwner(label.frame, "ANCHOR_PRESERVE")
+	            GameTooltip:ClearAllPoints()
+	            GameTooltip:SetPoint("LEFT", label.frame, "RIGHT")
+                GameTooltip:SetHyperlink("item:" .. farm.ItemId)
+                GameTooltip:Show()
+            end)
+            label:SetCallback("OnLeave", function()
+                GameTooltip:Hide()
+            end)
+        end
+
+        group:AddChild(label)
+
+        local activityLabel = AceGUI:Create("Label")
+        activityLabel:SetText('(' .. core.GetString("Activity" .. farm.Activity) .. ')')
+        group:AddChild(activityLabel)
+
+        frame:AddChild(group)
+    end
+
+    function drawDashboardConfiguration(frame, dashboardItems)
+        local intro = AceGUI:Create("Label")
+        intro:SetFullWidth(true)
+        intro:SetText(core.GetString("DashboardConfogurationIntro"))
+        frame:AddChild(intro)
+
+        local group = AceGUI:Create("SimpleGroup")
+        group:SetLayout("Flow")
+        group:SetFullWidth(true)
+
+        local checkbox = AceGUI:Create("CheckBox")
+        checkbox:SetWidth(30)
+        checkbox:SetValue(core.Config.GetModulesConfig().Dashboard.ShowCurrentContent)
+        checkbox:SetCallback("OnValueChanged", function(self, name, value)
+            core.Config.GetModulesConfig().Dashboard.ShowCurrentContent = value
+            core.DashboardModule.ClearCache()
+
+            for _, i in pairs(dashboardItems) do
+                i.disabled = value
+            end
+
+            frame.parent:RefreshTree()
+        end)
+        group:AddChild(checkbox)
+
+        local label = AceGUI:Create("Label")
+        label:SetText(core.GetString("ShowCurrentContentFarms"))
+        group:AddChild(label)
+
+        frame:AddChild(group)
+    end
+
+    function drawDashboardContentConfiguration(frame, content)
+        local farms = {}
+
+        for _, farm in pairs(core.Data.Results.Farms) do
+            if farm.Content == content and farm.Activity and farm.Activity ~= core.Activity.Transmog then
+                table.insert(farms, farm)
+            end
+        end
+
+        table.sort(farms, function(a, b)
+            if a.Activity == b.Activity then
+                return a.Id < b.Id
+            end
+
+            return a.Activity < b.Activity
+        end)
+
+        for _, farm in pairs(farms) do
+            drawFarm(frame, farm)
+        end
+    end
+
+    function drawModulesConfiguration(frame)
+        local label = AceGUI:Create("Label")
+        label:SetText(core.GetString("NothingToSeeHere"))
+
+        frame:AddChild(label)
+    end
+
+    function createDashboardContentItems()
+        local contents = {}
+        local items = {}
+
+        for k, c in pairs(core.Content) do
+            table.insert(contents, { Value = c, Name = k })
+        end
+
+        table.sort(contents, function(a, b)
+            return a.Value > b.Value
+        end)
+
+        local showCurrentContent = core.Config.GetModulesConfig().Dashboard.ShowCurrentContent
+
+        for _, i in pairs(contents) do
+            table.insert(items, {
+                value = "Dashboard" .. i.Value,
+                text = core.GetString(i.Name),
+                content = i.Value,
+                disabled = showCurrentContent,
+            })
+        end
+
+        return items
+    end
+
+    function createConfigurationPanel(frame)
+        local dashboardItems = createDashboardContentItems()
+        local tree =
+        { 
+            {
+                value = "WorthIt",
+                text = core.GetString("WorthIt"),
+                --icon = "Interface\\Icons\\INV_Drink_05",
+                children =
+                {
+                    { 
+                        value = "BagValue", 
+                        text = core.GetString("BagValue"),
+                    },
+                    {
+                        value = "Modules",
+                        text = core.GetString("Modules"),--,
+                        --disabled = true,
+                        --icon = "Interface\\Icons\\INV_Drink_05",
+                        children =
+                        {
+                            { 
+                                value = "Dashboard", 
+                                text = core.GetString("Dashboard"),
+                                children = dashboardItems
+                            },
+                        }
+                    },
+                }
+            },
+        }
+
+        local treeGroup = AceGUI:Create("TreeGroup")
+        treeGroup:SetLayout("Fill")
+        treeGroup:SetTree(tree)
+        
+        treeGroup:SetCallback("OnGroupSelected", function(self, name, group)
+            treeGroup:ReleaseChildren()
+
+            local scrollFrame = AceGUI:Create("ScrollFrame")
+            treeGroup:AddChild(scrollFrame)
+
+            if group == 'WorthIt' then
+                drawPriceSourceConfiguration(scrollFrame)
+            elseif group == 'WorthIt\001BagValue' then
+                drawBagValueConfiguration(scrollFrame)
+            elseif group == 'WorthIt\001Modules' then
+                drawModulesConfiguration(scrollFrame)
+            elseif group == 'WorthIt\001Modules\001Dashboard' then
+                drawDashboardConfiguration(scrollFrame, dashboardItems)
+            else
+                for _, i in pairs(dashboardItems) do
+                    if group == 'WorthIt\001Modules\001Dashboard\001' .. i.value then
+                        drawDashboardContentConfiguration(scrollFrame, i.content)
+                        return
+                    end
+                end
+            end
+        end)
+
+        treeGroup:SelectByValue('WorthIt')
+
+        return treeGroup
     end
 
     function self.Draw(frame)
-        local header = AceGUI:Create("SimpleGroup")
-        header:SetFullWidth(true)
-        header:SetHeight(35)
-
-        local intro = AceGUI:Create("Label")
-            
-        intro:SetText(core.GetString("ConfigurationIntro"))
-        intro:SetFullWidth()
-
-        header:AddChild(intro)
-        frame:AddChild(header)
-
-        local priceSourceSection = createPriceSourceGroup()
-        local bagValueSection = createBagValueGroup()
-
-        local height = math.max(priceSourceSection.frame:GetHeight(), bagValueSection.frame:GetHeight())
-        priceSourceSection:SetHeight(height)
-        bagValueSection:SetHeight(height)
-
-        frame:AddChild(priceSourceSection)
-        frame:AddChild(bagValueSection)
+        frame:AddChild(createConfigurationPanel(frame))
     end
     
     return self

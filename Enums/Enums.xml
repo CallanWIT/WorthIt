@@ -1,5 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
+    <Script file="Activity.lua"/>
     <Script file="Factions.lua"/>
     <Script file="Content.lua"/>
 
@@ -15,6 +16,7 @@
     <Script file="Items\Misc.lua"/>
 	<Script file="Items\Fish.lua"/>
 	<Script file="Items\Skins.lua"/>
+	<Script file="Items\Transmog.lua"/>
 
     <Script file="Items\Profession\Enchanting.lua"/>
     <Script file="Items\Profession\Inscription.lua"/>

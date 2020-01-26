@@ -6,4 +6,5 @@
 	<Script file="Skinning.lua"/>
 	<Script file="Cloth.lua"/>
 	<Script file="Misc.lua"/>
+	<Script file="VanillaTransmog.lua"/>
 </Ui>

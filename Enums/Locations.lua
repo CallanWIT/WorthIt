@@ -19,6 +19,33 @@ core.Locations.Kalimdor = {
 	VortexPininacle = 5583,
 }
 
+
+core.Locations.VanillaDungeons = {
+
+Ragefire = 2437,
+Deadmines = 1581,
+WailingCaverns = 718,
+ShadowfangKeep = 209,
+BlackfathomDepths = 719,
+TheStockades = 717,
+Gnomeregan = 721,
+ScarletHalls = 6052,
+ScarletMonastary = 796,
+RazorfenKraul = 491,
+Maraudon = 2100,
+RazorfenDowns = 722,
+Scholomace = 6066,
+Ulduman = 1337,
+DireMaul = 2557,
+ZulFarrak = 1176,
+Stratholme = 2017,
+SunkenTemple2 = 1417,
+BlackrockDepths2 = 1584,
+LowerBlackrockSpire = 1583,
+
+
+}
+
 core.Locations.EasternKingdoms = {
     HillsbradFoothills = 267,
 	TwilightHighlands = 4922,

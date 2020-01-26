@@ -3,6 +3,8 @@ local WIT, core = ...
 -- Vanilla
 
 core.Data.Results.Farms.LightLeather = {
+    Id = 'LightLeather',
+    Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.LightLeather,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.EasternKingdoms.Wetlands },
@@ -14,6 +16,8 @@ core.Data.Results.Farms.LightLeather = {
 }
 
 core.Data.Results.Farms.HeavyLeather = {
+    Id = 'HeavyLeather',
+    Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.HeavyLeather,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.Kalimdor.Feralas },
@@ -25,6 +29,8 @@ core.Data.Results.Farms.HeavyLeather = {
 }
 
 core.Data.Results.Farms.RuggedLeather = {
+    Id = 'RuggedLeather',
+    Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.RuggedLeather,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.EasternKingdoms.SunkenTemple },
@@ -39,6 +45,8 @@ core.Data.Results.Farms.RuggedLeather = {
 -- BC 
 
 core.Data.Results.Farms.KnothideLeather = {
+    Id = 'KnothideLeather',
+    Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.KnothideLeather,
     Content = core.Content.TBC,
     Locations = { core.Locations.Outlands.Netherstorm },
@@ -52,6 +60,8 @@ core.Data.Results.Farms.KnothideLeather = {
 -- WOTLK 
 
 core.Data.Results.Farms.BoreanLeather = {
+    Id = 'BoreanLeather',
+    Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.BoreanLeather,
     Content = core.Content.WotLK,
     Locations = { core.Locations.Northrend.Oculus },
@@ -66,6 +76,8 @@ core.Data.Results.Farms.BoreanLeather = {
 -- Cata
 
 core.Data.Results.Farms.SavageLeather = {
+    Id = 'SavageLeather',
+    Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.SavageLeather,
     Content = core.Content.Cata,
     Locations = { core.Locations.Cata.Firelands },
@@ -78,6 +90,8 @@ core.Data.Results.Farms.SavageLeather = {
 -- Mop 
 
 core.Data.Results.Farms.ExoticLeather = {
+    Id = 'ExoticLeather',
+    Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.ExoticLeather,
     Content = core.Content.MoP,
     Locations = { core.Locations.Pandaria.IsleOfGiants },
@@ -91,6 +105,8 @@ core.Data.Results.Farms.ExoticLeather = {
 -- Wod
 
 core.Data.Results.Farms.RawBeastHide = {
+    Id = 'RawBeastHide',
+    Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.RawBeastHide,
     Content = core.Content.WoD,
     Locations = { core.Locations.Draenor.ShadowmoonValley },
@@ -104,6 +120,8 @@ core.Data.Results.Farms.RawBeastHide = {
 -- Legion
 
 core.Data.Results.Farms.StonehideLeather = {
+    Id = 'StonehideLeather',
+    Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.StonehideLeather,
     Content = core.Content.Legion,
     Locations = { core.Locations.BrokenIsles.Azsuna },
@@ -114,6 +132,8 @@ core.Data.Results.Farms.StonehideLeather = {
 }
 
 core.Data.Results.Farms.Stormscale = {
+    Id = 'Stormscale',
+    Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.Stormscale,
     Content = core.Content.Legion,
     Locations = { core.Locations.BrokenIsles.Highmountain },
@@ -124,6 +144,8 @@ core.Data.Results.Farms.Stormscale = {
 }
 
 core.Data.Results.Farms.FeindishLeather = {
+    Id = 'FeindishLeather',
+    Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.FeindishLeather,
     Content = core.Content.Legion,
     Locations = { core.Locations.Argus.Krokunn },
@@ -136,6 +158,8 @@ core.Data.Results.Farms.FeindishLeather = {
 -- BFA 
 
 core.Data.Results.Farms.CoarseLeather = {
+    Id = 'CoarseLeather',
+    Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.CoarseLeather,
     Content = core.Content.BFA,
     Locations = { core.Locations.BFA.Drustvar },
@@ -146,6 +170,8 @@ core.Data.Results.Farms.CoarseLeather = {
 }
 
 core.Data.Results.Farms.DredgedLeather = {
+    Id = 'DredgedLeather',
+    Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.DredgedLeather,
     Content = core.Content.BFA,
     Locations = { core.Locations.BFA.Nazjatar },

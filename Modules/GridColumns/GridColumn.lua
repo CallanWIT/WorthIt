@@ -48,11 +48,11 @@ function GridColumns.GridColumn(name)
         local label = AceGUI:Create("Label")
         label:SetText(self.DisplayName or self.Name)
 
-        local maxWidth = label.label:GetStringWidth()
+        local maxWidth = label.label:GetStringWidth() + 5
 
         for _, row in pairs(rows) do
             label:SetText(self.GetRowText(row))
-            local width = label.label:GetStringWidth()
+            local width = label.label:GetStringWidth() + 5
 
             if width > maxWidth then
                 maxWidth = width

@@ -5,7 +5,10 @@ function core.GuideModule(name, sections, category)
 
     self.Sections = sections
 
-    function self.Draw(frame)
+    function self.Draw(container)
+        local frame = AceGUI:Create("ScrollFrame")
+        container:AddChild(frame)
+
         for _, section in pairs(self.Sections) do
             section.Draw(frame)
         end

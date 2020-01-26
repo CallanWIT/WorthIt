@@ -31,16 +31,12 @@ local function createWindow()
     window:EnableResize(false)
     window:AddChild(core.UI.Header(window))
 
-    local scrollcontainer = AceGUI:Create("SimpleGroup")
-    scrollcontainer:SetFullWidth(true)
-    scrollcontainer:SetFullHeight(true)
-    scrollcontainer:SetLayout("Fill")
+    frame = AceGUI:Create("SimpleGroup")
+    frame:SetFullWidth(true)
+    frame:SetFullHeight(true)
+    frame:SetLayout("Fill")
 
-    window:AddChild(scrollcontainer)
-
-    frame = AceGUI:Create("ScrollFrame")
-    frame:SetLayout("Flow")
-    scrollcontainer:AddChild(frame)
+    window:AddChild(frame)
 
     core.UI.SelectModule(core.DashboardModule)
 
@@ -79,10 +75,6 @@ end
 
 function MainWindow.ShowModule(module)
     if not frame then return end
-
-    for _, child in ipairs(frame.children) do
-        child.frame:SetBackdrop(nil)
-    end
 
     frame:ReleaseChildren()
 

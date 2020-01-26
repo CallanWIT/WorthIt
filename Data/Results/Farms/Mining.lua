@@ -1,6 +1,8 @@
 local WIT, core = ...
 
 core.Data.Results.Farms.CopperOre = {
+    Id = 'CopperOre',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.Copper,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.Kalimdor.Durotar },
@@ -15,6 +17,8 @@ core.Data.Results.Farms.CopperOre = {
 }
 
 core.Data.Results.Farms.TinOre = {
+    Id = 'TinOre',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.Tin,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.EasternKingdoms.HillsbradFoothills },
@@ -31,6 +35,8 @@ core.Data.Results.Farms.TinOre = {
 }
 
 core.Data.Results.Farms.IronOre = {
+    Id = 'IronOre',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.Iron,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.Kalimdor.Ashenvale },
@@ -47,6 +53,8 @@ core.Data.Results.Farms.IronOre = {
 }
 
 core.Data.Results.Farms.ThoriumOre = {
+    Id = 'ThoriumOre',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.Thorium,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.Kalimdor.Silithus },
@@ -63,6 +71,8 @@ core.Data.Results.Farms.ThoriumOre = {
 }
 
 core.Data.Results.Farms.DarkIronOre = {
+    Id = 'DarkIronOre',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.DarkIron,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.EasternKingdoms.MoltenCore },
@@ -73,6 +83,8 @@ core.Data.Results.Farms.DarkIronOre = {
 }
 
 core.Data.Results.Farms.FelIronOre = {
+    Id = 'FelIronOre',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.FelIron,
     Content = core.Content.TBC,
     Locations = { core.Locations.Outlands.TerokkarForest },
@@ -92,6 +104,8 @@ core.Data.Results.Farms.FelIronOre = {
 }
 
 core.Data.Results.Farms.CobaltOre = {
+    Id = 'CobaltOre',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.Cobalt,
     Content = core.Content.WotLK,
     Locations = { core.Locations.Northrend.BoreanTundra },
@@ -102,6 +116,8 @@ core.Data.Results.Farms.CobaltOre = {
 }
 
 core.Data.Results.Farms.SaroniteOre = {
+    Id = 'SaroniteOre',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.Saronite,
     Content = core.Content.WotLK,
     Locations = { core.Locations.Northrend.Wintergrasp },
@@ -126,6 +142,8 @@ core.Data.Results.Farms.SaroniteOre = {
 }
 
 core.Data.Results.Farms.ObsidiumOre = {
+    Id = 'ObsidiumOre',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.Obsidium,
     Content = core.Content.Cata,
     Locations = { core.Locations.Others.Vashjir },
@@ -144,6 +162,8 @@ core.Data.Results.Farms.ObsidiumOre = {
 }
 
 core.Data.Results.Farms.ElementiumOre = {
+    Id = 'ElementiumOre',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.Elementium,
     Content = core.Content.Cata,
     Locations = { core.Locations.Kalimdor.Uldum },
@@ -164,6 +184,8 @@ core.Data.Results.Farms.ElementiumOre = {
 }
 
 core.Data.Results.Farms.GhostIronOre = {
+    Id = 'GhostIronOre',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.GhostIron,
     Content = core.Content.MoP,
     Locations = { core.Locations.Pandaria.ValleyOfTheFourWinds },
@@ -174,6 +196,8 @@ core.Data.Results.Farms.GhostIronOre = {
 }
 
 core.Data.Results.Farms.BlackrockOre = {
+    Id = 'BlackrockOre',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.Blackrock,
     Content = core.Content.WoD,
     Locations = { core.Locations.Draenor.TanaanJungle },
@@ -185,8 +209,10 @@ core.Data.Results.Farms.BlackrockOre = {
 }
 
 core.Data.Results.Farms.Felslate = {
+    Id = 'Felslate',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.Felslate,
-    Content = core.Content.WoD,
+    Content = core.Content.Legion,
     Locations = { core.Locations.BrokenIsles.Suramar },
     Routes = { core.Data.Routes.Mining.FelslateSuramar },
     Results = {
@@ -196,6 +222,8 @@ core.Data.Results.Farms.Felslate = {
 }
 
 core.Data.Results.Farms.Empyrium = {
+    Id = 'Empyrium',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.Empyrium,
     Content = core.Content.Legion,
     Locations = { core.Locations.Argus.Krokunn },
@@ -206,6 +234,8 @@ core.Data.Results.Farms.Empyrium = {
 }
 
 core.Data.Results.Farms.MoneliteOre = {
+    Id = 'MoneliteOre',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.Monelite,
     Content = core.Content.BFA,
     Locations = { core.Locations.BFA.TiragardeSound },
@@ -218,6 +248,8 @@ core.Data.Results.Farms.MoneliteOre = {
 }
 
 core.Data.Results.Farms.OsmeniteOre = {
+    Id = 'OsmeniteOre',
+    Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.Osmenite,
     Content = core.Content.BFA,
     Locations = { core.Locations.BFA.Nazjatar },

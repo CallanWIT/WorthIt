@@ -74,6 +74,12 @@ local function buildNavigationMenu()
             DisplayName = core.GetString("Flippings"),
             Category = "Flipping"
         },
+		{
+            IsGroup = true,
+            Name = "Transmog",
+            DisplayName = core.GetString("Transmog"),
+            Category = "Transmog"
+        },
         {
             IsGroup = true,
             Name = "Guides",

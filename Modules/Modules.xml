@@ -27,6 +27,8 @@
     <Script file="Flipping\SpiritOfHarmonyFlipsModule.lua"/>
     <Script file="Flipping\FrozenOrbFlipsModule.lua"/>
 
+    <Script file="Transmog\VanillaTransmogModule.lua"/>
+
     <Script file="Guides\InstallationGuide.lua"/>
     <Script file="Guides\BattlePetGuide.lua"/>
     <Script file="Guides\TransmogGuide.lua"/>

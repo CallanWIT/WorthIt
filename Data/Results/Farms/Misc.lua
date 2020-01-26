@@ -3,6 +3,8 @@ local WIT, core = ...
 -- Vanilla
 
 core.Data.Results.Farms.EssenceOfFire = {
+    Id = 'EssenceOfFire',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.EssenceOfFire,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.EasternKingdoms.MoltenCore },
@@ -14,6 +16,8 @@ core.Data.Results.Farms.EssenceOfFire = {
 }
 
 core.Data.Results.Farms.EssenceOfWater = {
+    Id = 'EssenceOfWater',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.EssenceOfWater,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.EasternKingdoms.SwampOfSorrows },
@@ -24,6 +28,8 @@ core.Data.Results.Farms.EssenceOfWater = {
 }
 
 core.Data.Results.Farms.EssenceOfAir = {
+    Id = 'EssenceOfAir',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.EssenceOfAir,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.Kalimdor.Silithus },
@@ -36,6 +42,8 @@ core.Data.Results.Farms.EssenceOfAir = {
 }
 
 core.Data.Results.Farms.EssenceOfUndeath = {
+    Id = 'EssenceOfUndeath',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.EssenceOfUndeath,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.Kalimdor.Winterspring },
@@ -46,6 +54,8 @@ core.Data.Results.Farms.EssenceOfUndeath = {
 }
 
 core.Data.Results.Farms.LivingEssence = {
+    Id = 'LivingEssence',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.LivingEssence,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.EasternKingdoms.BlastedLands },
@@ -58,6 +68,8 @@ core.Data.Results.Farms.LivingEssence = {
 -- BC 
 
 core.Data.Results.Farms.PrimalEarth = {
+    Id = 'PrimalEarth',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.PrimalEarth,
     Content = core.Content.TBC,
     Locations = { core.Locations.Outlands.Nagrand },
@@ -68,6 +80,8 @@ core.Data.Results.Farms.PrimalEarth = {
 }
 
 core.Data.Results.Farms.PrimalLife = {
+    Id = 'PrimalLife',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.PrimalLife,
     Content = core.Content.TBC,
     Locations = { core.Locations.Outlands.Underbog },
@@ -78,6 +92,8 @@ core.Data.Results.Farms.PrimalLife = {
 }
 
 core.Data.Results.Farms.PrimalMana = {
+    Id = 'PrimalMana',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.PrimalMana,
     Content = core.Content.TBC,
     Locations = { core.Locations.Outlands.Netherstorm },
@@ -88,6 +104,8 @@ core.Data.Results.Farms.PrimalMana = {
 }
 
 core.Data.Results.Farms.PrimalShadow = {
+    Id = 'PrimalShadow',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.PrimalShadow,
     Content = core.Content.TBC,
     Locations = { core.Locations.Outlands.HellfirePeninsula },
@@ -98,6 +116,8 @@ core.Data.Results.Farms.PrimalShadow = {
 }
 
 core.Data.Results.Farms.PrimalWater  = {
+    Id = 'PrimalWater',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.PrimalWater,
     Content = core.Content.TBC,
     Locations = { core.Locations.Outlands.BlackTemple },
@@ -108,6 +128,8 @@ core.Data.Results.Farms.PrimalWater  = {
 }
 
 core.Data.Results.Farms.PrimalFire = {
+    Id = 'PrimalFire',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.PrimalFire,
     Content = core.Content.TBC,
     Locations = { core.Locations.Outlands.HellfirePeninsula },
@@ -118,6 +140,8 @@ core.Data.Results.Farms.PrimalFire = {
 }
 
 core.Data.Results.Farms.PrimalAir = {
+    Id = 'PrimalAir',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.PrimalAir,
     Content = core.Content.TBC,
     Locations = { core.Locations.Outlands.ShadowmoonValleyOld },
@@ -130,6 +154,8 @@ core.Data.Results.Farms.PrimalAir = {
 -- WOTLK 
 
 core.Data.Results.Farms.EternalWater = {
+    Id = 'EternalWater',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.EternalWater,
     Content = core.Content.WotLK,
     Locations = { core.Locations.Northrend.ZulDrak },
@@ -140,6 +166,8 @@ core.Data.Results.Farms.EternalWater = {
 }
 
 core.Data.Results.Farms.EternalAir = {
+    Id = 'EternalAir',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.EternalAir,
     Content = core.Content.WotLK,
     Locations = { core.Locations.Northrend.StormPeaks },
@@ -149,6 +177,8 @@ core.Data.Results.Farms.EternalAir = {
 }
 
 core.Data.Results.Farms.EternalFire = {
+    Id = 'EternalFire',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.EternalFire,
     Content = core.Content.WotLK,
     Locations = { core.Locations.Northrend.StormPeaks },
@@ -159,6 +189,8 @@ core.Data.Results.Farms.EternalFire = {
 }
 
 core.Data.Results.Farms.EternalEarth = {
+    Id = 'EternalEarth',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.EternalEarth,
     Content = core.Content.WotLK,
     Locations = { core.Locations.Northrend.Wintergrasp },
@@ -168,6 +200,8 @@ core.Data.Results.Farms.EternalEarth = {
 }
 
 core.Data.Results.Farms.EternalLife = {
+    Id = 'EternalLife',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.EternalLife,
     Content = core.Content.WotLK,
     Locations = { core.Locations.Northrend.HowlingFjord },
@@ -180,6 +214,8 @@ core.Data.Results.Farms.EternalLife = {
 -- Cata
 
 core.Data.Results.Farms.VolatileFire = {
+    Id = 'VolatileFire',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.VolatileFire,
     Content = core.Content.Cata,
     Locations = { core.Locations.Kalimdor.MtHyjal },
@@ -190,6 +226,8 @@ core.Data.Results.Farms.VolatileFire = {
 }
 
 core.Data.Results.Farms.VolatileWater = {
+    Id = 'VolatileWater',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.VolatileWater,
     Content = core.Content.Cata,
     Locations = { core.Locations.EasternKingdoms.TwilightHighlands },
@@ -200,6 +238,8 @@ core.Data.Results.Farms.VolatileWater = {
 }
 
 core.Data.Results.Farms.VolatileEarth = {
+    Id = 'VolatileEarth',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.VolatileEarth,
     Content = core.Content.Cata,
     Locations = { core.Locations.Kalimdor.MtHyjal },
@@ -210,6 +250,8 @@ core.Data.Results.Farms.VolatileEarth = {
 }
 
 core.Data.Results.Farms.VolatileAir = {
+    Id = 'VolatileAir',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.VolatileAir,
     Content = core.Content.Cata,
     Locations = { core.Locations.Kalimdor.VortexPininacle },
@@ -220,6 +262,8 @@ core.Data.Results.Farms.VolatileAir = {
 }
 
 core.Data.Results.Farms.VolatileLife = {
+    Id = 'VolatileLife',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.VolatileLife,
     Content = core.Content.Cata,
     Locations = { core.Locations.Kalimdor.Uldum },
@@ -232,6 +276,8 @@ core.Data.Results.Farms.VolatileLife = {
 -- Mop
 
 core.Data.Results.Farms.SpiritOfHarmony = {
+    Id = 'SpiritOfHarmony',
+    Activity = core.Activity.Misc,
     ItemId = core.Items.Misc.SpiritOfHarmony,
     Content = core.Content.MoP,
     Locations = { core.Locations.Pandaria.HeartOfFear },

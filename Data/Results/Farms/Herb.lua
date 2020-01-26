@@ -1,6 +1,8 @@
 local WIT, core = ...
 
 core.Data.Results.Farms.Peacebloom = {
+    Id = 'Peacebloom',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Peacebloom,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.Kalimdor.Darkshore },
@@ -15,7 +17,9 @@ core.Data.Results.Farms.Peacebloom = {
     }
 }
 
-core.Data.Results.Farms.Fadeleaf = { 
+core.Data.Results.Farms.Fadeleaf = {
+    Id = 'Fadeleaf',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Fadeleaf,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.Kalimdor.Feralas },
@@ -28,7 +32,9 @@ core.Data.Results.Farms.Fadeleaf = {
     }
 }
 
-core.Data.Results.Farms.Gromsblood = { 
+core.Data.Results.Farms.Gromsblood = {
+    Id = 'Gromsblood',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Gromsblood,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.Kalimdor.Felwood },
@@ -42,7 +48,9 @@ core.Data.Results.Farms.Gromsblood = {
 
 -- BC
 
-core.Data.Results.Farms.Felweed = { 
+core.Data.Results.Farms.Felweed = {
+    Id = 'Felweed',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Felweed,
     Content = core.Content.TBC,
     Locations = { core.Locations.Outlands.TerokkarForest },
@@ -57,7 +65,9 @@ core.Data.Results.Farms.Felweed = {
 
 -- WOTLK
 
-core.Data.Results.Farms.AddersTongue = { 
+core.Data.Results.Farms.AddersTongue = {
+    Id = 'AddersTongue',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.AddersTongue,
     Content = core.Content.WotLK,
     Locations = { core.Locations.Northrend.SholzarBasin },
@@ -70,6 +80,8 @@ core.Data.Results.Farms.AddersTongue = {
 
 
 core.Data.Results.Farms.Icethorn = { 
+    Id = 'Icethorn',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Icethorn,
     Content = core.Content.WotLK,
     Locations = { core.Locations.Northrend.Wintergrasp },
@@ -87,7 +99,9 @@ core.Data.Results.Farms.Icethorn = {
 
 -- Cata
 
-core.Data.Results.Farms.AzsharasVeil = { 
+core.Data.Results.Farms.AzsharasVeil = {
+    Id = 'AzsharasVeil',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.AzsharasVeil,
     Content = core.Content.Cata,
     Locations = { core.Locations.Others.Vashjir },
@@ -99,7 +113,9 @@ core.Data.Results.Farms.AzsharasVeil = {
 }
 
 
-core.Data.Results.Farms.Whiptail = { 
+core.Data.Results.Farms.Whiptail = {
+    Id = 'Whiptail',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Whiptail,
     Content = core.Content.Cata,
     Locations = { core.Locations.Kalimdor.Uldum },
@@ -110,7 +126,9 @@ core.Data.Results.Farms.Whiptail = {
     }
 }
 
-core.Data.Results.Farms.Cinderbloom = { 
+core.Data.Results.Farms.Cinderbloom = {
+    Id = 'Cinderbloom',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Cinderbloom,
     Content = core.Content.Cata,
     Locations = { core.Locations.Kalimdor.MtHyjal },
@@ -121,7 +139,9 @@ core.Data.Results.Farms.Cinderbloom = {
     }
 }
 
-core.Data.Results.Farms.TwilightJasmine = { 
+core.Data.Results.Farms.TwilightJasmine = {
+    Id = 'TwilightJasmine',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.TwilightJasmine,
     Content = core.Content.Cata,
     Locations = { core.Locations.EasternKingdoms.TwilightHighlands },
@@ -132,7 +152,9 @@ core.Data.Results.Farms.TwilightJasmine = {
     }
 }
 
-core.Data.Results.Farms.Heartblossom = { 
+core.Data.Results.Farms.Heartblossom = {
+    Id = 'Heartblossom',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Heartblossom,
     Content = core.Content.Cata,
     Locations = { core.Locations.Others.Deepholm },
@@ -147,7 +169,9 @@ core.Data.Results.Farms.Heartblossom = {
 
 -- Mop 
 
-core.Data.Results.Farms.GreenTeaLeaf = { 
+core.Data.Results.Farms.GreenTeaLeaf = {
+    Id = 'GreenTeaLeaf',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.GreenTeaLeaf,
     Content = core.Content.MoP,
     Locations = { core.Locations.Pandaria.JadeForest },
@@ -158,7 +182,9 @@ core.Data.Results.Farms.GreenTeaLeaf = {
 }
 
 
-core.Data.Results.Farms.Silkweed = { 
+core.Data.Results.Farms.Silkweed = {
+    Id = 'Silkweed',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Silkweed,
     Content = core.Content.MoP,
     Locations = { core.Locations.Pandaria.ValleyOfTheFourWinds },
@@ -168,7 +194,9 @@ core.Data.Results.Farms.Silkweed = {
     }
 }
 
-core.Data.Results.Farms.FoolsCap = { 
+core.Data.Results.Farms.FoolsCap = {
+    Id = 'FoolsCap',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.FoolsCap,
     Content = core.Content.MoP,
     Locations = { core.Locations.Pandaria.Dreadwastes },
@@ -178,7 +206,9 @@ core.Data.Results.Farms.FoolsCap = {
     }
 }
 
-core.Data.Results.Farms.SnowLily = { 
+core.Data.Results.Farms.SnowLily = {
+    Id = 'SnowLily',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.SnowLily,
     Content = core.Content.MoP,
     Locations = { core.Locations.Pandaria.KunLiSummit },
@@ -191,7 +221,9 @@ core.Data.Results.Farms.SnowLily = {
 
 -- Wod
 
-core.Data.Results.Farms.Fireweed = { 
+core.Data.Results.Farms.Fireweed = {
+    Id = 'Fireweed',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Fireweed,
     Content = core.Content.WoD,
     Locations = { core.Locations.Draenor.TanaanJungle },
@@ -208,7 +240,9 @@ core.Data.Results.Farms.Fireweed = {
 
 -- Legion 
 
-core.Data.Results.Farms.StarlightRose = { 
+core.Data.Results.Farms.StarlightRose = {
+    Id = 'StarlightRose',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.StarlightRose,
     Content = core.Content.Legion,
     Locations = { core.Locations.BrokenIsles.Suramar },
@@ -218,7 +252,9 @@ core.Data.Results.Farms.StarlightRose = {
     }
 }
 
-core.Data.Results.Farms.Aethril = { 
+core.Data.Results.Farms.Aethril = {
+    Id = 'Aethril',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Aethril,
     Content = core.Content.Legion,
     Locations = { core.Locations.BrokenIsles.Azsuna },
@@ -228,7 +264,9 @@ core.Data.Results.Farms.Aethril = {
     }
 }
 
-core.Data.Results.Farms.Dreamleaf = { 
+core.Data.Results.Farms.Dreamleaf = {
+    Id = 'Dreamleaf',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Dreamleaf,
     Content = core.Content.Legion,
     Locations = { core.Locations.BrokenIsles.ValShara },
@@ -239,7 +277,9 @@ core.Data.Results.Farms.Dreamleaf = {
     }
 }
 
-core.Data.Results.Farms.Foxflower = { 
+core.Data.Results.Farms.Foxflower = {
+    Id = 'Foxflower',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Foxflower,
     Content = core.Content.Legion,
     Locations = { core.Locations.BrokenIsles.Highmountain },
@@ -250,7 +290,9 @@ core.Data.Results.Farms.Foxflower = {
     }
 }
 
-core.Data.Results.Farms.Fjarnskaggl = { 
+core.Data.Results.Farms.Fjarnskaggl = {
+    Id = 'Fjarnskaggl',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Fjarnskaggl,
     Content = core.Content.Legion,
     Locations = { core.Locations.BrokenIsles.Stormheim },
@@ -263,7 +305,9 @@ core.Data.Results.Farms.Fjarnskaggl = {
 
 -- Legion - Argus
 
-core.Data.Results.Farms.AstralGlory = { 
+core.Data.Results.Farms.AstralGlory = {
+    Id = 'AstralGlory',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.AstralGlory,
     Content = core.Content.Legion,
     Locations = { core.Locations.Argus.Krokunn },
@@ -276,7 +320,9 @@ core.Data.Results.Farms.AstralGlory = {
 -- BFA 
 
 
-core.Data.Results.Farms.AkundasBite = { 
+core.Data.Results.Farms.AkundasBite = {
+    Id = 'AkundasBite',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.AkundasBite,
     Content = core.Content.BFA,
     Locations = { core.Locations.BFA.Voldun },
@@ -289,7 +335,9 @@ core.Data.Results.Farms.AkundasBite = {
     }
 }
 
-core.Data.Results.Farms.WintersKiss = { 
+core.Data.Results.Farms.WintersKiss = {
+    Id = 'WintersKiss',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.WintersKiss,
     Content = core.Content.BFA,
     Locations = { core.Locations.BFA.Drustvar },
@@ -300,7 +348,9 @@ core.Data.Results.Farms.WintersKiss = {
     }
 }
 
-core.Data.Results.Farms.Zinanthid = { 
+core.Data.Results.Farms.Zinanthid = {
+    Id = 'Zinanthid',
+    Activity = core.Activity.Herbalism,
     ItemId = core.Items.Herbs.Zinanthid,
     Content = core.Content.BFA,
     Locations = { core.Locations.BFA.Nazjatar },

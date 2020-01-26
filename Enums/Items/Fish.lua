@@ -13,4 +13,8 @@ core.Items.Fish = {
     ViperFish = 168302,
     MauveStinger = 168646,
     DarkmoonDaggermaw = 124669,
+	
+	
+	MalformedGnasher = 174327,
+	AberrantVoidfin = 174328,
 }

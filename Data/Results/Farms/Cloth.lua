@@ -3,6 +3,8 @@ local WIT, core = ...
 -- Vanilla
 
 core.Data.Results.Farms.LinenCloth = {
+    Id = 'LinenCloth',
+    Activity = core.Activity.Cloth,
     ItemId = core.Items.Cloths.LinenCloth,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.EasternKingdoms.Wetlands },
@@ -15,6 +17,8 @@ core.Data.Results.Farms.LinenCloth = {
 
 
 core.Data.Results.Farms.Silkcloth = {
+    Id = 'SilkCloth',
+    Activity = core.Activity.Cloth,
     ItemId = core.Items.Cloths.Silkcloth,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.Kalimdor.DustwallowMarsh },
@@ -26,6 +30,8 @@ core.Data.Results.Farms.Silkcloth = {
 
 
 core.Data.Results.Farms.MageweaveCloth = {
+    Id = 'MageweaveCloth',
+    Activity = core.Activity.Cloth,
     ItemId = core.Items.Cloths.MageweaveCloth,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.Kalimdor.ZulFarrak },
@@ -37,6 +43,8 @@ core.Data.Results.Farms.MageweaveCloth = {
 
 
 core.Data.Results.Farms.Runecloth = {
+    Id = 'Runecloth',
+    Activity = core.Activity.Cloth,
     ItemId = core.Items.Cloths.Runecloth,
     Content = core.Content.Vanilla,
     Locations = { core.Locations.EasternKingdoms.BlackrockDepths },
@@ -52,6 +60,8 @@ core.Data.Results.Farms.Runecloth = {
 -- BC 
 
 core.Data.Results.Farms.NetherweaveCloth = {
+    Id = 'NetherweaveCloth',
+    Activity = core.Activity.Cloth,
     ItemId = core.Items.Cloths.NetherweaveCloth,
     Content = core.Content.TBC,
     Locations = { core.Locations.EasternKingdoms.Sunwell },
@@ -65,6 +75,8 @@ core.Data.Results.Farms.NetherweaveCloth = {
 -- WOTLK 
 
 core.Data.Results.Farms.FrostweaveCloth = {
+    Id = 'FrostweaveCloth',
+    Activity = core.Activity.Cloth,
     ItemId = core.Items.Cloths.FrostweaveCloth,
     Content = core.Content.WotLK,
     Locations = { core.Locations.Northrend.Icecrown },
@@ -78,6 +90,8 @@ core.Data.Results.Farms.FrostweaveCloth = {
 -- Cata
 
 core.Data.Results.Farms.EmbersilkCloth = {
+    Id = 'EmbersilkCloth',
+    Activity = core.Activity.Cloth,
     ItemId = core.Items.Cloths.EmbersilkCloth,
     Content = core.Content.Cata,
     Locations = { core.Locations.EasternKingdoms.BastionOfTwilight },
@@ -90,6 +104,8 @@ core.Data.Results.Farms.EmbersilkCloth = {
 -- Mop
 
 core.Data.Results.Farms.WindwoolCloth = {
+    Id = 'WindwoolCloth',
+    Activity = core.Activity.Cloth,
     ItemId = core.Items.Cloths.WindwoolCloth,
     Content = core.Content.MoP,
     Locations = { core.Locations.Pandaria.TownlongSteppes },
@@ -102,6 +118,8 @@ core.Data.Results.Farms.WindwoolCloth = {
 -- Wod
 
 core.Data.Results.Farms.SumptuousFur = {
+    Id = 'SumptuousFur',
+    Activity = core.Activity.Cloth,
     ItemId = core.Items.Cloths.SumptuousFur,
     Content = core.Content.WoD,
     Locations = { core.Locations.Draenor.ShadowmoonValley },
@@ -114,6 +132,8 @@ core.Data.Results.Farms.SumptuousFur = {
 -- Legion
 
 core.Data.Results.Farms.ShalDoreiSilk = {
+    Id = 'ShalDoreiSilk',
+    Activity = core.Activity.Cloth,
     ItemId = core.Items.Cloths.ShalDoreiSilk,
     Content = core.Content.Legion,
     Locations = { core.Locations.BrokenIsles.Highmountain },
@@ -124,6 +144,8 @@ core.Data.Results.Farms.ShalDoreiSilk = {
 }
 
 core.Data.Results.Farms.LightweaveCloth = {
+    Id = 'LightweaveCloth',
+    Activity = core.Activity.Cloth,
     ItemId = core.Items.Cloths.LightweaveCloth,
     Content = core.Content.Legion,
     Locations = { core.Locations.Argus.Krokunn },
@@ -135,6 +157,8 @@ core.Data.Results.Farms.LightweaveCloth = {
 -- BFA 
 
 core.Data.Results.Farms.TidesprayLinen = {
+    Id = 'TidesprayLinen',
+    Activity = core.Activity.Cloth,
     ItemId = core.Items.Cloths.TidesprayLinen,
     Content = core.Content.BFA,
     Locations = { core.Locations.BFA.Drustvar },
@@ -146,6 +170,8 @@ core.Data.Results.Farms.TidesprayLinen = {
 }
 
 core.Data.Results.Farms.GildedSeaweave = {
+    Id = 'GildedSeaweave',
+    Activity = core.Activity.Cloth,
     ItemId = core.Items.Cloths.GildedSeaweave,
     Content = core.Content.BFA,
     Locations = { core.Locations.BFA.Nazjatar },

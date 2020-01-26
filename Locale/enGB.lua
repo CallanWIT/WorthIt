@@ -8,7 +8,32 @@ L["Farms"] = "Farms"
 L["Flippings"] = "Flippings"
 L["Guides"] = "Guides"
 
+L["NothingToSeeHere"] = "Nothing to see here|n|nMove along"
+L["DashboardConfogurationIntro"] = "Dashboard can list farms for the current content, or selected farms from different expansions"
+L["ShowCurrentContentFarms"] = "Show current content farms"
+
+-- Content
+L["Vanilla"] = "Vanilla"
+L["TBC"] = "The Burning Crusade"
+L["WotLK"] = "Wrath of the Lich King"
+L["Cata"] = "Cataclysm"
+L["MoP"] = "Mist of Pandaria"
+L["WoD"] = "Warlords of Draenor"
+L["Legion"] = "Legion"
+L["BFA"] = "Battle for Azeroth"
+
+-- Activities
+L["Activity1"] = "Mining"
+L["Activity2"] = "Herbalism"
+L["Activity3"] = "Skinning"
+L["Activity4"] = "Fishing"
+L["Activity5"] = "Cloth"
+L["Activity6"] = "Transmog"
+L["Activity7"] = "Misc"
+
 -- modules
+
+L["Modules"] = "Modules"
 
 -- Farms
 L["Dashboard"] = "Dashboard"
@@ -18,6 +43,7 @@ L["Skinning"] = "Skinning"
 L["Fishing"] = "Fishing"
 L["Cloth"] = "Cloth"
 L["Misc"] = "Misc"
+L["Transmog"] = "Transmog"
 L["Disenchanting"] = "Disenchanting"
 L["Milling"] = "Milling"
 L["Prospecting"] = "Prospecting"
@@ -193,8 +219,8 @@ L["TransmogGuideSection_4"] = "1. Blackrock Depths|n2. Zul'Farrak|n3. Razorfen K
 L["TransmogGuideSection_5"] = "This is why selling Transmog is quote on quote \"Hard To Sell\" but this is not the case. Transmog is easy to sell it just depends on the variety of appearances you are sell. This is why you will need to bulk out your Auction House with as many appearances as you possibly can."
 L["TransmogGuideSection_6"] = "By doing this you will gain more sales on a daily bases. The minimum amount of Auctions needed to gain regular sales, would be around 1,500 - 2,000 Auctions. To gain these amounts of Transmog i suggest running each Transmog farm listed below averaging on 4 hours for each to bulk out your Auction House."
 L["TransmogGuideSection_7"] = "Now Transmog selling is not for everyone because it is a LONG TERM game but if the effort is put in ( invested ) you will see long term gold each and every week equaling in more gold for you as opposed to doing a gathering farm which sells fast but for less gold than the Transmog."
-L["TransmogGuideSection_8"] = "Picking A Sever"
-L["TransmogGuideSection_9"] = "Picking a sever in which you are looking to sell on your Transmog requires you to put it bluntly “Use Logic”. For Transmog appearance is everything! so that being the case would you not think that a Role Playing sever would call for it? RP servers tend to get more sales of Transmog due to the characters wanting to be unique this gives us the opportunity to sell Transmog to them in way of providing large amounts of appearances for there characters. This is why why Transmog sells better on these Realms due to the high demand of uniqueness for there characters."
+L["TransmogGuideSection_8"] = "Picking A Server"
+L["TransmogGuideSection_9"] = "Picking a server in which you are looking to sell on your Transmog requires you to put it bluntly \"Use Logic\". For Transmog appearance is everything! so that being the case would you not think that a Role Playing server would call for it? RP servers tend to get more sales of Transmog due to the characters wanting to be unique this gives us the opportunity to sell Transmog to them in way of providing large amounts of appearances for there characters. This is why why Transmog sells better on these Realms due to the high demand of uniqueness for there characters."
 
 L["BattlePetGuideTitle"] = "[Battle Pets]"
 L["BattlePetGuideSection_Fishing1"] = "Fishing Pets"
