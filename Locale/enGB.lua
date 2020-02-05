@@ -101,6 +101,8 @@ L["PriceSourceSetToDefault"] = "WorthIt: Your selected price source is not recom
 L["InventoryValue"] = "Inventory Value: %s"
 L["BagValue"] = "Bag Value"
 
+L["HelpCommands"] = "Available commands:|n/wit - toggles WorthIt window|n/wit help - print list of commands|n/wit show - opens WorthIt window|n/wit close - closes WorthIt window|n/wit config - open configuration window"
+
 -- Routes
 L["ImportRoute"] = "Import"
 

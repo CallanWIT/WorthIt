@@ -1,4 +1,4 @@
-## Interface: 80205
+## Interface: 80300
 ## Title: |c00ffff00WorthIt|r
 ## Author: DALAGG
 ## Version: v3.0.3
@@ -13,7 +13,8 @@ Locale\Locale.xml
 Enums\Enums.xml
 Data\Data.xml
 Utilities\Utilities.xml
-core.lua
+Core.lua
 Config\Config.lua
 Modules\Modules.xml
 UI\UI.xml
+Console.lua
