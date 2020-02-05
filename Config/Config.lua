@@ -23,6 +23,7 @@ function Config.Initialize()
         WITDB.minimap = nil
     end
 
+    WITDB.Settings.LegacyPricingSelect = WITDB.Settings.LegacyPricingSelect or WITDB.Settings.PricingSelect
     WITDB.Settings.BagValueMinPrice = WITDB.Settings.BagValueMinPrice or 0
     WITDB.Settings.BagValueMinQuality = WITDB.Settings.BagValueMinQuality or 1
     WITDB.Settings.BelowTresholdValue = WITDB.Settings.BelowTresholdValue or 1
@@ -42,6 +43,16 @@ end
 
 function Config.SetPriceSource(priceSource)
     WITDB.Settings.PricingSelect = priceSource
+
+    core.ClearCache()
+end
+
+function Config.GetLegacyPriceSource()
+    return WITDB.Settings.LegacyPricingSelect
+end
+
+function Config.SetLegacyPriceSource(priceSource)
+    WITDB.Settings.LegacyPricingSelect = priceSource
 
     core.ClearCache()
 end

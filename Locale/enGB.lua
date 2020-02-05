@@ -80,7 +80,8 @@ L["ProfitDescription"] = "Estimated profit|n|cFFFF0000AH tax, sell rate and pric
 L["RoutesDescription"] = "Action that imports suggested route for Routes addon|nReloads UI (sorry, but it's required)"
 L["WaypointsDescription"] = "Action that adds related TomTom waypoints|nThose waypoints can direct you to points like a vendor location or an entrance to a dungeon"
 
-L["PriceSource"] = "Price Source"
+L["PriceSource"] = "Current Content Price Source"
+L["LegacyPriceSource"] = "Legacy Content Price Source"
 L["BagValueTreshold"] = "Bag Value Treshold"
 L["MinItemValue"] = "Min item value"
 L["MinQuality"] = "Min Quality"

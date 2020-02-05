@@ -1,5 +1,7 @@
 local WIT, core = ...
 
+local AceGUI = LibStub("AceGUI-3.0")
+
 function core.GuideModule(name, sections, category)
     local self = core.Module(name, category)
 

@@ -77,9 +77,6 @@ local function ConfigurationModule()
     end
 
     function drawPriceSourceConfiguration(frame)
-        local group = AceGUI:Create("SimpleGroup")
-        group:SetFullWidth(true)
-
         local priceSourcesLabel = core.GetString("PriceSource")
         local priceSources = core.TSMHelper.GetPriceSources()
         local selectedPriceSource = core.Config.GetPriceSource()
@@ -92,6 +89,18 @@ local function ConfigurationModule()
         end)
 
         frame:AddChild(priceSorceDropDown)
+
+        priceSourcesLabel = core.GetString("LegacyPriceSource")
+        selectedPriceSource = core.Config.GetLegacyPriceSource()
+
+        local legacyPriceSorceDropDown = CreateDropDown(priceSourcesLabel, priceSources, selectedPriceSource, function(self)
+            local value = self:GetValue()
+            if value then
+                core.Config.SetLegacyPriceSource(priceSources[value])
+            end
+        end)
+
+        frame:AddChild(legacyPriceSorceDropDown)
     end
 
     function drawFarm(frame, farm)
@@ -229,7 +238,6 @@ local function ConfigurationModule()
             {
                 value = "WorthIt",
                 text = core.GetString("WorthIt"),
-                --icon = "Interface\\Icons\\INV_Drink_05",
                 children =
                 {
                     { 
@@ -238,9 +246,7 @@ local function ConfigurationModule()
                     },
                     {
                         value = "Modules",
-                        text = core.GetString("Modules"),--,
-                        --disabled = true,
-                        --icon = "Interface\\Icons\\INV_Drink_05",
+                        text = core.GetString("Modules"),
                         children =
                         {
                             { 

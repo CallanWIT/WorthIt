@@ -42,8 +42,9 @@ function TSMHelper.GetItemPrice(item)
     end
 
     local itemId = type(item) == "number" and "i:" .. item or item
+    local itemPriceSource = item > 152500 and WITDB.Settings.PricingSelect or WITDB.Settings.LegacyPricingSelect
 
-    cache.ItemValues[item] = TSM_API.GetCustomPriceValue(WITDB.Settings.PricingSelect, itemId)
+    cache.ItemValues[item] = TSM_API.GetCustomPriceValue(itemPriceSource, itemId)
 
     return cache.ItemValues[item]
 end
