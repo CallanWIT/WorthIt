@@ -18,6 +18,7 @@ core.Data.Results.Farms.Stormscale,
 core.Data.Results.Farms.FeindishLeather,
 core.Data.Results.Farms.CoarseLeather,
 core.Data.Results.Farms.DredgedLeather,
+core.Data.Results.Farms.DredgedLeatherSpotTwo,
 
 
 

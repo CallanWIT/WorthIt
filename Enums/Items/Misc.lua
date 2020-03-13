@@ -27,6 +27,7 @@ core.Items.Misc = {
 	EternalFire = 36860,
 	EternalEarth = 35624,
 	EternalLife = 35625,
+	EternalShadow = 35627,
 
     -- Cata
 	VolatileFire = 52325,

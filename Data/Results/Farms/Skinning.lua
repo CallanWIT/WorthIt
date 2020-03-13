@@ -174,13 +174,32 @@ core.Data.Results.Farms.DredgedLeather = {
     Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.DredgedLeather,
     Content = core.Content.BFA,
-    Locations = { core.Locations.BFA.Nazjatar },
+    Locations = { core.Locations.Pandaria.ValeofEternalBlossoms },
     Routes = { core.Data.Routes.Skinning.DredgedLeatherNazjatar },
     Results = {
-        { Id = core.Items.Skins.DredgedLeather, Quantity = 248 },
+        { Id = core.Items.Skins.DredgedLeather, Quantity = 853 },
+		{ Id = core.Items.Skins.Bloodstainedbone, Quantity = 347 },
+		{ Id = core.Items.Skins.TempestHide, Quantity = 93 },
+		{ Id = core.Items.Skins.Calcifiedbone, Quantity = 81 },
+		{ Id = core.Items.Skins.QuestionableMeat, Quantity = 214 },
     }
 }
 
+core.Data.Results.Farms.DredgedLeatherSpotTwo = {
+    Id = 'DredgedLeather2',
+    Activity = core.Activity.Skinning,
+    ItemId = core.Items.Skins.DredgedLeather,
+    Content = core.Content.BFA,
+    Locations = { core.Locations.Kalimdor.Uldum },
+    Routes = { core.Data.Routes.Skinning.DredgedLeatherNazjatar },
+    Results = {
+        { Id = core.Items.Skins.DredgedLeather, Quantity = 846 },
+		{ Id = core.Items.Skins.Bloodstainedbone, Quantity = 323 },
+		{ Id = core.Items.Skins.TempestHide, Quantity = 70 },
+		{ Id = core.Items.Skins.Calcifiedbone, Quantity = 62 },
+		{ Id = core.Items.Skins.QuestionableMeat, Quantity = 202 },
+    }
+}
 
 
 

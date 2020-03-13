@@ -9,8 +9,8 @@ core.Items.Inscription = {
     HuntersInk = 43115,
     LionsInk = 43116,
     DawnstarInk = 43117,
-    JadefireInk = 43116,
-    RoyalInk = 43117,
+    JadefireInk = 43118,
+    RoyalInk = 43119,
     CelestialInk = 43120,
     FireyInk = 43121,
     InkOfTheSky = 43123,
@@ -50,5 +50,5 @@ core.Items.Inscription = {
 	UltramarineInk = 158187,
 	CrimsonInk = 158188,
 	ViridecentInk = 158189,
-	MaroonInk = 129034,
+	MaroonInk = 168663,
 }

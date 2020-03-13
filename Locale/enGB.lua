@@ -54,6 +54,7 @@ L["Transmog"] = "Transmog"
 L["Disenchanting"] = "Disenchanting"
 L["Milling"] = "Milling"
 L["Prospecting"] = "Prospecting"
+L["Smelting"] = "Smelting"
 L["SpiritOfHarmonyFlips"] = "Spirit Of Harmony"
 L["FrozenOrbFlips"] = "Frozen Orb"
 

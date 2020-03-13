@@ -21,4 +21,5 @@
     <Script file="Items\Profession\Enchanting.lua"/>
     <Script file="Items\Profession\Inscription.lua"/>
     <Script file="Items\Profession\Tailoring.lua"/>
+	<Script file="Items\Profession\Smelting.lua"/>
 </Ui>

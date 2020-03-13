@@ -92,6 +92,7 @@ core.Locations.Pandaria = {
 	IsleOfGiants = 6661,
 	TownlongSteppes = 5842,
 	HeartOfFear = 6297,
+	ValeofEternalBlossoms = 5840 , 
 }
 
 core.Locations.Draenor = {

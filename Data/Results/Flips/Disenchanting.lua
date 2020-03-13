@@ -122,7 +122,7 @@ core.Data.Results.Flips.SilkweaveEpaulets = {
     Quantity = 100,
     Content = core.Content.Legion,
     Materials = {
-        { Id = core.Items.Cloths.ShalDoreiSilk, Quantity = 180 },
+        { Id = core.Items.Cloths.ShalDoreiSilk, Quantity = 1800 },
     },
     Results = {
         { Id = core.Items.Enchanting.LeylightShard, Quantity = 100 },

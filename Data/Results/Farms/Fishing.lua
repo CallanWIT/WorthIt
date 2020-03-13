@@ -90,6 +90,18 @@ core.Data.Results.Farms.MalformedGnasher = {
     }
 }
 
+core.Data.Results.Farms.AberrantVoidfin = {
+    Id = 'MalformedGnasher',
+    Activity = core.Activity.Fishing,
+    ItemId = core.Items.Fish.AberrantVoidfin,
+    Content = core.Content.BFA,
+    Locations = { core.Locations.Pandaria.ValeofEternalBlossoms },
+    Results = {
+        { Id = core.Items.Fish.MalformedGnasher, Quantity = 100 },
+		{ Id = core.Items.Fish.AberrantVoidfin, Quantity = 154 },
+    }
+}
+
 -- Darkmoonfaire
 
 core.Data.Results.Farms.DarkmoonDaggermaw = {

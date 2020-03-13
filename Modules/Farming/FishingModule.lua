@@ -9,6 +9,8 @@ core.Data.Results.Farms.SandShifter,
 core.Data.Results.Farms.TiraguardPerch,
 core.Data.Results.Farms.LaneSnapper,
 core.Data.Results.Farms.ViperFish,
+core.Data.Results.Farms.AberrantVoidfin,
+core.Data.Results.Farms.MalformedGnasher,
 core.Data.Results.Farms.DarkmoonDaggermaw,
 
 }

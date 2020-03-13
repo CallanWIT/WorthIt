@@ -21,4 +21,11 @@ core.Items.Skins = {
     FeindishLeather = 151566,
     CoarseLeather = 152541,
     DredgedLeather = 168649,
+	
+	--
+	Bloodstainedbone = 154164,
+	TempestHide = 154722,
+	Calcifiedbone = 154165,
+	QuestionableMeat = 174353,
+	
 }
