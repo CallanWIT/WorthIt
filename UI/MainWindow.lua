@@ -6,6 +6,7 @@ local MainWindow = core.UI.MainWindow
 local window = nil
 local frame = nil
 local navMenu = nil
+local currentModule = nil
 
 local AceGUI = LibStub("AceGUI-3.0")
 
@@ -73,6 +74,14 @@ function MainWindow.Toggle()
     end
 end
 
+function MainWindow.IsShown()
+    return window and window:IsShown()
+end
+
+function MainWindow.CurrentModule()
+    return currentModule
+end
+
 function MainWindow.ShowModule(module)
     if not frame then return end
 
@@ -83,5 +92,6 @@ function MainWindow.ShowModule(module)
         core.UI.DisableHeader()
     elseif module.Draw then
         module.Draw(frame)
+        currentModule = module
     end
 end

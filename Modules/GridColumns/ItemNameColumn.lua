@@ -25,7 +25,7 @@ function GridColumns.ItemNameColumn()
             return core.TSMHelper.GetItemLink(data.ItemId)
         end
 
-        return data.Name
+        return data.NameMapId and C_Map.GetMapInfo(data.NameMapId).name or data.Name
     end
 
     local baseGetRowText = self.GetRowText

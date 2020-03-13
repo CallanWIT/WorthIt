@@ -4,7 +4,7 @@ local TSMHelper = {}
 
 core.TSMHelper = TSMHelper
 
-local cache = { ItemValues = {}, ItemVendorBuyPrice = {}, ItemVendorSellPrice = {}, ItemDestroyingPrice = {}, ItemSellRates = {}, ItemNames = {}, ItemLinks = {} }
+local cache = { ItemValues = {}, ItemVendorBuyPrice = {}, ItemVendorSellPrice = {}, ItemDestroyingPrice = {}, ItemSellRates = {}, ItemNames = {} }
 local version = nil
 local priceSource = nil
 
@@ -16,6 +16,8 @@ local priceSources = {
     'DBRegionMinBuyoutAvg',
     'DBRegionSaleAvg'
 }
+
+TSMHelper.PetCageItemId = 82800
 
 function TSMHelper.Initialize()
     version = GetAddOnMetadata("TradeSkillMaster", "Version")
@@ -134,15 +136,9 @@ function TSMHelper.GetItemLink(item)
         error("TSM addon not found")
     end
 
-    if cache.ItemLinks[item] ~= nil then
-        return cache.ItemLinks[item]
-    end
-
     local id = type(item) == "number" and "i:" .. item or item
 
-    cache.ItemLinks[item] = TSM_API.GetItemLink(id)
-
-    return cache.ItemLinks[item]
+    return TSM_API.GetItemLink(id)
 end
 
 function TSMHelper.GetItemName(item)
@@ -181,7 +177,7 @@ function TSMHelper.GetInventoryValue()
         local slots=GetContainerNumSlots(bag)
 
         for slot=1,slots do
-            local _,c,locked,q,_,_,link,_,_,id = GetContainerItemInfo(bag,slot)
+            local _,c,_,q,_,_,link,_,_,id = GetContainerItemInfo(bag,slot)
 
             if c and id then
                 local isBound = C_Item.IsBound(ItemLocation:CreateFromBagAndSlot(bag, slot))

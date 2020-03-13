@@ -5,4 +5,6 @@
     <Script file="Header.lua"/>
     <Script file="MainWindow.lua"/>
     <Script file="MinimapIcon.lua"/>
+    <Script file="Editor.lua"/>
+    <Script file="Recorder.lua"/>
 </Ui>

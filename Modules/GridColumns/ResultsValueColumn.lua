@@ -18,9 +18,10 @@ function GridColumns.ResultsValueColumn(name)
 
     function self.Value(data)
         local list = self.GetItemList(data)
+        local hours = data.Time and data.Time > 0 and (data.Time / 3600) or 1
         if not list then return '' end
 
-        local sum = 0
+        local sum = data.Money or 0
         local isValueValid = true
 
         for _, item in pairs(list) do
@@ -34,7 +35,7 @@ function GridColumns.ResultsValueColumn(name)
             end
         end
 
-        return isValueValid and sum or nil
+        return isValueValid and (sum / hours) or nil
     end
 
     function self.GetRowText(row)

@@ -12,4 +12,5 @@
     <Script file="ProfitColumn.lua"/>
     <Script file="RoutesColumn.lua"/>
     <Script file="TomTomColumn.lua"/>
+    <Script file="CustomActionsColumn.lua"/>
 </Ui>

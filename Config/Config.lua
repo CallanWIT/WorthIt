@@ -28,7 +28,12 @@ function Config.Initialize()
     WITDB.Settings.BagValueMinQuality = WITDB.Settings.BagValueMinQuality or 1
     WITDB.Settings.BelowTresholdValue = WITDB.Settings.BelowTresholdValue or 1
 
+    WITDB.Settings.RecorderMinPrice = WITDB.Settings.RecorderMinPrice or 0
+    WITDB.Settings.RecorderMinQuality = WITDB.Settings.RecorderMinQuality or 1
+
     WITDB.Settings.Modules = WITDB.Settings.Modules or { Dashboard = { ShowCurrentContent = true, Farms = {} }}
+
+    WITDB.UserData = WITDB.UserData or { Farms = {}}
 
     WITDB.Version = version
 end
@@ -89,4 +94,32 @@ end
 
 function Config.GetModulesConfig()
     return WITDB.Settings.Modules
+end
+
+function Config.GetRecorderMinPrice()
+    return WITDB.Settings.RecorderMinPrice
+end
+
+function Config.SetRecorderMinPrice(price)
+    WITDB.Settings.RecorderMinPrice = price
+end
+
+function Config.GetRecorderMinQuality()
+    return WITDB.Settings.RecorderMinQuality
+end
+
+function Config.SetRecorderMinQuality(quality)
+    WITDB.Settings.RecorderMinQuality = quality
+end
+
+function Config.GetCurrentRecorderSession()
+    return WITDB.Settings.CurrentRecorderSession
+end
+
+function Config.SetCurrentRecorderSession(session)
+    WITDB.Settings.CurrentRecorderSession = session
+end
+
+function Config.GetUserFarms()
+    return WITDB.UserData.Farms
 end

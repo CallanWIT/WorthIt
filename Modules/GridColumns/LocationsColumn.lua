@@ -6,12 +6,14 @@ function GridColumns.LocationsColumn()
     local self = GridColumns.GridColumn('Locations')
 
     function self.Value(data)
-        if not data.Locations then return '' end
-
         local locations = {}
 
-        for _, location in pairs(data.Locations) do
-            table.insert(locations, core.LocationHelper.GetAreaName(location))
+        if data.Locations then
+            for _, location in pairs(data.Locations) do
+                table.insert(locations, core.LocationHelper.GetAreaName(location))
+            end
+        elseif data.MapId then
+            table.insert(locations, core.LocationHelper.GetMapName(data.MapId))
         end
 
         return table.concat(locations, ", ")

@@ -26,6 +26,41 @@ local function ConfigurationModule()
         return dropDown
     end
 
+    function drawRecorderConfiguration(frame)
+        local minValueTextBox = AceGUI:Create("EditBox")
+        minValueTextBox:SetLabel(core.GetString("MinItemValue"))
+        minValueTextBox:SetText(core.Config.GetBagValueMinPrice())
+        minValueTextBox:SetCallback("OnEnterPressed", function(self)
+            local text = self:GetText()
+            local number = text and tonumber(text)
+            if text and number then
+                core.Config.SetRecorderMinPrice(number)
+            else
+                minValueTextBox:SetText(core.Config.GetBagValueMinPrice())
+            end
+        end)
+
+        frame:AddChild(minValueTextBox)
+
+        local itemQualities = {
+            "|cFF9D9D9D"..ITEM_QUALITY0_DESC,
+            "|cFFFFFFFF"..ITEM_QUALITY1_DESC,
+            "|cFF1EFF00"..ITEM_QUALITY2_DESC,
+            "|cFF0070FF"..ITEM_QUALITY3_DESC,
+            "|cFFa335ee"..ITEM_QUALITY4_DESC,
+            "|cFFff8000"..ITEM_QUALITY5_DESC,
+        }
+        
+        local minQualityDropDown = CreateDropDown(core.GetString("MinQuality"), itemQualities, core.Config.GetBagValueMinQuality() + 1, function(self)
+            local value = self:GetValue()
+            if value then
+                core.Config.SetRecorderMinQuality(value - 1)
+            end
+        end)
+
+        frame:AddChild(minQualityDropDown)
+    end
+
     function drawBagValueConfiguration(frame)
         local minValueTextBox = AceGUI:Create("EditBox")
         minValueTextBox:SetLabel(core.GetString("MinItemValue"))
@@ -118,7 +153,7 @@ local function ConfigurationModule()
         group:AddChild(checkbox)
 
         local label = AceGUI:Create("InteractiveLabel")
-        local text = farm.ItemId and core.TSMHelper.GetItemLink(farm.ItemId) or core.GetString(farm.Name)
+        local text = farm.ItemId and core.TSMHelper.GetItemLink(farm.ItemId) or farm.NameMapId and C_Map.GetMapInfo(farm.NameMapId).name or core.GetString(farm.Name)
         label:SetText(text)
         label:SetWidth(label.label:GetStringWidth() + 5)
 
@@ -137,9 +172,11 @@ local function ConfigurationModule()
 
         group:AddChild(label)
 
-        local activityLabel = AceGUI:Create("Label")
-        activityLabel:SetText('(' .. core.GetString("Activity" .. farm.Activity) .. ')')
-        group:AddChild(activityLabel)
+        if farm.Activity then
+            local activityLabel = AceGUI:Create("Label")
+            activityLabel:SetText('(' .. core.GetString("Activity" .. farm.Activity) .. ')')
+            group:AddChild(activityLabel)
+        end
 
         frame:AddChild(group)
     end
@@ -176,7 +213,15 @@ local function ConfigurationModule()
         frame:AddChild(group)
     end
 
+    function drawDashboardCustomResultsConfiguration(frame)
+        for _, farm in pairs(core.Config.GetUserFarms()) do
+            drawFarm(frame, farm)
+        end
+    end
+
     function drawDashboardContentConfiguration(frame, content)
+        if content == "Custom" then return drawDashboardCustomResultsConfiguration(frame) end
+
         local farms = {}
 
         for _, farm in pairs(core.Data.Results.Farms) do
@@ -228,6 +273,13 @@ local function ConfigurationModule()
             })
         end
 
+        table.insert(items, {
+            value = "DashboardCustom",
+            text = core.GetString("CustomResults"),
+            content = "Custom",
+            disabled = showCurrentContent,
+        })
+
         return items
     end
 
@@ -240,6 +292,10 @@ local function ConfigurationModule()
                 text = core.GetString("WorthIt"),
                 children =
                 {
+                    { 
+                        value = "Recorder", 
+                        text = core.GetString("Recorder"),
+                    },
                     { 
                         value = "BagValue", 
                         text = core.GetString("BagValue"),
@@ -272,6 +328,8 @@ local function ConfigurationModule()
 
             if group == 'WorthIt' then
                 drawPriceSourceConfiguration(scrollFrame)
+            elseif group == 'WorthIt\001Recorder' then
+                drawRecorderConfiguration(scrollFrame)
             elseif group == 'WorthIt\001BagValue' then
                 drawBagValueConfiguration(scrollFrame)
             elseif group == 'WorthIt\001Modules' then

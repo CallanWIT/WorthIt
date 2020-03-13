@@ -22,6 +22,12 @@ L["WoD"] = "Warlords of Draenor"
 L["Legion"] = "Legion"
 L["BFA"] = "Battle for Azeroth"
 
+L["CustomResults"] = "Custom Results"
+L["RecordingInProgress"] = "Recording in progress"
+L["ShiftToRemove"] = "Hold Shift key to remove"
+L["ShiftToResetSession"] = "Hold Shift key to reset session"
+L["ResetAllInstances"] = "Reset All Instances"
+
 -- Activities
 L["Activity1"] = "Mining"
 L["Activity2"] = "Herbalism"
@@ -37,6 +43,7 @@ L["Modules"] = "Modules"
 
 -- Farms
 L["Dashboard"] = "Dashboard"
+L["UserData"] = "Custom Results"
 L["Mining"] = "Mining"
 L["Herb"] = "Herb"
 L["Skinning"] = "Skinning"
@@ -59,6 +66,35 @@ L["Installation"] = "Installation"
 L["Configuration"] = "Configuration"
 
 L["ConfigurationIntro"] = "I know, I know. There will be more"
+
+L["Recorder"] = "Recorder"
+L["Editor"] = "Editor"
+L["Import/Export"] = "Import/Export"
+L["Actions"] = "Actions"
+
+L["Start"] = "Start"
+L["Pause"] = "Pause"
+L["Resume"] = "Resume"
+L["Reset"] = "Reset"
+L["Export"] = "Export"
+L["Import"] = "Import"
+L["Save"] = "Save"
+L["Edit"] = "Edit"
+L["SetCurrent"] = "Set Current"
+L["DropItemLocationLabel"] = "Drop an item here"
+L["DurationLabel"] = "Duration (minutes)"
+L["AddItem"] = "Add Item"
+L["RawGold"] = "Raw gold"
+
+L["Text"] = "Text"
+L["Item"] = "Item"
+L["Location"] = "Location"
+
+L["TimeLabelFormat"] = "Time: %02d:%02d:%02d"
+L["LocationLabelFormat"] = "Location: %s"
+L["RawGoldLabelFormat"] = "Raw gold: %s"
+L["ItemsValueLabelFormat"] = "Items value: %s"
+L["TotalValueLabelFormat"] = "Total value: %s"
 
 -- Columns
 L["Name"] = "Name"

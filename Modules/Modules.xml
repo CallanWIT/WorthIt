@@ -34,5 +34,6 @@
     <Script file="Guides\TransmogGuide.lua"/>
 
     <Script file="DashboardModule.lua"/>
+    <Script file="CustomResultModule.lua"/>
     <Script file="ConfigurationModule.lua"/>
 </Ui>

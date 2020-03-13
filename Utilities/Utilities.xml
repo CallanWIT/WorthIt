@@ -2,6 +2,7 @@
 ..\FrameXML\UI.xsd">
     <Script file="VersionHelper.lua"/>
     <Script file="ResourceHelper.lua"/>
+    <Script file="TableHelper.lua"/>
     <Script file="TsmHelper.lua"/>
     <Script file="LocationHelper.lua"/>
     <Script file="RoutesHelper.lua"/>

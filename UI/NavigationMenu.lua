@@ -86,6 +86,7 @@ local function buildNavigationMenu()
             DisplayName = core.GetString("Guides"),
             Category = "Guide"
         },
+        core.UserDataModule,
         { IsSeparator = true },
         core.ConfigurationModule,
     }
