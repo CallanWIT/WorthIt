@@ -7,7 +7,6 @@ local function ConfigurationModule()
 
     local function CreateDropDown(name, values, valueToSelect, onChangedCallback)
         local priceSources = core.TSMHelper.GetPriceSources()
-        local selectedPriceSource = core.Config.GetPriceSource()
 
         local dropDown = AceGUI:Create("Dropdown")
         dropDown:SetLabel(name)
@@ -27,6 +26,11 @@ local function ConfigurationModule()
     end
 
     function drawRecorderConfiguration(frame)
+        local intro = AceGUI:Create("Label")
+        intro:SetFullWidth(true)
+        intro:SetText(core.GetString("RecorderConfogurationIntro"))
+        frame:AddChild(intro)
+
         local minValueTextBox = AceGUI:Create("EditBox")
         minValueTextBox:SetLabel(core.GetString("MinItemValue"))
         minValueTextBox:SetText(core.Config.GetBagValueMinPrice())
@@ -62,6 +66,11 @@ local function ConfigurationModule()
     end
 
     function drawBagValueConfiguration(frame)
+        local intro = AceGUI:Create("Label")
+        intro:SetFullWidth(true)
+        intro:SetText(core.GetString("BagValueConfogurationIntro"))
+        frame:AddChild(intro)
+
         local minValueTextBox = AceGUI:Create("EditBox")
         minValueTextBox:SetLabel(core.GetString("MinItemValue"))
         minValueTextBox:SetText(core.Config.GetBagValueMinPrice())
@@ -112,6 +121,11 @@ local function ConfigurationModule()
     end
 
     function drawPriceSourceConfiguration(frame)
+        local intro = AceGUI:Create("Label")
+        intro:SetFullWidth(true)
+        intro:SetText(core.GetString("PriceSourceConfogurationIntro"))
+        frame:AddChild(intro)
+
         local priceSourcesLabel = core.GetString("PriceSource")
         local priceSources = core.TSMHelper.GetPriceSources()
         local selectedPriceSource = core.Config.GetPriceSource()
@@ -153,7 +167,7 @@ local function ConfigurationModule()
         group:AddChild(checkbox)
 
         local label = AceGUI:Create("InteractiveLabel")
-        local text = farm.ItemId and core.TSMHelper.GetItemLink(farm.ItemId) or farm.NameMapId and C_Map.GetMapInfo(farm.NameMapId).name or core.GetString(farm.Name)
+        local text = farm.ItemId and core.TSMHelper.GetItemLink(farm.ItemId) or farm.NameMapId and core.LocationHelper.GetMapName(farm.NameMapId) or core.GetString(farm.Name)
         label:SetText(text)
         label:SetWidth(label.label:GetStringWidth() + 5)
 
@@ -264,6 +278,13 @@ local function ConfigurationModule()
 
         local showCurrentContent = core.Config.GetModulesConfig().Dashboard.ShowCurrentContent
 
+        table.insert(items, {
+            value = "DashboardCustom",
+            text = core.GetString("MyFarms"),
+            content = "Custom",
+            disabled = showCurrentContent,
+        })
+
         for _, i in pairs(contents) do
             table.insert(items, {
                 value = "Dashboard" .. i.Value,
@@ -272,13 +293,6 @@ local function ConfigurationModule()
                 disabled = showCurrentContent,
             })
         end
-
-        table.insert(items, {
-            value = "DashboardCustom",
-            text = core.GetString("CustomResults"),
-            content = "Custom",
-            disabled = showCurrentContent,
-        })
 
         return items
     end

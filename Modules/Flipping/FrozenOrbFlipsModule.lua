@@ -8,4 +8,7 @@ local foData = {
     core.Data.Results.Flips.FOEternalLife,
 }
 
-table.insert(core.Modules, core.FlipResultModule('FrozenOrbFlips', foData, 'Flipping'))
+local module = core.FlipResultModule('FrozenOrbFlips', foData, 'Flipping')
+module.IsExpandabled = false
+
+table.insert(core.Modules, module)

@@ -12,6 +12,8 @@ function GridColumns.ItemNameColumn()
         if not row[key] then
             if row.Data.ItemId then
                 row[key] = core.TSMHelper.GetItemName(row.Data.ItemId)
+            elseif row.Data.NameMapId then
+                row[key] = core.LocationHelper.GetMapName(row.Data.NameMapId)
             else
                 row[key] = row.Data.Name
             end
@@ -25,7 +27,7 @@ function GridColumns.ItemNameColumn()
             return core.TSMHelper.GetItemLink(data.ItemId)
         end
 
-        return data.NameMapId and C_Map.GetMapInfo(data.NameMapId).name or data.Name
+        return data.NameMapId and core.LocationHelper.GetMapName(data.NameMapId) or data.Name
     end
 
     local baseGetRowText = self.GetRowText

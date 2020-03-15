@@ -17,33 +17,35 @@ core.Locations.Kalimdor = {
 	ZulFarrak = 1176,
 	Winterspring = 618,
 	VortexPininacle = 5583,
+    Tanaris = 440,
+    Orgrimmar = 1637,
+    NorthernBarrens = 17,
+    SouthernBarrens = 4709,
+    Desolace = 405,
 }
 
 
 core.Locations.VanillaDungeons = {
-
-Ragefire = 2437,
-Deadmines = 1581,
-WailingCaverns = 718,
-ShadowfangKeep = 209,
-BlackfathomDepths = 719,
-TheStockades = 717,
-Gnomeregan = 721,
-ScarletHalls = 6052,
-ScarletMonastary = 796,
-RazorfenKraul = 491,
-Maraudon = 2100,
-RazorfenDowns = 722,
-Scholomace = 6066,
-Ulduman = 1337,
-DireMaul = 2557,
-ZulFarrak = 1176,
-Stratholme = 2017,
-SunkenTemple2 = 1417,
-BlackrockDepths2 = 1584,
-LowerBlackrockSpire = 1583,
-
-
+    Ragefire = 2437,
+    Deadmines = 1581,
+    WailingCaverns = 718,
+    ShadowfangKeep = 209,
+    BlackfathomDepths = 719,
+    TheStockades = 717,
+    Gnomeregan = 721,
+    ScarletHalls = 6052,
+    ScarletMonastary = 796,
+    RazorfenKraul = 491,
+    Maraudon = 2100,
+    RazorfenDowns = 722,
+    Scholomace = 6066,
+    Ulduman = 1337,
+    DireMaul = 2557,
+    ZulFarrak = 1176,
+    Stratholme = 2017,
+    SunkenTemple2 = 1417,
+    BlackrockDepths2 = 1584,
+    LowerBlackrockSpire = 1583,
 }
 
 core.Locations.EasternKingdoms = {
@@ -57,6 +59,15 @@ core.Locations.EasternKingdoms = {
 	MoltenCore = 2717,
 	SwampOfSorrows = 8,
 	BlastedLands = 4,
+    Westfall = 40,
+    SilverpineForest = 130,
+    StormwindCity = 1519,
+    DunMorogh = 1,
+    TirisfalGlades = 85,
+    WesternPlaguelands = 28,
+    EasternPlaguelands = 139,
+    Badlands = 3,
+    BlackrockMountain = 25,
 }
 
 core.Locations.Outlands = {

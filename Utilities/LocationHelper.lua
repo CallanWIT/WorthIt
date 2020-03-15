@@ -13,3 +13,7 @@ end
 function LocationHelper.GetMapName(mapId)
     return C_Map.GetMapInfo(mapId).name
 end
+
+function LocationHelper.GetPlayerCurrentMapId()
+    return C_Map.GetBestMapForUnit("player")
+end

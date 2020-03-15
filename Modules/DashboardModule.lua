@@ -15,9 +15,11 @@ function core.DashboardModule.GetData()
         end
     else
         local dashboardFarms = core.Config.GetModulesConfig().Dashboard.Farms
-        local allFarms = {}
-        core.TableHelper.Concat(allFarms, core.Data.Results.Farms)
-        core.TableHelper.Concat(allFarms, core.Config.GetUserFarms())
+        local allFarms = core.TableHelper.Concat({}, core.Config.GetUserFarms())
+
+        for _, farm in pairs(core.Data.Results.Farms) do
+            table.insert(allFarms, farm)
+        end
 
         for _, farm in pairs(allFarms) do
             if dashboardFarms[farm.Id] then

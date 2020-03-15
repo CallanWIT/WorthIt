@@ -186,7 +186,7 @@ core.Data.Results.Farms.DredgedLeather = {
 }
 
 core.Data.Results.Farms.DredgedLeatherSpotTwo = {
-    Id = 'DredgedLeather2',
+    Id = 'DredgedLeatherUldum',
     Activity = core.Activity.Skinning,
     ItemId = core.Items.Skins.DredgedLeather,
     Content = core.Content.BFA,

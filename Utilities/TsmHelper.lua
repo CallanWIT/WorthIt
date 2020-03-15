@@ -9,11 +9,12 @@ local version = nil
 local priceSource = nil
 
 local priceSources = {
-    'DBMarket',
     'DBMinBuyout',
-    'DBRegionHistorical',
-    'DBRegionMarketAvg',
+    'DBMarket',
+    'DBHistorical',
     'DBRegionMinBuyoutAvg',
+    'DBRegionMarketAvg',
+    'DBRegionHistorical',
     'DBRegionSaleAvg'
 }
 
@@ -47,6 +48,20 @@ function TSMHelper.GetItemPrice(item)
     local itemPriceSource = item > 152500 and WITDB.Settings.PricingSelect or WITDB.Settings.LegacyPricingSelect
 
     cache.ItemValues[item] = TSM_API.GetCustomPriceValue(itemPriceSource, itemId)
+
+    if cache.ItemValues[item] == nil or cache.ItemValues[item] == 0 then
+        local isMoreGeneral = false
+
+        for _, alternativePriceSource in pairs(priceSources) do
+            if isMoreGeneral and (cache.ItemValues[item] == nil or cache.ItemValues[item] == 0) then
+                cache.ItemValues[item] = TSM_API.GetCustomPriceValue(alternativePriceSource, itemId)
+            end
+
+            if alternativePriceSource == itemPriceSource then
+                isMoreGeneral = true
+            end
+        end
+    end
 
     return cache.ItemValues[item]
 end
@@ -110,7 +125,7 @@ function TSMHelper.GetItemSellRate(item)
 
     local itemId = type(item) == "number" and "i:" .. item or item
 
-    cache.ItemSellRates[item] = TSM_API.GetCustomPriceValue('DBregionsaleRate*100', itemId)
+    cache.ItemSellRates[item] = TSM_API.GetCustomPriceValue('DBregionsaleRate*1000', itemId) or 0
 
     return cache.ItemSellRates[item]
 end
@@ -219,7 +234,7 @@ function TSMHelper.GetPriceSources()
 end
 
 function TSMHelper.DefaultPriceSource()
-    return priceSources[1]
+    return priceSources[2]
 end
 
 function TSMHelper.IsTSMAPIAvailable()

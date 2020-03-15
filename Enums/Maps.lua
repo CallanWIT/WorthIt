@@ -16,6 +16,27 @@ core.Maps = {
     Wetlands = 56,
     Winterspring = 83,
 
+    TheDeadMines = 291,
+    Stratholme = 318,
+    BlackrockDepths = 242,
+    DireMaul = 239,
+    RazorfenDowns = 300,
+    WailingCaverns = 279,
+    Maraudon = 281,
+    ScarletMonastary = 435,
+    Scholomace = 476,
+    ScarletHalls = 431,
+    ShadowfangKeep = 310,
+    TheTempleOfAtalHakkar = 220,
+    Gnomeregan = 226,
+    LowerBlackrockSpire = 252,
+    BlackfathomDeeps = 221,
+    Ulduman = 230,
+    TheStockade = 225,
+    ZulFarrak = 219,
+    RazorfenKraul = 301,
+    RagefireChasm = 213,
+
     -- TBC
 
     HellfirePeninsula = 100,

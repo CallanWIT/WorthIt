@@ -9,4 +9,7 @@ local sohData = {
     core.Data.Results.Flips.SoHSerpentsEye,
 }
 
-table.insert(core.Modules, core.FlipResultModule('SpiritOfHarmonyFlips', sohData, 'Flipping'))
+local module = core.FlipResultModule('SpiritOfHarmonyFlips', sohData, 'Flipping')
+module.IsExpandabled = false
+
+table.insert(core.Modules, module)

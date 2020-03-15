@@ -14,9 +14,37 @@ local function UpdateItemList()
 
         local value = core.TSMHelper.GetItemPrice(item.Id) or core.TSMHelper.GetItemVendorSellPrice(item.Id) or 0
 
+        local removeButton = AceGUI:Create("InteractiveLabel")
+        removeButton:SetText(" |cFFFF0808X")
+        removeButton:SetWidth(removeButton.label:GetStringWidth() + 5)
+        removeButton:SetCallback("OnClick", function()
+            if not IsShiftKeyDown() then return end
+            local farms = core.Config.GetUserFarms()
+
+            for i, it in pairs(self.Data.Results) do
+                if it.Id == item.Id then
+                    tremove(self.Data.Results, i)
+                end
+            end
+
+            UpdateItemList()
+        end)
+        removeButton:SetCallback("OnEnter", function()
+            GameTooltip:SetOwner(removeButton.frame, "ANCHOR_PRESERVE")
+	        GameTooltip:ClearAllPoints()
+	        GameTooltip:SetPoint("LEFT", removeButton.frame, "RIGHT")
+            GameTooltip:ClearLines()
+            GameTooltip:AddLine(core.GetString("ShiftToRemove"))
+            GameTooltip:Show()
+        end)
+        removeButton:SetCallback("OnLeave", function()
+            GameTooltip:Hide()
+        end)
+        container:AddChild(removeButton)
+
         local itemLabel = AceGUI:Create("InteractiveLabel")
         itemLabel:SetWidth(350)
-        itemLabel:SetText(string.format("%sx%d %s", core.TSMHelper.GetItemLink(item.Id), item.Quantity, value > 0 and core.TSMHelper.ToMoneyString(value * item.Quantity) or ''))
+        itemLabel:SetText(string.format(" %sx%d %s", core.TSMHelper.GetItemLink(item.Id), item.Quantity, value > 0 and core.TSMHelper.ToMoneyString(value * item.Quantity) or ''))
         itemLabel:SetCallback("OnEnter", function()
             GameTooltip:SetOwner(itemLabel.frame, "ANCHOR_PRESERVE")
 	        GameTooltip:ClearAllPoints()
@@ -45,34 +73,6 @@ local function UpdateItemList()
         end)
         container:AddChild(quantityTextBox)
 
-        local removeButton = AceGUI:Create("InteractiveLabel")
-        removeButton:SetText("|cFFFF0808X")
-        removeButton:SetWidth(removeButton.label:GetStringWidth() + 5)
-        removeButton:SetCallback("OnClick", function()
-            if not IsShiftKeyDown() then return end
-            local farms = core.Config.GetUserFarms()
-
-            for i, it in pairs(self.Data.Results) do
-                if it.Id == item.Id then
-                    tremove(self.Data.Results, i)
-                end
-            end
-
-            UpdateItemList()
-        end)
-        removeButton:SetCallback("OnEnter", function()
-            GameTooltip:SetOwner(removeButton.frame, "ANCHOR_PRESERVE")
-	        GameTooltip:ClearAllPoints()
-	        GameTooltip:SetPoint("LEFT", removeButton.frame, "RIGHT")
-            GameTooltip:ClearLines()
-            GameTooltip:AddLine(core.GetString("ShiftToRemove"))
-            GameTooltip:Show()
-        end)
-        removeButton:SetCallback("OnLeave", function()
-            GameTooltip:Hide()
-        end)
-        container:AddChild(removeButton)
-
         self.ItemList:AddChild(container)
     end
 end
@@ -81,32 +81,14 @@ local function UpdateLocation()
     local location = ""
 
     if self.Data.MapId then
-        location = C_Map.GetMapInfo(self.Data.MapId).name
+        location = core.LocationHelper.GetMapName(self.Data.MapId)
     end
 
     self.LocationLabel:SetText(string.format(core.GetString("LocationLabelFormat"), location))
 end
 
 local function Save()
-    local farms = core.Config.GetUserFarms()
-    local data = core.TableHelper.DeepCopy(self.Data)
-
-    for i, farm in pairs(farms) do
-        if farm.Id == data.Id then
-            tremove(farms, i)
-        end
-    end
-
-    table.insert(farms, data)
-
-    core.UserDataModule.ClearCache()
-    core.DashboardModule.ClearCache()
-
-    if core.UI.MainWindow.CurrentModule() == core.UserDataModule then
-        core.UI.MainWindow.ShowModule(core.UserDataModule)
-    elseif core.UI.MainWindow.CurrentModule() == core.DashboardModule then
-        core.UI.MainWindow.ShowModule(core.DashboardModule)
-    end
+    core.Recorder().Save()
 end
 
 local function UpdateUI()
@@ -187,8 +169,8 @@ local function AddItem()
 end
 
 local function SetCurrentLocation()
-    local mapId = C_Map.GetBestMapForUnit("player")
-    local location = C_Map.GetMapInfo(mapId).name
+    local mapId = core.LocationHelper.GetPlayerCurrentMapId()
+    local location = core.LocationHelper.GetMapName(mapId)
     self.LocationLabel:SetText(string.format(core.GetString("LocationLabelFormat"), location))
 
     self.Data.MapId = mapId
@@ -196,6 +178,8 @@ end
 
 local function SwitchMode(nameContainer, mode)
     nameContainer:ReleaseChildren()
+
+    self.Data.Mode = mode
 
     if mode == "location" then
         local locationLabel = AceGUI:Create("Label")
@@ -206,19 +190,17 @@ local function SwitchMode(nameContainer, mode)
         locationButton:SetText(core.GetString("SetCurrent"))
         locationButton:SetFullWidth(true)
         locationButton:SetCallback("OnClick", function()
-            local mapId = C_Map.GetBestMapForUnit("player")
-            local location = C_Map.GetMapInfo(mapId).name
+            local mapId = core.LocationHelper.GetPlayerCurrentMapId()
+            local location = core.LocationHelper.GetMapName(mapId)
             locationLabel:SetText(location)
 
             self.Data.NameMapId = mapId
         end)
         nameContainer:AddChild(locationButton)
 
-        self.Data.Name = nil
-        self.Data.ItemId = nil
-        self.Data.NameMapId = self.Data.NameMapId or C_Map.GetBestMapForUnit("player")
+        self.Data.NameMapId = self.Data.NameMapId or core.LocationHelper.GetPlayerCurrentMapId()
 
-        local location = C_Map.GetMapInfo(self.Data.NameMapId).name
+        local location = core.LocationHelper.GetMapName(self.Data.NameMapId)
         locationLabel:SetText(location)
 
         self.SaveButton:SetDisabled(false)
@@ -243,9 +225,6 @@ local function SwitchMode(nameContainer, mode)
             GameTooltip:Hide()
         end)
         nameContainer:AddChild(self.ItemIcon)
-        
-        self.Data.Name = nil
-        self.Data.NameMapId = nil
 
         if self.Data.ItemId ~= nil then
             self.ItemIcon:SetImageSize(64, 64)
@@ -256,9 +235,6 @@ local function SwitchMode(nameContainer, mode)
         self.NameEditor:SetWidth(400)
         self.NameEditor:SetCallback("OnEnterPressed", SetName)
         nameContainer:AddChild(self.NameEditor)
-        
-        self.Data.ItemId = nil
-        self.Data.NameMapId = nil
 
         if self.Data.Name ~= nil then
             self.NameEditor:SetText(self.Data.Name)

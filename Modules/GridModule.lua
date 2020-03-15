@@ -7,6 +7,8 @@ function core.GridModule(name, data, category)
 
     self.Data = data
     self.Columns = {}
+    self.IsExpandabled = true
+    self.DetailsRowHeaderResource = "Loot"
     self.Sort = {
         Column = nil,
         Direction = nil,
@@ -52,8 +54,9 @@ function core.GridModule(name, data, category)
     function self.GetRows()
         if not self.Rows then
             self.Rows = {}
+            local data = self.GetData()
 
-            for _, data in pairs(self.GetData()) do
+            for _, data in pairs(data) do
                 local row = { Data = data }
 
                 for _, column in pairs(self.Columns) do
@@ -67,15 +70,63 @@ function core.GridModule(name, data, category)
         return sortRows(self.Rows)
     end
 
-    function self.Draw(container)
-        local frame = AceGUI:Create("ScrollFrame")
-        container:AddChild(frame)
+    function self.GetDetailsRowData(row)
+        return row.Data.Results
+    end
 
+    function self.DrawDetailsRow(frame, row, isAlternateRow)
+        local data = self.GetDetailsRowData(row)
+        if not data or #(data) == 0 then return end
+
+        local group = AceGUI:Create("SimpleGroup")
+        group:SetFullWidth(true)
+
+        if isAlternateRow == true then
+            group.background = group.frame:CreateTexture(nil, "BACKGROUND")
+            group.background:SetPoint("TOPLEFT", group.frame, "TOPLEFT", 0, -2)
+            group.background:SetPoint("BOTTOMRIGHT", group.frame, "BOTTOMRIGHT", 0, -2)
+            group.background:SetColorTexture(0.5, 0.5, 0.5, 0.5)
+            group:SetCallback("OnRelease", function(self)
+                self.background:Hide()
+            end)
+        end
+
+        local header = AceGUI:Create("Label")
+        header:SetFullWidth(true)
+        header:SetText("     " .. core.GetString(self.DetailsRowHeaderResource))
+        group:AddChild(header)
+
+        for _, item in pairs(data) do
+            local itemLabel = AceGUI:Create("InteractiveLabel")
+            itemLabel:SetText(string.format("       %s" .. (item.Quantity and "x%d" or ""), core.TSMHelper.GetItemLink(item.Id), item.Quantity))
+            itemLabel:SetWidth(itemLabel.label:GetStringWidth() + 10)
+            itemLabel:SetCallback("OnEnter", function()
+                GameTooltip:SetOwner(itemLabel.frame, "ANCHOR_PRESERVE")
+	            GameTooltip:ClearAllPoints()
+	            GameTooltip:SetPoint("LEFT", itemLabel.frame, "RIGHT")
+                GameTooltip:ClearLines()
+                GameTooltip:SetHyperlink("item:" .. item.Id)
+                GameTooltip:Show()
+            end)
+            itemLabel:SetCallback("OnLeave", function()
+                GameTooltip:Hide()
+            end)
+            group:AddChild(itemLabel)
+        end
+
+        frame:AddChild(group)
+    end
+
+    local function DrawData(frame)
         local rows = self.GetRows()
         local visibleColumns = self.GetVisibleColumns(rows)
         local columnWidth = {}
         local columnCount = 0
         local totalWidth = 0
+
+        if self.IsExpandabled then
+            totalWidth = 20
+        end
 
         local header = AceGUI:Create("SimpleGroup")
         header:SetLayout("Flow")
@@ -88,6 +139,12 @@ function core.GridModule(name, data, category)
         header:SetCallback("OnRelease", function(self)
             self.background:Hide()
         end)
+
+        if self.IsExpandabled then
+            local expandIconColumn = AceGUI:Create("Label")
+            expandIconColumn:SetWidth(15)
+            header:AddChild(expandIconColumn)
+        end
 
         for key, column in pairs(visibleColumns) do
             columnWidth[key] = column.GetColumnMinWidth(rows) + 5
@@ -138,6 +195,18 @@ function core.GridModule(name, data, category)
                 end)
             end
 
+            if self.IsExpandabled then
+                local expandIcon = AceGUI:Create("InteractiveLabel")
+                expandIcon:SetText(row.Expanded and " -" or " +")
+                expandIcon:SetWidth(15)
+                expandIcon:SetCallback("OnClick", function()
+                    row.Expanded = not row.Expanded
+                    frame:ReleaseChildren()
+                    DrawData(frame)
+                end)
+                group:AddChild(expandIcon)
+            end
+
             for key, column in pairs(visibleColumns) do
                 local cell = column.GetCell(row)
                 cell:SetWidth(columnWidth[key])
@@ -145,8 +214,20 @@ function core.GridModule(name, data, category)
             end
 
             frame:AddChild(group)
+
+            if row.Expanded then
+                self.DrawDetailsRow(frame, row, isAlternateRow)
+            end
+
             isAlternateRow = not isAlternateRow
         end
+    end
+
+    function self.Draw(container)
+        local frame = AceGUI:Create("ScrollFrame")
+        container:AddChild(frame)
+
+        DrawData(frame)
     end
 
     function self.GetVisibleColumns(rows)

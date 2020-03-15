@@ -26,7 +26,7 @@ local function NewSession()
         Time = 0,
         CurrentTime = nil,
         IsRunning = false,
-        MapId = C_Map.GetBestMapForUnit("player"),
+        MapId = core.LocationHelper.GetPlayerCurrentMapId(),
         Money = 0,
         IsCustom = true,
         Results = {}
@@ -63,7 +63,7 @@ local function UpdateUI()
         local location = ""
 
         if self.Session.MapId then
-            location = C_Map.GetMapInfo(self.Session.MapId).name
+            location = core.LocationHelper.GetMapName(self.Session.MapId)
         end
 
         self.LocationLabel:SetText(string.format(core.GetString("LocationLabelFormat"), location))
@@ -98,6 +98,7 @@ end
 
 local function ResetSession()
     self.Session = NewSession()
+    core.Config.SetCurrentRecorderSession(self.Session)
     UpdateUI()
 end
 
@@ -111,18 +112,43 @@ local function OnUpdate()
     end
 end
 
-local function Save()
-    local farms = core.Config.GetUserFarms()
+local function NormaliseSession(session)
+    local copy = core.TableHelper.DeepCopy(session)
+    copy.Mode = copy.Mode or copy.ItemId and "item" or copy.NameMapId and "location" or "text"
 
-    if not self.Session.Id then
-        self.Session.Id = "Custom" .. random(32000)
-        table.insert(farms, self.Session)
+    if copy.Mode == "location" then
+        copy.Name = nil
+        copy.ItemId = nil
+    elseif copy.Mode == "item" then
+        copy.Name = nil
+        copy.NameMapId = nil
+    else
+        copy.ItemId = nil
+        copy.NameMapId = nil
     end
 
+    return copy
+end
+
+local function Save()
+    local farms = core.Config.GetUserFarms()
+    local data = NormaliseSession(self.Session)
+
+    for i, farm in pairs(farms) do
+        if farm.Id == data.Id then
+            tremove(farms, i)
+        end
+    end
+
+    table.insert(farms, data)
+
     core.UserDataModule.ClearCache()
+    core.DashboardModule.ClearCache()
 
     if core.UI.MainWindow.CurrentModule() == core.UserDataModule then
         core.UI.MainWindow.ShowModule(core.UserDataModule)
+    elseif core.UI.MainWindow.CurrentModule() == core.DashboardModule then
+        core.UI.MainWindow.ShowModule(core.DashboardModule)
     end
 end
 
@@ -140,7 +166,7 @@ local function Import()
 end
 
 local function Export()
-    local text = LibBase64.Encode(AceSerializer:Serialize(self.Session))
+    local text = LibBase64.Encode(AceSerializer:Serialize(NormaliseSession(self.Session)))
     self.ExporterTextBox:SetText(text)
     self.ExporterTextBox:HighlightText(0, text:len())
 end
@@ -330,7 +356,7 @@ local function SwitchMode(recorder, mode)
 end
 
 local function LoadSession(session)
-    self.Session = core.TableHelper.DeepCopy(session)
+    self.Session = NormaliseSession(session)
     core.Config.SetCurrentRecorderSession(self.Session)
 end
 
@@ -378,6 +404,7 @@ function core.Recorder()
         self.Frame:Show()
     end
     self.LoadSession = LoadSession
+    self.Save = Save
 
     return self
 end

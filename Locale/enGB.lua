@@ -10,6 +10,9 @@ L["Guides"] = "Guides"
 
 L["NothingToSeeHere"] = "Nothing to see here|n|nMove along"
 L["DashboardConfogurationIntro"] = "Dashboard can list farms for the current content, or selected farms from different expansions"
+L["RecorderConfogurationIntro"] = "Items that are BOP, below min quality or below min value will not be added to the loot list, but their vendor value will be added directly to the raw gold"
+L["BagValueConfogurationIntro"] = "Items that are BOP, below min quality or below min value don't use their market value, but (depends on Under treshold selection):|nNone - those items are ignored|nVendor - vendor value is used|nDestroying > Vendor - destroing (disenchanting) value is used if possible and vendor value otherwise"
+L["PriceSourceConfogurationIntro"] = "Default price source for items from selected content (current expansion, or legacy). If not available, next price source from the list will be used. For example if price source is set to DBMarket and the item wasn't posted for the last 14 days on your realm, DBHistorical value is used. If DBHistorical is not available as well, DBRegionMinBuyoutAvg price source is used"
 L["ShowCurrentContentFarms"] = "Show current content farms"
 
 -- Content
@@ -22,7 +25,6 @@ L["WoD"] = "Warlords of Draenor"
 L["Legion"] = "Legion"
 L["BFA"] = "Battle for Azeroth"
 
-L["CustomResults"] = "Custom Results"
 L["RecordingInProgress"] = "Recording in progress"
 L["ShiftToRemove"] = "Hold Shift key to remove"
 L["ShiftToResetSession"] = "Hold Shift key to reset session"
@@ -43,7 +45,7 @@ L["Modules"] = "Modules"
 
 -- Farms
 L["Dashboard"] = "Dashboard"
-L["UserData"] = "Custom Results"
+L["MyFarms"] = "My Farms"
 L["Mining"] = "Mining"
 L["Herb"] = "Herb"
 L["Skinning"] = "Skinning"
@@ -57,6 +59,10 @@ L["Prospecting"] = "Prospecting"
 L["Smelting"] = "Smelting"
 L["SpiritOfHarmonyFlips"] = "Spirit Of Harmony"
 L["FrozenOrbFlips"] = "Frozen Orb"
+
+L["Loot"] = "Loot:"
+L["ItemsOfNote"] = "Items Of Note:"
+L["Ingredients"] = "Ingredients:"
 
 -- Guides
 L["BattlePetGuide"] = "Battle Pet"
@@ -122,7 +128,7 @@ L["LegacyPriceSource"] = "Legacy Content Price Source"
 L["BagValueTreshold"] = "Bag Value Treshold"
 L["MinItemValue"] = "Min item value"
 L["MinQuality"] = "Min Quality"
-L["UnderTresholdPrice"] = "Under treshold price"
+L["UnderTresholdPrice"] = "Under treshold"
 
 L["None"] = "None"
 L["Destroying>Vendor"] = "Destroying > Vendor"

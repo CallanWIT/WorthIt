@@ -32,29 +32,28 @@ function core.CustomResultModule(name, category)
     local baseDraw = self.Draw
     function self.Draw(container)
         local frame = AceGUI:Create("SimpleGroup")
-        frame:SetFullWidth(true)
-        frame:SetFullHeight(true)
+        frame:SetLayout("List")
         container:AddChild(frame)
 
         local recorderButton = AceGUI:Create("Button")
-        recorderButton:SetText("Recorder") --core.GetString("BagValue")
+        recorderButton:SetText(core.GetString("Recorder")) --
         recorderButton:SetFullWidth(true)
         recorderButton:SetCallback("OnClick", ShowRecorder)
         frame:AddChild(recorderButton)
 
         local gridFrame = AceGUI:Create("SimpleGroup")
         gridFrame:SetFullWidth(true)
-        gridFrame:SetFullHeight(true)
+        gridFrame:SetHeight(frame.frame:GetHeight() - recorderButton.frame:GetHeight() - 10)
         gridFrame:SetLayout("Fill")
 
-        frame:AddChild(gridFrame)
-
         baseDraw(gridFrame)
+
+        frame:AddChild(gridFrame)
     end
 
     return self
 end
 
-core.UserDataModule = core.CustomResultModule('UserData', 'UserData')
+core.UserDataModule = core.CustomResultModule('MyFarms', 'UserData')
 
 table.insert(core.Modules, core.UserDataModule)
