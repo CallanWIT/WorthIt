@@ -63,6 +63,9 @@ core.Data.Results.Farms.TheDeadMines = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.BlackenedDefiasGloves },
+		{ Id = core.Items.Transmog.BlackwaterCutlass },
+		{ Id = core.Items.Transmog.StonemasonCloak },
+		{ Id = core.Items.Transmog.WeightedSap },
     }
 }
 
@@ -123,6 +126,11 @@ core.Data.Results.Farms.Shadowfang = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.ShadowFang },
+		{ Id = core.Items.Transmog.GuillotineAxe },
+		{ Id = core.Items.Transmog.WitchingStave },
+		{ Id = core.Items.Transmog.Facesmasher },
+		{ Id = core.Items.Transmog.NightReaver },
+		{ Id = core.Items.Transmog.BlackMalice },
     }
 }
 
@@ -147,6 +155,15 @@ core.Data.Results.Farms.Blackfathom = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.AxeoftheEnforcer },
+		{ Id = core.Items.Transmog.TreeBarkJacket },
+		{ Id = core.Items.Transmog.MartyrsChain },
+		{ Id = core.Items.Transmog.Doomspike },
+		{ Id = core.Items.Transmog.EvocatorsBlade },
+		{ Id = core.Items.Transmog.OnyxClaymore },
+		{ Id = core.Items.Transmog.Grimclaw },
+		{ Id = core.Items.Transmog.CrestedScepter },
+		{ Id = core.Items.Transmog.StaffOfTheFriar },
+		{ Id = core.Items.Transmog.StaffOfTheBlessedSeer },
     }
 }
 
@@ -195,6 +212,14 @@ core.Data.Results.Farms.Gnomeregan = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.MechbuildersOveralls },
+		{ Id = core.Items.Transmog.HotshotPilotsGloves },
+		{ Id = core.Items.Transmog.PetrolspillLeggings },
+		{ Id = core.Items.Transmog.CaverndeepTrudgers },
+		{ Id = core.Items.Transmog.HiTechSupergun },
+		{ Id = core.Items.Transmog.Vibroblade },
+		{ Id = core.Items.Transmog.OcillatingPowerHammer },
+		{ Id = core.Items.Transmog.SuperchargerBattleAxe },
+		{ Id = core.Items.Transmog.GizmotronMegachopper },
     }
 }
 
@@ -219,6 +244,15 @@ core.Data.Results.Farms.Scarlet = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.Headsplitter },
+		{ Id = core.Items.Transmog.AmysBlanket },
+		{ Id = core.Items.Transmog.WatchmanPauldrons },
+		{ Id = core.Items.Transmog.ClawoftheShadowmancer },
+		{ Id = core.Items.Transmog.ForestTrackerEpaulets },
+		{ Id = core.Items.Transmog.SparkleshellMantle },
+		{ Id = core.Items.Transmog.BrawlerGloves },
+		{ Id = core.Items.Transmog.YorgenBracers },
+		{ Id = core.Items.Transmog.DeanshipClaymore },
+		{ Id = core.Items.Transmog.BeazelsBasher },
     }
 }
 
@@ -243,6 +277,11 @@ core.Data.Results.Farms.Monastary = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.ScarletBoots },
+		{ Id = core.Items.Transmog.SunblazeCoif },
+		{ Id = core.Items.Transmog.BeguilerRobes },
+		{ Id = core.Items.Transmog.ChesterfallMusket },
+		{ Id = core.Items.Transmog.CobaltCrusher },
+		{ Id = core.Items.Transmog.ArchonChestpiece },
     }
 }
 
@@ -267,6 +306,16 @@ core.Data.Results.Farms.Kraul = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.StaffofShade },
+		
+		{ Id = core.Items.Transmog.MantleOfThieves },
+		{ Id = core.Items.Transmog.WolfclawGloves },
+		{ Id = core.Items.Transmog.AvengersArmor },
+		{ Id = core.Items.Transmog.PugilistBracers },
+		{ Id = core.Items.Transmog.PlainsRing },
+		{ Id = core.Items.Transmog.Vendetta },
+		{ Id = core.Items.Transmog.SwordofDecay },
+		{ Id = core.Items.Transmog.Slaghammer },
+		{ Id = core.Items.Transmog.PysansOldGreatsword },
     }
 }
 
@@ -291,6 +340,8 @@ core.Data.Results.Farms.Maraudon = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.WolffearHarness },
+		{ Id = core.Items.Transmog.PoisonTippedBoneSpear },
+		{ Id = core.Items.Transmog.DeadwoodSledge },
     }
 }
 
@@ -315,6 +366,17 @@ core.Data.Results.Farms.Downs = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.QuillwardHarness },
+		
+		{ Id = core.Items.Transmog.DeathsHeadVestment },
+		{ Id = core.Items.Transmog.ThoughtcastBoots },
+		{ Id = core.Items.Transmog.Corpseshroud },
+		{ Id = core.Items.Transmog.BriarTredders },
+		{ Id = core.Items.Transmog.StormgaleFists },
+		{ Id = core.Items.Transmog.Quillshooter },
+		{ Id = core.Items.Transmog.EbonyBoneclub },
+		{ Id = core.Items.Transmog.Boneslasher },
+		{ Id = core.Items.Transmog.Manslayer },
+		{ Id = core.Items.Transmog.FreezingShard },
     }
 }
 
@@ -339,6 +401,10 @@ core.Data.Results.Farms.Scholomace = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.StaffofJordan },
+		
+		{ Id = core.Items.Transmog.ColdstoneSlippers },
+		{ Id = core.Items.Transmog.TatteredLeatherHood },
+		{ Id = core.Items.Transmog.IcyTombSpaulders },
     }
 }
 
@@ -363,6 +429,27 @@ core.Data.Results.Farms.Ulduman = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.PendulumofDoom },
+		
+		{ Id = core.Items.Transmog.EnergyCloak },
+		{ Id = core.Items.Transmog.MinersHatoftheDeep },
+		{ Id = core.Items.Transmog.PapalFez },
+		{ Id = core.Items.Transmog.SpirewindFetter },
+		{ Id = core.Items.Transmog.AdventurersPithHelmet },
+		{ Id = core.Items.Transmog.SpauldersoftheLostAge },
+		{ Id = core.Items.Transmog.LegguardsoftheVault },
+		{ Id = core.Items.Transmog.MonolithicBow },
+		{ Id = core.Items.Transmog.StonevaultShiv },
+		{ Id = core.Items.Transmog.ShadowforgeBushmaster },
+		{ Id = core.Items.Transmog.BeaconofHope },
+		{ Id = core.Items.Transmog.Digmaster5000 },
+		{ Id = core.Items.Transmog.ExcavatorsBrand },
+		{ Id = core.Items.Transmog.StonevaultBonebreaker },
+		{ Id = core.Items.Transmog.AnnealedBlade },
+		{ Id = core.Items.Transmog.GinnSuSword },
+		{ Id = core.Items.Transmog.ObsidianCleaver },
+		{ Id = core.Items.Transmog.TheJackhammer },
+		{ Id = core.Items.Transmog.TheShoveler },
+		{ Id = core.Items.Transmog.EarthenRod },
     }
 }
 
@@ -387,6 +474,13 @@ core.Data.Results.Farms.Dire = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.OrphicBracers },
+		
+		{ Id = core.Items.Transmog.ElementalRaiment },
+		{ Id = core.Items.Transmog.PhasingBoots },
+		{ Id = core.Items.Transmog.StonebarkGauntlets },
+		{ Id = core.Items.Transmog.UnbridledLeggings },
+		{ Id = core.Items.Transmog.EidolonTalisman },
+		{ Id = core.Items.Transmog.WandofArcanePotency },
     }
 }
 
@@ -411,6 +505,18 @@ core.Data.Results.Farms.Farrak = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.GloriousLegplates },
+		
+		{ Id = core.Items.Transmog.BlackmetalCape },
+		{ Id = core.Items.Transmog.SpellshockLeggings },
+		{ Id = core.Items.Transmog.RunedRing },
+		{ Id = core.Items.Transmog.Brainlash },
+		{ Id = core.Items.Transmog.Gutwrencher },
+		{ Id = core.Items.Transmog.BloodletterScalpel },
+		{ Id = core.Items.Transmog.TheMinotaur },
+		{ Id = core.Items.Transmog.Eyegouger },
+		{ Id = core.Items.Transmog.WitchDoctorsCane },
+		{ Id = core.Items.Transmog.FlamingIncinerator },
+		{ Id = core.Items.Transmog.TrollProtector },
     }
 }
 
@@ -435,6 +541,14 @@ core.Data.Results.Farms.Stratholme = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.StratholmeMilitiaShoulderguard },
+		
+		{ Id = core.Items.Transmog.GraciousCape },
+		{ Id = core.Items.Transmog.JunosShadow },
+		{ Id = core.Items.Transmog.SacredClothLeggings },
+		{ Id = core.Items.Transmog.PlaguebatFurGloves },
+		{ Id = core.Items.Transmog.PlaguehoundLeggings },
+		{ Id = core.Items.Transmog.PlatedFistofHakoo },
+		{ Id = core.Items.Transmog.MorlunesBracer },
     }
 }
 
@@ -459,6 +573,16 @@ core.Data.Results.Farms.Sunken = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.Stealthblade },
+		
+		{ Id = core.Items.Transmog.SoulcatcherHalo },
+		{ Id = core.Items.Transmog.MistwalkerBoots },
+		{ Id = core.Items.Transmog.MurkwaterGauntlets },
+		{ Id = core.Items.Transmog.SilvershellLeggings },
+		{ Id = core.Items.Transmog.WintersBite },
+		{ Id = core.Items.Transmog.Deathblow },
+		{ Id = core.Items.Transmog.Ragehammer },
+		{ Id = core.Items.Transmog.BludgeonoftheGrinningDog },
+		{ Id = core.Items.Transmog.StingingBow },
     }
 }
 
@@ -483,6 +607,17 @@ core.Data.Results.Farms.Blackrock = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.BattlechasersGreaves },
+		
+		{ Id = core.Items.Transmog.BlisterbaneWrap },
+		{ Id = core.Items.Transmog.StoneshieldCloak },
+		{ Id = core.Items.Transmog.FuneralPyreVestment },
+		{ Id = core.Items.Transmog.MarAlomsGrip },
+		{ Id = core.Items.Transmog.Braincage },
+		{ Id = core.Items.Transmog.SearingNeedle },
+		{ Id = core.Items.Transmog.DoomforgedStraightedge },
+		{ Id = core.Items.Transmog.Ribsplitter },
+		{ Id = core.Items.Transmog.TheJudgesGavel },
+		{ Id = core.Items.Transmog.SpireoftheStoneshaper },
     }
 }
 
@@ -507,6 +642,7 @@ core.Data.Results.Farms.Spire = {
     },
     ItemsOfNote = {
         { Id = core.Items.Transmog.StockadePauldrons },
+		{ Id = core.Items.Transmog.RobeoftheArchmage },
     }
 }
 

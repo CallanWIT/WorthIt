@@ -7,10 +7,12 @@
     <Script file="LocationsColumn.lua"/>
     <Script file="ResultsValueColumn.lua"/>
     <Script file="CostColumn.lua"/>
+    <Script file="PriceSourceValueColumn.lua"/>
     <Script file="ItemSellRateColumn.lua"/>
     <Script file="ItemSoldPerDayColumn.lua"/>
+    <Script file="ItemValueColumn.lua"/>
     <Script file="ProfitColumn.lua"/>
-    <Script file="RoutesColumn.lua"/>
     <Script file="TomTomColumn.lua"/>
-    <Script file="CustomActionsColumn.lua"/>
+    <Script file="ExpandRowColumn.lua"/>
+    <Script file="ContextMenuColumn.lua"/>
 </Ui>

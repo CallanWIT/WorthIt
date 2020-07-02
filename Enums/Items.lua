@@ -1,3 +1,3 @@
 local WIT, core = ...
 
-core.Items = {}
+core.Items = { PetCageItemId = 82800 }

@@ -28,8 +28,16 @@ function Config.Initialize()
     WITDB.Settings.BagValueMinQuality = WITDB.Settings.BagValueMinQuality or 1
     WITDB.Settings.BelowTresholdValue = WITDB.Settings.BelowTresholdValue or 1
 
+    WITDB.Settings.CustomPriceSource = WITDB.Settings.CustomPriceSource or 'DBMinBuyout'
+    WITDB.Settings.LegacyCustomPriceSource = WITDB.Settings.LegacyCustomPriceSource or 'DBMinBuyout'
+
     WITDB.Settings.RecorderMinPrice = WITDB.Settings.RecorderMinPrice or 0
     WITDB.Settings.RecorderMinQuality = WITDB.Settings.RecorderMinQuality or 1
+
+    WITDB.Settings.FarmPlannerIds = WITDB.Settings.FarmPlannerIds or {}
+    WITDB.Settings.CustomItemPrices = WITDB.Settings.CustomItemPrices or {}
+
+    WITDB.Settings.Recorder = WITDB.Settings.Recorder or {}
 
     WITDB.Settings.Modules = WITDB.Settings.Modules or { Dashboard = { ShowCurrentContent = true, Farms = {} }}
 
@@ -52,12 +60,32 @@ function Config.SetPriceSource(priceSource)
     core.ClearCache()
 end
 
+function Config.GetCustomPriceSource()
+    return WITDB.Settings.CustomPriceSource
+end
+
+function Config.SetCustomPriceSource(priceSource)
+    WITDB.Settings.CustomPriceSource = priceSource
+
+    core.ClearCache()
+end
+
 function Config.GetLegacyPriceSource()
     return WITDB.Settings.LegacyPricingSelect
 end
 
 function Config.SetLegacyPriceSource(priceSource)
     WITDB.Settings.LegacyPricingSelect = priceSource
+
+    core.ClearCache()
+end
+
+function Config.GetLegacyCustomPriceSource()
+    return WITDB.Settings.LegacyCustomPriceSource
+end
+
+function Config.SetLegacyCustomPriceSource(priceSource)
+    WITDB.Settings.LegacyCustomPriceSource = priceSource
 
     core.ClearCache()
 end
@@ -82,11 +110,11 @@ function Config.SetBagValueMinQuality(quality)
     core.UI.ClearBagValue()
 end
 
-function Config.GetBelowTresholdValue()
+function Config.GetBelowThresholdValue()
     return WITDB.Settings.BelowTresholdValue
 end
 
-function Config.SetBelowTresholdValue(value)
+function Config.SetBelowThresholdValue(value)
     WITDB.Settings.BelowTresholdValue = value
 
     core.UI.ClearBagValue()
@@ -118,6 +146,14 @@ end
 
 function Config.SetCurrentRecorderSession(session)
     WITDB.Settings.CurrentRecorderSession = session
+end
+
+function Config.GetPlannedFarmIds()
+    return WITDB.Settings.FarmPlannerIds
+end
+
+function Config.GetCustomItemPrices()
+    return WITDB.Settings.CustomItemPrices
 end
 
 function Config.GetUserFarms()

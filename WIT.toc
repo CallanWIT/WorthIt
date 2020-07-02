@@ -1,11 +1,11 @@
 ## Interface: 80300
 ## Title: |c00ffff00WorthIt|r
 ## Author: DALAGG
-## Version: v3.1.0
+## Version: v3.1.1
 ## DefaultState: enabled
 ## SavedVariables: WITDB
 ## Dependencies: TradeSkillMaster
-## OptionalDeps: Routes, TomTom
+## OptionalDeps: Routes, TomTom, Scrap
 
 Libs\Libs.xml
 

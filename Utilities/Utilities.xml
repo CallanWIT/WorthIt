@@ -3,8 +3,11 @@
     <Script file="VersionHelper.lua"/>
     <Script file="ResourceHelper.lua"/>
     <Script file="TableHelper.lua"/>
+    <Script file="FarmHelper.lua"/>
     <Script file="TsmHelper.lua"/>
+    <Script file="ScrapHelper.lua"/>
     <Script file="LocationHelper.lua"/>
     <Script file="RoutesHelper.lua"/>
     <Script file="TomTomHelper.lua"/>
+    <Script file="ExecutiveAssistantHelper.lua"/>
 </Ui>

@@ -5,25 +5,249 @@ core.Items.Transmog = {
 
 -- Noteable Items
 
-CeremonialLeatherLoincloth = 3315,  -- Ragefire
-BlackenedDefiasGloves = 10401,  -- Deadmines
-ShadowFang = 1482,  -- Shadowfang keep
-AxeoftheEnforcer = 1454, -- black fathom depths
-BuccaneersVest = 14175, -- Stockades
-MechbuildersOveralls = 9508, -- Gnomeregan
-Headsplitter = 7786, -- ScarletHalls 
-ScarletBoots = 10332,  -- ScarletMonastary
-StaffofShade = 2549, -- RazorfenKraul
-WolffearHarness = 13110, -- Maraudon
-QuillwardHarness = 10583,  -- RazorfenDowns
-StaffofJordan = 873, -- Scholomance
-PendulumofDoom = 9425, -- Ulduman
-OrphicBracers = 18337, -- DireMaul
-GloriousLegplates = 14970, -- ZulFarrak
-StratholmeMilitiaShoulderguard = 18742, -- Stratholme
-Stealthblade = 10625, -- SunkenTemple
-BattlechasersGreaves = 12555, -- BlackfathomDepths
-StockadePauldrons = 14552, -- Lowerblackrockspire
+CeremonialLeatherLoincloth = 3315,  
+-- Ragefire --
+
+
+
+
+BlackenedDefiasGloves = 10401, 
+ -- Deadmines 
+
+BlackwaterCutlass = 1951,
+StonemasonCloak = 1930,
+WeightedSap = 1926,
+
+
+ShadowFang = 1482,  
+-- Shadowfang keep
+
+GuillotineAxe = 2807,
+WitchingStave = 1484,
+Facesmasher = 1483,
+NightReaver = 1318,
+BlackMalice = 3194,
+
+
+
+
+AxeoftheEnforcer = 1454, 
+-- black fathom depths
+
+TreeBarkJacket = 1486,
+MartyrsChain = 3416,
+Doomspike = 3413,
+EvocatorsBlade = 2567,
+OnyxClaymore = 3417,
+Grimclaw = 1481,
+CrestedScepter = 3414,
+StaffOfTheFriar = 3415,
+StaffOfTheBlessedSeer = 2271,
+
+
+
+BuccaneersVest = 14175, 
+-- Stockades -- 
+
+
+
+
+
+MechbuildersOveralls = 9508, 
+-- Gnomeregan
+
+HotshotPilotsGloves = 9491,
+PetrolspillLeggings = 9509,
+CaverndeepTrudgers = 9510,
+HiTechSupergun = 9487,
+Vibroblade = 9485,
+OcillatingPowerHammer = 9488,
+SuperchargerBattleAxe = 9486,
+GizmotronMegachopper = 9490,
+
+
+
+Headsplitter = 7786, 
+-- ScarletHalls 
+AmysBlanket = 13005,
+WatchmanPauldrons = 7727,
+ClawoftheShadowmancer = 2912,
+ForestTrackerEpaulets = 2278,
+SparkleshellMantle = 13131,
+BrawlerGloves = 720,
+YorgenBracers = 13012,
+DeanshipClaymore = 13049,
+BeazelsBasher = 13024,
+
+
+
+
+ScarletBoots = 10332,  
+-- ScarletMonastary
+SunblazeCoif = 5819,
+BeguilerRobes = 7728,
+ChesterfallMusket = 7729,
+CobaltCrusher = 7730,
+ArchonChestpiece = 7759,
+
+
+
+
+StaffofShade = 2549, 
+-- RazorfenKraul
+
+MantleOfThieves = 2264,
+WolfclawGloves = 1978,
+AvengersArmor = 1488,
+PugilistBracers = 4438,
+PlainsRing = 2039,
+Vendetta = 776,
+SwordofDecay = 1727,
+Slaghammer = 1976,
+PysansOldGreatsword = 1975,
+
+
+
+WolffearHarness = 13110, 
+-- Maraudon
+
+PoisonTippedBoneSpear = 1726,
+DeadwoodSledge = 13025,
+
+
+
+
+QuillwardHarness = 10583,  
+-- RazorfenDowns
+
+DeathsHeadVestment = 10581,
+ThoughtcastBoots = 10578,
+Corpseshroud = 10574,
+BriarTredders = 10582,
+StormgaleFists = 10584,
+Quillshooter = 10567,
+EbonyBoneclub = 10571,
+Boneslasher = 10573,
+Manslayer = 10570,
+FreezingShard = 10572,
+
+
+
+StaffofJordan = 873, 
+-- Scholomance
+
+ColdstoneSlippers = 18697,
+TatteredLeatherHood = 18698,
+IcyTombSpaulders = 18699,
+
+
+
+PendulumofDoom = 9425, 
+-- Ulduman
+
+EnergyCloak = 9397,
+MinersHatoftheDeep = 9429,
+PapalFez = 9431,
+SpirewindFetter = 9406,
+AdventurersPithHelmet = 9420,
+SpauldersoftheLostAge = 9430,
+LegguardsoftheVault = 9396,
+MonolithicBow = 9426,
+StonevaultShiv = 9384,
+ShadowforgeBushmaster = 9422,
+BeaconofHope = 9393,
+Digmaster5000 = 9465,
+ExcavatorsBrand = 9386,
+StonevaultBonebreaker = 9427,
+AnnealedBlade = 9392,
+GinnSuSword = 9424,
+ObsidianCleaver = 9383,
+TheJackhammer = 9423,
+TheShoveler = 9391,
+EarthenRod = 9381,
+
+
+
+OrphicBracers = 18337, 
+-- DireMaul
+
+ElementalRaiment = 9434,
+PhasingBoots = 18295,
+StonebarkGauntlets = 18344,
+UnbridledLeggings = 18298,
+EidolonTalisman = 18340,
+WandofArcanePotency = 18338,
+
+
+GloriousLegplates = 14970, 
+-- ZulFarrak
+
+BlackmetalCape = 9512,
+SpellshockLeggings = 9484,
+RunedRing = 862,
+Brainlash = 6440,
+Gutwrencher = 5616,
+BloodletterScalpel = 9511,
+TheMinotaur = 9481,
+Eyegouger = 9480,
+WitchDoctorsCane = 9482,
+FlamingIncinerator = 9483,
+TrollProtector = 2040,
+
+
+
+StratholmeMilitiaShoulderguard = 18742, 
+-- Stratholme
+
+GraciousCape = 18743,
+JunosShadow = 17061,
+SacredClothLeggings = 18745,
+PlaguebatFurGloves = 18744,
+PlaguehoundLeggings = 18736,
+PlatedFistofHakoo = 13071,
+MorlunesBracer = 18741,
+
+
+
+Stealthblade = 10625, 
+-- SunkenTemple
+
+SoulcatcherHalo = 10630,
+MistwalkerBoots = 10629,
+MurkwaterGauntlets = 10631,
+SilvershellLeggings = 10633,
+WintersBite = 10623,
+Deathblow = 10628,
+Ragehammer = 10626,
+BludgeonoftheGrinningDog = 10627,
+StingingBow = 10624,
+
+
+
+BattlechasersGreaves = 12555, 
+-- BlackrockDepths
+
+BlisterbaneWrap = 12552,
+StoneshieldCloak = 12551,
+FuneralPyreVestment = 12542,
+MarAlomsGrip = 12547,
+Braincage = 12549,
+SearingNeedle = 12531,
+DoomforgedStraightedge = 12535,
+Ribsplitter = 12527,
+TheJudgesGavel = 12528,
+SpireoftheStoneshaper = 12532,
+
+
+
+
+
+StockadePauldrons = 14552, 
+-- Lowerblackrockspire
+
+RobeoftheArchmage = 14513,
+
+
 
 
 
@@ -72,7 +296,7 @@ StockadePauldrons = 14552, -- Lowerblackrockspire
 	InscribedCloak = 4701,
 	RaiderShortsword = 15210,
 	SeersCape = 6378,
-	BlackwaterCutlass = 1951,
+	
 	
 	-- Wailing Caverns
 	
@@ -131,7 +355,6 @@ WraglersBelt = 15329,
 OutrunnersChestguard = 15500,
 RaincallerCloak = 14188,
 RigidLeggings = 15117,
-OnyxClaymore = 3417,
 BatteringHammer = 3198,
 
 

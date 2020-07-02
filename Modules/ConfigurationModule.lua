@@ -33,14 +33,14 @@ local function ConfigurationModule()
 
         local minValueTextBox = AceGUI:Create("EditBox")
         minValueTextBox:SetLabel(core.GetString("MinItemValue"))
-        minValueTextBox:SetText(core.Config.GetBagValueMinPrice())
+        minValueTextBox:SetText(core.Config.GetRecorderMinPrice())
         minValueTextBox:SetCallback("OnEnterPressed", function(self)
             local text = self:GetText()
             local number = text and tonumber(text)
             if text and number then
                 core.Config.SetRecorderMinPrice(number)
             else
-                minValueTextBox:SetText(core.Config.GetBagValueMinPrice())
+                minValueTextBox:SetText(core.Config.GetRecorderMinPrice())
             end
         end)
 
@@ -55,7 +55,7 @@ local function ConfigurationModule()
             "|cFFff8000"..ITEM_QUALITY5_DESC,
         }
         
-        local minQualityDropDown = CreateDropDown(core.GetString("MinQuality"), itemQualities, core.Config.GetBagValueMinQuality() + 1, function(self)
+        local minQualityDropDown = CreateDropDown(core.GetString("MinQuality"), itemQualities, core.Config.GetRecorderMinQuality() + 1, function(self)
             local value = self:GetValue()
             if value then
                 core.Config.SetRecorderMinQuality(value - 1)
@@ -110,10 +110,10 @@ local function ConfigurationModule()
             core.GetString("Destroying>Vendor"),
         }
 
-        local minValueDropDown = CreateDropDown(core.GetString("UnderTresholdPrice"), priceSources, core.Config.GetBelowTresholdValue() + 1, function(self)
+        local minValueDropDown = CreateDropDown(core.GetString("UnderThresholdPrice"), priceSources, core.Config.GetBelowThresholdValue() + 1, function(self)
             local value = self:GetValue()
             if value then
-                core.Config.SetBelowTresholdValue(value - 1)
+                core.Config.SetBelowThresholdValue(value - 1)
             end
         end)
 
@@ -126,30 +126,170 @@ local function ConfigurationModule()
         intro:SetText(core.GetString("PriceSourceConfogurationIntro"))
         frame:AddChild(intro)
 
+        local customPriceValue = core.TSMHelper.GetPriceSources()[1]
         local priceSourcesLabel = core.GetString("PriceSource")
         local priceSources = core.TSMHelper.GetPriceSources()
         local selectedPriceSource = core.Config.GetPriceSource()
+
+        local customPriceSourceTextBox = AceGUI:Create("EditBox")
+        customPriceSourceTextBox:SetDisabled(selectedPriceSource ~= customPriceValue)
 
         local priceSorceDropDown = CreateDropDown(priceSourcesLabel, priceSources, selectedPriceSource, function(self)
             local value = self:GetValue()
             if value then
                 core.Config.SetPriceSource(priceSources[value])
+                customPriceSourceTextBox:SetDisabled(value ~= 1)
             end
         end)
 
         frame:AddChild(priceSorceDropDown)
 
+        customPriceSourceTextBox:SetLabel(core.GetString("CustomPriceSource"))
+        customPriceSourceTextBox:SetText(core.Config.GetCustomPriceSource())
+        customPriceSourceTextBox:SetCallback("OnEnterPressed", function(self)
+            local text = self:GetText()
+            if text and core.TSMHelper.IsValidCustomPrice(text) then
+                core.Config.SetCustomPriceSource(text)
+            else
+                customPriceSourceTextBox:SetText(core.Config.GetCustomPriceSource())
+            end
+        end)
+
+        frame:AddChild(customPriceSourceTextBox)
+
         priceSourcesLabel = core.GetString("LegacyPriceSource")
         selectedPriceSource = core.Config.GetLegacyPriceSource()
+
+        local legacyCustomPriceSourceTextBox = AceGUI:Create("EditBox")
+        legacyCustomPriceSourceTextBox:SetDisabled(selectedPriceSource ~= customPriceValue)
 
         local legacyPriceSorceDropDown = CreateDropDown(priceSourcesLabel, priceSources, selectedPriceSource, function(self)
             local value = self:GetValue()
             if value then
                 core.Config.SetLegacyPriceSource(priceSources[value])
+                legacyCustomPriceSourceTextBox:SetDisabled(value ~= 1)
             end
         end)
 
         frame:AddChild(legacyPriceSorceDropDown)
+
+        legacyCustomPriceSourceTextBox:SetLabel(core.GetString("LegacyCustomPriceSource"))
+        legacyCustomPriceSourceTextBox:SetText(core.Config.GetLegacyCustomPriceSource())
+        legacyCustomPriceSourceTextBox:SetCallback("OnEnterPressed", function(self)
+            local text = self:GetText()
+            if text and core.TSMHelper.IsValidCustomPrice(text) then
+                core.Config.SetLegacyCustomPriceSource(text)
+            else
+                legacyCustomPriceSourceTextBox:SetText(core.Config.GetLegacyCustomPriceSource())
+            end
+        end)
+
+        frame:AddChild(legacyCustomPriceSourceTextBox)
+
+        local resetRecorderPositionButton = AceGUI:Create("Button")
+        resetRecorderPositionButton:SetText(core.GetString("ResetRecorderPosition"))
+        resetRecorderPositionButton:SetCallback("OnClick", function()
+            core.ResetRecorderPosition()
+        end)
+        frame:AddChild(resetRecorderPositionButton)
+
+        local resetIconPositionButton = AceGUI:Create("Button")
+        resetIconPositionButton:SetText(core.GetString("ResetIconPosition"))
+        resetIconPositionButton:SetCallback("OnClick", function()
+            core.UI.MinimapIcon.ResetPosition()
+        end)
+        frame:AddChild(resetIconPositionButton)
+    end
+
+    function drawCustomPricesConfiguration(frame)
+        local grid = nil
+
+        local function customPriceMenu(module, row)
+            return {
+                {
+                    Name = "SetCustomPrice",
+                    DisplayName = core.GetString("Edit"),
+                    Action = function(row)
+                        core.UI.InputDialog({ Text = core.GetString("SetCustomPrice"), Data = row.Data, HasEditBox = true, TextBoxValue = row.Data.PriceSource, OnAccept = function(self, data)
+                            local customPrice = self.editBox:GetText()
+                            if core.TSMHelper.IsValidCustomPrice(customPrice) then
+                                data.PriceSource = customPrice
+                                grid.ClearCache()
+                                grid.Reload()
+                            end
+                        end })
+                    end,
+                    ActionArg = row,
+                },
+                {
+                    Name = "Remove",
+                    DisplayName = core.GetString("Remove"),
+                    Action = function(row)
+                        core.UI.ConfirmableDialog({ Text = core.GetString("RemoveCustomPriceConfirmationMessage"), OnAccept = function()
+                            core.TableHelper.RemoveValue(core.Config.GetCustomItemPrices(), row.Data)
+                            grid.ClearCache()
+                            grid.Reload()
+                        end })
+                    end,
+                    ActionArg = row,
+                },
+            }
+        end
+
+        local columns = {
+            core.GridColumns.ContextMenuColumn({ GetMenu = customPriceMenu }),
+            core.GridColumns.ItemNameColumn(),
+            core.GridColumns.PriceSourceValueColumn()
+        }
+        local options = {
+            MinWidth = frame.parent.content.width,
+            Columns = columns,
+            SearchTerm = core.UI.GetSearchTerm(),
+            Sort = { Column = columns[2], Direction = "ASC" }
+        }
+
+        grid = core.UI.Grid(options)
+        grid:SetCallback("OnReload", function() frame:DoLayout() end)
+
+        local intro = AceGUI:Create("Label")
+        intro:SetFullWidth(true)
+        intro:SetText('Custom Prices Mock Intro')
+        frame:AddChild(intro)
+
+        local addItemIcon = AceGUI:Create("Icon")
+        addItemIcon:SetLabel(core.GetString("AddItem"))
+        addItemIcon:SetImageSize(48, 48)
+        addItemIcon:SetFullWidth(true)
+        addItemIcon:SetImage("Interface\\BUTTONS\\UI-EmptySlot")
+        addItemIcon:SetCallback("OnClick", function()
+            local type, id, link = GetCursorInfo()
+	        if type == 'item' then
+                local petId = (id == core.TSMHelper.PetCageItemId and tonumber(link:match("Hbattlepet:(%d+):"))) or nil
+                for _, i in pairs(core.Config.GetCustomItemPrices()) do
+                    if i.ItemId == id and i.PetId == petId then
+                        return
+                    end
+                end
+
+                local item = { ItemId = id, PriceSource = '0' }
+                if id == core.TSMHelper.PetCageItemId then
+                    item.PetId = petId
+                    item.ItemLink = link
+                end
+
+                table.insert(core.Config.GetCustomItemPrices(), item)
+
+                grid.ClearCache()
+                grid.Reload()
+            end
+        end)
+        frame:AddChild(addItemIcon)
+
+        grid.Show(core.Config.GetCustomItemPrices())
+
+        frame:AddChild(grid)
+
+        core.UI.ToggleQuickSearch(true, function(_, _, term) grid.Search(term) end)
     end
 
     function drawFarm(frame, farm)
@@ -314,6 +454,10 @@ local function ConfigurationModule()
                         value = "BagValue", 
                         text = core.GetString("BagValue"),
                     },
+                    { 
+                        value = "CustomPrices", 
+                        text = "Custom Prices",--core.GetString("BagValue"),
+                    },
                     {
                         value = "Modules",
                         text = core.GetString("Modules"),
@@ -337,6 +481,7 @@ local function ConfigurationModule()
         treeGroup:SetCallback("OnGroupSelected", function(self, name, group)
             treeGroup:ReleaseChildren()
 
+            core.UI.ToggleQuickSearch(false)
             local scrollFrame = AceGUI:Create("ScrollFrame")
             treeGroup:AddChild(scrollFrame)
 
@@ -346,6 +491,8 @@ local function ConfigurationModule()
                 drawRecorderConfiguration(scrollFrame)
             elseif group == 'WorthIt\001BagValue' then
                 drawBagValueConfiguration(scrollFrame)
+            elseif group == 'WorthIt\001CustomPrices' then
+                drawCustomPricesConfiguration(scrollFrame)
             elseif group == 'WorthIt\001Modules' then
                 drawModulesConfiguration(scrollFrame)
             elseif group == 'WorthIt\001Modules\001Dashboard' then

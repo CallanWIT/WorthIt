@@ -4,8 +4,11 @@ local AceGUI = LibStub("AceGUI-3.0")
 
 local GridColumns = core.GridColumns
 
-function GridColumns.ItemSellRateColumn()
-    local self = GridColumns.GridColumn('SellRate')
+function GridColumns.ItemSellRateColumn(options)
+    options = options or {}
+    options.Name = options.Name or 'SellRate'
+
+    local self = GridColumns.GridColumn(options)
 
     self.Description = core.GetString('SellRateDescription')
 
@@ -25,8 +28,9 @@ function GridColumns.ItemSellRateColumn()
         local totalSellRate = 0
 
         for _, item in pairs(data.Results) do
-            local value = core.TSMHelper.GetItemPrice(item.Id) or 0
-            local sellRate = core.TSMHelper.GetItemSellRate(item.Id) or 0
+            local id = item.Id == core.TSMHelper.PetCageItemId and 'p:'.. item.PetId or item.Id
+            local value = core.TSMHelper.GetItemPrice(id) or 0
+            local sellRate = core.TSMHelper.GetItemSellRate(id) or 0
 
             totalValue = totalValue + value
             totalSellRate = totalSellRate + (sellRate * value / 1000)

@@ -175,7 +175,7 @@ core.Data.Results.Farms.DredgedLeather = {
     ItemId = core.Items.Skins.DredgedLeather,
     Content = core.Content.BFA,
     Locations = { core.Locations.Pandaria.ValeofEternalBlossoms },
-    Routes = { core.Data.Routes.Skinning.DredgedLeatherNazjatar },
+    Routes = { core.Data.Routes.Skinning.DredgedLeatherValeOfEternalBlossoms },
     Results = {
         { Id = core.Items.Skins.DredgedLeather, Quantity = 853 },
 		{ Id = core.Items.Skins.Bloodstainedbone, Quantity = 347 },
@@ -191,7 +191,7 @@ core.Data.Results.Farms.DredgedLeatherSpotTwo = {
     ItemId = core.Items.Skins.DredgedLeather,
     Content = core.Content.BFA,
     Locations = { core.Locations.Kalimdor.Uldum },
-    Routes = { core.Data.Routes.Skinning.DredgedLeatherNazjatar },
+    Routes = { core.Data.Routes.Skinning.DredgedLeatherUldum },
     Results = {
         { Id = core.Items.Skins.DredgedLeather, Quantity = 846 },
 		{ Id = core.Items.Skins.Bloodstainedbone, Quantity = 323 },

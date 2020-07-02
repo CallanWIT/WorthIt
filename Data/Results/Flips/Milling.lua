@@ -3,6 +3,7 @@ local WIT, core = ...
 -- Vanilla
 
 core.Data.Results.Flips.MoonglowInk = {
+    Id = 'MillingMoonglowInk',
     ItemId = core.Items.Herbs.Silverleaf,
     Quantity = 200,
     Content = core.Content.Vanilla,
@@ -16,6 +17,7 @@ core.Data.Results.Flips.MoonglowInk = {
 
 
 core.Data.Results.Flips.MidnightInk = {
+    Id = 'MillingMidnightInk',
     ItemId = core.Items.Herbs.Mageroyal,
     Quantity = 200,
     Content = core.Content.Vanilla,
@@ -29,6 +31,7 @@ core.Data.Results.Flips.MidnightInk = {
 }
 
 core.Data.Results.Flips.LionsInk = {
+    Id = 'MillingLionsInk',
     ItemId = core.Items.Herbs.Kingsblood,
     Quantity = 200,
     Content = core.Content.Vanilla,
@@ -42,6 +45,7 @@ core.Data.Results.Flips.LionsInk = {
 }
 
 core.Data.Results.Flips.JadefireInk = {
+    Id = 'MillingJadefireInk',
     ItemId = core.Items.Herbs.Fadeleaf,
     Quantity = 200,
     Content = core.Content.Vanilla,
@@ -55,6 +59,7 @@ core.Data.Results.Flips.JadefireInk = {
 }
 
 core.Data.Results.Flips.CelestialInk = {
+    Id = 'MillingCelestialInk',
     ItemId = core.Items.Herbs.Gromsblood,
     Quantity = 200,
     Content = core.Content.Vanilla,
@@ -68,6 +73,7 @@ core.Data.Results.Flips.CelestialInk = {
 }
 
 core.Data.Results.Flips.InkOfTheSky = {
+    Id = 'MillingInkOfTheSky',
     ItemId = core.Items.Herbs.GoldenSansam,
     Quantity = 200,
     Content = core.Content.Vanilla,
@@ -84,6 +90,7 @@ core.Data.Results.Flips.InkOfTheSky = {
 -- TBC 
 
 core.Data.Results.Flips.EthrealInk = {
+    Id = 'MillingEthrealInk',
     ItemId = core.Items.Herbs.Felweed,
     Quantity = 200,
     Content = core.Content.TBC,
@@ -100,6 +107,7 @@ core.Data.Results.Flips.EthrealInk = {
 -- WOTLK
 
 core.Data.Results.Flips.InkOfTheSea = {
+    Id = 'MillingInkOfTheSea',
     ItemId = core.Items.Herbs.Goldclover,
     Quantity = 200,
     Content = core.Content.WotLK,
@@ -116,6 +124,7 @@ core.Data.Results.Flips.InkOfTheSea = {
 -- Cata
 
 core.Data.Results.Flips.BlackfallowInk = {
+    Id = 'MillingBlackfallowInk',
     ItemId = core.Items.Herbs.Whiptail,
     Quantity = 200,
     Content = core.Content.Cata,
@@ -132,6 +141,7 @@ core.Data.Results.Flips.BlackfallowInk = {
 -- Mop
 
 core.Data.Results.Flips.InkOfDreams = {
+    Id = 'MillingInkOfDreams',
     ItemId = core.Items.Herbs.GreenTeaLeaf,
     Quantity = 200,
     Content = core.Content.MoP,
@@ -148,6 +158,7 @@ core.Data.Results.Flips.InkOfDreams = {
 -- Wod 
 
 core.Data.Results.Flips.CeruleanPigment = {
+    Id = 'MillingCeruleanPigment',
     ItemId = core.Items.Herbs.Frostweed,
     Quantity = 200,
     Content = core.Content.WoD,
@@ -163,6 +174,7 @@ core.Data.Results.Flips.CeruleanPigment = {
 -- Legion
 
 core.Data.Results.Flips.RoseatePigment = {
+    Id = 'MillingRoseatePigment',
     ItemId = core.Items.Herbs.Dreamleaf,
     Quantity = 200,
     Content = core.Content.Legion,
@@ -179,6 +191,7 @@ core.Data.Results.Flips.RoseatePigment = {
 -- BFA
 
 core.Data.Results.Flips.CrimsonInk = {
+    Id = 'MillingCrimsonInk',
     ItemId = core.Items.Herbs.Riverbud,
     Quantity = 200,
     Content = core.Content.BFA,
@@ -193,6 +206,7 @@ core.Data.Results.Flips.CrimsonInk = {
 }
 
 core.Data.Results.Flips.MaroonInk = {
+    Id = 'MillingMaroonInk',
     ItemId = core.Items.Herbs.Zinanthid,
     Quantity = 200,
     Content = core.Content.BFA,

@@ -4,14 +4,21 @@ local AceGUI = LibStub("AceGUI-3.0")
 
 local GridColumns = core.GridColumns
 
-function GridColumns.ItemNameColumn()
-    local self = GridColumns.GridColumn('Name')
+function GridColumns.ItemNameColumn(options)
+    options = options or {}
+    options.Name = options.Name or 'Name'
+
+    local self = GridColumns.GridColumn(options)
+
+    self.ItemIdProperty = options.ItemIdProperty or "ItemId"
 
     function self.GetSortValue(row)
         local key = self.Name .. "_Order"
         if not row[key] then
-            if row.Data.ItemId then
-                row[key] = core.TSMHelper.GetItemName(row.Data.ItemId)
+            if row.Data.PetId then
+                row[key] = core.TSMHelper.GetItemName('p:'.. row.Data.PetId)
+            elseif row.Data[self.ItemIdProperty] then
+                row[key] = core.TSMHelper.GetItemName(row.Data[self.ItemIdProperty])
             elseif row.Data.NameMapId then
                 row[key] = core.LocationHelper.GetMapName(row.Data.NameMapId)
             else
@@ -19,12 +26,21 @@ function GridColumns.ItemNameColumn()
             end
         end
 
+        if row.Data.NameSuffix then
+            row[key] = row[key] .. " " .. core.GetString(row.Data.NameSuffix)
+        end
+
         return row[key] or ''
     end
 
+    function self.GetFilterValue(row)
+        return strlower(self.GetSortValue(row))
+    end
+
     function self.Value(data)
-        if data.ItemId then
-            return core.TSMHelper.GetItemLink(data.ItemId)
+        if data.ItemLink then return data.ItemLink end
+        if data[self.ItemIdProperty] then
+            return core.TSMHelper.GetItemLink(data[self.ItemIdProperty])
         end
 
         return data.NameMapId and core.LocationHelper.GetMapName(data.NameMapId) or data.Name
@@ -32,16 +48,22 @@ function GridColumns.ItemNameColumn()
 
     local baseGetRowText = self.GetRowText
     function self.GetRowText(row)
+        local text = baseGetRowText(row)
+
         if row.Data.Quantity then
-            return baseGetRowText(row) .. " x" .. row.Data.Quantity
-        else
-            return baseGetRowText(row)
+            text = text .. " x" .. row.Data.Quantity
         end
+
+        if row.Data.NameSuffix then
+            text = text .. " " .. core.GetString(row.Data.NameSuffix)
+        end
+
+        return text
     end
 
     local baseGetCell = self.GetCell
     function self.GetCell(row)
-        if row.Data.ItemId then
+        if row.Data[self.ItemIdProperty] then
             local cell = AceGUI:Create("SimpleGroup")
             local link = AceGUI:Create("InteractiveLabel")
             local itemLink = self.Value(row.Data)
@@ -53,11 +75,19 @@ function GridColumns.ItemNameColumn()
                 GameTooltip:SetOwner(link.frame, "ANCHOR_PRESERVE")
 	            GameTooltip:ClearAllPoints()
 	            GameTooltip:SetPoint("LEFT", link.frame, "RIGHT")
-                GameTooltip:SetHyperlink("item:" .. row.Data.ItemId)
-                GameTooltip:Show()
+                if row.Data.PetId then
+                    BattlePetToolTip_ShowLink(row.Data.ItemLink)
+                else
+                    GameTooltip:SetHyperlink("item:" .. row.Data[self.ItemIdProperty])
+                    GameTooltip:Show()
+                end
             end)
             link:SetCallback("OnLeave", function()
-                GameTooltip:Hide()
+                if row.Data.PetId then
+                    BattlePetTooltip:Hide()
+                else
+                    GameTooltip:Hide()
+                end
             end)
             link:SetCallback("OnClick", function()
                 if IsShiftKeyDown() then

@@ -14,6 +14,8 @@ function core.GuideModule(name, sections, category)
         for _, section in pairs(self.Sections) do
             section.Draw(frame)
         end
+
+        core.UI.ToggleQuickSearch(false)
     end
     
     return self

@@ -98,4 +98,6 @@ core.Maps = {
     StormsongValley = 942,
     TiragardeSound = 895,
     Voldun = 864,
+    BFAUldum = 1527,
+    BFAValeOfEternalBlossoms = 1530,
 }

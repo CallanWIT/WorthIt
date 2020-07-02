@@ -4,11 +4,10 @@ local TSMHelper = {}
 
 core.TSMHelper = TSMHelper
 
-local cache = { ItemValues = {}, ItemVendorBuyPrice = {}, ItemVendorSellPrice = {}, ItemDestroyingPrice = {}, ItemSellRates = {}, ItemNames = {} }
 local version = nil
-local priceSource = nil
 
 local priceSources = {
+    'Custom',
     'DBMinBuyout',
     'DBMarket',
     'DBHistorical',
@@ -22,48 +21,89 @@ TSMHelper.PetCageItemId = 82800
 
 function TSMHelper.Initialize()
     version = GetAddOnMetadata("TradeSkillMaster", "Version")
-    priceSource = WITDB.Settings.PricingSelect
 end
 
-function TSMHelper.GetItemPrice(item)
+function TSMHelper.IsValidCustomPrice(customPrice)
+    return TSM_API.IsCustomPriceValid(customPrice)
+end
+
+function TSMHelper.HasCustomPrice(itemId)
+    return TSMHelper.GetCustomPrice(itemId) ~= nil
+end
+
+function TSMHelper.GetCustomPrice(itemId)
+    if type(itemId) == "string" then
+        local petId = strsub(itemId, 3)
+        for _, item in pairs(core.Config.GetCustomItemPrices()) do
+            if item.PetId == petId then
+                return item.PriceSource
+            end
+        end
+    else
+        for _, item in pairs(core.Config.GetCustomItemPrices()) do
+            if item.ItemId == itemId then
+                return item.PriceSource
+            end
+        end
+    end
+
+    return nil
+end
+
+local function getPriceSourceForItem(itemId)
+    local priceSource = TSMHelper.GetCustomPrice(itemId)
+
+    if not priceSource and (type(itemId) == "string" or itemId > 152500) then
+        priceSource = core.Config.GetPriceSource()
+        
+        if priceSource == priceSources[1] then
+            priceSource = core.Config.GetCustomPriceSource()
+        end
+    end
+
+    if not priceSource and itemId <= 152500 then
+        priceSource = core.Config.GetLegacyPriceSource()
+        
+        if priceSource == priceSources[1] then
+            priceSource = core.Config.GetLegacyCustomPriceSource()
+        end
+    end
+
+    return priceSource
+end
+
+function TSMHelper.GetItemPrice(item, priceSource)
     if not TSM_API then
         error("TSM addon not found")
     end
 
-    if not priceSource or priceSource ~= WITDB.Settings.PricingSelect then
-        if not WITDB.Settings.PricingSelect or not TSM_API.IsCustomPriceValid(WITDB.Settings.PricingSelect) then
-            error("Invalid price source")
-        end
-
-        priceSource = WITDB.Settings.PricingSelect
-
-        TSMHelper.ClearValueCache()
-    end
-
-    if cache.ItemValues[item] ~= nil then
-        return cache.ItemValues[item]
-    end
-
     local itemId = type(item) == "number" and "i:" .. item or item
-    local itemPriceSource = item > 152500 and WITDB.Settings.PricingSelect or WITDB.Settings.LegacyPricingSelect
 
-    cache.ItemValues[item] = TSM_API.GetCustomPriceValue(itemPriceSource, itemId)
+    if not priceSource or TSMHelper.HasCustomPrice(item) then
+        priceSource = getPriceSourceForItem(item)
+    end
 
-    if cache.ItemValues[item] == nil or cache.ItemValues[item] == 0 then
+    if not TSMHelper.IsValidCustomPrice(priceSource) then
+        error("Invalid price source")
+    end
+
+    local value = TSM_API.GetCustomPriceValue(priceSource, itemId)
+
+    if value == nil or value == 0 then
         local isMoreGeneral = false
 
         for _, alternativePriceSource in pairs(priceSources) do
-            if isMoreGeneral and (cache.ItemValues[item] == nil or cache.ItemValues[item] == 0) then
-                cache.ItemValues[item] = TSM_API.GetCustomPriceValue(alternativePriceSource, itemId)
+            if isMoreGeneral and (value == nil or value == 0) then
+                value = TSM_API.GetCustomPriceValue(alternativePriceSource, itemId)
             end
 
-            if alternativePriceSource == itemPriceSource then
+            if alternativePriceSource == priceSource then
                 isMoreGeneral = true
             end
         end
     end
 
-    return cache.ItemValues[item]
+    return value
 end
 
 function TSMHelper.GetItemVendorBuyPrice(item)
@@ -71,15 +111,9 @@ function TSMHelper.GetItemVendorBuyPrice(item)
         error("TSM addon not found")
     end
 
-    if cache.ItemVendorBuyPrice[item] ~= nil then
-        return cache.ItemVendorBuyPrice[item]
-    end
-
     local itemId = type(item) == "number" and "i:" .. item or item
 
-    cache.ItemVendorBuyPrice[item] = TSM_API.GetCustomPriceValue('vendorBuy', itemId)
-
-    return cache.ItemVendorBuyPrice[item]
+    return TSM_API.GetCustomPriceValue('vendorBuy', itemId)
 end
 
 function TSMHelper.GetItemVendorSellPrice(item)
@@ -87,15 +121,9 @@ function TSMHelper.GetItemVendorSellPrice(item)
         error("TSM addon not found")
     end
 
-    if cache.ItemVendorSellPrice[item] ~= nil then
-        return cache.ItemVendorSellPrice[item]
-    end
-
     local itemId = type(item) == "number" and "i:" .. item or item
 
-    cache.ItemVendorSellPrice[item] = TSM_API.GetCustomPriceValue('vendorSell', itemId)
-
-    return cache.ItemVendorSellPrice[item]
+    return TSM_API.GetCustomPriceValue('vendorSell', itemId)
 end
 
 function TSMHelper.GetItemDestroyingPrice(item)
@@ -103,15 +131,9 @@ function TSMHelper.GetItemDestroyingPrice(item)
         error("TSM addon not found")
     end
 
-    if cache.ItemDestroyingPrice[item] ~= nil then
-        return cache.ItemDestroyingPrice[item]
-    end
-
     local itemId = type(item) == "number" and "i:" .. item or item
 
-    cache.ItemDestroyingPrice[item] = TSM_API.GetCustomPriceValue('Destroy', itemId)
-
-    return cache.ItemDestroyingPrice[item]
+    return TSM_API.GetCustomPriceValue('Destroy', itemId)
 end
 
 function TSMHelper.GetItemSellRate(item)
@@ -119,15 +141,9 @@ function TSMHelper.GetItemSellRate(item)
         error("TSM addon not found")
     end
 
-    if cache.ItemSellRates[item] ~= nil then
-        return cache.ItemSellRates[item]
-    end
-
     local itemId = type(item) == "number" and "i:" .. item or item
 
-    cache.ItemSellRates[item] = TSM_API.GetCustomPriceValue('DBregionsaleRate*1000', itemId) or 0
-
-    return cache.ItemSellRates[item]
+    return TSM_API.GetCustomPriceValue('DBregionsaleRate*1000', itemId) or 0
 end
 
 function TSMHelper.GetItemSoldPerDay(item)
@@ -135,15 +151,9 @@ function TSMHelper.GetItemSoldPerDay(item)
         error("TSM addon not found")
     end
 
-    if cache.ItemSellRates[item] ~= nil then
-        return cache.ItemSellRates[item]
-    end
-
     local itemId = type(item) == "number" and "i:" .. item or item
 
-    cache.ItemSellRates[item] = TSM_API.GetCustomPriceValue('DBRegionSoldPerDay', itemId)
-
-    return cache.ItemSellRates[item]
+    return TSM_API.GetCustomPriceValue('DBRegionSoldPerDay', itemId)
 end
 
 function TSMHelper.GetItemLink(item)
@@ -161,15 +171,9 @@ function TSMHelper.GetItemName(item)
         error("TSM addon not found")
     end
 
-    if cache.ItemNames[item] ~= nil then
-        return cache.ItemNames[item]
-    end
-
     local id = type(item) == "number" and "i:" .. item or item
 
-    cache.ItemNames[item] = TSM_API.GetItemName(id)
-
-    return cache.ItemNames[item]
+    return TSM_API.GetItemName(id)
 end
 
 function TSMHelper.ToMoneyString(value)
@@ -180,35 +184,63 @@ function TSMHelper.ToMoneyString(value)
     return value ~= nil and TSM_API.FormatMoneyString(value) or ''
 end
 
-local function GetItemBelowTresholdValue()
+function TSMHelper.ToColoredMoneyString(value)
+    if not TSM_API then
+        error("TSM addon not found")
+    end
+
+    local moneyString = core.TSMHelper.ToMoneyString(value)
+
+    if value ~= nil and value < 0 then
+        moneyString = "|cFFFF0000" .. moneyString:gsub("|r", "|cFFFF0000") .. "|r"
+    end
+
+    return moneyString or ''
+end
+
+local function GetItemBelowThresholdValue()
     local price = core.TSMHelper.GetItemVendorSellPrice(id)
 end
 
-function TSMHelper.GetInventoryValue()
+function TSMHelper.GetInventoryValue(priceSource)
+    return TSMHelper.GetBagsValue({0, 1, 2, 3, 4}, priceSource)
+end
+
+function TSMHelper.GetBankValue(priceSource)
+    local bags = { BANK_CONTAINER }
+    local bankSlots = GetNumBankSlots()
+    for num = NUM_BAG_SLOTS+1, NUM_BAG_SLOTS+bankSlots do
+        table.insert(bags, num)
+    end
+    return TSMHelper.GetBagsValue(bags, priceSource)
+end
+
+function TSMHelper.GetBagsValue(bags, priceSource)
     local sum = 0
     local isValidData = true
 
-    for bag = 0, 4 do
+    for _, bag in pairs(bags) do
         local slots=GetContainerNumSlots(bag)
 
         for slot=1,slots do
             local _,c,_,q,_,_,link,_,_,id = GetContainerItemInfo(bag,slot)
 
             if c and id then
+                local _, _, _, _, _, _, _, _, _, _, itemSellPrice = GetItemInfo(link)
                 local isBound = C_Item.IsBound(ItemLocation:CreateFromBagAndSlot(bag, slot))
                 local price = nil
-
-                if isBound or (q ~= nil and q or -1) < core.Config.GetBagValueMinQuality() or (core.TSMHelper.GetItemPrice(id) or 0) < core.Config.GetBagValueMinPrice() * 10000 then
-                    local belowTresholdValue = core.Config.GetBelowTresholdValue()
-                    if belowTresholdValue == 1 then
-                        price = core.TSMHelper.GetItemVendorSellPrice(id) or 0
-                    elseif belowTresholdValue == 2 then
-                        price = core.TSMHelper.GetItemDestroyingPrice(id) or core.TSMHelper.GetItemVendorSellPrice(id) or 0
+                local itemId = id == TSMHelper.PetCageItemId and 'p:'.. strmatch(link,"Hbattlepet:(%d+):") or id
+                if (isBound and not TSMHelper.HasCustomPrice(itemId)) or core.ScrapHelper.IsJunk(id) or (q ~= nil and q or -1) < core.Config.GetBagValueMinQuality() or (core.TSMHelper.GetItemPrice(itemId, priceSource) or 0) < core.Config.GetBagValueMinPrice() * 10000 then
+                    local belowThresholdValue = core.Config.GetBelowThresholdValue()
+                    if belowThresholdValue == 1 then
+                        price = itemSellPrice or 0
+                    elseif belowThresholdValue == 2 then
+                        price = core.TSMHelper.GetItemDestroyingPrice(id) or itemSellPrice or 0
                     else
                         price = 0
                     end
                 else
-                    price = core.TSMHelper.GetItemPrice(id)
+                    price = core.TSMHelper.GetItemPrice(itemId, priceSource)
                 end
 
                 if price ~= nil then
@@ -234,7 +266,7 @@ function TSMHelper.GetPriceSources()
 end
 
 function TSMHelper.DefaultPriceSource()
-    return priceSources[2]
+    return priceSources[3]
 end
 
 function TSMHelper.IsTSMAPIAvailable()
@@ -244,9 +276,4 @@ end
 function TSMHelper.IsTSMDBAvailable()
     -- checks if historical price for copper ore or current content ore is available
     return (TSM_API.GetCustomPriceValue('DBHistorical', "i:2770") or TSM_API.GetCustomPriceValue('DBHistorical', "i:152512")) ~= nil
-end
-
-function TSMHelper.ClearValueCache()
-    cache.ItemValues = {}
-    cache.ItemSellRates = {}
 end

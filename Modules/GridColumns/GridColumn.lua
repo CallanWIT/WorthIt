@@ -4,12 +4,19 @@ local AceGUI = LibStub("AceGUI-3.0")
 
 local GridColumns = core.GridColumns
 
-function GridColumns.GridColumn(name)
+function GridColumns.GridColumn(options)
+    options = options or {}
+    options.Visible = options.Visible == nil and true or options.Visible
+    options.Name = options.Name or ''
+    options.Sortable = options.Sortable == nil and true or options.Sortable
+    options.IsFixedSize = options.IsFixedSize or false
+
     local self = {
-        Visible = true,
-        Name = name,
-        DisplayName = core.GetString(name),
-        Sortable = true
+        Visible = options.Visible,
+        Name = options.Name,
+        DisplayName = core.GetString(options.Name),
+        Sortable = options.Sortable,
+        IsFixedSize = options.IsFixedSize,
     }
 
     function self.Value(data)

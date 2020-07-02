@@ -2,8 +2,11 @@ local WIT, core = ...
 
 local GridColumns = core.GridColumns
 
-function GridColumns.LocationsColumn()
-    local self = GridColumns.GridColumn('Locations')
+function GridColumns.LocationsColumn(options)
+    options = options or {}
+    options.Name = options.Name or 'Locations'
+
+    local self = GridColumns.GridColumn(options)
 
     function self.Value(data)
         local locations = {}
@@ -17,6 +20,10 @@ function GridColumns.LocationsColumn()
         end
 
         return table.concat(locations, ", ")
+    end
+
+    function self.GetFilterValue(row)
+        return strlower(self.GetSortValue(row))
     end
     
     return self

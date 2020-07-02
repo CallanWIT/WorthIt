@@ -4,11 +4,14 @@ local AceGUI = LibStub("AceGUI-3.0")
 
 local GridColumns = core.GridColumns
 
-function GridColumns.ProfitColumn(costColumn, valueColumn)
-    local self = GridColumns.GridColumn('Profit')
+function GridColumns.ProfitColumn(options)
+    options = options or {}
+    options.Name = options.Name or 'Profit'
 
-    self.CostColumn = costColumn
-    self.ValueColumn = valueColumn
+    local self = GridColumns.GridColumn(options)
+
+    self.CostColumn = options.CostColumn
+    self.ValueColumn = options.ValueColumn
     self.Description = core.GetString('ProfitDescription')
 
     function self.Value(data)
@@ -20,13 +23,8 @@ function GridColumns.ProfitColumn(costColumn, valueColumn)
 
     function self.GetRowText(row)
         row[self.Name] = row[self.Name] or self.Value(row.Data)
-        local moneyString = core.TSMHelper.ToMoneyString(row[self.Name])
 
-        if row[self.Name] ~= nil and row[self.Name] < 0 then
-            moneyString = "|cFFFF0000" .. moneyString:gsub("|r", "|cFFFF0000") .. "|r"
-        end
-
-        return moneyString
+        return core.TSMHelper.ToColoredMoneyString(row[self.Name])
     end
     
     return self

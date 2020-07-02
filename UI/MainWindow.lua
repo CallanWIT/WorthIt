@@ -54,6 +54,13 @@ function MainWindow.GetWindowHeight()
     return GetScreenHeight()*0.6 / core.Config.GetScaling()
 end
 
+function MainWindow.Init()
+    if not window then
+        window = createWindow()
+        window:Hide()
+    end
+end
+
 function MainWindow.Show()
     window = window or createWindow()
     window:Show()

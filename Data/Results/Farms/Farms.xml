@@ -7,4 +7,5 @@
 	<Script file="Cloth.lua"/>
 	<Script file="Misc.lua"/>
 	<Script file="VanillaTransmog.lua"/>
+    <Script file="BattlePets.lua"/>
 </Ui>

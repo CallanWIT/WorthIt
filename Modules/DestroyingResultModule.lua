@@ -4,8 +4,8 @@ function core.DestroyingResultModule(name, data, category)
     local self = core.GridModule(name, data, category)
 
     local costColumn = core.GridColumns.CostColumn()
-    local resultColumn = core.GridColumns.ResultsValueColumn("FlipResult")
-    local profitColumn = core.GridColumns.ProfitColumn(costColumn, resultColumn)
+    local resultColumn = core.GridColumns.ResultsValueColumn({ Name = "FlipResult" })
+    local profitColumn = core.GridColumns.ProfitColumn({ CostColumn = costColumn, ValueColumn = resultColumn })
 
     self.Columns = {
         core.GridColumns.ItemNameColumn(),

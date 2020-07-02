@@ -17,8 +17,6 @@ function core:Init(event, name)
 end
 
 function core.ClearCache()
-    core.TSMHelper.ClearValueCache()
-
     for _, module in pairs(core.Modules) do
         if module.ClearCache then
             module.ClearCache()

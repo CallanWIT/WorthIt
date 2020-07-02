@@ -9,3 +9,4 @@ core.Activity.Fishing = 4
 core.Activity.Cloth = 5
 core.Activity.Transmog = 6
 core.Activity.Misc = 7
+core.Activity.BattlePets = 8

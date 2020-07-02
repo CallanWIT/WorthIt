@@ -12,7 +12,9 @@
     <Script file="DestroyingResultModule.lua"/>
     
     <Script file="Modules.lua"/>
-    
+
+    <Script file="BattlePets\RaidBattlePetModule.lua"/>
+
     <Script file="Farming\MiningModule.lua"/>
     <Script file="Farming\HerbModule.lua"/>
     <Script file="Farming\FishingModule.lua"/>
@@ -33,8 +35,10 @@
     <Script file="Guides\InstallationGuide.lua"/>
     <Script file="Guides\BattlePetGuide.lua"/>
     <Script file="Guides\TransmogGuide.lua"/>
+    <Script file="Guides\WorthItGuides.lua"/>
 
     <Script file="DashboardModule.lua"/>
     <Script file="CustomResultModule.lua"/>
+    <Script file="FarmPlannerModule.lua"/>
     <Script file="ConfigurationModule.lua"/>
 </Ui>

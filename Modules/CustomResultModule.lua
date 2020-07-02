@@ -1,10 +1,85 @@
 local WIT, core = ...
 
 local AceGUI = LibStub("AceGUI-3.0")
+local LibBase64 = LibStub("LibBase64-1.0")
+local AceSerializer = LibStub("AceSerializer-3.0")
 
-local function ShowRecorder()
-    core.Recorder().Show()
-    core.UI.MainWindow.Hide()
+local function remove(row)
+    core.UI.ConfirmableDialog({ Text = core.GetString("RemoveFarmConfirmationMessage"), OnAccept = function()
+        core.TableHelper.RemoveValue(core.Config.GetUserFarms(), row.Data)
+
+        local module = core.UI.MainWindow.CurrentModule()
+        module.ClearCache()
+        module.Refresh()
+    end })
+end
+
+local function edit(row)
+    local recorder = core.Recorder()
+
+    if not recorder.Session.IsRunning then
+        recorder.LoadSession(row.Data)
+        recorder.Show()
+        core.UI.MainWindow.Hide()
+    else
+        print(core.GetString("RecordingInProgress"))
+    end
+end
+
+local function duplicate(row)
+    local farms = core.Config.GetUserFarms()
+    local data = core.TableHelper.DeepCopy(row.Data)
+    data.Id = core.NewCustomFarmId()
+
+    table.insert(farms, data)
+
+    core.UserDataModule.ClearCache()
+    core.DashboardModule.ClearCache()
+
+    if core.UI.MainWindow.CurrentModule() == core.UserDataModule then
+        core.UI.MainWindow.ShowModule(core.UserDataModule)
+    elseif core.UI.MainWindow.CurrentModule() == core.DashboardModule then
+        core.UI.MainWindow.ShowModule(core.DashboardModule)
+    end
+end
+
+local function export(row)
+    local text = LibBase64.Encode(AceSerializer:Serialize(row.Data))
+    core.UI.ShowDialog({ Text = core.GetString("ImportStringMessage"), Button1 = core.GetString("Ok"), HasEditBox = true, TextBoxValue = text, SelectText = true })
+end
+
+local function customResultItemMenu(module, row)
+    local menu = core.FarmResultItemMenu(module, row)
+
+    table.insert(menu, {
+        Name = "Edit",
+        DisplayName = core.GetString("Edit"),
+        Action = edit,
+        ActionArg = row,
+    })
+
+    table.insert(menu, {
+        Name = "Duplicate",
+        DisplayName = core.GetString("Duplicate"),
+        Action = duplicate,
+        ActionArg = row,
+    })
+
+    table.insert(menu, {
+        Name = "Export",
+        DisplayName = core.GetString("Export"),
+        Action = export,
+        ActionArg = row,
+    })
+
+    table.insert(menu, {
+        Name = "Remove",
+        DisplayName = core.GetString("Remove"),
+        Action = remove,
+        ActionArg = row,
+    })
+
+    return menu
 end
 
 function core.CustomResultModule(name, category)
@@ -13,11 +88,12 @@ function core.CustomResultModule(name, category)
     local resultColumn = core.GridColumns.ResultsValueColumn()
 
     self.Columns = {
+        core.GridColumns.ExpandRowColumn(),
+        core.GridColumns.ContextMenuColumn({ GetMenu = customResultItemMenu }),
         core.GridColumns.ItemNameColumn(),
         resultColumn,
         core.GridColumns.LocationsColumn(),
         core.GridColumns.ItemSellRateColumn(),
-        core.GridColumns.CustomActionsColumn(),
     }
 
     self.Sort = {
@@ -27,28 +103,6 @@ function core.CustomResultModule(name, category)
 
     self.GetData = function ()
         return core.Config.GetUserFarms()
-    end
-
-    local baseDraw = self.Draw
-    function self.Draw(container)
-        local frame = AceGUI:Create("SimpleGroup")
-        frame:SetLayout("List")
-        container:AddChild(frame)
-
-        local recorderButton = AceGUI:Create("Button")
-        recorderButton:SetText(core.GetString("Recorder")) --
-        recorderButton:SetFullWidth(true)
-        recorderButton:SetCallback("OnClick", ShowRecorder)
-        frame:AddChild(recorderButton)
-
-        local gridFrame = AceGUI:Create("SimpleGroup")
-        gridFrame:SetFullWidth(true)
-        gridFrame:SetHeight(frame.frame:GetHeight() - recorderButton.frame:GetHeight() - 10)
-        gridFrame:SetLayout("Fill")
-
-        baseDraw(gridFrame)
-
-        frame:AddChild(gridFrame)
     end
 
     return self

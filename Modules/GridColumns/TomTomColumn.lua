@@ -4,11 +4,14 @@ local AceGUI = LibStub("AceGUI-3.0")
 
 local GridColumns = core.GridColumns
 
-function GridColumns.TomTomColumn()
-    local self = GridColumns.GridColumn('Waypoints')
+function GridColumns.TomTomColumn(options)
+    options = options or {}
+    options.Name = options.Name or 'Waypoints'
+    options.Sortable = options.Sortable or false
+
+    local self = GridColumns.GridColumn(options)
 
     self.Description = core.GetString('WaypointsDescription')
-    self.Sortable = false
 
     function self.Value(data)
         return data.Waypoints and core.TomTomHelper.IsTomTomAvailable()
@@ -19,8 +22,8 @@ function GridColumns.TomTomColumn()
     end
 
     local baseIsVisible = self.IsVisible
-    function self.IsVisible(rows)
-        if not baseIsVisible or not core.TomTomHelper.IsTomTomAvailable() then return false end
+    function self.IsVisible(module, rows)
+        if not baseIsVisible() or not core.TomTomHelper.IsTomTomAvailable() then return false end
 
         for _, row in pairs(rows) do
             if row.Data.Waypoints then

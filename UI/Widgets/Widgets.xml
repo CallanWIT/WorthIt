@@ -1,0 +1,11 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+    <Script file="Layouts.lua"/>
+    <Script file="WITDropDownMenu.lua"/>
+    <Script file="WITScrollFrame.lua"/>
+    <Script file="ActionIcon.lua"/>
+    <Script file="ContextMenu.lua"/>
+    <Script file="ItemLinkLabel.lua"/>
+    <Script file="RoutePicker.lua"/>
+    <Script file="Grid.lua"/>
+</Ui>

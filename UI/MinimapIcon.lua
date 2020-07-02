@@ -21,6 +21,12 @@ function MinimapIcon.Initialize()
     end
 end
 
+function MinimapIcon.ResetPosition()
+    local LDBIcon = LibStub("LibDBIcon-1.0", true)
+    WITDB.Settings.MinimapIcon = {}
+    LDBIcon:Show("WIT")
+end
+
 function MinimapIcon.OnIconClick()
     core.UI.MainWindow.Toggle()
 end

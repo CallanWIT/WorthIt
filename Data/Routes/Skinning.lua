@@ -288,24 +288,40 @@ core.Data.Routes.Skinning.CoarseLeatherDrustvar = {
 	}
 }
 
-core.Data.Routes.Skinning.DredgedLeatherNazjatar = {
+core.Data.Routes.Skinning.DredgedLeatherUldum = {
     Name = "RouteDredgedLeather",
-    MapId = core.Maps.Nazjatar,
+    MapId = core.Maps.BFAUldum,
     Data = {
+	    ["route"] = {
+		    77605642, -- [1]
+		    74126465, -- [2]
+		    70575635, -- [3]
+	    },
+	    ["color"] = {
+		    0, -- [1]
+		    0.09411764705882353, -- [2]
+		    1, -- [3]
+		    1, -- [4]
+	    },
+	    ["length"] = 10879.30812413035,
+	}
+}
+
+core.Data.Routes.Skinning.DredgedLeatherValeOfEternalBlossoms = {
+    Name = "RouteDredgedLeather",
+    MapId = core.Maps.BFAValeOfEternalBlossoms,
+    Data = {
+		["route"] = {
+			27245987, -- [1]
+			31116497, -- [2]
+			24697358, -- [3]
+		},
 		["color"] = {
 			0, -- [1]
 			0.09411764705882353, -- [2]
 			1, -- [3]
 			1, -- [4]
 		},
-		["length"] = 7491.456615745014,
-		["route"] = {
-			78102984, -- [1]
-			80293637, -- [2]
-			78374329, -- [3]
-			73214155, -- [4]
-			70173447, -- [5]
-			73012879, -- [6]
-		},
+		["length"] = 4391.263386135568,
 	}
 }
