@@ -1,5 +1,9 @@
 local WIT, core = ...
 
+
+-- Find Location Map ID's = /script print(C_Map.GetBestMapForUnit("player"))
+
+
 core.Maps = {
     Ashenvale = 63,
     BlastedLands = 17,
@@ -15,6 +19,7 @@ core.Maps = {
     WesternPlaguelands = 22,
     Wetlands = 56,
     Winterspring = 83,
+	UngoroCrater = 78,
 
     TheDeadMines = 291,
     Stratholme = 318,
@@ -46,6 +51,7 @@ core.Maps = {
     ShadowmoonValley = 104,
     TerokkarForest = 108,
     Zangarmarsh = 102,
+	BladesEdgeMTs = 105,
 
     -- WotLK
 
@@ -81,6 +87,8 @@ core.Maps = {
 
     TanaanJungle = 534,
     WODShadowmoonValley = 539,
+	FrostfireRidge = 525,
+	
 
     -- Legion
 
@@ -92,6 +100,9 @@ core.Maps = {
     Valsharah = 641,
 
     -- BFA
+	
+	Zandalar = 862,
+	Nazmir = 863,
 
     Drustvar = 896,
     Nazjatar = 1355,
@@ -100,4 +111,59 @@ core.Maps = {
     Voldun = 864,
     BFAUldum = 1527,
     BFAValeOfEternalBlossoms = 1530,
+	
+	-- Dungeons/Raids
+	
+	
+	-- wotlk
+	ICC = 186,
+	Ulduar = 147,
+	TrialOfCrus = 172,
+	VaultofArch = 156,
+	Naxx = 166,
+	Obsidiansanc = 155,
+	EyeofEternity = 141,
+	OnyxiasLair = 248,
+	RubySanctum = 200,
+	
+	--cata
+	
+    Baradinhold = 282,
+    Blackwingdecent = 285,
+    BastionofTwilight = 294,
+    ThroneofFourWinds = 328,
+    Firelands = 367,
+    Dragonsoul = 409,
+	
+	-- mop
+	
+	Mogushan = 471,
+	HeartofFear = 474,
+	Terraceofendless = 456,
+	ThroneofThunder = 510,
+	SeigeofOrgrimmar = 563,
+	
+	--wod
+	
+	HellfireCitatel = 661,
+	Highmaul = 615,
+	Blackrockfoundry = 598,
+	Skyreach = 601,
+	
+	-- legion
+	
+	TombofSargeras = 856,
+	EmeraldNightmare = 777,
+	Nighthold = 766,
+	TrialofValor = 807,
+	Antorus = 917,
+	
+	--bfa
+	
+	FreeHold = 936,
+	
+	
+	
+	
+	
 }

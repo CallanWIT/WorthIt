@@ -22,6 +22,8 @@ core.Locations.Kalimdor = {
     NorthernBarrens = 17,
     SouthernBarrens = 4709,
     Desolace = 405,
+	UngoroCrater = 490,
+	TolBarad = 5095,
 }
 
 
@@ -46,6 +48,7 @@ core.Locations.VanillaDungeons = {
     SunkenTemple2 = 1417,
     BlackrockDepths2 = 1584,
     LowerBlackrockSpire = 1583,
+	BlackWingLair = 2677,
 }
 
 core.Locations.EasternKingdoms = {
@@ -78,6 +81,7 @@ core.Locations.Outlands = {
 	HellfirePeninsula = 3483,
 	BlackTemple = 3840,
 	ShadowmoonValleyOld = 3520,
+	BladesEdgeMT = 3522,
 }
 
 core.Locations.Northrend = {
@@ -89,6 +93,7 @@ core.Locations.Northrend = {
 	ZulDrak = 66,
 	StormPeaks = 67,
 	HowlingFjord = 495,
+	Dragonblight = 65,
 }
 
 core.Locations.Cata = {
@@ -104,11 +109,16 @@ core.Locations.Pandaria = {
 	TownlongSteppes = 5842,
 	HeartOfFear = 6297,
 	ValeofEternalBlossoms = 5840 , 
+	IsleofThunder = 6507,
 }
 
 core.Locations.Draenor = {
     TanaanJungle = 6723,
 	ShadowmoonValley = 6719,
+	FrostfireRidge = 6720,
+	NagrandWod = 6755,
+	Gorgrond = 6721,
+	SpiresofArrak = 6722,
 }
 
 core.Locations.BrokenIsles = {
@@ -117,14 +127,18 @@ core.Locations.BrokenIsles = {
 	ValShara = 7558,
 	Highmountain = 7503,
 	Stormheim = 7541,
+	BrokenShore = 8336,
 }
 
 core.Locations.Argus = {
     Krokunn = 8574,
+	Antoranwastes = 8899,
 }
 
 core.Locations.BFA = {
     TiragardeSound = 8567,
+	StormsongValley = 9042,
+	Nazmir = 8500,
     Nazjatar = 10052,
 	Voldun = 8501,
 	Drustvar = 8721,
@@ -137,4 +151,10 @@ core.Locations.Others = {
     Vashjir = 5146,
 	Deepholm = 5042,
 	DarkmoonIsland = 5861,
+}
+
+core.Locations.RawGoldDungeons = {
+
+HellFireCitidal = 3545,
+
 }

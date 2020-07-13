@@ -71,6 +71,24 @@ function core.PrintBankValue(priceSource)
     end
 end
 
+function core.ListInventory(priceSource)
+    local isUnitPrice = priceSource == "unitprice"
+    priceSource = not isUnitPrice and priceSource ~= "diff" and priceSource ~= "difference" and priceSource or nil
+
+    if priceSource and not core.TSMHelper.IsValidCustomPrice(priceSource) then
+        AceConsole:Print(core.GetString("InvalidPriceSource"))
+        return
+    end
+
+    local list = core.TSMHelper.GetInventoryContent(priceSource)
+
+    if list ~= nil then
+        for _, item in pairs(list) do
+            print(string.format("%sx%d - %s", item.ItemLink, item.Quantity, core.TSMHelper.ToMoneyString(item.Price * (isUnitPrice and 1 or item.Quantity))))
+        end
+    end
+end
+
 local function OpenWITWindow()
     core.UI.MainWindow.Show()
 end
@@ -103,6 +121,7 @@ local function ConsoleHandler(input)
     options["rec"] = OpenWITRecorderWindow
     options["bagvalue"] = core.PrintInventoryValue
     options["bankvalue"] = core.PrintBankValue
+    options["baglist"] = core.ListInventory
 
     if input == nil or input == '' then
         core.UI.MainWindow.Toggle()

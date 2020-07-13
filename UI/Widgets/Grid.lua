@@ -121,7 +121,8 @@ function core.UI.Grid(options)
         group:AddChild(header)
 
         for _, item in pairs(data) do
-            local itemLabel = core.UI.ItemLinkLabel(item, { Prefix = "       ", Suffix = item.Quantity > 1 and (" x" .. item.Quantity) or "" })
+            if item.Quantity and type(item.Quantity) == "string" then item.Quantity = tonumber(item.Quantity) end
+            local itemLabel = core.UI.ItemLinkLabel(item, { Prefix = "       ", Suffix = (item.Quantity or 1) > 1 and (" x" .. (item.Quantity or 1)) or "" })
             group:AddChild(itemLabel)
         end
 

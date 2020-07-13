@@ -170,30 +170,31 @@ local function ResetSession()
     UpdateUI()
 end
 
-local function NormaliseSession(session)
-    local copy = core.TableHelper.DeepCopy(session)
-    copy.Mode = copy.Mode or copy.ItemId and "item" or copy.NameMapId and "location" or "text"
+local function NormaliseSession(session, createCopy)
+    session = createCopy and core.TableHelper.DeepCopy(session) or session
+    session.Mode = session.Mode or session.ItemId and "item" or session.NameMapId and "location" or "text"
 
-    if copy.Mode == "location" then
-        copy.Name = nil
-        copy.ItemId = nil
-    elseif copy.Mode == "item" then
-        copy.Name = nil
-        copy.NameMapId = nil
+    if session.Mode == "location" then
+        session.Name = nil
+        session.ItemId = nil
+    elseif session.Mode == "item" then
+        session.Name = nil
+        session.NameMapId = nil
     else
-        copy.ItemId = nil
-        copy.NameMapId = nil
+        session.ItemId = nil
+        session.NameMapId = nil
+        session.Name = session.Name or ""
     end
 
-    if copy.Routes and #copy.Routes == 1 then
-        copy.RouteZone = copy.Routes[1].RouteZone
-        copy.RouteKey = copy.Routes[1].RouteKey
-        copy.RouteName = copy.Routes[1].RouteName
-        copy.RouteData = copy.Routes[1].RouteData
-        copy.Routes = nil
+    if session.Routes and #session.Routes == 1 then
+        session.RouteZone = session.Routes[1].RouteZone
+        session.RouteKey = session.Routes[1].RouteKey
+        session.RouteName = session.Routes[1].RouteName
+        session.RouteData = session.Routes[1].RouteData
+        session.Routes = nil
     end
 
-    return copy
+    return session
 end
 
 local function SetCurrentLocation()
@@ -314,6 +315,24 @@ local function SetTimer()
     })
 end
 
+function SortJunk(row)
+    for _, item in pairs(core.TableHelper.ShallowCopy(self.Session.Results)) do
+        if not item.PetId and core.ScrapHelper.IsJunk(item.Id) then
+            local itemSellPrice = nil
+            if item.ItemLink then
+                _, _, _, _, _, _, _, _, _, _, itemSellPrice = GetItemInfo(item.ItemLink)
+            end
+            itemSellPrice = itemSellPrice or core.TSMHelper.GetItemVendorSellPrice(item.Id)
+            self.Session.Money = self.Session.Money + (itemSellPrice or 0) * (item.Quantity or 0)
+            core.TableHelper.RemoveValue(self.Session.Results, item)
+        end
+    end
+
+    self.UI.LootGrid.ClearCache()
+    self.UI.LootGrid.Reload()
+    UpdateUI()
+end
+
 local function SetIsGroupFarm(isGroup)
     if isGroup then
         self.UI.IsGroupFarmCheckBox:SetValue(false)
@@ -351,7 +370,7 @@ end
 
 local function Save()
     local farms = core.Config.GetUserFarms()
-    local data = NormaliseSession(self.Session)
+    local data = NormaliseSession(self.Session, true)
     SetupRoute(data)
 
     for i, farm in pairs(farms) do
@@ -495,7 +514,7 @@ local function OnEvent(_, event, arg)
 end
 
 local function LoadSession(session)
-    self.Session = NormaliseSession(session)
+    self.Session = NormaliseSession(session, true)
     core.Config.SetCurrentRecorderSession(self.Session)
     self.UI.LootGrid.Show(self.Session.Results)
     UpdateUI()
@@ -553,7 +572,7 @@ local function SetMode(mode)
     elseif mode == "Edit" then
         self.UI.EditModeButton:Disable()
         self.UI.Frame:SetWidth(420)
-        self.UI.Frame:SetHeight(516)
+        self.UI.Frame:SetHeight(536)
     end
 
     if WITDB.Settings.Recorder.Top then
@@ -582,6 +601,8 @@ local function SetMode(mode)
     editTarget:AddChild(self.UI.AddItemIcon)
     editTarget:AddChild(self.UI.LootFrame)
     self.UI.LootFrame:DoLayout()
+
+    editTarget:AddChild(self.UI.SortJunkButton)
 
     compactTarget:AddChild(self.UI.ResetInstancesButton)
 
@@ -785,6 +806,23 @@ local function Init()
     self.UI.ResetInstancesButton:SetFullWidth(true)
     self.UI.ResetInstancesButton:SetCallback("OnClick", ResetInstances)
 
+    self.UI.SortJunkButton = AceGUI:Create("Button")
+    self.UI.SortJunkButton:SetText(core.GetString("SortJunk"))
+    self.UI.SortJunkButton:SetFullWidth(true)
+    self.UI.SortJunkButton:SetCallback("OnClick", SortJunk)
+    self.UI.SortJunkButton:SetCallback("OnEnter", function()
+        GameTooltip:SetOwner(self.UI.SortJunkButton.frame, "ANCHOR_PRESERVE")
+	    GameTooltip:ClearAllPoints()
+	    GameTooltip:SetPoint("LEFT", self.UI.SortJunkButton.frame, "RIGHT")
+        GameTooltip:ClearLines()
+        GameTooltip:AddLine(core.GetString("SortJunkTooltip"))
+        GameTooltip:Show()
+    end)
+    self.UI.SortJunkButton:SetCallback("OnLeave", function()
+        GameTooltip:Hide()
+    end)
+    self.UI.SortJunkButton:SetDisabled(not core.ScrapHelper.IsScrapAvailable())
+
     self.UI.ButtonsPanel = AceGUI:Create("SimpleGroup")
     self.UI.ButtonsPanel:SetLayout("Flow")
     self.UI.ButtonsPanel:SetFullWidth(true)
@@ -846,7 +884,7 @@ function core.Recorder()
     self = {}
 
     self.ItemQueue = {}
-    self.Session = core.Config.GetCurrentRecorderSession() or NewSession()
+    self.Session = NormaliseSession(core.Config.GetCurrentRecorderSession() or NewSession())
     core.Config.SetCurrentRecorderSession(self.Session)
 
     if self.Session.IsRunning and self.Session.CurrentTime ~= nil then

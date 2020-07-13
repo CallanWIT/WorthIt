@@ -203,7 +203,25 @@ local function GetItemBelowThresholdValue()
 end
 
 function TSMHelper.GetInventoryValue(priceSource)
-    return TSMHelper.GetBagsValue({0, 1, 2, 3, 4}, priceSource)
+    for i = 1, 10 do
+        local value = TSMHelper.GetBagsValue({0, 1, 2, 3, 4}, priceSource)
+        if value ~= nil then
+            return value
+        end
+    end
+
+    return nil
+end
+
+function TSMHelper.GetInventoryContent(priceSource)
+    for i = 1, 10 do
+        local list = TSMHelper.GetBagsContent({0, 1, 2, 3, 4}, priceSource)
+        if list ~= nil then
+            return list
+        end
+    end
+
+    return nil
 end
 
 function TSMHelper.GetBankValue(priceSource)
@@ -212,7 +230,15 @@ function TSMHelper.GetBankValue(priceSource)
     for num = NUM_BAG_SLOTS+1, NUM_BAG_SLOTS+bankSlots do
         table.insert(bags, num)
     end
-    return TSMHelper.GetBagsValue(bags, priceSource)
+
+    for i = 1, 10 do
+        local value = TSMHelper.GetBagsValue(bags, priceSource)
+        if value ~= nil then
+            return value
+        end
+    end
+
+    return nil
 end
 
 function TSMHelper.GetBagsValue(bags, priceSource)
@@ -245,8 +271,6 @@ function TSMHelper.GetBagsValue(bags, priceSource)
 
                 if price ~= nil then
                     sum = sum + price * c;
-                elseif not isBound then
-                    core.GetString("NoPriceForItem"):format(link)
                 end
             elseif GetContainerItemID(bag,slot) then
                 isValidData = false
@@ -256,6 +280,61 @@ function TSMHelper.GetBagsValue(bags, priceSource)
     
     if isValidData then
         return sum
+    else
+        return nil
+    end
+end
+
+function TSMHelper.GetBagsContent(bags, priceSource)
+    local list = {}
+    local isValidData = true
+
+    for _, bag in pairs(bags) do
+        local slots=GetContainerNumSlots(bag)
+
+        for slot=1,slots do
+            local _,c,_,q,_,_,link,_,_,id = GetContainerItemInfo(bag,slot)
+
+            if c and id then
+                local _, _, _, _, _, _, _, _, _, _, itemSellPrice = GetItemInfo(link)
+                local isBound = C_Item.IsBound(ItemLocation:CreateFromBagAndSlot(bag, slot))
+                local price = nil
+                local itemId = id == TSMHelper.PetCageItemId and 'p:'.. strmatch(link,"Hbattlepet:(%d+):") or id
+                if (isBound and not TSMHelper.HasCustomPrice(itemId)) or core.ScrapHelper.IsJunk(id) or (q ~= nil and q or -1) < core.Config.GetBagValueMinQuality() or (core.TSMHelper.GetItemPrice(itemId, priceSource) or 0) < core.Config.GetBagValueMinPrice() * 10000 then
+                    local belowThresholdValue = core.Config.GetBelowThresholdValue()
+                    if belowThresholdValue == 1 then
+                        price = itemSellPrice or 0
+                    elseif belowThresholdValue == 2 then
+                        price = core.TSMHelper.GetItemDestroyingPrice(id) or itemSellPrice or 0
+                    else
+                        price = 0
+                    end
+                else
+                    price = core.TSMHelper.GetItemPrice(itemId, priceSource)
+                end
+
+                if price ~= nil and price > 0 then
+                    local item
+                    for _, i in pairs(list) do
+                        if i.Id == itemId then
+                            item = i
+                        end
+                    end
+
+                    if item then
+                        item.Quantity = item.Quantity + c
+                    else
+                        table.insert(list, { Id = itemId, ItemLink = link, Quantity = c, Price = price })
+                    end
+                end
+            elseif GetContainerItemID(bag,slot) then
+                isValidData = false
+            end
+        end
+    end
+    
+    if isValidData then
+        return list
     else
         return nil
     end

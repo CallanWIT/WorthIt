@@ -6,6 +6,9 @@
 	<Script file="Skinning.lua"/>
 	<Script file="Cloth.lua"/>
 	<Script file="Misc.lua"/>
+	<Script file="Mounts.lua"/>
+	<Script file="Toys.lua"/>
+	<Script file="RawGold.lua"/>
 	<Script file="VanillaTransmog.lua"/>
     <Script file="BattlePets.lua"/>
 </Ui>

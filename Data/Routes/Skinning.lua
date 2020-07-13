@@ -62,6 +62,35 @@ core.Data.Routes.Skinning.RuggedLeatherSwampOfSorrows = {
 	}
 }
 
+core.Data.Routes.Skinning.TurtleScales = {
+    Name = "TurtleScales",
+    MapId = core.Maps.SwampOfSorrows,
+    Data = {
+		["color"] = {
+			0, -- [1]
+			0.1254901960784314, -- [2]
+			1, -- [3]
+			1, -- [4]
+		},
+		["length"] = 4406.555394813285,
+		["route"] = {
+			83516420, -- [1]
+						83456831, -- [2]
+						81777055, -- [3]
+						78957108, -- [4]
+						77357353, -- [5]
+						77217653, -- [6]
+						76137953, -- [7]
+						71827248, -- [8]
+						73446978, -- [9]
+						76247293, -- [10]
+						78436966, -- [11]
+						78866396, -- [12]
+						81326349, -- [13]
+		},
+	}
+}
+
 -- TBC
 
 core.Data.Routes.Skinning.KnothideLeatherNetherstorm = {
@@ -323,5 +352,142 @@ core.Data.Routes.Skinning.DredgedLeatherValeOfEternalBlossoms = {
 			1, -- [4]
 		},
 		["length"] = 4391.263386135568,
+	}
+}
+
+-- TBC Special
+
+-- CrystalInfusedLeather
+
+core.Data.Routes.Skinning.CrystalInfusedLeather = {
+    Name = "RouteCrystalInfusedLeather",
+    MapId = core.Maps.BladesEdgeMTs,
+    Data = {
+		["route"] = {
+			34344786, -- [1]
+						33066196, -- [2]
+						31437158, -- [3]
+						29137388, -- [4]
+						27187136, -- [5]
+						29054645, -- [6]
+		},
+		["color"] = {
+			0, -- [1]
+			0.09411764705882353, -- [2]
+			1, -- [3]
+			1, -- [4]
+		},
+		["length"] = 9529.030167726909,
+	}
+}
+
+-- NetherDragonScales
+
+core.Data.Routes.Skinning.NetherDragonScales = {
+    Name = "RouteNetherDragonScales",
+    MapId = core.Maps.ShadowmoonValley,
+    Data = {
+		["route"] = {
+			65895589, -- [1]
+						70126200, -- [2]
+						60076051, -- [3]
+		},
+		["color"] = {
+			0, -- [1]
+			0.09411764705882353, -- [2]
+			1, -- [3]
+			1, -- [4]
+		},
+		["length"] = 9660.764764464127,
+	}
+}
+
+
+-- WindScales
+core.Data.Routes.Skinning.WindScales = {
+    Name = "RouteWindScales",
+    MapId = core.Maps.ShadowmoonValley,
+    Data = {
+		["route"] = {
+			47216143, -- [1]
+						51116012, -- [2]
+						46417160, -- [3]
+						44706879, -- [4]
+		},
+		["color"] = {
+			0, -- [1]
+			0.09411764705882353, -- [2]
+			1, -- [3]
+			1, -- [4]
+		},
+		["length"] = 9660.764764464127,
+	}
+}
+
+-- CobraScales
+
+core.Data.Routes.Skinning.CobraScales = {
+    Name = "RouteCobraScales",
+    MapId = core.Maps.Nagrand,
+    Data = {
+		["route"] = {
+			16783024, -- [1]
+						20093250, -- [2]
+						9034363, -- [3]
+						8394110, -- [4]
+		},
+		["color"] = {
+			0, -- [1]
+			0.09411764705882353, -- [2]
+			1, -- [3]
+			1, -- [4]
+		},
+		["length"] = 9704.654585361555,
+	}
+}
+
+-- Vanilla Special
+
+-- WarbearLeather
+
+core.Data.Routes.Skinning.WarbearLeather = {
+    Name = "RouteWarbearLeather",
+    MapId = core.Maps.Winterspring,
+    Data = {
+		["route"] = {
+			56983776, -- [1]
+						57514606, -- [2]
+						53084729, -- [3]
+						52614140, -- [4]
+		},
+		["color"] = {
+			0, -- [1]
+			0.09411764705882353, -- [2]
+			1, -- [3]
+			1, -- [4]
+		},
+		["length"] = 10802.50229662843,
+	}
+}
+
+-- DevilsaurLeather
+
+core.Data.Routes.Skinning.DevilsaurLeather = {
+    Name = "RouteDevilsaurLeather",
+    MapId = core.Maps.UngoroCrater,
+    Data = {
+		["route"] = {
+			35727994, -- [1]
+						35278240, -- [2]
+						33618219, -- [3]
+						33227939, -- [4]
+		},
+		["color"] = {
+			0, -- [1]
+			0.09411764705882353, -- [2]
+			1, -- [3]
+			1, -- [4]
+		},
+		["length"] = 6499.061129804381,
 	}
 }

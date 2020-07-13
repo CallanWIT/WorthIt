@@ -20,9 +20,16 @@ core.Data.Results.Farms.CoarseLeather,
 core.Data.Results.Farms.DredgedLeather,
 core.Data.Results.Farms.DredgedLeatherSpotTwo,
 
+core.Data.Results.Farms.WarbearLeather,
+core.Data.Results.Farms.GreenDragonScales,
+core.Data.Results.Farms.DevilsaurLeather,
+core.Data.Results.Farms.BlackDragonScales,
+core.Data.Results.Farms.TurtleScales,
 
-
-
+core.Data.Results.Farms.WindScales,
+core.Data.Results.Farms.NetherDragonScales,
+core.Data.Results.Farms.CobraScales,
+core.Data.Results.Farms.CrystalInfusedLeather,
 
 }
 

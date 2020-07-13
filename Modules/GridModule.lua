@@ -50,6 +50,8 @@ function core.GridModule(name, data, category)
         }
         self.Grid = core.UI.Grid(options)
         self.Grid.GetData = self.GetData or self.Grid.GetData
+        self.Grid.GetDetailsRowData = self.GetDetailsRowData or self.Grid.GetDetailsRowData
+
         self.Grid:SetCallback("OnReload", OnReload)
 
         container:AddChild(self.CurrentFrame)

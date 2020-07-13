@@ -179,6 +179,12 @@ local function buildNavigationMenu()
         },
         {
             IsGroup = true,
+            Name = "BattlePets",
+            DisplayName = core.GetString("BattlePets"),
+            Category = "BattlePets"
+        },
+        {
+            IsGroup = true,
             Name = "Flippings",
             DisplayName = core.GetString("Flippings"),
             Category = "Flipping"

@@ -8,4 +8,6 @@
     <Script file="Fishing.lua"/>
     <Script file="Cloth.lua"/>
     <Script file="Misc.lua"/>
+	<Script file="Mounts.lua"/>
+	<Script file="Toys.lua"/>
 </Ui>

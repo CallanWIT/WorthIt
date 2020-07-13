@@ -24,21 +24,23 @@ local function routePickerMenu(widget)
         }
     }
 
-    for _, zone in pairs(core.RoutesHelper.GetRouteTree()) do
-        local children = {}
-        for _, route in pairs(zone.Routes) do
-            table.insert(children, {
-                Name = route.Name,
-                DisplayName = route.Name,
-                Action = function(arg) setValue(widget, arg, true) end,
-                ActionArg = route
+    if core.RoutesHelper.IsRoutesAvailable() then
+        for _, zone in pairs(core.RoutesHelper.GetRouteTree()) do
+            local children = {}
+            for _, route in pairs(zone.Routes) do
+                table.insert(children, {
+                    Name = route.Name,
+                    DisplayName = route.Name,
+                    Action = function(arg) setValue(widget, arg, true) end,
+                    ActionArg = route
+                })
+            end
+            table.insert(item.Children, {
+                Name = zone.Name,
+                DisplayName = zone.Name,
+                Children = children
             })
         end
-        table.insert(item.Children, {
-            Name = zone.Name,
-            DisplayName = zone.Name,
-            Children = children
-        })
     end
 
     return item

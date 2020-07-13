@@ -288,9 +288,22 @@ core.Data.Results.Farms.SpiritOfHarmony = {
 }
 
 
+-- BFA
 
 
-
+core.Data.Results.Farms.RoyalJelly = {
+    Id = 'RoyalJelly',
+    Activity = core.Activity.Misc,
+    ItemId = core.Items.Misc.RoyalJelly,
+    Content = core.Content.BFA,
+    Locations = { core.Locations.BFA.StormsongValley },
+    Routes = { core.Data.Routes.Misc.RoyalJelly },
+    Results = {
+        { Id = core.Items.Misc.RoyalJelly, Quantity = 2 },
+		{ Id = core.Items.Misc.RichJelly, Quantity = 16 },
+		{ Id = core.Items.Misc.ThinJelly, Quantity = 338 },
+    }
+}
 
 
 

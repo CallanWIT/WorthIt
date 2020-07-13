@@ -45,4 +45,10 @@ core.Items.Misc = {
     -- Legion
 
     -- BFA
+	RichJelly = 168825,
+	RoyalJelly = 168828,
+	ThinJelly = 168822,
+	
+	
+	
 }
