@@ -44,6 +44,8 @@ core.Items.Ores = {
     -- WOD
     Blackrock = 109118,
     TrueIron = 109119,
+	
+	Felblight = 127759,
 
     -- Legion
     Leystone = 123918,
@@ -55,5 +57,29 @@ core.Items.Ores = {
     Monelite = 152512,
     StormSilver = 152579,
     Platinum = 152513,
-    Osmenite = 168185
+    Osmenite = 168185,
+	
+	
+	-- Shadowlands
+	
+	LaestriteOre = 171828,
+	SinvyrOre = 171832,
+	OxxeinOre = 171830,
+	PhaedrumOre = 171831,
+	SoleniumOre = 171829,
+	ElethiumOre = 171833,
+	
+	PorousStone = 171840,
+	ShadedStone = 171841,
+	TwilightBark = 177061,
+	
+
+	
+	
+	
+	
+
+	
+	
+	
 }

@@ -17,4 +17,15 @@ core.Items.Fish = {
 	
 	MalformedGnasher = 174327,
 	AberrantVoidfin = 174328,
+	
+	
+	-- Shadowlands
+	
+	ElysianThade = 173037,
+	LostSole = 173032,
+	PockedBonefish = 173035,
+	SpinefinPiranha = 173036,
+	SilvergillPike = 173034,
+	IridescentAmberjack = 173033,
+	
 }

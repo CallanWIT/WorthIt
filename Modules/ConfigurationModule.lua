@@ -212,7 +212,7 @@ local function ConfigurationModule()
                     Action = function(row)
                         core.UI.InputDialog({ Text = core.GetString("SetCustomPrice"), Data = row.Data, HasEditBox = true, TextBoxValue = row.Data.PriceSource, OnAccept = function(self, data)
                             local customPrice = self.editBox:GetText()
-                            if core.TSMHelper.IsValidCustomPrice(customPrice) then
+                            if customPrice == "" or core.TSMHelper.IsValidCustomPrice(customPrice) then
                                 data.PriceSource = customPrice
                                 grid.ClearCache()
                                 grid.Reload()
@@ -253,7 +253,7 @@ local function ConfigurationModule()
 
         local intro = AceGUI:Create("Label")
         intro:SetFullWidth(true)
-        intro:SetText('Custom Prices Mock Intro')
+        intro:SetText(core.GetString("CustomPricesConfogurationIntro"))
         frame:AddChild(intro)
 
         local addItemIcon = AceGUI:Create("Icon")
@@ -271,7 +271,7 @@ local function ConfigurationModule()
                     end
                 end
 
-                local item = { ItemId = id, PriceSource = '0' }
+                local item = { ItemId = id, PriceSource = "" }
                 if id == core.TSMHelper.PetCageItemId then
                     item.PetId = petId
                     item.ItemLink = link
@@ -307,7 +307,7 @@ local function ConfigurationModule()
         group:AddChild(checkbox)
 
         local label = AceGUI:Create("InteractiveLabel")
-        local text = farm.ItemId and core.TSMHelper.GetItemLink(farm.ItemId) or farm.NameMapId and core.LocationHelper.GetMapName(farm.NameMapId) or core.GetString(farm.Name)
+        local text = farm.PetId and farm.ItemLink or farm.PetId and core.TSMHelper.GetItemLink('p:'.. farm.PetId) or farm.ItemId and core.TSMHelper.GetItemLink(farm.ItemId) or farm.NameMapId and core.LocationHelper.GetMapName(farm.NameMapId) or core.GetString(farm.Name)
         label:SetText(text)
         label:SetWidth(label.label:GetStringWidth() + 5)
 
@@ -316,11 +316,24 @@ local function ConfigurationModule()
                 GameTooltip:SetOwner(label.frame, "ANCHOR_PRESERVE")
 	            GameTooltip:ClearAllPoints()
 	            GameTooltip:SetPoint("LEFT", label.frame, "RIGHT")
-                GameTooltip:SetHyperlink("item:" .. farm.ItemId)
-                GameTooltip:Show()
+                if farm.PetId then
+                    BattlePetToolTip_ShowLink(farm.ItemLink)
+                else
+                    GameTooltip:SetHyperlink("item:" .. farm.ItemId)
+                    GameTooltip:Show()
+                end
             end)
             label:SetCallback("OnLeave", function()
-                GameTooltip:Hide()
+                if farm.PetId then
+                    BattlePetTooltip:Hide()
+                else
+                    GameTooltip:Hide()
+                end
+            end)
+            label:SetCallback("OnClick", function()
+                if IsShiftKeyDown() then
+		            ChatEdit_InsertLink(text)
+	            end
             end)
         end
 

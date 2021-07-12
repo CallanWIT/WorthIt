@@ -36,13 +36,13 @@ function TSMHelper.GetCustomPrice(itemId)
         local petId = strsub(itemId, 3)
         for _, item in pairs(core.Config.GetCustomItemPrices()) do
             if item.PetId == petId then
-                return item.PriceSource
+                return item.PriceSource == "" and core.Config.GetPriceSourceString() or item.PriceSource
             end
         end
     else
         for _, item in pairs(core.Config.GetCustomItemPrices()) do
             if item.ItemId == itemId then
-                return item.PriceSource
+                return item.PriceSource == "" and core.Config.GetPriceSourceString() or item.PriceSource
             end
         end
     end
@@ -174,6 +174,18 @@ function TSMHelper.GetItemName(item)
     local id = type(item) == "number" and "i:" .. item or item
 
     return TSM_API.GetItemName(id)
+end
+
+function TSMHelper.GetItemTotalQuantity(item)
+    if not TSM_API then
+        error("TSM addon not found")
+    end
+
+    local id = type(item) == "number" and "i:" .. item or item
+
+    local player_total, alts_total, player_ah, alts_ah = TSM_API.GetPlayerTotals(id)
+
+    return player_total + alts_total + player_ah + alts_ah
 end
 
 function TSMHelper.ToMoneyString(value)

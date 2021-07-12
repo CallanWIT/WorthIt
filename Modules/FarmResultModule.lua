@@ -10,6 +10,7 @@ function core.FarmResultModule(name, data, category)
         core.GridColumns.ContextMenuColumn({ GetMenu = core.FarmResultItemMenu }),
         core.GridColumns.ItemNameColumn(),
         resultColumn,
+        core.GridColumns.ItemTotalQuantityColumn(),
         core.GridColumns.LocationsColumn(),
         core.GridColumns.ItemSellRateColumn(),
     }

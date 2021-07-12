@@ -6,4 +6,5 @@
     <Script file="Prospecting.lua"/>
     <Script file="SpiritOfHarmony.lua"/>
     <Script file="FrozenOrb.lua"/>
+	<Script file="Inktrader.lua"/>
 </Ui>

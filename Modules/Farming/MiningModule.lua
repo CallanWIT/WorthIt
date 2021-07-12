@@ -17,6 +17,11 @@ local miningData = {
     core.Data.Results.Farms.Empyrium,
     core.Data.Results.Farms.MoneliteOre,
     core.Data.Results.Farms.OsmeniteOre,
+	
+	core.Data.Results.Farms.SinvyrOre,
+	core.Data.Results.Farms.OxxeinOre,
+	core.Data.Results.Farms.PhaedrumOre,
+	core.Data.Results.Farms.SoleniumOre,
 }
 
 table.insert(core.Modules, core.FarmResultModule('Mining', miningData, 'Farming'))

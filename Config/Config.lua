@@ -15,11 +15,6 @@ function Config.Initialize()
         WITDB.Settings.PricingSelect = WITDB.Settings.PricingSelect or core.TSMHelper.DefaultPriceSource()
         WITDB.Settings.MinimapIcon = WITDB.minimap or WITDB.Settings.MinimapIcon or {}
 
-        if WITDB.Settings.PricingSelect == 'DBMinBuyout' then
-            WITDB.Settings.PricingSelect = core.TSMHelper.DefaultPriceSource()
-            print(core.GetString("PriceSourceSetToDefault"):format(core.TSMHelper.ToMoneyString(value)))
-        end
-
         WITDB.minimap = nil
     end
 
@@ -62,6 +57,10 @@ end
 
 function Config.GetCustomPriceSource()
     return WITDB.Settings.CustomPriceSource
+end
+
+function Config.GetPriceSourceString()
+    return WITDB.Settings.PricingSelect == 'Custom' and WITDB.Settings.CustomPriceSource or WITDB.Settings.PricingSelect
 end
 
 function Config.SetCustomPriceSource(priceSource)

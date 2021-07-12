@@ -275,7 +275,7 @@ core.Data.Results.Flips.SmeltingTitanSteelBar = {
     Quantity = 1,
     Content = core.Content.Wotlk,
     Materials = {
-        { Id = core.Items.Ores.Titanium, Quantity = 3 },
+        { Id = core.Items.Smelting.TitaniumBar, Quantity = 3 },
 		{ Id = core.Items.Misc.EternalFire, Quantity = 1 },
 		{ Id = core.Items.Misc.EternalEarth, Quantity = 1 },
 		{ Id = core.Items.Misc.EternalShadow, Quantity = 1 },

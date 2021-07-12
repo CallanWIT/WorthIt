@@ -4,6 +4,15 @@ local WIT, core = ...
 
 core.Locations = {}
 
+
+core.Locations.Raids = {
+
+-- Vanilla 
+TempleOfAQ = 3428,
+
+
+}
+
 core.Locations.Kalimdor = {
     Durotar = 14,
     Darkshore = 148,
@@ -24,6 +33,8 @@ core.Locations.Kalimdor = {
     Desolace = 405,
 	UngoroCrater = 490,
 	TolBarad = 5095,
+	TheBarrens = 17,
+	BurningSteppes = 46,
 }
 
 
@@ -71,6 +82,9 @@ core.Locations.EasternKingdoms = {
     EasternPlaguelands = 139,
     Badlands = 3,
     BlackrockMountain = 25,
+	StranglethornVale = 5339,
+	DeadwindPass = 41,
+	IsleofQuelDanas = 4080,
 }
 
 core.Locations.Outlands = {
@@ -82,6 +96,7 @@ core.Locations.Outlands = {
 	BlackTemple = 3840,
 	ShadowmoonValleyOld = 3520,
 	BladesEdgeMT = 3522,
+	Zangamarsh = 3521,
 }
 
 core.Locations.Northrend = {
@@ -101,6 +116,7 @@ core.Locations.Cata = {
 }
 
 core.Locations.Pandaria = {
+
     ValleyOfTheFourWinds = 5805,
 	JadeForest = 5785,
 	Dreadwastes = 6138,
@@ -110,6 +126,7 @@ core.Locations.Pandaria = {
 	HeartOfFear = 6297,
 	ValeofEternalBlossoms = 5840 , 
 	IsleofThunder = 6507,
+	TimelessIsle = 6757,
 }
 
 core.Locations.Draenor = {
@@ -119,6 +136,7 @@ core.Locations.Draenor = {
 	NagrandWod = 6755,
 	Gorgrond = 6721,
 	SpiresofArrak = 6722,
+	Talador = 6662,
 }
 
 core.Locations.BrokenIsles = {
@@ -144,8 +162,19 @@ core.Locations.BFA = {
 	Drustvar = 8721,
 	Zandalar = 8665,
 	KulTiras = 21,
+	Boralus = 8568,
 	
 }
+
+core.Locations.Shadowlands = {
+
+Maldraxxus = 11462,
+Ardenweald = 11510,
+Revendreth = 10413,
+Bastion = 10534,
+
+}
+
 
 core.Locations.Others = {
     Vashjir = 5146,

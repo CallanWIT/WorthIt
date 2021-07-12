@@ -13,6 +13,11 @@ core.Data.Results.Farms.AberrantVoidfin,
 core.Data.Results.Farms.MalformedGnasher,
 core.Data.Results.Farms.DarkmoonDaggermaw,
 
+core.Data.Results.Farms.PockedBonefish,
+core.Data.Results.Farms.SpinefinPiranha,
+core.Data.Results.Farms.SilvergillPike,
+core.Data.Results.Farms.IridescentAmberjack,
+
 }
 
 table.insert(core.Modules, core.FarmResultModule('Fishing', fishingData, 'Farming'))

@@ -9,7 +9,7 @@ function core.DashboardModule.GetData()
 
     if core.Config.GetModulesConfig().Dashboard.ShowCurrentContent then
         for _, farm in pairs(core.Data.Results.Farms) do
-            if farm.Content == core.Content.BFA then
+            if farm.Content == core.Content.Shadowlands then
                 table.insert(farms, farm)
             end
         end

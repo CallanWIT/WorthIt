@@ -32,4 +32,11 @@ core.Items.Tailoring = {
     -- BFA
 	
 	TidesprayBracers = 161984,
+	
+	
+	-- Shadowlands
+	
+	ShroudedClothBracers = 173201,
+	ShadowlaceCuffs = 173222,
+	
 }

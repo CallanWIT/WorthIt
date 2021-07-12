@@ -14,6 +14,8 @@
     <Script file="Modules.lua"/>
 
     <Script file="BattlePets\RaidBattlePetModule.lua"/>
+	<Script file="BattlePets\OpenWorldBattlePetModule.lua"/>
+	<Script file="BattlePets\RareBattlePetModule.lua"/>
 
     <Script file="Farming\MiningModule.lua"/>
     <Script file="Farming\HerbModule.lua"/>
@@ -21,6 +23,7 @@
 	<Script file="Farming\SkinningModule.lua"/>
 	<Script file="Farming\ClothModule.lua"/>
 	<Script file="Farming\MiscModule.lua"/>
+	<Script file="Farming\MultiFarmsModule.lua"/>
 	<Script file="Farming\MountsModule.lua"/>
 	<Script file="Farming\ToysModule.lua"/>
 	<Script file="Farming\RawGoldModule.lua"/>
@@ -28,6 +31,7 @@
     <Script file="Destroying\DisenchantingModule.lua"/>
     <Script file="Destroying\ProspectingModule.lua"/>
     <Script file="Destroying\MillingModule.lua"/>
+	<Script file="Destroying\InktraderModule.lua"/>
 	
     <Script file="Flipping\SmeltingModule.lua"/>
     <Script file="Flipping\SpiritOfHarmonyFlipsModule.lua"/>

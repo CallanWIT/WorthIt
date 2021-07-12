@@ -39,7 +39,7 @@ core.Data.Results.Farms.IronOre = {
     Activity = core.Activity.Mining,
     ItemId = core.Items.Ores.Iron,
     Content = core.Content.Vanilla,
-    Locations = { core.Locations.Kalimdor.Ashenvale },
+    Locations = { core.Locations.EasternKingdoms.WesternPlaguelands },
     Routes = { core.Data.Routes.Mining.IronOreWesternPlaguelands },
     Results = {
         { Id = core.Items.Ores.Iron, Quantity = 538 },
@@ -93,7 +93,7 @@ core.Data.Results.Farms.FelIronOre = {
         { Id = core.Items.Ores.FelIron, Quantity = 131 },
         { Id = core.Items.Ores.Adamantite, Quantity = 168 },
         { Id = core.Items.Ores.Eternium, Quantity = 21 },
-        { Id = core.Items.Ores.Khorium, Quantity = 18 },
+        { Id = core.Items.Ores.Khorium, Quantity = 5 },
         { Id = core.Items.Misc.PrimalEarth, Quantity = 15 },
         { Id = core.Items.Misc.PrimalFire, Quantity = 4.3 },
         { Id = core.Items.Gems.AzureMoonstone, Quantity = 2 },
@@ -258,3 +258,73 @@ core.Data.Results.Farms.OsmeniteOre = {
         { Id = core.Items.Ores.Osmenite, Quantity = 210 },
     }
 }
+
+
+-- Shadowlands
+
+core.Data.Results.Farms.SinvyrOre = {
+    Id = 'SinvyrOre',
+    Activity = core.Activity.Mining,
+    ItemId = core.Items.Ores.SinvyrOre,
+    Content = core.Content.Shadowlands,
+    Locations = { core.Locations.Shadowlands.Revendreth },
+    Routes = { core.Data.Routes.Mining.SinvyrOreRoute },
+    Results = {
+        { Id = core.Items.Ores.SinvyrOre, Quantity = 441 },
+		{ Id = core.Items.Ores.PorousStone, Quantity = 115 },
+		{ Id = core.Items.Ores.LaestriteOre, Quantity = 500 },
+		{ Id = core.Items.Ores.ElethiumOre, Quantity = 23 },
+		{ Id = core.Items.Ores.ShadedStone, Quantity = 22 },
+    }
+}
+
+core.Data.Results.Farms.OxxeinOre = {
+    Id = 'OxxeinOre',
+    Activity = core.Activity.Mining,
+    ItemId = core.Items.Ores.OxxeinOre,
+    Content = core.Content.Shadowlands,
+    Locations = { core.Locations.Shadowlands.Maldraxxus },
+    Routes = { core.Data.Routes.Mining.OxxeinOreRoute },
+    Results = {
+        { Id = core.Items.Ores.OxxeinOre, Quantity = 154 },
+		{ Id = core.Items.Ores.LaestriteOre, Quantity = 340 },
+		{ Id = core.Items.Ores.PorousStone, Quantity = 65 },
+		{ Id = core.Items.Ores.ElethiumOre, Quantity = 19 },
+		{ Id = core.Items.Ores.ShadedStone, Quantity = 8 },
+    }
+}
+
+core.Data.Results.Farms.PhaedrumOre = {
+    Id = 'PhaedrumOre',
+    Activity = core.Activity.Mining,
+    ItemId = core.Items.Ores.PhaedrumOre,
+    Content = core.Content.Shadowlands,
+    Locations = { core.Locations.Shadowlands.Ardenweald },
+    Routes = { core.Data.Routes.Mining.PhaedrumOreRoute },
+    Results = {
+        { Id = core.Items.Ores.PhaedrumOre, Quantity = 187 },
+		{ Id = core.Items.Ores.ElethiumOre, Quantity = 21 },
+		{ Id = core.Items.Ores.LaestriteOre, Quantity = 268 },
+		{ Id = core.Items.Ores.PorousStone, Quantity = 37 },
+		{ Id = core.Items.Ores.TwilightBark, Quantity = 15 },
+    }
+}
+
+
+core.Data.Results.Farms.SoleniumOre = {
+    Id = 'SoleniumOre',
+    Activity = core.Activity.Mining,
+    ItemId = core.Items.Ores.SoleniumOre,
+    Content = core.Content.Shadowlands,
+    Locations = { core.Locations.Shadowlands.Bastion },
+    Routes = { core.Data.Routes.Mining.SoleniumOreRoute },
+    Results = {
+        { Id = core.Items.Ores.SoleniumOre, Quantity = 178 },
+		{ Id = core.Items.Ores.LaestriteOre, Quantity = 276 },
+		{ Id = core.Items.Ores.PorousStone, Quantity = 73 },
+		{ Id = core.Items.Ores.ShadedStone, Quantity = 16 },
+		{ Id = core.Items.Ores.ElethiumOre, Quantity = 10 },
+    }
+}
+
+

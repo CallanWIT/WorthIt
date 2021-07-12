@@ -45,4 +45,13 @@ core.Items.Enchanting = {
 	
 	UmbraShard = 152876,
 	GloomDust = 152875,
+	
+	-- Shadowlands
+	
+	SoulDust = 172230,
+	SacredShard = 172231,
+	EternalCrystal = 172232,
+	
+	
+	
 }

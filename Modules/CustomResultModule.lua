@@ -92,6 +92,7 @@ function core.CustomResultModule(name, category)
         core.GridColumns.ContextMenuColumn({ GetMenu = customResultItemMenu }),
         core.GridColumns.ItemNameColumn(),
         resultColumn,
+        core.GridColumns.ItemTotalQuantityColumn(),
         core.GridColumns.LocationsColumn(),
         core.GridColumns.ItemSellRateColumn(),
     }

@@ -133,20 +133,38 @@ core.Data.Results.Flips.SilkweaveEpaulets = {
 
 -- BFA
 
-core.Data.Results.Flips.TidesprayBracers = {
-    ItemId = core.Items.Tailoring.TidesprayBracers,
+
+
+
+-- Shadowlands
+
+core.Data.Results.Flips.ShroudedClothBracers = {
+    ItemId = core.Items.Tailoring.ShroudedClothBracers,
     Quantity = 100,
-    Content = core.Content.BFA,
+    Content = core.Content.Shadowlands,
     Materials = {
-        { Id = core.Items.Cloths.TidesprayLinen, Quantity = 1000 },
+        { Id = core.Items.Cloths.ShroudedCloth, Quantity = 300 },
     },
     Results = {
-        { Id = core.Items.Enchanting.UmbraShard, Quantity = 40 },
-        { Id = core.Items.Enchanting.GloomDust, Quantity = 450 },
+        { Id = core.Items.Enchanting.SoulDust, Quantity = 220 },
+
     }
 }
 
+core.Data.Results.Flips.ShadowlaceCuffs = {
+    ItemId = core.Items.Tailoring.ShadowlaceCuffs,
+    Quantity = 100,
+    Content = core.Content.Shadowlands,
+    Materials = {
+        { Id = core.Items.Cloths.ShroudedCloth, Quantity = 1000 },
+		{ Id = core.Items.Cloths.LightlessSilk, Quantity = 200 },
+    },
+    Results = {
+        { Id = core.Items.Enchanting.SacredShard, Quantity = 140 },
+		{ Id = core.Items.Enchanting.SoulDust, Quantity = 150 },
 
+    }
+}
 
 
 

@@ -114,3 +114,74 @@ core.Data.Results.Farms.DarkmoonDaggermaw = {
         { Id = core.Items.Fish.DarkmoonDaggermaw, Quantity = 316 },
     }
 }
+
+-- Shadowlands
+
+core.Data.Results.Farms.PockedBonefish = {
+    Id = 'PockedBonefish',
+    Activity = core.Activity.Fishing,
+    ItemId = core.Items.Fish.PockedBonefish,
+    Content = core.Content.Shadowlands,
+    Locations = { core.Locations.Shadowlands.Maldraxxus },
+    Results = {
+        { Id = core.Items.Fish.PockedBonefish, Quantity = 180 },
+		{ Id = core.Items.Fish.LostSole, Quantity = 60 },
+    }
+}
+
+core.Data.Results.Farms.SpinefinPiranha = {
+    Id = 'SpinefinPiranha',
+    Activity = core.Activity.Fishing,
+    ItemId = core.Items.Fish.SpinefinPiranha,
+    Content = core.Content.Shadowlands,
+    Locations = { core.Locations.Shadowlands.Revendreth },
+    Results = {
+        { Id = core.Items.Fish.SpinefinPiranha, Quantity = 88 },
+		{ Id = core.Items.Fish.LostSole, Quantity = 62 },
+		{ Id = core.Items.Fish.ElysianThade, Quantity = 38 },
+    }
+}
+
+core.Data.Results.Farms.SilvergillPike = {
+    Id = 'SilvergillPike',
+    Activity = core.Activity.Fishing,
+    ItemId = core.Items.Fish.SilvergillPike,
+    Content = core.Content.Shadowlands,
+    Locations = { core.Locations.Shadowlands.Bastion },
+    Results = {
+        { Id = core.Items.Fish.SilvergillPike, Quantity = 96 },
+		{ Id = core.Items.Fish.LostSole, Quantity = 102 },
+		{ Id = core.Items.Fish.ElysianThade, Quantity = 18 },
+    }
+}
+
+core.Data.Results.Farms.IridescentAmberjack = {
+    Id = 'IridescentAmberjack',
+    Activity = core.Activity.Fishing,
+    ItemId = core.Items.Fish.IridescentAmberjack,
+    Content = core.Content.Shadowlands,
+    Locations = { core.Locations.Shadowlands.Ardenweald },
+    Results = {
+        { Id = core.Items.Fish.IridescentAmberjack, Quantity = 36 },
+		{ Id = core.Items.Fish.LostSole, Quantity = 164 },
+		{ Id = core.Items.Fish.ElysianThade, Quantity = 4 },
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -11,6 +11,7 @@
     <Script file="ItemSellRateColumn.lua"/>
     <Script file="ItemSoldPerDayColumn.lua"/>
     <Script file="ItemValueColumn.lua"/>
+    <Script file="ItemTotalQuantityColumn.lua"/>
     <Script file="ProfitColumn.lua"/>
     <Script file="TomTomColumn.lua"/>
     <Script file="ExpandRowColumn.lua"/>

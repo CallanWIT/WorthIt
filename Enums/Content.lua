@@ -10,3 +10,4 @@ core.Content.MoP = 5
 core.Content.WoD = 6
 core.Content.Legion = 7
 core.Content.BFA = 8
+core.Content.Shadowlands = 9

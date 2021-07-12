@@ -12,7 +12,11 @@ core.Items.Herbs = {
 	Fadeleaf = 3818,
 	Kingsblood = 3356,
 	Blindweed = 8839,
+	Goldthorn = 3821,
+	MountainSilversage = 13465,
+	Sungrass = 8838,
 	
+	Dreamfoil = 13463,
 	Gromsblood = 8846,
     GoldenSansam = 13464, 
     PurpleLotus = 8831,
@@ -31,6 +35,7 @@ core.Items.Herbs = {
 	Icethorn = 36906,
 	Tigerlily = 36904,
 	TalandrasRose = 36907,
+	FireLeaf = 39970,
 
     -- Cata
 	
@@ -39,6 +44,7 @@ core.Items.Herbs = {
 	Cinderbloom = 52983,
 	TwilightJasmine = 52987,
 	Heartblossom = 52986,
+	Stormvine = 52984,
 	
 
     -- MOP
@@ -48,6 +54,8 @@ core.Items.Herbs = {
 	FoolsCap = 79011, 
 	SnowLily = 79010,
     GoldenLotus = 72238,
+	RainPoppy = 72237,
+	DesecratedHerb = 89639,
 
     -- WOD
 	
@@ -75,7 +83,26 @@ core.Items.Herbs = {
 	Riverbud = 152505,
 	AnchorWeed = 152510,
 	WintersKiss = 152508,
+	SeaStalk = 152511,
+	SirensPollen = 152509,
 	Zinanthid = 168487,
+	
+	
+	-- Shadowlands
+	
+	DeathBlossom = 169701,
+	RisingGlory = 168586,
+	MarrowRoot = 168589,
+	VigilsTorch = 170554,
+	Widowbloom = 168583,
+	Nightshade = 171315,
+	
+	
+	
+	
+	
+	
+	
 }
 
 

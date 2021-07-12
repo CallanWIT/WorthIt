@@ -600,6 +600,7 @@ local function SetMode(mode)
 
     editTarget:AddChild(self.UI.AddItemIcon)
     editTarget:AddChild(self.UI.LootFrame)
+    self.UI.LootGrid.Show(self.Session.Results)
     self.UI.LootFrame:DoLayout()
 
     editTarget:AddChild(self.UI.SortJunkButton)

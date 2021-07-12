@@ -361,7 +361,64 @@ core.Data.Results.Farms.Zinanthid = {
 }
 
 
+-- Shadowlands
 
+
+core.Data.Results.Farms.MarrowRoot = {
+    Id = 'MarrowRoot',
+    Activity = core.Activity.Herbalism,
+    ItemId = core.Items.Herbs.MarrowRoot,
+    Content = core.Content.Shadowlands,
+    Locations = { core.Locations.Shadowlands.Maldraxxus },
+    Routes = { core.Data.Routes.Herb.MarrowRoot },
+    Results = {
+        { Id = core.Items.Herbs.MarrowRoot, Quantity = 212 },
+		{ Id = core.Items.Herbs.DeathBlossom, Quantity = 306 },
+		{ Id = core.Items.Herbs.Nightshade, Quantity = 18 },
+    }
+}
+
+core.Data.Results.Farms.Widowbloom = {
+    Id = 'Widowbloom',
+    Activity = core.Activity.Herbalism,
+    ItemId = core.Items.Herbs.Widowbloom,
+    Content = core.Content.Shadowlands,
+    Locations = { core.Locations.Shadowlands.Revendreth },
+    Routes = { core.Data.Routes.Herb.Widowbloom },
+    Results = {
+        { Id = core.Items.Herbs.Widowbloom, Quantity = 167 },
+		{ Id = core.Items.Herbs.DeathBlossom, Quantity = 185 },
+		{ Id = core.Items.Herbs.Nightshade, Quantity = 32 },
+    }
+}
+
+core.Data.Results.Farms.VigilsTorch = {
+    Id = 'VigilsTorch',
+    Activity = core.Activity.Herbalism,
+    ItemId = core.Items.Herbs.VigilsTorch,
+    Content = core.Content.Shadowlands,
+    Locations = { core.Locations.Shadowlands.Ardenweald },
+    Routes = { core.Data.Routes.Herb.VigilsTorch },
+    Results = {
+        { Id = core.Items.Herbs.VigilsTorch, Quantity = 215 },
+		{ Id = core.Items.Herbs.DeathBlossom, Quantity = 167 },
+		{ Id = core.Items.Herbs.Nightshade, Quantity = 11 },
+    }
+}
+
+core.Data.Results.Farms.RisingGlory = {
+    Id = 'RisingGlory',
+    Activity = core.Activity.Herbalism,
+    ItemId = core.Items.Herbs.RisingGlory,
+    Content = core.Content.Shadowlands,
+    Locations = { core.Locations.Shadowlands.Bastion },
+    Routes = { core.Data.Routes.Herb.RisingGlory },
+    Results = {
+        { Id = core.Items.Herbs.RisingGlory, Quantity = 234 },
+		{ Id = core.Items.Herbs.DeathBlossom, Quantity = 108 },
+		{ Id = core.Items.Herbs.Nightshade, Quantity = 10 },
+    }
+}
 
 
 

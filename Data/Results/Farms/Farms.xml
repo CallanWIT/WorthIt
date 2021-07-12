@@ -11,4 +11,7 @@
 	<Script file="RawGold.lua"/>
 	<Script file="VanillaTransmog.lua"/>
     <Script file="BattlePets.lua"/>
+	<Script file="OpenWorldPets.lua"/>
+	<Script file="RareBattlePets.lua"/>
+	<Script file="MultiFarms.lua"/>
 </Ui>

@@ -31,6 +31,8 @@ core.Data.Results.Farms.NetherDragonScales,
 core.Data.Results.Farms.CobraScales,
 core.Data.Results.Farms.CrystalInfusedLeather,
 
+core.Data.Results.Farms.DesolateLeather,
+
 }
 
 table.insert(core.Modules, core.FarmResultModule('Skinning', skinningData, 'Farming'))

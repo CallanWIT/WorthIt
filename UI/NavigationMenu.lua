@@ -137,7 +137,7 @@ local function ShowRecorder()
 end
 
 local function ImportFarm()
-    core.UI.InputDialog({ Text = core.GetString("ImportRoute"), HasEditBox = true, OnAccept = function(dialog)
+    core.UI.InputDialog({ Text = core.GetString("ImportFarm"), HasEditBox = true, OnAccept = function(dialog)
         local text = dialog.editBox:GetText()
         if text ~= nil then
             if strlen(text) > 0 then
@@ -237,6 +237,13 @@ local function buildNavigationMenu()
                             DisplayName = core.GetString("DefaultPriceSource"),
                             Action = function() core.PrintInventoryValue() end
                         },
+                        { IsSeparator = true },
+                        {
+                            Name = "Difference",
+                            DisplayName = core.GetString("Difference"),
+                            Action = function() core.PrintInventoryValue("diff") end
+                        },
+                        { IsSeparator = true },
                         {
                             Name = "BagValueDBMinBuyout",
                             DisplayName = "DBMinBuyout",
@@ -262,11 +269,6 @@ local function buildNavigationMenu()
                             DisplayName = "DBRegionMarketAvg",
                             Action = function() core.PrintInventoryValue("DBRegionMarketAvg") end
                         },
-                        {
-                            Name = "Difference",
-                            DisplayName = core.GetString("Difference"),
-                            Action = function() core.PrintInventoryValue("diff") end
-                        },
                     }
                 },
                 {
@@ -279,6 +281,13 @@ local function buildNavigationMenu()
                             DisplayName = core.GetString("DefaultPriceSource"),
                             Action = function() core.PrintBankValue() end
                         },
+                        { IsSeparator = true },
+                        {
+                            Name = "Difference",
+                            DisplayName = core.GetString("Difference"),
+                            Action = function() core.PrintBankValue("diff") end
+                        },
+                        { IsSeparator = true },
                         {
                             Name = "BankValueDBMinBuyout",
                             DisplayName = "DBMinBuyout",
@@ -303,11 +312,6 @@ local function buildNavigationMenu()
                             Name = "BankValueDBRegionMarketAvg",
                             DisplayName = "DBRegionMarketAvg",
                             Action = function() core.PrintBankValue("DBRegionMarketAvg") end
-                        },
-                        {
-                            Name = "Difference",
-                            DisplayName = core.GetString("Difference"),
-                            Action = function() core.PrintBankValue("diff") end
                         },
                     }
                 },

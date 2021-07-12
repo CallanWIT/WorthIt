@@ -202,3 +202,38 @@ core.Data.Results.Flips.ProspectingOsmeniteOre = {
         { Id = core.Items.Gems.Azsharine, Quantity = 4 },
     }
 }
+
+-- Shadowlands
+
+
+core.Data.Results.Flips.ProspectingLaestriteOre = {
+    ItemId = core.Items.Ores.LaestriteOre,
+    Quantity = 200,
+    Content = core.Content.Shadowlands,
+    Materials = {
+        { Id = core.Items.Ores.LaestriteOre, Quantity = 200 },
+    },
+    Results = {
+        { Id = core.Items.Gems.EssenceofServitude, Quantity = 2 },
+        { Id = core.Items.Gems.EssenceofRebirth, Quantity = 1 },
+        { Id = core.Items.Gems.Umbryl, Quantity = 19 },
+        { Id = core.Items.Gems.Angerseye, Quantity = 18 },
+        { Id = core.Items.Gems.Oriblase, Quantity = 22 },
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

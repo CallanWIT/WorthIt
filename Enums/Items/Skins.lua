@@ -51,4 +51,12 @@ core.Items.Skins = {
 	Mistscale = 153051,
 	ThickPaleoSteak = 154899,
 	
+	-- Shadowlands
+	
+	DesolateLeather = 172089,
+	CallousHide = 172094,
+	PallidBone = 172092,
+	HeavyDsolateLeather = 172096,
+	HeavyCallousHide = 172097,
+	
 }

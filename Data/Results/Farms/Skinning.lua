@@ -344,8 +344,21 @@ core.Data.Results.Farms.DredgedLeatherSpotTwo = {
     }
 }
 
-
-
-
-
 -- Showdowlands hehe! 
+
+
+core.Data.Results.Farms.DesolateLeather = {
+    Id = 'DesolateLeather',
+    Activity = core.Activity.Skinning,
+    ItemId = core.Items.Skins.DesolateLeather,
+    Content = core.Content.Shadowlands,
+    Locations = { core.Locations.Shadowlands.Bastion },
+    Routes = { core.Data.Routes.Skinning.DredgedLeatherValeOfEternalBlossoms },
+    Results = {
+        { Id = core.Items.Skins.DesolateLeather, Quantity = 952 },
+		{ Id = core.Items.Skins.CallousHide, Quantity = 77 },
+		{ Id = core.Items.Skins.PallidBone, Quantity = 227 },
+		{ Id = core.Items.Skins.HeavyDsolateLeather, Quantity = 26 },
+		{ Id = core.Items.Skins.HeavyCallousHide, Quantity = 8 },
+    }
+}

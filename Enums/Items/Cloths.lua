@@ -37,4 +37,18 @@ core.Items.Cloths = {
 	TidesprayLinen = 152576,
 	DeepSeaSatin = 152577,
 	GildedSeaweave = 167738,
+	
+	-- Shadowlands
+	
+	ShroudedCloth = 173202,
+	LightlessSilk = 173204,
+	
+	-- Threads
+	NylonThread = 159959,
+	EterniumThread = 38426,
+	RuneThread = 14341,
+	CoarseThread = 2320,
+	PenumbraThread = 177062,
+	
+	
 }

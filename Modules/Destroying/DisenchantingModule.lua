@@ -11,6 +11,9 @@ local deData = {
 	core.Data.Results.Flips.SumptousCowl,
 	core.Data.Results.Flips.SilkweaveEpaulets,
 	core.Data.Results.Flips.TidesprayBracers,
+	core.Data.Results.Flips.ShroudedClothBracers,
+	core.Data.Results.Flips.ShadowlaceCuffs,
+	
 }
 
 table.insert(core.Modules, core.DestroyingResultModule('Disenchanting', deData, 'Flipping'))

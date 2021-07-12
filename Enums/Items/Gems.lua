@@ -111,4 +111,19 @@ core.Items.Gems = {
     LeviathansEye = 168635,
     Azsharine = 168193,
     SageAgate = 168188,
+	
+	-- Shadowlands
+	
+	EssenceofServitude = 173172,
+	EssenceofRebirth = 173170,
+	EssenceofValor = 173173,
+	EssenceofTorment = 173171,
+	Umbryl = 173110,
+	Angerseye = 173109,
+	Oriblase = 173108,
+	
+	
+	
+	
+	
 }

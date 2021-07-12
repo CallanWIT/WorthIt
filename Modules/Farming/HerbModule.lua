@@ -39,6 +39,11 @@ local herbData = {
 	core.Data.Results.Farms.AkundasBite,
 	core.Data.Results.Farms.WintersKiss,
 	core.Data.Results.Farms.Zinanthid,
+	-- Shadowlands
+	core.Data.Results.Farms.MarrowRoot,
+	core.Data.Results.Farms.Widowbloom,
+	core.Data.Results.Farms.VigilsTorch,
+	core.Data.Results.Farms.RisingGlory,
 	
 	
 }

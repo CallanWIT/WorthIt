@@ -115,6 +115,23 @@ core.Maps = {
 	-- Dungeons/Raids
 	
 	
+	-- Vanilla 
+	
+	AQ = 320, 
+	MoltenCore = 232,
+	BlackWingLair = 287, 
+	
+	-- TBC
+	
+	Karazhan = 350,
+	SerpentShrineCavern = 332,
+	TempestKeep = 334,
+	BlackTemple = 340,
+	HyjalSummit = 329,
+	SunwellPlateau = 335,
+	
+	
+	
 	-- wotlk
 	ICC = 186,
 	Ulduar = 147,
@@ -161,6 +178,18 @@ core.Maps = {
 	--bfa
 	
 	FreeHold = 936,
+	
+	Dazaralor = 1352,
+	EternalPalace = 1512,
+	Nyalotha = 1580,
+	
+	--Shadowlands
+	
+	RevenDreth = 1525,
+	Maldraxxus = 1536,
+	Bastion = 1533,
+	Ardenweald = 1565,
+	
 	
 	
 	

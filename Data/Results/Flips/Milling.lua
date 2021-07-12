@@ -219,7 +219,22 @@ core.Data.Results.Flips.MaroonInk = {
 }
 
 
+-- Shadowlands
 
+core.Data.Results.Flips.LuminousInk = {
+    Id = 'MillingLuminousInk',
+    ItemId = core.Items.Herbs.DeathBlossom,
+    Quantity = 200,
+    Content = core.Content.Shadowlands,
+    Materials = {
+        { Id = core.Items.Herbs.DeathBlossom, Quantity = 200 },
+    },
+    Results = {
+        { Id = core.Items.Inscription.UmbralInk, Quantity = 23 },
+		{ Id = core.Items.Inscription.LuminousInk, Quantity = 35 },
+
+    }
+}
 
 
 

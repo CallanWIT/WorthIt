@@ -16,6 +16,7 @@ core.Data.Results.Flips.CeruleanPigment,
 core.Data.Results.Flips.RoseatePigment,
 core.Data.Results.Flips.CrimsonInk,
 core.Data.Results.Flips.MaroonInk,
+core.Data.Results.Flips.LuminousInk,
 }
 
 table.insert(core.Modules, core.DestroyingResultModule('Milling', millingData, 'Flipping'))
