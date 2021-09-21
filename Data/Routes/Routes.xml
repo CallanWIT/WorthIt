@@ -9,5 +9,7 @@
     <Script file="Cloth.lua"/>
     <Script file="Misc.lua"/>
 	<Script file="Mounts.lua"/>
+	<Script file="Multifarms.lua"/>
 	<Script file="Toys.lua"/>
+	
 </Ui>

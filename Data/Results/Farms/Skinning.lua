@@ -353,7 +353,7 @@ core.Data.Results.Farms.DesolateLeather = {
     ItemId = core.Items.Skins.DesolateLeather,
     Content = core.Content.Shadowlands,
     Locations = { core.Locations.Shadowlands.Bastion },
-    Routes = { core.Data.Routes.Skinning.DredgedLeatherValeOfEternalBlossoms },
+    Routes = { core.Data.Routes.Skinning.DesolateLeather },
     Results = {
         { Id = core.Items.Skins.DesolateLeather, Quantity = 952 },
 		{ Id = core.Items.Skins.CallousHide, Quantity = 77 },

@@ -39,7 +39,7 @@ core.Data.Results.Farms.NazjatarMultifarm,
 -- Shadowlands
 core.Data.Results.Farms.MaldraxxusMultifarm,
 core.Data.Results.Farms.RevendrethMultifarm,
-core.Data.Results.Farms.BastionMultifarm,
+core.Data.Results.Farms.BastionMultifarm, 
 core.Data.Results.Farms.ArdenwealdMultifarm,
 
 

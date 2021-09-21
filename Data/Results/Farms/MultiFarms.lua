@@ -600,10 +600,10 @@ core.Data.Results.Farms.BastionMultifarm = {
 core.Data.Results.Farms.ArdenwealdMultifarm = {
     Id = 'ArdenwealdMultifarm',
     Activity = core.Activity.Herbalism,
-    ItemId = core.Items.Ores.PhaedrumOre,
+    ItemId = core.Items.Herbs.VigilsTorch,
     Content = core.Content.Shadowlands,
     Locations = { core.Locations.Shadowlands.Ardenweald },
-    Routes = { core.Data.Routes.Mining.PhaedrumOreRoute },
+    Routes = { core.Data.Routes.Herb.ArdenwealdMultifarm },
     Results = {
         { Id = core.Items.Ores.LaestriteOre, Quantity = 280 },
 		{ Id = core.Items.Ores.PhaedrumOre, Quantity = 192 },

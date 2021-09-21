@@ -491,3 +491,28 @@ core.Data.Routes.Skinning.DevilsaurLeather = {
 		["length"] = 6499.061129804381,
 	}
 }
+
+
+--- Shadowlands
+
+core.Data.Routes.Skinning.DesolateLeather = {
+    Name = "RouteDesolateLeather",
+    MapId = core.Maps.Bastion,
+    Data = {
+		["route"] = {
+						58694391, -- [1]
+						57454824, -- [2]
+						54864367, -- [3]
+		},
+		["color"] = {
+			0, -- [1]
+			0.09411764705882353, -- [2]
+			1, -- [3]
+			1, -- [4]
+		},
+		["length"] = 11713.68618348334,
+	}
+}
+
+
+
