@@ -18,6 +18,8 @@ function Config.Initialize()
         WITDB.minimap = nil
     end
 
+    WITDB.Settings.HideMinimapIcon = WITDB.Settings.HideMinimapIcon or false
+
     WITDB.Settings.PricingSelect = WITDB.Settings.PricingSelect == 'DBRegionMinBuyoutAvg' and 'DBRegionMarketAvg' or WITDB.Settings.PricingSelect
     WITDB.Settings.LegacyPricingSelect = WITDB.Settings.LegacyPricingSelect == 'DBRegionMinBuyoutAvg' and 'DBRegionMarketAvg' or WITDB.Settings.LegacyPricingSelect or WITDB.Settings.PricingSelect
     WITDB.Settings.BagValueMinPrice = WITDB.Settings.BagValueMinPrice or 0

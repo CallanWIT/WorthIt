@@ -16,6 +16,7 @@ L["BagValueConfogurationIntro"] = "Items that are BOP, below min quality or belo
 L["PriceSourceConfogurationIntro"] = "Default price source for items from selected content (current expansion, or legacy). If not available, next price source from the list will be used. For example if price source is set to DBMarket and the item wasn't posted for the last 14 days on your realm, DBHistorical value is used. If DBHistorical is not available as well, DBRegionMarketAvg price source is used"
 L["CustomPricesConfogurationIntro"] = "Items added to this grid can have custom prices. Those prices will override your selected price source for any calculation. Items from this list are recorded regardless if they match recorder filter (min quality/price) or not nor if they are BOP. You can use it to set a price for materials like |cff0070dd[Blood of Sargeras]|r."
 L["ShowCurrentContentFarms"] = "Show current content farms"
+L["ShowMinimapIcon"] = "Show minimap icon"
 
 -- Content
 L["Vanilla"] = "Vanilla"

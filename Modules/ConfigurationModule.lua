@@ -193,12 +193,32 @@ local function ConfigurationModule()
         end)
         frame:AddChild(resetRecorderPositionButton)
 
+        local hideMinimapIconCheckbox = AceGUI:Create("CheckBox")
+
         local resetIconPositionButton = AceGUI:Create("Button")
         resetIconPositionButton:SetText(core.GetString("ResetIconPosition"))
         resetIconPositionButton:SetCallback("OnClick", function()
             core.UI.MinimapIcon.ResetPosition()
+            hideMinimapIconCheckbox:SetValue(not WITDB.Settings.HideMinimapIcon)
         end)
         frame:AddChild(resetIconPositionButton)
+
+        local group = AceGUI:Create("SimpleGroup")
+        group:SetLayout("Flow")
+        group:SetFullWidth(true)
+
+        hideMinimapIconCheckbox:SetWidth(30)
+        hideMinimapIconCheckbox:SetValue(not WITDB.Settings.HideMinimapIcon)
+        hideMinimapIconCheckbox:SetCallback("OnValueChanged", function(self, name, value)
+            core.UI.MinimapIcon.Toggle(value)
+        end)
+        group:AddChild(hideMinimapIconCheckbox)
+
+        local label = AceGUI:Create("Label")
+        label:SetText(core.GetString("ShowMinimapIcon"))
+        group:AddChild(label)
+
+        frame:AddChild(group)
     end
 
     function drawCustomPricesConfiguration(frame)
