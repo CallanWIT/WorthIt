@@ -18,13 +18,14 @@ function Config.Initialize()
         WITDB.minimap = nil
     end
 
-    WITDB.Settings.LegacyPricingSelect = WITDB.Settings.LegacyPricingSelect or WITDB.Settings.PricingSelect
+    WITDB.Settings.PricingSelect = WITDB.Settings.PricingSelect == 'DBRegionMinBuyoutAvg' and 'DBRegionMarketAvg' or WITDB.Settings.PricingSelect
+    WITDB.Settings.LegacyPricingSelect = WITDB.Settings.LegacyPricingSelect == 'DBRegionMinBuyoutAvg' and 'DBRegionMarketAvg' or WITDB.Settings.LegacyPricingSelect or WITDB.Settings.PricingSelect
     WITDB.Settings.BagValueMinPrice = WITDB.Settings.BagValueMinPrice or 0
     WITDB.Settings.BagValueMinQuality = WITDB.Settings.BagValueMinQuality or 1
     WITDB.Settings.BelowTresholdValue = WITDB.Settings.BelowTresholdValue or 1
 
-    WITDB.Settings.CustomPriceSource = WITDB.Settings.CustomPriceSource or 'DBMinBuyout'
-    WITDB.Settings.LegacyCustomPriceSource = WITDB.Settings.LegacyCustomPriceSource or 'DBMinBuyout'
+    WITDB.Settings.CustomPriceSource = WITDB.Settings.CustomPriceSource == 'DBRegionMinBuyoutAvg' and 'DBRegionMarketAvg' or WITDB.Settings.CustomPriceSource or 'DBMinBuyout'
+    WITDB.Settings.LegacyCustomPriceSource = WITDB.Settings.LegacyCustomPriceSource == 'DBRegionMinBuyoutAvg' and 'DBRegionMarketAvg' or WITDB.Settings.LegacyCustomPriceSource or 'DBMinBuyout'
 
     WITDB.Settings.RecorderMinPrice = WITDB.Settings.RecorderMinPrice or 0
     WITDB.Settings.RecorderMinQuality = WITDB.Settings.RecorderMinQuality or 1
@@ -37,6 +38,8 @@ function Config.Initialize()
     WITDB.Settings.Modules = WITDB.Settings.Modules or { Dashboard = { ShowCurrentContent = true, Farms = {} }}
 
     WITDB.UserData = WITDB.UserData or { Farms = {}}
+
+    WITDB.UserData.ColumnFilters = WITDB.UserData.ColumnFilters or {}
 
     WITDB.Version = version
 end
@@ -157,4 +160,12 @@ end
 
 function Config.GetUserFarms()
     return WITDB.UserData.Farms
+end
+
+function Config.GetColumnFilter(key)
+    return WITDB.UserData.ColumnFilters[key]
+end
+
+function Config.SetColumnFilter(key, filter)
+    WITDB.UserData.ColumnFilters[key] = filter
 end

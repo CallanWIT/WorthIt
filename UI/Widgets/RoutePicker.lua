@@ -7,6 +7,10 @@ local function setValue(widget, route, triggerEvent)
     widget:SetText(string.format(core.GetString("RouteFormat"), name))
     widget:SetWidth(widget.label:GetStringWidth() + 7)
 
+    if route and route.Data then
+        core.RoutesHelper.NormaliseRouteData(route.Data)
+    end
+
     if triggerEvent then
         widget:Fire("OnValueChanged", route)
     end

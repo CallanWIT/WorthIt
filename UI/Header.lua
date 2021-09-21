@@ -50,13 +50,17 @@ function core.UI.Header(window)
     header.SearchBox = AceGUI:Create("EditBox")
     header.SearchBox:DisableButton(true)
     header.SearchBox:SetParent(header)
-    header.SearchBox:SetPoint("TOPRIGHT", header.frame, "TOPRIGHT", -10, 0)
+    header.SearchBox:SetPoint("TOPRIGHT", header.frame, "TOPRIGHT", -30, 0)
 
     --local searchIcon = header.SearchBox.frame:CreateTexture(nil, "BACKGROUND")
     --searchIcon:SetTexture("Interface\\COMMON\\Search")
 	--searchIcon:SetPoint("TOPRIGHT", header.SearchBox.frame, "TOPRIGHT", 0, 0)
 
     header.SearchBox.frame:Hide()
+
+    header.ColumnSelector = core.UI.ColumnSelector({})
+    header.ColumnSelector:SetParent(header)
+    header.ColumnSelector:SetPoint("TOPRIGHT", header.frame, "TOPRIGHT", -10, -7)
 
     --"Interface\\COMMON\\help-i"
     --hidden:AddChild(header.SearchBox)
@@ -69,6 +73,19 @@ function core.UI.DisableHeader()
     if not header then return end
 
     navMenu:SetDisabled(true)
+end
+
+function core.UI.ToggleColumnSelector(module)
+    if header.ColumnSelector == nil then return end
+
+    header.ColumnSelector.frame.Panel.frame:Hide()
+
+    if module ~= nil and module.Columns and #(module.Columns) > 0 then
+        header.ColumnSelector.RefeshColumnList(module)
+        header.ColumnSelector.frame:Show()
+    else
+        header.ColumnSelector.frame:Hide()
+    end
 end
 
 function core.UI.ToggleQuickSearch(show, onSearch)

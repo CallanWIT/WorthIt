@@ -7,6 +7,8 @@ function core.FlipResultModule(name, data, category)
     local resultColumn = core.GridColumns.ResultsValueColumn({ Name = "FlipResult" })
     local profitColumn = core.GridColumns.ProfitColumn({ CostColumn = costColumn, ValueColumn = resultColumn })
 
+    self.ConfigKey = "Flip"
+
     self.Columns = {
         core.GridColumns.ItemNameColumn(),
         profitColumn,

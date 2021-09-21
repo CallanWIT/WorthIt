@@ -159,9 +159,11 @@ function core.UI.Grid(options)
             end
         end
 
+        local margin = 45 + (ElvUI and 5 * #(visibleColumns) or 0)
+
         if minWidth then
             minWidth = math.floor(minWidth)
-            local diff = minWidth - 45 - totalWidth
+            local diff = minWidth - margin - totalWidth
             isFullWidth = diff > 0
             self:SetFullWidth(false)
 
@@ -174,7 +176,7 @@ function core.UI.Grid(options)
                 end
                 self:SetFullWidth(true)
             else
-                self:SetWidth(totalWidth + 45)
+                self:SetWidth(totalWidth + margin)
             end
         else
             self:SetFullWidth(true)
@@ -248,7 +250,7 @@ function core.UI.Grid(options)
         local visibleColumns = {}
 
         for _, column in pairs(self.Columns) do
-            if column.IsVisible(self, rows) then
+            if column.IsVisible(self, rows) and not column.IsHidden then
                 table.insert(visibleColumns, column)
             end
         end

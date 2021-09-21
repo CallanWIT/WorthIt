@@ -3,6 +3,7 @@ local WIT, core = ...
 local data = { }
 
 core.DashboardModule = core.FarmResultModule('Dashboard', data, 'Dashboard')
+core.DashboardModule.ConfigKey = "Dashboard"
 
 function core.DashboardModule.GetData()
     local farms = {}

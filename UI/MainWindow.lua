@@ -97,8 +97,14 @@ function MainWindow.ShowModule(module)
     if not core.TSMHelper.IsTSMAPIAvailable() or not core.TSMHelper.IsTSMDBAvailable() then
         core.InstallationGuide.Draw(frame)
         core.UI.DisableHeader()
+        core.UI.ToggleColumnSelector(nil)
     elseif module.Draw then
+        if module.LoadColumnFilter then
+            module.LoadColumnFilter()
+        end
+
         module.Draw(frame)
         currentModule = module
+        core.UI.ToggleColumnSelector(module)
     end
 end

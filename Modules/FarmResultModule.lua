@@ -5,11 +5,17 @@ function core.FarmResultModule(name, data, category)
 
     local resultColumn = core.GridColumns.ResultsValueColumn()
 
+    self.ConfigKey = "Farm"
+
     self.Columns = {
         core.GridColumns.ExpandRowColumn(),
         core.GridColumns.ContextMenuColumn({ GetMenu = core.FarmResultItemMenu }),
         core.GridColumns.ItemNameColumn(),
         resultColumn,
+        core.GridColumns.ResultsValueColumn({ Name = "ResultDBMinBuyout", PriceSource = "DBMinBuyout", IsHidden = true }),
+        core.GridColumns.ResultsValueColumn({ Name = "ResultDBMarket", PriceSource = "DBMarket", IsHidden = true }),
+        core.GridColumns.ResultsValueColumn({ Name = "ResultDBHistorical", PriceSource = "DBHistorical", IsHidden = true }),
+        core.GridColumns.ResultsValueColumn({ Name = "ResultDBRegionMarketAvg", PriceSource = "DBRegionMarketAvg", IsHidden = true }),
         core.GridColumns.ItemTotalQuantityColumn(),
         core.GridColumns.LocationsColumn(),
         core.GridColumns.ItemSellRateColumn(),
@@ -68,7 +74,6 @@ local function importRoute(row)
 
     core.UI.InputDialog({ Text = core.GetString("ImportRouteMessage"), Button1 = core.GetString("Import"), Data = route, HasEditBox = true, TextBoxValue = route.RouteName or core.GetString(route.Name), OnAccept = function(self, data)
         core.RoutesHelper.ImportRoute(data, self.editBox:GetText())
-        ReloadUI()
     end })
 end
 

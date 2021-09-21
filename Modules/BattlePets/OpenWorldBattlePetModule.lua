@@ -54,5 +54,6 @@ local OpenWorlddata = {
 }
 local module = core.FarmResultModule('OpenWorldPet', OpenWorlddata, 'BattlePets')
 module.Columns[#module.Columns].Visible = false
+module.ConfigKey = "Pets"
 table.insert(core.Modules, module)
 

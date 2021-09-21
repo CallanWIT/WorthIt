@@ -28,11 +28,18 @@ function MinimapIcon.ResetPosition()
 end
 
 function MinimapIcon.OnIconClick()
-    core.UI.MainWindow.Toggle()
+    if IsShiftKeyDown() then
+	    core.UI.MainWindow.Init()
+        core.Recorder().Show()
+    else
+        core.UI.MainWindow.Toggle()
+	end
 end
 
 function MinimapIcon.OnTooltipShow(tooltip)
-    tooltip:AddLine("|cffffff00WorthIT" ,"Click|r to toggle the WorthIt UI")
+    tooltip:AddLine(core.GetString("MinimapIconTooltip1"))
+    tooltip:AddLine(core.GetString("MinimapIconTooltip2"))
+    tooltip:AddLine(core.GetString("MinimapIconTooltip3"))
 end
 
 function MinimapIcon.Dialog()
@@ -42,3 +49,4 @@ function MinimapIcon.Dialog()
 
     UIConfig:Show()
 end
+

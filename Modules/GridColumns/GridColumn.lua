@@ -17,6 +17,7 @@ function GridColumns.GridColumn(options)
         DisplayName = core.GetString(options.Name),
         Sortable = options.Sortable,
         IsFixedSize = options.IsFixedSize,
+        IsHidden = options.IsHidden or false
     }
 
     function self.Value(data)

@@ -136,12 +136,17 @@ local function ShowRecorder()
     core.UI.MainWindow.Hide()
 end
 
+local function ShowflipEditor()
+    core.Recorder().Show()
+    core.UI.MainWindow.Hide()
+end
+
 local function ImportFarm()
     core.UI.InputDialog({ Text = core.GetString("ImportFarm"), HasEditBox = true, OnAccept = function(dialog)
         local text = dialog.editBox:GetText()
         if text ~= nil then
             if strlen(text) > 0 then
-                local result, data = AceSerializer:Deserialize(LibBase64.Decode(text))
+                local result, data = core.ExportHelper.Deserialize(text)
 
                 if result and data.Id and data.Time then
                     local farms = core.Config.GetUserFarms()
@@ -222,6 +227,11 @@ local function buildNavigationMenu()
                     DisplayName = core.GetString("Recorder"),
                     Action = ShowRecorder
                 },
+                --{
+                --    Name = "flipEditor",
+                --    DisplayName = core.GetString("flipEditor"),
+                --    Action = ShowflipEditor
+                --},
                 {
                     Name = "Import",
                     DisplayName = core.GetString("ImportFarm"),
@@ -258,11 +268,6 @@ local function buildNavigationMenu()
                             Name = "BagValueDBHistorical",
                             DisplayName = "DBHistorical",
                             Action = function() core.PrintInventoryValue("DBHistorical") end
-                        },
-                        {
-                            Name = "BagValueDBRegionMinBuyoutAvg",
-                            DisplayName = "DBRegionMinBuyoutAvg",
-                            Action = function() core.PrintInventoryValue("DBRegionMinBuyoutAvg") end
                         },
                         {
                             Name = "BagValueDBRegionMarketAvg",
@@ -302,11 +307,6 @@ local function buildNavigationMenu()
                             Name = "BankValueDBHistorical",
                             DisplayName = "DBHistorical",
                             Action = function() core.PrintBankValue("DBHistorical") end
-                        },
-                        {
-                            Name = "BankValueDBRegionMinBuyoutAvg",
-                            DisplayName = "DBRegionMinBuyoutAvg",
-                            Action = function() core.PrintBankValue("DBRegionMinBuyoutAvg") end
                         },
                         {
                             Name = "BankValueDBRegionMarketAvg",

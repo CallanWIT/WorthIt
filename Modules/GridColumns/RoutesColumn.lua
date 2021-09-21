@@ -6,8 +6,10 @@ local AceSerializer = LibStub("AceSerializer-3.0")
 
 local GridColumns = core.GridColumns
 
-function GridColumns.RoutesColumn()
-    local self = GridColumns.GridColumn('Routes')
+function GridColumns.RoutesColumn(options)
+    options = options or {}
+    options.Name = options.Name or 'Routes'
+    local self = GridColumns.GridColumn(options)
 
     self.Description = core.GetString('RoutesDescription')
     self.Sortable = false
@@ -19,7 +21,6 @@ function GridColumns.RoutesColumn()
             button2 = "Cancel",
             OnAccept = function (self, data)
                 core.RoutesHelper.ImportRoute(data, self.editBox:GetText())
-                ReloadUI()
             end,
             hasEditBox = true,
             timeout = 0,

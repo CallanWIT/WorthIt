@@ -8,9 +8,11 @@ function GridColumns.ItemValueColumn(options)
 
     local self = GridColumns.GridColumn(options)
 
+    self.PriceSource = options.PriceSource
+
     function self.Value(data)
         local id = data.ItemId or data.Id
-        return (core.TSMHelper.GetItemPrice(id == core.TSMHelper.PetCageItemId and 'p:'.. data.PetId or id) or 0) * (data.Quantity or 1)
+        return (core.TSMHelper.GetItemPrice(id == core.TSMHelper.PetCageItemId and 'p:'.. data.PetId or id, self.PriceSource) or 0) * (data.Quantity or 1)
     end
 
     function self.GetRowText(row)

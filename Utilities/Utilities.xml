@@ -8,6 +8,7 @@
     <Script file="ScrapHelper.lua"/>
     <Script file="LocationHelper.lua"/>
     <Script file="RoutesHelper.lua"/>
+    <Script file="ExportHelper.lua"/>
     <Script file="TomTomHelper.lua"/>
     <Script file="ExecutiveAssistantHelper.lua"/>
 </Ui>

@@ -4,8 +4,11 @@ local AceGUI = LibStub("AceGUI-3.0")
 
 local GridColumns = core.GridColumns
 
-function GridColumns.CustomActionsColumn()
-    local self = GridColumns.GridColumn('Actions')
+function GridColumns.CustomActionsColumn(options)
+    options = options or {}
+    options.Name = options.Name or 'Actions'
+
+    local self = GridColumns.GridColumn(options)
 
     self.Sortable = false
 

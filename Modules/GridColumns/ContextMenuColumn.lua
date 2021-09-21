@@ -33,6 +33,7 @@ function GridColumns.ContextMenuColumn(options)
         local group = AceGUI:Create("SimpleGroup")
         group:SetLayout("Flow")
         group:SetHeight(10)
+        group:SetWidth(12)
 
         local menu = core.UI.ContextMenuButton(self.GetMenu(row))
         menu.alignoffset = -10

@@ -60,3 +60,10 @@ function core.UI.InputDialog(options)
     options.Button2 = options.Button2 or core.GetString("Cancel")
     return core.UI.ShowDialog(options)
 end
+
+function core.UI.WarningDialog(options)
+    options.Button1 = options.Button1 or core.GetString("Ok")
+
+    return core.UI.ShowDialog(options)
+end
+

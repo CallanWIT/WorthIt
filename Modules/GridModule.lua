@@ -9,6 +9,7 @@ function core.GridModule(name, data, category)
     self.Columns = {}
     self.IsExpandabled = true
     self.DetailsRowHeaderResource = "Loot"
+
     self.Sort = {
         Column = nil,
         Direction = nil,
@@ -65,6 +66,60 @@ function core.GridModule(name, data, category)
     function self.Refresh()
         if self.Grid then
             self.Grid.Reload()
+        end
+    end
+
+    local function FilterColumns(filter)
+        if filter == nil or self.Columns == nil then return end
+        local index = 1
+
+        for _, column in pairs(self.Columns) do
+            if column.IsFixedSize or column.Name == '' then
+                index = index + 1
+            end
+        end
+
+        for _, item in pairs(filter) do
+            for _, column in pairs(self.Columns) do
+                if not column.IsFixedSize and column.Name == item.Name then
+                    column.IsHidden = item.IsHidden
+                    core.TableHelper.RemoveValue(self.Columns, column)
+                    table.insert(self.Columns, index, column)
+
+                    index = index + 1
+                end
+            end
+        end
+    end
+
+    local function GetCurrentColumnFilter()
+        if self.Columns == nil then return {} end
+        local filter = {}
+
+        for _, column in pairs(self.Columns) do
+            if not column.IsFixedSize and column.Name ~= '' then
+                table.insert(filter, { Name = column.Name, IsHidden = column.IsHidden })
+            end
+        end
+
+        return filter
+    end
+
+    function self.LoadColumnFilter()
+        if self.ConfigKey == nil then return end
+        local filter = core.Config.GetColumnFilter(self.ConfigKey)
+
+        if filter ~= nil then
+            FilterColumns(filter)
+        end
+    end
+
+    function self.SaveColumnFilter()
+        if self.ConfigKey == nil then return end
+        local filter = GetCurrentColumnFilter()
+
+        if filter ~= nil then
+            core.Config.SetColumnFilter(self.ConfigKey, filter)
         end
     end
     

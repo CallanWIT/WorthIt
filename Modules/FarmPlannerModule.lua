@@ -72,10 +72,16 @@ local function farmPlannerModule(name, category)
 
     local resultColumn = core.GridColumns.ResultsValueColumn({ Sortable = false })
 
+    self.ConfigKey = "FarmPlanner"
+
     self.Columns = {
         core.GridColumns.ContextMenuColumn({ GetMenu = farmPlannerItemMenu }),
         core.GridColumns.ItemNameColumn({ Sortable = false }),
         resultColumn,
+        core.GridColumns.ResultsValueColumn({ Name = "ResultDBMinBuyout", PriceSource = "DBMinBuyout", IsHidden = true }),
+        core.GridColumns.ResultsValueColumn({ Name = "ResultDBMarket", PriceSource = "DBMarket", IsHidden = true }),
+        core.GridColumns.ResultsValueColumn({ Name = "ResultDBHistorical", PriceSource = "DBHistorical", IsHidden = true }),
+        core.GridColumns.ResultsValueColumn({ Name = "ResultDBRegionMarketAvg", PriceSource = "DBRegionMarketAvg", IsHidden = true }),
     }
 
     self.GetData = function ()

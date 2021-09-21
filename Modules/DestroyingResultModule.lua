@@ -7,6 +7,8 @@ function core.DestroyingResultModule(name, data, category)
     local resultColumn = core.GridColumns.ResultsValueColumn({ Name = "FlipResult" })
     local profitColumn = core.GridColumns.ProfitColumn({ CostColumn = costColumn, ValueColumn = resultColumn })
 
+    self.ConfigKey = "Detroy"
+
     self.Columns = {
         core.GridColumns.ItemNameColumn(),
         profitColumn,

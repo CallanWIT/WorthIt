@@ -6,8 +6,12 @@ local ITEM_LINK_REGEX = "(.+)"
 local ITEM_ID_REGEX = "(.+)Hitem:([0-9]+):(.+)"
 local LOOT_ITEM_SELF_REGEX = LOOT_ITEM_SELF:gsub("%%s", ITEM_LINK_REGEX)
 local LOOT_ITEM_SELF_MULTIPLE_REGEX = LOOT_ITEM_SELF_MULTIPLE:gsub("%%s", ITEM_LINK_REGEX):gsub("%%d", "(%%d+)")
+local LOOT_ITEM_PUSHED_SELF_REGEX = LOOT_ITEM_PUSHED_SELF:gsub("%%s", ITEM_LINK_REGEX)
+local LOOT_ITEM_PUSHED_SELF_MULTIPLE_REGEX = LOOT_ITEM_PUSHED_SELF_MULTIPLE:gsub("%%s", ITEM_LINK_REGEX):gsub("%%d", "(%%d+)")
 local LOOT_ITEM_SELF_ITEMID_REGEX = LOOT_ITEM_SELF:gsub("%%s", ITEM_ID_REGEX)
 local LOOT_ITEM_SELF_ITEMID_MULTIPLE_REGEX = LOOT_ITEM_SELF_MULTIPLE:gsub("%%s", ITEM_ID_REGEX):gsub("%%d", "(%%d+)")
+local LOOT_ITEM_PUSHED_SELF_ITEMID_REGEX = LOOT_ITEM_PUSHED_SELF:gsub("%%s", ITEM_ID_REGEX)
+local LOOT_ITEM_PUSHED_SELF_ITEMID_MULTIPLE_REGEX = LOOT_ITEM_PUSHED_SELF_MULTIPLE:gsub("%%s", ITEM_ID_REGEX):gsub("%%d", "(%%d+)")
 local LOOT_ITEM_REGEX = LOOT_ITEM:gsub("%%s", ITEM_LINK_REGEX)
 local LOOT_ITEM_MULTIPLE_REGEX = LOOT_ITEM_MULTIPLE:gsub("%%s", ITEM_LINK_REGEX):gsub("%%d", "(%%d+)")
 local LOOT_ITEM_ITEMID_REGEX = LOOT_ITEM:gsub("%%s", ITEM_LINK_REGEX, 1):gsub("%%s", ITEM_ID_REGEX)
@@ -448,6 +452,17 @@ local function OnEvent(_, event, arg)
 		if not itemId then
 			_, itemId = arg:match(LOOT_ITEM_SELF_ITEMID_REGEX)
             itemLink, sss = arg:match(LOOT_ITEM_SELF_REGEX)
+			quantity = 1
+		end
+
+		if not itemId then
+            _, itemId, _, quantity = arg:match(LOOT_ITEM_PUSHED_SELF_ITEMID_MULTIPLE_REGEX)
+            itemLink = arg:match(LOOT_ITEM_PUSHED_SELF_MULTIPLE_REGEX)
+		end
+
+		if not itemId then
+            _, itemId, _, quantity = arg:match(LOOT_ITEM_PUSHED_SELF_ITEMID_REGEX)
+            itemLink, sss = arg:match(LOOT_ITEM_PUSHED_SELF_REGEX)
 			quantity = 1
 		end
 

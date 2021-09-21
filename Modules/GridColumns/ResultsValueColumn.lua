@@ -8,6 +8,7 @@ function GridColumns.ResultsValueColumn(options)
 
     local self = GridColumns.GridColumn(options)
 
+    self.PriceSource = options.PriceSource
     self.Description = core.GetString(options.Name .. 'Description')
 
     function self.GetItemList(data)
@@ -15,7 +16,7 @@ function GridColumns.ResultsValueColumn(options)
     end
 
     function self.GetItemPrice(item)
-        return core.TSMHelper.GetItemPrice(item.Id == core.TSMHelper.PetCageItemId and 'p:'.. item.PetId or item.Id)
+        return core.TSMHelper.GetItemPrice(item.Id == core.TSMHelper.PetCageItemId and 'p:'.. item.PetId or item.Id, self.PriceSource)
     end
 
     function self.Value(data)

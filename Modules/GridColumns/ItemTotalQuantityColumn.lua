@@ -12,6 +12,7 @@ function GridColumns.ItemTotalQuantityColumn(options)
 
     self.ItemIdProperty = options.ItemIdProperty or "ItemId"
     self.Description = core.GetString('TotalQuantityDescription')
+    self.IsHidden = true
 
     function self.GetFilterValue(row)
         return self.Value(row.Data)

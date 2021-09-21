@@ -26,6 +26,7 @@ local vanillamogData = {
 
 local module = core.FarmResultModule('Transmog', vanillamogData, 'Transmog')
 module.DetailsRowHeaderResource = "ItemsOfNote"
+module.ConfigKey = "Transmog"
 
 function module.GetDetailsRowData(row)
     return row.Data.ItemsOfNote

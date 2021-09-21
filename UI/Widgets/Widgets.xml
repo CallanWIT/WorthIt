@@ -7,5 +7,6 @@
     <Script file="ContextMenu.lua"/>
     <Script file="ItemLinkLabel.lua"/>
     <Script file="RoutePicker.lua"/>
+    <Script file="ColumnSelector.lua"/>
     <Script file="Grid.lua"/>
 </Ui>

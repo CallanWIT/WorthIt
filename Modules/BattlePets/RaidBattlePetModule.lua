@@ -69,4 +69,5 @@ core.Data.Results.Farms.NyalothaWakingCityPets,
 
 local module = core.FarmResultModule('RaidBattlePet', data, 'BattlePets')
 module.Columns[#module.Columns].Visible = false
+module.ConfigKey = "Pets"
 table.insert(core.Modules, module)

@@ -11,7 +11,6 @@ local priceSources = {
     'DBMinBuyout',
     'DBMarket',
     'DBHistorical',
-    'DBRegionMinBuyoutAvg',
     'DBRegionMarketAvg',
     'DBRegionHistorical',
     'DBRegionSaleAvg'

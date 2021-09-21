@@ -40,45 +40,64 @@ function RoutesHelper.IsRoutesAvailable()
     return Routes and Routes.db and Routes.db.global
 end
 
+function RoutesHelper.NormaliseRouteData(routeData)
+    routeData.hidden = false
+    routeData.looped = 1
+    routeData.visible = true
+    routeData.selection = {}
+    routeData.db_type = {}
+    routeData.taboos = {}
+    routeData.taboolist = {}
+
+    return routeData;
+end
+
 local function importRoute(data)
-    if not data or not data.RouteZone or not data.RouteKey or not data.RouteName or not data.RouteData then return end
+    if data and data.RouteZone and data.RouteKey and data.RouteName and data.RouteData then
+        local mapInfo = C_Map.GetMapInfo(data.RouteZone)
 
-    L = L or LibStub("AceLocale-3.0"):GetLocale("Routes", false)
+        if not mapInfo then return end
 
-    Routes.db.global.routes[data.RouteZone][data.RouteName] = nil
-	Routes.db.global.routes[data.RouteZone][data.RouteName] = data.RouteData
+        L = L or LibStub("AceLocale-3.0"):GetLocale("Routes", false)
 
-	local opts = Routes.options.args.routes_group.args
-    local zoneKey = tostring(data.RouteZone)
+        RoutesHelper.NormaliseRouteData(data.RouteData)
 
-	if not opts[zoneKey] then
-        local mapName = C_Map.GetMapInfo(data.RouteZone).name
-		opts[zoneKey] = {
-			type = "group",
-			name = mapName,
-			desc = L["Routes in %s"]:format(mapName),
-			args = {
-				desc = route_zone_args_desc_table,
-			},
-		}
-		Routes.routekeys[data.RouteZone] = {}
-	end
+        Routes.db.global.routes[data.RouteZone][data.RouteName] = nil
+        Routes.db.global.routes[data.RouteZone][data.RouteName] = data.RouteData
 
-	Routes.routekeys[data.RouteZone][data.RouteKey] = data.RouteName
-	opts[zoneKey].args[data.RouteKey] = Routes:GetAceOptRouteTable()
+        local opts = Routes.options.args.routes_group.args
+        local zoneKey = tostring(data.RouteZone)
 
-	local AutoShow = Routes:GetModule("AutoShow", true)
+        if not opts[zoneKey] then
+            local mapName = mapInfo.name
 
-	if AutoShow and Routes.db.defaults.use_auto_showhide then
-		AutoShow:ApplyVisibility()
-	end
+            opts[zoneKey] = {
+                type = "group",
+                name = mapName,
+                desc = L["Routes in %s"]:format(mapName),
+                args = {
+                    desc = route_zone_args_desc_table,
+                },
+            }
 
-	Routes:DrawWorldmapLines()
-	Routes:DrawMinimapLines(true)
-    local AceConfigDialog = LibStub("AceConfigDialog-3.0")
+            Routes.routekeys[data.RouteZone] = {}
+        end
 
-    if not AceConfigDialog.OpenFrames["Routes"] then
-        AceConfigDialog:Open("Routes")
+        Routes.routekeys[data.RouteZone][data.RouteKey] = data.RouteName
+        opts[zoneKey].args[data.RouteKey] = Routes:GetAceOptRouteTable()
+
+        print("Route " .. data.RouteName .. " (" .. mapInfo.name .. ") imported succefully" )
+
+        LibStub("AceConfigDialog-3.0"):SelectGroup('Routes', 'routes_group', zoneKey, data.RouteKey)
+
+        local AutoShow = Routes:GetModule("AutoShow", true)
+
+        if AutoShow and Routes.db.defaults.use_auto_showhide then
+            AutoShow:ApplyVisibility()
+        end
+
+        Routes:DrawWorldmapLines()
+        Routes:DrawMinimapLines(true)
     end
 end
 
@@ -96,7 +115,7 @@ function RoutesHelper.GetRouteTree()
     for zone, routes in pairs(Routes.db.global.routes) do
         local data = { Id = zone, Name = C_Map.GetMapInfo(zone).name, Routes = {} }
         for k, v in pairs(routes) do
-            table.insert(data.Routes, { Name = k, Zone = data, Data = v })
+            table.insert(data.Routes, { Name = k, Zone = data, Data = core.TableHelper.ShallowCopy(v) })
         end
         table.sort(data.Routes, function(a, b) return a.Name < b.Name end)
         if #data.Routes > 0 then

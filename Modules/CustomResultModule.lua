@@ -1,6 +1,5 @@
 local WIT, core = ...
 
-local AceGUI = LibStub("AceGUI-3.0")
 local LibBase64 = LibStub("LibBase64-1.0")
 local AceSerializer = LibStub("AceSerializer-3.0")
 
@@ -44,7 +43,7 @@ local function duplicate(row)
 end
 
 local function export(row)
-    local text = LibBase64.Encode(AceSerializer:Serialize(row.Data))
+    local text = core.ExportHelper.Serialize(row.Data)
     core.UI.ShowDialog({ Text = core.GetString("ImportStringMessage"), Button1 = core.GetString("Ok"), HasEditBox = true, TextBoxValue = text, SelectText = true })
 end
 
@@ -87,11 +86,17 @@ function core.CustomResultModule(name, category)
 
     local resultColumn = core.GridColumns.ResultsValueColumn()
 
+    self.ConfigKey = "MyFarms"
+
     self.Columns = {
         core.GridColumns.ExpandRowColumn(),
         core.GridColumns.ContextMenuColumn({ GetMenu = customResultItemMenu }),
         core.GridColumns.ItemNameColumn(),
         resultColumn,
+        core.GridColumns.ResultsValueColumn({ Name = "ResultDBMinBuyout", PriceSource = "DBMinBuyout", IsHidden = true }),
+        core.GridColumns.ResultsValueColumn({ Name = "ResultDBMarket", PriceSource = "DBMarket", IsHidden = true }),
+        core.GridColumns.ResultsValueColumn({ Name = "ResultDBHistorical", PriceSource = "DBHistorical", IsHidden = true }),
+        core.GridColumns.ResultsValueColumn({ Name = "ResultDBRegionMarketAvg", PriceSource = "DBRegionMarketAvg", IsHidden = true }),
         core.GridColumns.ItemTotalQuantityColumn(),
         core.GridColumns.LocationsColumn(),
         core.GridColumns.ItemSellRateColumn(),
