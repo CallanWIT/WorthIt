@@ -203,22 +203,14 @@ local function ConfigurationModule()
         end)
         frame:AddChild(resetIconPositionButton)
 
-        local group = AceGUI:Create("SimpleGroup")
-        group:SetLayout("Flow")
-        group:SetFullWidth(true)
-
-        hideMinimapIconCheckbox:SetWidth(30)
+        hideMinimapIconCheckbox:SetFullWidth(true)
         hideMinimapIconCheckbox:SetValue(not WITDB.Settings.HideMinimapIcon)
         hideMinimapIconCheckbox:SetCallback("OnValueChanged", function(self, name, value)
             core.UI.MinimapIcon.Toggle(value)
         end)
-        group:AddChild(hideMinimapIconCheckbox)
+        hideMinimapIconCheckbox:SetLabel(core.GetString("ShowMinimapIcon"))
 
-        local label = AceGUI:Create("Label")
-        label:SetText(core.GetString("ShowMinimapIcon"))
-        group:AddChild(label)
-
-        frame:AddChild(group)
+        frame:AddChild(hideMinimapIconCheckbox)
     end
 
     function drawCustomPricesConfiguration(frame)
@@ -320,6 +312,7 @@ local function ConfigurationModule()
         local checkbox = AceGUI:Create("CheckBox")
         checkbox:SetWidth(30)
         checkbox:SetValue(core.Config.GetModulesConfig().Dashboard.Farms[farm.Id] or false)
+        checkbox:SetLabel('')
         checkbox:SetCallback("OnValueChanged", function(self, name, value)
             core.Config.GetModulesConfig().Dashboard.Farms[farm.Id] = value or nil
             core.DashboardModule.ClearCache()
@@ -374,12 +367,8 @@ local function ConfigurationModule()
         intro:SetText(core.GetString("DashboardConfogurationIntro"))
         frame:AddChild(intro)
 
-        local group = AceGUI:Create("SimpleGroup")
-        group:SetLayout("Flow")
-        group:SetFullWidth(true)
-
         local checkbox = AceGUI:Create("CheckBox")
-        checkbox:SetWidth(30)
+        checkbox:SetFullWidth(true)
         checkbox:SetValue(core.Config.GetModulesConfig().Dashboard.ShowCurrentContent)
         checkbox:SetCallback("OnValueChanged", function(self, name, value)
             core.Config.GetModulesConfig().Dashboard.ShowCurrentContent = value
@@ -391,13 +380,9 @@ local function ConfigurationModule()
 
             frame.parent:RefreshTree()
         end)
-        group:AddChild(checkbox)
+        checkbox:SetLabel(core.GetString("ShowCurrentContentFarms"))
 
-        local label = AceGUI:Create("Label")
-        label:SetText(core.GetString("ShowCurrentContentFarms"))
-        group:AddChild(label)
-
-        frame:AddChild(group)
+        frame:AddChild(checkbox)
     end
 
     function drawDashboardCustomResultsConfiguration(frame)
