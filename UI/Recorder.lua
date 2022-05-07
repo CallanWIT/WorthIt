@@ -128,24 +128,24 @@ UpdateUI = function()
     end
 
     local name = self.Session.Mode == "location" and core.LocationHelper.GetMapName(self.Session.NameMapId)
-        or self.Session.Mode == "item" and (self.Session.ItemLink or core.TSMHelper.GetItemLink(self.Session.ItemId))
+        or self.Session.Mode == "item" and (self.Session.ItemLink or core.PriceSourceHelper.GetItemLink(self.Session.ItemId))
         or self.Session.Name
 
     self.UI.TitleLabel:SetText(string.format(core.GetString("NameLabelFormat"), name))
 
     self.UI.LocationLabel:SetText(string.format(core.GetString("LocationLabelFormat"), location))
 
-    self.UI.MoneyLabel:SetText(string.format(core.GetString("RawGoldLabelFormat"), core.TSMHelper.ToMoneyString(self.Session.Money)))
+    self.UI.MoneyLabel:SetText(string.format(core.GetString("RawGoldLabelFormat"), core.PriceSourceHelper.ToMoneyString(self.Session.Money)))
 
     local itemValue = 0
 
     for _, item in pairs(self.Session.Results) do
-        local unitPrice = core.TSMHelper.GetItemPrice(item.Id == core.TSMHelper.PetCageItemId and 'p:'.. item.PetId or item.Id) or 0
+        local unitPrice = core.PriceSourceHelper.GetItemPrice(item.Id == core.PriceSourceHelper.PetCageItemId and 'p:'.. item.PetId or item.Id) or 0
         itemValue = itemValue + unitPrice * item.Quantity
     end
 
-    self.UI.ItemValueLabel:SetText(string.format(core.GetString("ItemsValueLabelFormat"), core.TSMHelper.ToMoneyString(itemValue)))
-    self.UI.TotalValueLabel:SetText(string.format(core.GetString(self.Mode == "Compact" and  "TotalValueLabelFormatCompact" or "TotalValueLabelFormat"), core.TSMHelper.ToMoneyString(itemValue + self.Session.Money)))
+    self.UI.ItemValueLabel:SetText(string.format(core.GetString("ItemsValueLabelFormat"), core.PriceSourceHelper.ToMoneyString(itemValue)))
+    self.UI.TotalValueLabel:SetText(string.format(core.GetString(self.Mode == "Compact" and  "TotalValueLabelFormatCompact" or "TotalValueLabelFormat"), core.PriceSourceHelper.ToMoneyString(itemValue + self.Session.Money)))
     self.UI.IsGroupFarmCheckBox:SetValue(self.Session.IsGroupFarm or false)
     self.UI.IsGroupFarmCheckBox:SetLabel(string.format(core.GetString(self.Session.IsGroupFarm and "TrackGroupLootPlayers" or "TrackGroupLoot"), self.Session.NumberOfPlayers or 1))
 
@@ -219,7 +219,7 @@ end
 local function SetFarmName()
     local type, id, itemLink = GetCursorInfo()
 	if type == 'item' then
-        if id == core.TSMHelper.PetCageItemId then
+        if id == core.PriceSourceHelper.PetCageItemId then
             self.Session.PetId = tonumber(itemLink:match(BPET_ID_REGEX))
             self.Session.ItemLink = itemLink
         else
@@ -233,7 +233,7 @@ local function SetFarmName()
         UpdateUI()
     else
         if IsShiftKeyDown() and self.Session.Mode == "item" and self.Session.ItemId then
-            ChatEdit_InsertLink(self.Session.ItemLink or core.TSMHelper.GetItemLink(self.Session.ItemId))
+            ChatEdit_InsertLink(self.Session.ItemLink or core.PriceSourceHelper.GetItemLink(self.Session.ItemId))
             return
         end
 
@@ -326,7 +326,7 @@ function SortJunk(row)
             if item.ItemLink then
                 _, _, _, _, _, _, _, _, _, _, itemSellPrice = GetItemInfo(item.ItemLink)
             end
-            itemSellPrice = itemSellPrice or core.TSMHelper.GetItemVendorSellPrice(item.Id)
+            itemSellPrice = itemSellPrice or core.PriceSourceHelper.GetItemVendorSellPrice(item.Id)
             self.Session.Money = self.Session.Money + (itemSellPrice or 0) * (item.Quantity or 0)
             core.TableHelper.RemoveValue(self.Session.Results, item)
         end
@@ -412,7 +412,7 @@ local function ClearRoute()
 end
 
 local function ProcessItem(itemId, quantity, itemLink, itemRarity, bindType, itemSellPrice)
-    local addItem = (bindType ~= 1 or core.TSMHelper.HasCustomPrice(itemId)) and not core.ScrapHelper.IsJunk(itemId) and itemRarity >= core.Config.GetRecorderMinQuality() and (core.TSMHelper.GetItemPrice(itemId) or -1) >= core.Config.GetRecorderMinPrice()
+    local addItem = (bindType ~= 1 or core.PriceSourceHelper.HasCustomPrice(itemId)) and not core.ScrapHelper.IsJunk(itemId) and itemRarity >= core.Config.GetRecorderMinQuality() and (core.PriceSourceHelper.GetItemPrice(itemId) or -1) >= core.Config.GetRecorderMinPrice()
 
     if addItem then
         local item
@@ -545,7 +545,7 @@ local function AddItem()
     local type, id, itemLink = GetCursorInfo()
 	if type == 'item' then
         local item
-        local petId = (id == core.TSMHelper.PetCageItemId and tonumber(itemLink:match(BPET_ID_REGEX))) or nil
+        local petId = (id == core.PriceSourceHelper.PetCageItemId and tonumber(itemLink:match(BPET_ID_REGEX))) or nil
 
         for _, i in pairs(self.Session.Results) do
             if i.Id == id and i.PetId == petId then
@@ -667,7 +667,7 @@ local function lootContextMenu(module, row)
                     _, _, _, _, _, _, _, _, _, _, itemSellPrice = GetItemInfo(row.Data.ItemLink)
                 end
 
-                itemSellPrice = itemSellPrice or core.TSMHelper.GetItemVendorSellPrice(row.Data.Id)
+                itemSellPrice = itemSellPrice or core.PriceSourceHelper.GetItemVendorSellPrice(row.Data.Id)
                 self.Session.Money = self.Session.Money + (itemSellPrice or 0) * (row.Data.Quantity or 0)
                 core.TableHelper.RemoveValue(self.Session.Results, row.Data)
                 self.UI.LootGrid.ClearCache()

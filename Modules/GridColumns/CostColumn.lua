@@ -11,11 +11,11 @@ function GridColumns.CostColumn(options)
     self.Description = core.GetString('CostDescription')
 
     function self.GetItemPrice(item)
-        local id = item.Id == core.TSMHelper.PetCageItemId and 'p:'.. item.PetId or item.Id
+        local id = item.Id == core.PriceSourceHelper.PetCageItemId and 'p:'.. item.PetId or item.Id
         if item.BuyFromVendor then
-            return core.TSMHelper.GetItemVendorBuyPrice(id) * (item.ApplyReputationDiscount and 0.8 or 1)
+            return core.PriceSourceHelper.GetItemVendorBuyPrice(id) * (item.ApplyReputationDiscount and 0.8 or 1)
         else
-            return core.TSMHelper.GetItemPrice(id)
+            return core.PriceSourceHelper.GetItemPrice(id)
         end
     end
 

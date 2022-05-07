@@ -2,7 +2,14 @@ local WIT, core = ...
 
 core.Items.Inscription = {
 
-    -- Vanilla 
+    -- Vials
+	AcaciaPowder = 158205,
+	DistilledWater = 158186,
+	AeratedWater = 173060,
+	RuneEtchedVial = 180732,
+	
+	
+	-- Vanilla 
 
     MoonglowInk = 39469, -- 1
     MidnightInk = 39774, -- 1

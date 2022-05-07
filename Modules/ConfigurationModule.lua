@@ -6,8 +6,6 @@ local function ConfigurationModule()
     local self = core.Module('Configuration', 'Configuration')
 
     local function CreateDropDown(name, values, valueToSelect, onChangedCallback)
-        local priceSources = core.TSMHelper.GetPriceSources()
-
         local dropDown = AceGUI:Create("Dropdown")
         dropDown:SetLabel(name)
         dropDown.pullout.frame:SetScale(core.Config.GetScaling())
@@ -126,10 +124,11 @@ local function ConfigurationModule()
         intro:SetText(core.GetString("PriceSourceConfogurationIntro"))
         frame:AddChild(intro)
 
-        local customPriceValue = core.TSMHelper.GetPriceSources()[1]
+        local selectedDataSource = core.Config.GetDataSource()
+        local priceSources = selectedDataSource == 2 and core.TUJHelper.GetPriceSources() or core.TSMHelper.GetPriceSources()
+        local customPriceValue = priceSources[1]
         local priceSourcesLabel = core.GetString("PriceSource")
-        local priceSources = core.TSMHelper.GetPriceSources()
-        local selectedPriceSource = core.Config.GetPriceSource()
+        local selectedPriceSource = selectedDataSource == 2 and core.Config.GetTUJPriceSource() or core.Config.GetPriceSource()
 
         local customPriceSourceTextBox = AceGUI:Create("EditBox")
         customPriceSourceTextBox:SetDisabled(selectedPriceSource ~= customPriceValue)
@@ -137,53 +136,97 @@ local function ConfigurationModule()
         local priceSorceDropDown = CreateDropDown(priceSourcesLabel, priceSources, selectedPriceSource, function(self)
             local value = self:GetValue()
             if value then
-                core.Config.SetPriceSource(priceSources[value])
+                if selectedDataSource == 2 then
+                    core.Config.SetTUJPriceSource(priceSources[value])
+                else
+                    core.Config.SetPriceSource(priceSources[value])
+                end
+                
                 customPriceSourceTextBox:SetDisabled(value ~= 1)
             end
         end)
 
-        frame:AddChild(priceSorceDropDown)
-
         customPriceSourceTextBox:SetLabel(core.GetString("CustomPriceSource"))
-        customPriceSourceTextBox:SetText(core.Config.GetCustomPriceSource())
+        customPriceSourceTextBox:SetText(selectedDataSource == 2 and core.Config.GetTUJCustomPriceSource() or core.Config.GetCustomPriceSource())
         customPriceSourceTextBox:SetCallback("OnEnterPressed", function(self)
             local text = self:GetText()
-            if text and core.TSMHelper.IsValidCustomPrice(text) then
-                core.Config.SetCustomPriceSource(text)
+            local setCustomPriceSource = selectedDataSource == 2 and core.Config.SetTUJCustomPriceSource or core.Config.SetCustomPriceSource
+            local getCustomPriceSource = selectedDataSource == 2 and core.Config.GetTUJCustomPriceSource or core.Config.GetCustomPriceSource
+            local isValidCustomPrice = selectedDataSource == 2 and core.TUJHelper.IsValidCustomPrice or core.TSMHelper.IsValidCustomPrice
+            if text and isValidCustomPrice(text) then
+                setCustomPriceSource(text)
             else
-                customPriceSourceTextBox:SetText(core.Config.GetCustomPriceSource())
+                customPriceSourceTextBox:SetText(getCustomPriceSource())
             end
         end)
 
-        frame:AddChild(customPriceSourceTextBox)
-
         priceSourcesLabel = core.GetString("LegacyPriceSource")
-        selectedPriceSource = core.Config.GetLegacyPriceSource()
 
+        local legacySelectedPriceSource = selectedDataSource == 2 and core.Config.GetTUJLegacyPriceSource() or core.Config.GetLegacyPriceSource()
         local legacyCustomPriceSourceTextBox = AceGUI:Create("EditBox")
-        legacyCustomPriceSourceTextBox:SetDisabled(selectedPriceSource ~= customPriceValue)
+        legacyCustomPriceSourceTextBox:SetDisabled(legacySelectedPriceSource ~= customPriceValue)
 
-        local legacyPriceSorceDropDown = CreateDropDown(priceSourcesLabel, priceSources, selectedPriceSource, function(self)
+        local legacyPriceSorceDropDown = CreateDropDown(priceSourcesLabel, priceSources, legacySelectedPriceSource, function(self)
             local value = self:GetValue()
             if value then
-                core.Config.SetLegacyPriceSource(priceSources[value])
+                if selectedDataSource == 2 then
+                    core.Config.SetTUJLegacyPriceSource(priceSources[value])
+                else
+                    core.Config.SetLegacyPriceSource(priceSources[value])
+                end
                 legacyCustomPriceSourceTextBox:SetDisabled(value ~= 1)
             end
         end)
 
-        frame:AddChild(legacyPriceSorceDropDown)
-
         legacyCustomPriceSourceTextBox:SetLabel(core.GetString("LegacyCustomPriceSource"))
-        legacyCustomPriceSourceTextBox:SetText(core.Config.GetLegacyCustomPriceSource())
+        legacyCustomPriceSourceTextBox:SetText(selectedDataSource == 2 and core.Config.GetTUJLegacyCustomPriceSource() or core.Config.GetLegacyCustomPriceSource())
         legacyCustomPriceSourceTextBox:SetCallback("OnEnterPressed", function(self)
             local text = self:GetText()
-            if text and core.TSMHelper.IsValidCustomPrice(text) then
-                core.Config.SetLegacyCustomPriceSource(text)
+            local setCustomPriceSource = selectedDataSource == 2 and core.Config.SetTUJLegacyCustomPriceSource or core.Config.SetLegacyCustomPriceSource
+            local getCustomPriceSource = selectedDataSource == 2 and core.Config.GetTUJLegacyCustomPriceSource or core.Config.GetLegacyCustomPriceSource
+            local isValidCustomPrice = selectedDataSource == 2 and core.TUJHelper.IsValidCustomPrice or core.TSMHelper.IsValidCustomPrice
+            if text and isValidCustomPrice(text) then
+                setCustomPriceSource(text)
             else
-                legacyCustomPriceSourceTextBox:SetText(core.Config.GetLegacyCustomPriceSource())
+                legacyCustomPriceSourceTextBox:SetText(getCustomPriceSource())
             end
         end)
 
+        local dataSourcesLabel = core.GetString("DataSource")
+        local dataSources = { 'Trade Skill Master', 'The Undermine Journal' }
+
+        local dataSorceDropDown = CreateDropDown(dataSourcesLabel, dataSources, selectedDataSource, function(self)
+            local value = self:GetValue()
+            if value then
+                selectedDataSource = value
+                core.Config.SetDataSource(value)
+                priceSources = value == 2 and core.TUJHelper.GetPriceSources() or core.TSMHelper.GetPriceSources()
+                selectedPriceSource = value == 2 and core.Config.GetTUJPriceSource() or core.Config.GetPriceSource()
+                legacySelectedPriceSource = value == 2 and core.Config.GetTUJLegacyPriceSource() or core.Config.GetLegacyPriceSource()
+                priceSorceDropDown:SetList(priceSources)
+                legacyPriceSorceDropDown:SetList(priceSources)
+
+                customPriceSourceTextBox:SetText(value == 2 and core.Config.GetTUJCustomPriceSource() or core.Config.GetCustomPriceSource())
+                legacyCustomPriceSourceTextBox:SetText(value == 2 and core.Config.GetTUJLegacyCustomPriceSource() or core.Config.GetLegacyCustomPriceSource())
+
+                for value, text in pairs(priceSources) do
+                    if value == selectedPriceSource or text == selectedPriceSource then
+                        priceSorceDropDown:SetValue(value)
+                    end
+                    if value == legacySelectedPriceSource or text == legacySelectedPriceSource then
+                        legacyPriceSorceDropDown:SetValue(value)
+                    end
+                end
+            end
+        end)
+
+        dataSorceDropDown:SetItemDisabled(1, not core.TSMHelper.IsAPIAvailable())
+        dataSorceDropDown:SetItemDisabled(2, not core.TUJHelper.IsAPIAvailable())
+
+        frame:AddChild(dataSorceDropDown)
+        frame:AddChild(priceSorceDropDown)
+        frame:AddChild(customPriceSourceTextBox)
+        frame:AddChild(legacyPriceSorceDropDown)
         frame:AddChild(legacyCustomPriceSourceTextBox)
 
         local resetRecorderPositionButton = AceGUI:Create("Button")
@@ -216,6 +259,9 @@ local function ConfigurationModule()
     function drawCustomPricesConfiguration(frame)
         local grid = nil
 
+        local selectedDataSource = core.Config.GetDataSource()
+        local customItemPrices = selectedDataSource == 2 and core.Config.GetTUJCustomItemPrices() or core.Config.GetCustomItemPrices()
+
         local function customPriceMenu(module, row)
             return {
                 {
@@ -224,7 +270,7 @@ local function ConfigurationModule()
                     Action = function(row)
                         core.UI.InputDialog({ Text = core.GetString("SetCustomPrice"), Data = row.Data, HasEditBox = true, TextBoxValue = row.Data.PriceSource, OnAccept = function(self, data)
                             local customPrice = self.editBox:GetText()
-                            if customPrice == "" or core.TSMHelper.IsValidCustomPrice(customPrice) then
+                            if customPrice == "" or core.PriceSourceHelper.IsValidCustomPrice(customPrice) then
                                 data.PriceSource = customPrice
                                 grid.ClearCache()
                                 grid.Reload()
@@ -238,7 +284,7 @@ local function ConfigurationModule()
                     DisplayName = core.GetString("Remove"),
                     Action = function(row)
                         core.UI.ConfirmableDialog({ Text = core.GetString("RemoveCustomPriceConfirmationMessage"), OnAccept = function()
-                            core.TableHelper.RemoveValue(core.Config.GetCustomItemPrices(), row.Data)
+                            core.TableHelper.RemoveValue(customItemPrices, row.Data)
                             grid.ClearCache()
                             grid.Reload()
                         end })
@@ -276,20 +322,20 @@ local function ConfigurationModule()
         addItemIcon:SetCallback("OnClick", function()
             local type, id, link = GetCursorInfo()
 	        if type == 'item' then
-                local petId = (id == core.TSMHelper.PetCageItemId and tonumber(link:match("Hbattlepet:(%d+):"))) or nil
-                for _, i in pairs(core.Config.GetCustomItemPrices()) do
+                local petId = (id == core.PriceSourceHelper.PetCageItemId and tonumber(link:match("Hbattlepet:(%d+):"))) or nil
+                for _, i in pairs(customItemPrices) do
                     if i.ItemId == id and i.PetId == petId then
                         return
                     end
                 end
 
                 local item = { ItemId = id, PriceSource = "" }
-                if id == core.TSMHelper.PetCageItemId then
+                if id == core.PriceSourceHelper.PetCageItemId then
                     item.PetId = petId
                     item.ItemLink = link
                 end
 
-                table.insert(core.Config.GetCustomItemPrices(), item)
+                table.insert(customItemPrices, item)
 
                 grid.ClearCache()
                 grid.Reload()
@@ -297,7 +343,7 @@ local function ConfigurationModule()
         end)
         frame:AddChild(addItemIcon)
 
-        grid.Show(core.Config.GetCustomItemPrices())
+        grid.Show(customItemPrices)
 
         frame:AddChild(grid)
 

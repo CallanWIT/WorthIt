@@ -24,7 +24,7 @@ function GridColumns.ProfitColumn(options)
     function self.GetRowText(row)
         row[self.Name] = row[self.Name] or self.Value(row.Data)
 
-        return core.TSMHelper.ToColoredMoneyString(row[self.Name])
+        return core.PriceSourceHelper.ToColoredMoneyString(row[self.Name])
     end
     
     return self

@@ -209,10 +209,6 @@ function TSMHelper.ToColoredMoneyString(value)
     return moneyString or ''
 end
 
-local function GetItemBelowThresholdValue()
-    local price = core.TSMHelper.GetItemVendorSellPrice(id)
-end
-
 function TSMHelper.GetInventoryValue(priceSource)
     for i = 1, 10 do
         local value = TSMHelper.GetBagsValue({0, 1, 2, 3, 4}, priceSource)
@@ -359,11 +355,11 @@ function TSMHelper.DefaultPriceSource()
     return priceSources[3]
 end
 
-function TSMHelper.IsTSMAPIAvailable()
+function TSMHelper.IsAPIAvailable()
     return TSM_API ~= nil
 end
 
-function TSMHelper.IsTSMDBAvailable()
+function TSMHelper.IsDBAvailable()
     -- checks if historical price for copper ore or current content ore is available
     return (TSM_API.GetCustomPriceValue('DBHistorical', "i:2770") or TSM_API.GetCustomPriceValue('DBHistorical', "i:152512")) ~= nil
 end

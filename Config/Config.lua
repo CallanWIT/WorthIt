@@ -20,8 +20,11 @@ function Config.Initialize()
 
     WITDB.Settings.HideMinimapIcon = WITDB.Settings.HideMinimapIcon or false
 
+    WITDB.Settings.DataSource = WITDB.Settings.DataSource or 1
     WITDB.Settings.PricingSelect = WITDB.Settings.PricingSelect == 'DBRegionMinBuyoutAvg' and 'DBRegionMarketAvg' or WITDB.Settings.PricingSelect
     WITDB.Settings.LegacyPricingSelect = WITDB.Settings.LegacyPricingSelect == 'DBRegionMinBuyoutAvg' and 'DBRegionMarketAvg' or WITDB.Settings.LegacyPricingSelect or WITDB.Settings.PricingSelect
+    WITDB.Settings.TUJPricingSelect = WITDB.Settings.TUJPricingSelect or core.TUJHelper.DefaultPriceSource()
+    WITDB.Settings.TUJLegacyPricingSelect = WITDB.Settings.TUJLegacyPricingSelect or core.TUJHelper.DefaultPriceSource()
     WITDB.Settings.BagValueMinPrice = WITDB.Settings.BagValueMinPrice or 0
     WITDB.Settings.BagValueMinQuality = WITDB.Settings.BagValueMinQuality or 1
     WITDB.Settings.BelowTresholdValue = WITDB.Settings.BelowTresholdValue or 1
@@ -29,11 +32,15 @@ function Config.Initialize()
     WITDB.Settings.CustomPriceSource = WITDB.Settings.CustomPriceSource == 'DBRegionMinBuyoutAvg' and 'DBRegionMarketAvg' or WITDB.Settings.CustomPriceSource or 'DBMinBuyout'
     WITDB.Settings.LegacyCustomPriceSource = WITDB.Settings.LegacyCustomPriceSource == 'DBRegionMinBuyoutAvg' and 'DBRegionMarketAvg' or WITDB.Settings.LegacyCustomPriceSource or 'DBMinBuyout'
 
+    WITDB.Settings.TUJCustomPriceSource = WITDB.Settings.TUJCustomPriceSource or core.TUJHelper.DefaultPriceSource()
+    WITDB.Settings.TUJLegacyCustomPriceSource = WITDB.Settings.TUJLegacyCustomPriceSource or core.TUJHelper.DefaultPriceSource()
+
     WITDB.Settings.RecorderMinPrice = WITDB.Settings.RecorderMinPrice or 0
     WITDB.Settings.RecorderMinQuality = WITDB.Settings.RecorderMinQuality or 1
 
     WITDB.Settings.FarmPlannerIds = WITDB.Settings.FarmPlannerIds or {}
     WITDB.Settings.CustomItemPrices = WITDB.Settings.CustomItemPrices or {}
+    WITDB.Settings.TUJCustomItemPrices = WITDB.Settings.TUJCustomItemPrices or {}
 
     WITDB.Settings.Recorder = WITDB.Settings.Recorder or {}
 
@@ -48,6 +55,20 @@ end
 
 function Config.GetScaling()
     return 1.2
+end
+
+function Config.GetDataSource()
+    if WITDB.Settings.DataSource == 2 and core.TUJHelper.IsAPIAvailable() then
+        return 2
+    end
+
+    return not core.TSMHelper.IsAPIAvailable() and core.TUJHelper.IsAPIAvailable() and 2 or 1
+end
+
+function Config.SetDataSource(dataSource)
+    WITDB.Settings.DataSource = dataSource
+
+    core.ClearCache()
 end
 
 function Config.GetPriceSource()
@@ -90,6 +111,50 @@ end
 
 function Config.SetLegacyCustomPriceSource(priceSource)
     WITDB.Settings.LegacyCustomPriceSource = priceSource
+
+    core.ClearCache()
+end
+
+function Config.GetTUJPriceSource()
+    return WITDB.Settings.TUJPricingSelect
+end
+
+function Config.SetTUJPriceSource(priceSource)
+    WITDB.Settings.TUJPricingSelect = priceSource
+
+    core.ClearCache()
+end
+
+function Config.GetTUJCustomPriceSource()
+    return WITDB.Settings.TUJCustomPriceSource
+end
+
+function Config.GetTUJPriceSourceString()
+    return WITDB.Settings.TUJPricingSelect == 'Custom' and WITDB.Settings.TUJCustomPriceSource or WITDB.Settings.TUJPricingSelect
+end
+
+function Config.SetTUJCustomPriceSource(priceSource)
+    WITDB.Settings.TUJCustomPriceSource = priceSource
+
+    core.ClearCache()
+end
+
+function Config.GetTUJLegacyPriceSource()
+    return WITDB.Settings.TUJLegacyPricingSelect
+end
+
+function Config.SetTUJLegacyPriceSource(priceSource)
+    WITDB.Settings.TUJLegacyPricingSelect = priceSource
+
+    core.ClearCache()
+end
+
+function Config.GetTUJLegacyCustomPriceSource()
+    return WITDB.Settings.TUJLegacyCustomPriceSource
+end
+
+function Config.SetTUJLegacyCustomPriceSource(priceSource)
+    WITDB.Settings.TUJLegacyCustomPriceSource = priceSource
 
     core.ClearCache()
 end
@@ -158,6 +223,10 @@ end
 
 function Config.GetCustomItemPrices()
     return WITDB.Settings.CustomItemPrices
+end
+
+function Config.GetTUJCustomItemPrices()
+    return WITDB.Settings.TUJCustomItemPrices
 end
 
 function Config.GetUserFarms()

@@ -27,7 +27,7 @@ end
 local function getFarmName(farm)
     local name = ''
     if farm.ItemId then
-        name = core.TSMHelper.GetItemName(farm.ItemId)
+        name = core.PriceSourceHelper.GetItemName(farm.ItemId)
     elseif farm.NameMapId then
         name = core.LocationHelper.GetMapName(farm.NameMapId)
     else

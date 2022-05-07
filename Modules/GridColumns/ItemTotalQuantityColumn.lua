@@ -19,12 +19,16 @@ function GridColumns.ItemTotalQuantityColumn(options)
     end
 
     function self.Value(data)
-        return data.PetId and core.TSMHelper.GetItemTotalQuantity('p:'.. data.PetId) or data[self.ItemIdProperty] and core.TSMHelper.GetItemTotalQuantity(data[self.ItemIdProperty]) or ''
+        return data.PetId and core.PriceSourceHelper.GetItemTotalQuantity('p:'.. data.PetId) or data[self.ItemIdProperty] and core.PriceSourceHelper.GetItemTotalQuantity(data[self.ItemIdProperty]) or ''
     end
 
     local baseIsVisible = self.IsVisible
     function self.IsVisible(module, rows)
-        if not baseIsVisible() then return false end
+        if not baseIsVisible() or core.PriceSourceHelper.GetCurrentPriceSource() ~= core.TSMHelper then return false end
+
+        if rows == nil then
+            return true
+        end
 
         for _, row in pairs(rows) do
             if row.Data.PetId or row.Data[self.ItemIdProperty] then

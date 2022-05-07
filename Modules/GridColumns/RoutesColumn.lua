@@ -44,6 +44,10 @@ function GridColumns.RoutesColumn(options)
     function self.IsVisible(module, rows)
         if not baseIsVisible() or not core.RoutesHelper.IsRoutesAvailable() then return false end
 
+        if rows == nil then
+            return true
+        end
+
         for _, row in pairs(rows) do
             if row.Data.Routes then
                 return true

@@ -18,7 +18,12 @@ function GridColumns.ItemSellRateColumn(options)
     end
 
     local function MainItemSellRate(data)
-        return data.ItemId and (core.TSMHelper.GetItemSellRate(data.ItemId) / 1000) or ''
+        return data.ItemId and (core.PriceSourceHelper.GetItemSellRate(data.ItemId) / 1000) or ''
+    end
+
+    local baseIsVisible = self.IsVisible
+    function self.IsVisible()
+        return baseIsVisible() and core.PriceSourceHelper.GetCurrentPriceSource() == core.TSMHelper
     end
 
     local function AvgSellRate(data)
@@ -28,9 +33,9 @@ function GridColumns.ItemSellRateColumn(options)
         local totalSellRate = 0
 
         for _, item in pairs(data.Results) do
-            local id = item.Id == core.TSMHelper.PetCageItemId and 'p:'.. item.PetId or item.Id
-            local value = core.TSMHelper.GetItemPrice(id) or 0
-            local sellRate = core.TSMHelper.GetItemSellRate(id) or 0
+            local id = item.Id == core.PriceSourceHelper.PetCageItemId and 'p:'.. item.PetId or item.Id
+            local value = core.PriceSourceHelper.GetItemPrice(id) or 0
+            local sellRate = core.PriceSourceHelper.GetItemSellRate(id) or 0
 
             totalValue = totalValue + value
             totalSellRate = totalSellRate + (sellRate * value / 1000)

@@ -82,6 +82,10 @@ local function farmPlannerModule(name, category)
         core.GridColumns.ResultsValueColumn({ Name = "ResultDBMarket", PriceSource = "DBMarket", IsHidden = true }),
         core.GridColumns.ResultsValueColumn({ Name = "ResultDBHistorical", PriceSource = "DBHistorical", IsHidden = true }),
         core.GridColumns.ResultsValueColumn({ Name = "ResultDBRegionMarketAvg", PriceSource = "DBRegionMarketAvg", IsHidden = true }),
+        core.GridColumns.ResultsValueColumn({ Name = "ResultRecent", PriceSource = "recent", IsHidden = true }),
+        core.GridColumns.ResultsValueColumn({ Name = "ResultMarket", PriceSource = "market", IsHidden = true }),
+        core.GridColumns.ResultsValueColumn({ Name = "ResultGlobalMean", PriceSource = "globalMean", IsHidden = true }),
+        core.GridColumns.ResultsValueColumn({ Name = "ResultGlobalMedian", PriceSource = "globalMedian", IsHidden = true }),
     }
 
     self.GetData = function ()

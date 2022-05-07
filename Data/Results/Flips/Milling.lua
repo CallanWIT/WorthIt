@@ -197,6 +197,18 @@ core.Data.Results.Flips.CrimsonInk = {
     Content = core.Content.BFA,
     Materials = {
         { Id = core.Items.Herbs.Riverbud, Quantity = 200 },
+		{
+            Id = core.Items.Inscription.AcaciaPowder,
+            BuyFromVendor = true,
+            ApplyReputationDiscount = true,
+            Quantity = 25
+        },
+		{
+            Id = core.Items.Inscription.DistilledWater,
+            BuyFromVendor = true,
+            ApplyReputationDiscount = true,
+            Quantity = 258
+        },
     },
     Results = {
         { Id = core.Items.Inscription.UltramarineInk, Quantity = 176 },
@@ -212,6 +224,12 @@ core.Data.Results.Flips.MaroonInk = {
     Content = core.Content.BFA,
     Materials = {
         { Id = core.Items.Herbs.Zinanthid, Quantity = 200 },
+		{
+            Id = core.Items.Inscription.DistilledWater,
+            BuyFromVendor = true,
+            ApplyReputationDiscount = true,
+            Quantity = 117
+        },
     },
     Results = {
         { Id = core.Items.Inscription.MaroonInk, Quantity = 117 },
@@ -228,6 +246,18 @@ core.Data.Results.Flips.LuminousInk = {
     Content = core.Content.Shadowlands,
     Materials = {
         { Id = core.Items.Herbs.DeathBlossom, Quantity = 200 },
+		{
+            Id = core.Items.Inscription.AeratedWater,
+            BuyFromVendor = true,
+            ApplyReputationDiscount = true,
+            Quantity = 58
+        },
+		{
+            Id = core.Items.Inscription.RuneEtchedVial,
+            BuyFromVendor = true,
+            ApplyReputationDiscount = true,
+            Quantity = 58
+        },
     },
     Results = {
         { Id = core.Items.Inscription.UmbralInk, Quantity = 23 },

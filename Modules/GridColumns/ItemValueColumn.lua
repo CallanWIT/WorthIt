@@ -12,13 +12,13 @@ function GridColumns.ItemValueColumn(options)
 
     function self.Value(data)
         local id = data.ItemId or data.Id
-        return (core.TSMHelper.GetItemPrice(id == core.TSMHelper.PetCageItemId and 'p:'.. data.PetId or id, self.PriceSource) or 0) * (data.Quantity or 1)
+        return (core.PriceSourceHelper.GetItemPrice(id == core.PriceSourceHelper.PetCageItemId and 'p:'.. data.PetId or id, self.PriceSource) or 0) * (data.Quantity or 1)
     end
 
     function self.GetRowText(row)
         row[self.Name] = row[self.Name] or self.Value(row.Data)
 
-        return core.TSMHelper.ToMoneyString(row[self.Name])
+        return core.PriceSourceHelper.ToMoneyString(row[self.Name])
     end
     
     return self

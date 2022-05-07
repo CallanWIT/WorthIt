@@ -1,11 +1,10 @@
-## Interface: 90100
+## Interface: 90200
 ## Title: |c00ffff00WorthIt|r
 ## Author: DALAGG
-## Version: v4.0.7
+## Version: v4.0.10
 ## DefaultState: enabled
 ## SavedVariables: WITDB
-## Dependencies: TradeSkillMaster
-## OptionalDeps: Routes, TomTom, Scrap
+## OptionalDeps: TradeSkillMaster, TheUndermineJournal, Routes, TomTom, Scrap
 
 Libs\Libs.xml
 

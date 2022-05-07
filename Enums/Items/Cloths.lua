@@ -50,5 +50,36 @@ core.Items.Cloths = {
 	CoarseThread = 2320,
 	PenumbraThread = 177062,
 	
+	--Dyes
+	GreenDye = 2605,
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

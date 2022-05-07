@@ -107,19 +107,53 @@ local function CreateColumnSelector(column)
     return frame
 end
 
+local function GetVisibleColumns(module)
+    local visibleColumns = {}
+
+    for _, column in pairs(module.Columns or {}) do
+        if column.IsVisible(module) then
+            table.insert(visibleColumns, column)
+        end
+    end
+
+    return visibleColumns
+end
+
+local function UpdateColumns(module, columns)
+    local currentOrder = {}
+
+    for _, column in pairs(module.Columns) do
+        table.insert(currentOrder, column)
+    end
+
+    wipe(module.Columns)
+
+    for _, column in pairs(columns or {}) do
+        table.insert(module.Columns, column)
+    end
+
+    for _, column in pairs(currentOrder) do
+        if not tContains(module.Columns, column) then
+            table.insert(module.Columns, column)
+        end
+    end
+end
+
 local function DrawColumns(frame, columns)
     local minWidth = 0
 
     local function MoveUp(column)
         local module = core.UI.MainWindow.CurrentModule()
         if module == nil or module.Columns == nil then return end
-        local columns = module.Columns
+        local columns = GetVisibleColumns(module)
 
         local index = core.TableHelper.IndexOf(columns, column)
         if index > 1 and not columns[index - 1].IsFixedSize and columns[index - 1].Name ~= '' then
             table.remove(columns, index)
             table.insert(columns, index - 1, column)
             DrawColumns(frame, columns)
+
+            UpdateColumns(module, columns)
 
             if module.SaveColumnFilter then
                 module.SaveColumnFilter()
@@ -131,13 +165,15 @@ local function DrawColumns(frame, columns)
     local function MoveDown(column)
         local module = core.UI.MainWindow.CurrentModule()
         if module == nil or module.Columns == nil then return end
-        local columns = module.Columns
+        local columns = GetVisibleColumns(module)
 
         local index = core.TableHelper.IndexOf(columns, column)
         if index < #columns then
             table.remove(columns, index)
             table.insert(columns, index + 1, column)
             DrawColumns(frame, columns)
+
+            UpdateColumns(module, columns)
 
             if module.SaveColumnFilter then
                 module.SaveColumnFilter()
@@ -203,7 +239,7 @@ local function CreateWidget()
         frame.Panel.frame:Hide()
 
         if module ~= nil and module.Columns then
-            DrawColumns(frame.Panel, module.Columns or {})
+            DrawColumns(frame.Panel, GetVisibleColumns(module))
         end
     end 
 

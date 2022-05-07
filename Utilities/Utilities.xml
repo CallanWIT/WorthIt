@@ -5,6 +5,8 @@
     <Script file="TableHelper.lua"/>
     <Script file="FarmHelper.lua"/>
     <Script file="TsmHelper.lua"/>
+    <Script file="TujHelper.lua"/>
+    <Script file="PriceSourceHelper.lua"/>
     <Script file="ScrapHelper.lua"/>
     <Script file="LocationHelper.lua"/>
     <Script file="RoutesHelper.lua"/>

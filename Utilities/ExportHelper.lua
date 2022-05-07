@@ -21,9 +21,9 @@ end
 
 local function GetFarmName(data)
     if data.PetId then
-        return core.TSMHelper.GetItemName('p:'.. data.PetId)
+        return core.PriceSourceHelper.GetItemName('p:'.. data.PetId)
     elseif data.ItemId then
-        return core.TSMHelper.GetItemName(data.ItemId)
+        return core.PriceSourceHelper.GetItemName(data.ItemId)
     elseif data.NameMapId then
         return core.LocationHelper.GetMapName(data.NameMapId)
     else

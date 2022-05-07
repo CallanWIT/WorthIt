@@ -14,11 +14,11 @@ function GridColumns.ItemNameColumn(options)
 
     function self.GetSortValue(row)
         local key = self.Name .. "_Order"
-        if not row[key] then
+        if not row[key] or row[key] == core.GetString('ItemIsLoading') then
             if row.Data.PetId then
-                row[key] = core.TSMHelper.GetItemName('p:'.. row.Data.PetId)
+                row[key] = core.PriceSourceHelper.GetItemName('p:'.. row.Data.PetId)
             elseif row.Data[self.ItemIdProperty] then
-                row[key] = core.TSMHelper.GetItemName(row.Data[self.ItemIdProperty])
+                row[key] = core.PriceSourceHelper.GetItemName(row.Data[self.ItemIdProperty])
             elseif row.Data.NameMapId then
                 row[key] = core.LocationHelper.GetMapName(row.Data.NameMapId)
             else
@@ -40,7 +40,7 @@ function GridColumns.ItemNameColumn(options)
     function self.Value(data)
         if data.ItemLink then return data.ItemLink end
         if data[self.ItemIdProperty] then
-            return core.TSMHelper.GetItemLink(data[self.ItemIdProperty])
+            return core.PriceSourceHelper.GetItemLink(data[self.ItemIdProperty])
         end
 
         return data.NameMapId and core.LocationHelper.GetMapName(data.NameMapId) or data.Name
@@ -48,7 +48,7 @@ function GridColumns.ItemNameColumn(options)
 
     local baseGetRowText = self.GetRowText
     function self.GetRowText(row)
-        local text = baseGetRowText(row)
+        local text = self.Value(row.Data)
 
         if row.Data.Quantity then
             text = text .. " x" .. row.Data.Quantity

@@ -64,15 +64,15 @@ end
 function TUJHelper.GetCustomPrice(itemId)
     if type(itemId) == "string" then
         local petId = strsub(itemId, 3)
-        for _, item in pairs(core.Config.GetCustomItemPrices()) do
+        for _, item in pairs(core.Config.GetTUJCustomItemPrices()) do
             if item.PetId == petId then
-                return item.PriceSource == "" and core.Config.GetPriceSourceString() or item.PriceSource
+                return item.PriceSource == "" and core.Config.GetTUJPriceSourceString() or item.PriceSource
             end
         end
     else
-        for _, item in pairs(core.Config.GetCustomItemPrices()) do
+        for _, item in pairs(core.Config.GetTUJCustomItemPrices()) do
             if item.ItemId == itemId then
-                return item.PriceSource == "" and core.Config.GetPriceSourceString() or item.PriceSource
+                return item.PriceSource == "" and core.Config.GetTUJPriceSourceString() or item.PriceSource
             end
         end
     end
@@ -80,7 +80,7 @@ function TUJHelper.GetCustomPrice(itemId)
     return nil
 end
 
-local function calculateCustomPrice(itemId, customPriceString)
+local function calculateCustomPrice(customPriceString, itemId)
     local customPrice = strlower(customPriceString)
 
     if (type(itemId) == 'string') then
@@ -88,8 +88,13 @@ local function calculateCustomPrice(itemId, customPriceString)
         itemId = gsub(itemId,'p:','battlepet:')
         itemId = gsub(itemId,'i:','item:')
     end
-
+    
     local itemPrice = TUJMarketInfo(itemId)
+
+    if itemPrice == nil then
+        core.UI.MainWindow.QueueRefresh()
+        itemPrice = {}
+    end
 
     for _, f in pairs(statistics) do
         if customPrice == strlower(f) then
@@ -98,11 +103,10 @@ local function calculateCustomPrice(itemId, customPriceString)
     end
 
     for _, f in pairs(statistics) do
-        local pattern = strlower(f) .. '(%(%a*:?%d+%))'
+        local pattern = strlower(f) .. '%((%a*:?%d+)%)'
         repeat
             local number = strmatch(customPrice, pattern)
             if (number ~= nil) then
-                number = strsub(number, 2, strlen(number))
                 number = gsub(number,'p:','battlepet:')
                 number = gsub(number,'i:','item:')
                 customPrice = gsub(customPrice, pattern, tostring(TUJMarketInfo(number)[f] or 0), 1)
@@ -125,30 +129,42 @@ local function getPriceSourceForItem(itemId)
     local priceSource = TUJHelper.GetCustomPrice(itemId)
 
     if not priceSource and (type(itemId) == "string" or itemId > 152500) then
-        priceSource = core.Config.GetPriceSource()
+        priceSource = core.Config.GetTUJPriceSource()
         
         if priceSource == priceSources[1] then
-            priceSource = core.Config.GetCustomPriceSource()
+            priceSource = core.Config.GetTUJCustomPriceSource()
         end
     end
 
     if not priceSource and itemId <= 152500 then
-        priceSource = core.Config.GetLegacyPriceSource()
+        priceSource = core.Config.GetTUJLegacyPriceSource()
         
         if priceSource == priceSources[1] then
-            priceSource = core.Config.GetLegacyCustomPriceSource()
+            priceSource = core.Config.GetTUJLegacyCustomPriceSource()
         end
     end
 
     return priceSource
 end
 
+local function mapTSMPriceSource(priceSource)
+    if priceSource == 'DBMinBuyout' or priceSource == 'DBMarket' then
+        return 'recent'
+    elseif priceSource == 'DBHistorical' then
+        return 'market'
+    elseif priceSource == 'DBRegionMarketAvg' or priceSource == 'DBRegionHistorical' or priceSource == 'DBRegionSaleAvg' then
+        return 'globalMean'
+    end
+
+    return priceSource
+end
+
 function TUJHelper.GetItemPrice(item, priceSource)
-    if not TUJHelper.IsTUJAPIAvailable() then
+    if not TUJHelper.IsAPIAvailable() then
         error("TUJ addon not found")
     end
 
-    local itemId = type(item) == "number" and "i:" .. item or item
+    priceSource = mapTSMPriceSource(priceSource)
 
     if not priceSource or TUJHelper.HasCustomPrice(item) then
         priceSource = getPriceSourceForItem(item)
@@ -158,14 +174,14 @@ function TUJHelper.GetItemPrice(item, priceSource)
         error("Invalid price source")
     end
 
-    local value = TSM_API.GetCustomPriceValue(priceSource, itemId)
+    local value = calculateCustomPrice(priceSource, item)
 
     if value == nil or value == 0 then
         local isMoreGeneral = false
 
         for _, alternativePriceSource in pairs(priceSources) do
             if isMoreGeneral and (value == nil or value == 0) then
-                value = TSM_API.GetCustomPriceValue(alternativePriceSource, itemId)
+                value = calculateCustomPrice(alternativePriceSource, item)
             end
 
             if alternativePriceSource == priceSource then
@@ -184,7 +200,7 @@ function TUJHelper.GetItemVendorBuyPrice(item)
         item = gsub(item,'i:','item:')
     end
 
-    return 0
+    return TUJHelper.GetItemPrice(item, 'recent')
 end
 
 function TUJHelper.GetItemVendorSellPrice(item)
@@ -223,9 +239,7 @@ function TUJHelper.GetItemLink(item)
         return link
     end
 
-    if (strfind(stripped, '%a')) then
-        return false
-    end
+    core.UI.MainWindow.QueueRefresh()
 
     local isPet = type(item) == 'string' and strfind(item, 'battlepet:')
 
@@ -233,11 +247,13 @@ function TUJHelper.GetItemLink(item)
         item = tonumber(strmatch('item', '%d+'))
     end
 
+    local label = core.GetString('ItemIsLoading')
+
     if isPet then
-        return "\124cffff0000\124Hbattlepet:" .. item ..":1:3:158::::\124h[Item is loading]\124h\124r"
+        return "\124cffff0000\124Hbattlepet:" .. item ..":1:3:158::::\124h[" .. label .. "]\124h\124r"
     end
 
-    return "\124cffff0000\124Hitem:" .. item .."::::::::60:::::\124h[Item is loading]\124h\124r"
+    return "\124cffff0000\124Hitem:" .. item .."::::::::60:::::\124h[" .. label .. "]\124h\124r"
 end
 
 function TUJHelper.GetItemName(item)
@@ -248,7 +264,15 @@ function TUJHelper.GetItemName(item)
 
     local _, _, name = GetItemInfo(item)
 
-    return name or 'Item is loading'
+    if name == nil then
+        core.UI.MainWindow.QueueRefresh()
+    end
+
+    return name or core.GetString('ItemIsLoading')
+end
+
+function TUJHelper.GetItemTotalQuantity(item)
+    return '?'
 end
 
 function TUJHelper.ToMoneyString(value)
@@ -261,11 +285,11 @@ function TUJHelper.ToMoneyString(value)
     local silver = floor(value % 10000 / 100)
     local copper = value % 100
 
-    local goldText = gold > 0 and ('%d|cffffd70ag|r'):format(gold) or nil
-    local silverText = silver > 0 and (silver < 10 and '0' or '') .. ('%d|cffc7c7cfs|r'):format(silver) or nil
-    local copperText = (copper < 10 and '0' or '') .. ('%d|cffeda55fc|r'):format(copper or 0)
+    local goldText = gold > 0 and ('%s|cffffd70ag|r'):format(BreakUpLargeNumbers(gold)) or nil
+    local silverText = (gold > 0 or silver > 0) and ('%02d|cffc7c7cfs|r'):format(silver) or nil
+    local copperText = ('%02d|cffeda55fc|r'):format(copper or 0)
 
-    return (goldText and goldText .. ' ' or '') .. (silverText and silverText .. ' ' or '') 
+    return (goldText and goldText .. ' ' or '') .. (silverText and silverText .. ' ' or '') .. copperText
 end
 
 function TUJHelper.ToColoredMoneyString(value)
@@ -321,6 +345,8 @@ function TUJHelper.GetBagsValue(bags, priceSource)
     local sum = 0
     local isValidData = true
 
+    priceSource = mapTSMPriceSource(priceSource)
+
     for _, bag in pairs(bags) do
         local slots=GetContainerNumSlots(bag)
 
@@ -364,6 +390,8 @@ end
 function TUJHelper.GetBagsContent(bags, priceSource)
     local list = {}
     local isValidData = true
+
+    priceSource = mapTSMPriceSource(priceSource)
 
     for _, bag in pairs(bags) do
         local slots=GetContainerNumSlots(bag)
@@ -424,11 +452,11 @@ function TUJHelper.DefaultPriceSource()
     return priceSources[3]
 end
 
-function TUJHelper.IsTUJAPIAvailable()
+function TUJHelper.IsAPIAvailable()
     return TUJMarketInfo ~= nil
 end
 
-function TUJHelper.IsTUJDBAvailable()
+function TUJHelper.IsDBAvailable()
     -- checks if historical price for copper ore or current content ore is available
-    return TUJHelper.IsTUJAPIAvailable() and (TUJMarketInfo(2770)['globalMean'] or TUJMarketInfo(152512)['globalMean']) ~= nil
+    return TUJHelper.IsAPIAvailable() and (TUJMarketInfo(2770)['globalMean'] or TUJMarketInfo(152512)['globalMean']) ~= nil
 end

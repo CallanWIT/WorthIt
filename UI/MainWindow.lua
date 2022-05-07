@@ -7,6 +7,8 @@ local window = nil
 local frame = nil
 local navMenu = nil
 local currentModule = nil
+local isRefreshNeeded = false
+local refreshTime = nil
 
 local AceGUI = LibStub("AceGUI-3.0")
 
@@ -22,6 +24,23 @@ local function setCloseOnEscPress()
 	end
 end
 
+local function OnUpdate()
+    if isRefreshNeeded and time() > refreshTime and MainWindow.CurrentModule() ~= nil then
+        isRefreshNeeded = false
+        local module = MainWindow.CurrentModule()
+
+        if module.ClearCache ~= nil then
+            --module.ClearCache()
+        end
+
+        if module.Refresh ~= nil then
+            module.Refresh()
+        end
+
+        --MainWindow.ShowModule(MainWindow.CurrentModule())
+    end
+end
+
 local function createWindow()
     window = AceGUI:Create("Window")
     window.frame:SetScale(core.Config.GetScaling())
@@ -31,6 +50,8 @@ local function createWindow()
     window:SetLayout("Flow")
     window:EnableResize(false)
     window:AddChild(core.UI.Header(window))
+
+    window.frame:SetScript("OnUpdate", OnUpdate)
 
     frame = AceGUI:Create("SimpleGroup")
     frame:SetFullWidth(true)
@@ -44,6 +65,11 @@ local function createWindow()
     setCloseOnEscPress()
 
     return window
+end
+
+function MainWindow.QueueRefresh()
+    refreshTime = time() + 1
+    isRefreshNeeded = true
 end
 
 function MainWindow.GetWindowWidth()
@@ -90,11 +116,11 @@ function MainWindow.CurrentModule()
 end
 
 function MainWindow.ShowModule(module)
-    if not frame then return end
+    if not frame or not module then return end
 
     frame:ReleaseChildren()
 
-    if not core.TSMHelper.IsTSMAPIAvailable() or not core.TSMHelper.IsTSMDBAvailable() then
+    if not core.PriceSourceHelper.IsAPIAvailable() or not core.PriceSourceHelper.IsDBAvailable() then
         core.InstallationGuide.Draw(frame)
         core.UI.DisableHeader()
         core.UI.ToggleColumnSelector(nil)

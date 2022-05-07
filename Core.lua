@@ -7,8 +7,8 @@ function core:Init(event, name)
         core.Config.Initialize()
     end
 
-    if core.TSMHelper then
-        core.TSMHelper.Initialize()
+    if core.PriceSourceHelper then
+        core.PriceSourceHelper.Initialize()
     end
 
     if core.UI then

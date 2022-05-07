@@ -85,20 +85,20 @@ createMenuItem = function(item)
 end
 
 local function ShowBagValue(priceSource)
-    local value = core.TSMHelper.GetInventoryValue(priceSource)
+    local value = core.PriceSourceHelper.GetInventoryValue(priceSource)
     if value ~= nil then
-        print(core.GetString("InventoryValueFormat"):format(priceSource or core.GetString("DefaultPriceSource"), core.TSMHelper.ToMoneyString(value)))
+        print(core.GetString("InventoryValueFormat"):format(priceSource or core.GetString("DefaultPriceSource"), core.PriceSourceHelper.ToMoneyString(value)))
         core.LastScan.Bag.PriceSource = priceSource
         core.LastScan.Bag.Value = value
     end
 end
 
 local function ShowBankValue(priceSource)
-    local value = core.TSMHelper.GetBankValue(priceSource)
+    local value = core.PriceSourceHelper.GetBankValue(priceSource)
     if value == 0 then
         print(core.GetString("OpenBank"))
     elseif value ~= nil then
-        print(core.GetString("BankValueFormat"):format(priceSource or core.GetString("DefaultPriceSource"), core.TSMHelper.ToMoneyString(value)))
+        print(core.GetString("BankValueFormat"):format(priceSource or core.GetString("DefaultPriceSource"), core.PriceSourceHelper.ToMoneyString(value)))
 
         core.LastScan.Bank.PriceSource = priceSource
         core.LastScan.Bank.Value = value
@@ -110,10 +110,10 @@ local function ContinueBagScan()
         return ShowBagValue()
     end
 
-    local value = core.TSMHelper.GetInventoryValue()
+    local value = core.PriceSourceHelper.GetInventoryValue()
     local diff = value - core.LastScan.Bag.Value
     if diff ~= nil then
-        print(core.GetString("InventoryValueChangeFormat"):format(core.LastScan.Bag.PriceSource or core.GetString("DefaultPriceSource"), core.TSMHelper.ToColoredMoneyString(diff)))
+        print(core.GetString("InventoryValueChangeFormat"):format(core.LastScan.Bag.PriceSource or core.GetString("DefaultPriceSource"), core.PriceSourceHelper.ToColoredMoneyString(diff)))
         core.LastScan.Bag.Value = value
     end
 end
@@ -123,10 +123,10 @@ local function ContinueBankScan()
         return ShowBankValue()
     end
 
-    local value = core.TSMHelper.GetInventoryValue()
+    local value = core.PriceSourceHelper.GetInventoryValue()
     local diff = value - core.LastScan.Bank.Value
     if diff ~= nil then
-        print(core.GetString("BankValueChangeFormat"):format(core.LastScan.Bank.PriceSource or core.GetString("DefaultPriceSource"), core.TSMHelper.ToColoredMoneyString(diff)))
+        print(core.GetString("BankValueChangeFormat"):format(core.LastScan.Bank.PriceSource or core.GetString("DefaultPriceSource"), core.PriceSourceHelper.ToColoredMoneyString(diff)))
         core.LastScan.Bank.Value = value
     end
 end
@@ -174,6 +174,122 @@ local function ImportFarm()
 end
 
 local function buildNavigationMenu()
+    local bagValueItems = {
+        {
+            Name = "BagValueDefault",
+            DisplayName = core.GetString("DefaultPriceSource"),
+            Action = function() core.PrintInventoryValue() end
+        },
+        { IsSeparator = true },
+        {
+            Name = "Difference",
+            DisplayName = core.GetString("Difference"),
+            Action = function() core.PrintInventoryValue("diff") end
+        },
+        { IsSeparator = true }
+    }
+
+    local bankValueItems = {
+        {
+            Name = "BankValueDefault",
+            DisplayName = core.GetString("DefaultPriceSource"),
+            Action = function() core.PrintBankValue() end
+        },
+        { IsSeparator = true },
+        {
+            Name = "Difference",
+            DisplayName = core.GetString("Difference"),
+            Action = function() core.PrintBankValue("diff") end
+        },
+        { IsSeparator = true }
+    }
+
+    if core.Config.GetDataSource() == 1 then
+        table.insert(bagValueItems, {
+            Name = "BagValueDBMinBuyout",
+            DisplayName = "DBMinBuyout",
+            Action = function() core.PrintInventoryValue("DBMinBuyout") end
+        })
+        table.insert(bagValueItems, {
+            Name = "BagValueDBMarket",
+            DisplayName = "DBMarket",
+            Action = function() core.PrintInventoryValue("DBMarket") end
+        })
+        table.insert(bagValueItems, {
+            Name = "BagValueDBHistorical",
+            DisplayName = "DBHistorical",
+            Action = function() core.PrintInventoryValue("DBHistorical") end
+        })
+        table.insert(bagValueItems, {
+            Name = "BagValueDBRegionMarketAvg",
+            DisplayName = "DBRegionMarketAvg",
+            Action = function() core.PrintInventoryValue("DBRegionMarketAvg") end
+        })
+
+        table.insert(bankValueItems, {
+            Name = "BankValueDBMinBuyout",
+            DisplayName = "DBMinBuyout",
+            Action = function() core.PrintBankValue("DBMinBuyout") end
+        })
+        table.insert(bankValueItems, {
+            Name = "BankValueDBMarket",
+            DisplayName = "DBMarket",
+            Action = function() core.PrintBankValue("DBMarket") end
+        })
+        table.insert(bankValueItems, {
+            Name = "BankValueDBHistorical",
+            DisplayName = "DBHistorical",
+            Action = function() core.PrintBankValue("DBHistorical") end
+        })
+        table.insert(bankValueItems, {
+            Name = "BankValueDBRegionMarketAvg",
+            DisplayName = "DBRegionMarketAvg",
+            Action = function() core.PrintBankValue("DBRegionMarketAvg") end
+        })
+    else
+        table.insert(bagValueItems, {
+            Name = "BagValueRecent",
+            DisplayName = "recent",
+            Action = function() core.PrintInventoryValue("recent") end
+        })
+        table.insert(bagValueItems, {
+            Name = "BagValueMarket",
+            DisplayName = "market",
+            Action = function() core.PrintInventoryValue("market") end
+        })
+        table.insert(bagValueItems, {
+            Name = "BagValueGlobalMean",
+            DisplayName = "globalMean",
+            Action = function() core.PrintInventoryValue("globalMean") end
+        })
+        table.insert(bagValueItems, {
+            Name = "BagValueGlobalMedian",
+            DisplayName = "globalMedian",
+            Action = function() core.PrintInventoryValue("globalMedian") end
+        })
+
+        table.insert(bankValueItems, {
+            Name = "BankValueRecent",
+            DisplayName = "recent",
+            Action = function() core.PrintBankValue("recent") end
+        })
+        table.insert(bankValueItems, {
+            Name = "BankValueMarket",
+            DisplayName = "market",
+            Action = function() core.PrintBankValue("market") end
+        })
+        table.insert(bankValueItems, {
+            Name = "BankValueGlobalMean",
+            DisplayName = "globalMean",
+            Action = function() core.PrintBankValue("globalMean") end
+        })
+        table.insert(bankValueItems, {
+            Name = "BankValueGlobalMedian",
+            DisplayName = "globalMedian",
+            Action = function() core.PrintBankValue("globalMedian") end
+        })
+    end
+
     local tree = {
         core.DashboardModule,
         {
@@ -241,79 +357,13 @@ local function buildNavigationMenu()
                     IsGroup = true,
                     Name = "BagValue",
                     DisplayName = core.GetString("BagValue"),
-                    Children = {
-                        {
-                            Name = "BagValueDefault",
-                            DisplayName = core.GetString("DefaultPriceSource"),
-                            Action = function() core.PrintInventoryValue() end
-                        },
-                        { IsSeparator = true },
-                        {
-                            Name = "Difference",
-                            DisplayName = core.GetString("Difference"),
-                            Action = function() core.PrintInventoryValue("diff") end
-                        },
-                        { IsSeparator = true },
-                        {
-                            Name = "BagValueDBMinBuyout",
-                            DisplayName = "DBMinBuyout",
-                            Action = function() core.PrintInventoryValue("DBMinBuyout") end
-                        },
-                        {
-                            Name = "BagValueDBMarket",
-                            DisplayName = "DBMarket",
-                            Action = function() core.PrintInventoryValue("DBMarket") end
-                        },
-                        {
-                            Name = "BagValueDBHistorical",
-                            DisplayName = "DBHistorical",
-                            Action = function() core.PrintInventoryValue("DBHistorical") end
-                        },
-                        {
-                            Name = "BagValueDBRegionMarketAvg",
-                            DisplayName = "DBRegionMarketAvg",
-                            Action = function() core.PrintInventoryValue("DBRegionMarketAvg") end
-                        },
-                    }
+                    Children = bagValueItems
                 },
                 {
                     IsGroup = true,
                     Name = "BankValue",
                     DisplayName = core.GetString("BankValue"),
-                    Children = {
-                        {
-                            Name = "BankValueDefault",
-                            DisplayName = core.GetString("DefaultPriceSource"),
-                            Action = function() core.PrintBankValue() end
-                        },
-                        { IsSeparator = true },
-                        {
-                            Name = "Difference",
-                            DisplayName = core.GetString("Difference"),
-                            Action = function() core.PrintBankValue("diff") end
-                        },
-                        { IsSeparator = true },
-                        {
-                            Name = "BankValueDBMinBuyout",
-                            DisplayName = "DBMinBuyout",
-                            Action = function() core.PrintBankValue("DBMinBuyout") end
-                        },
-                        {
-                            Name = "BankValueDBMarket",
-                            DisplayName = "DBMarket",
-                            Action = function() core.PrintBankValue("DBMarket") end
-                        },
-                        {
-                            Name = "BankValueDBHistorical",
-                            DisplayName = "DBHistorical",
-                            Action = function() core.PrintBankValue("DBHistorical") end
-                        },
-                        {
-                            Name = "BankValueDBRegionMarketAvg",
-                            DisplayName = "DBRegionMarketAvg",
-                            Action = function() core.PrintBankValue("DBRegionMarketAvg") end
-                        },
-                    }
+                    Children = bankValueItems
                 },
             }
         },

@@ -25,6 +25,10 @@ function GridColumns.TomTomColumn(options)
     function self.IsVisible(module, rows)
         if not baseIsVisible() or not core.TomTomHelper.IsTomTomAvailable() then return false end
 
+        if rows == nil then
+            return true
+        end
+
         for _, row in pairs(rows) do
             if row.Data.Waypoints then
                 return true

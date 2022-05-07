@@ -13,7 +13,12 @@ function GridColumns.ItemSoldPerDayColumn(options)
     self.Description = core.GetString('SoldPerDayDescription')
 
     function self.Value(data)
-        return data.ItemId and core.TSMHelper.GetItemSoldPerDay(data.ItemId) or ''
+        return data.ItemId and core.PriceSourceHelper.GetItemSoldPerDay(data.ItemId) or ''
+    end
+
+    local baseIsVisible = self.IsVisible
+    function self.IsVisible()
+        return baseIsVisible() and core.PriceSourceHelper.GetCurrentPriceSource() == core.TSMHelper
     end
     
     return self

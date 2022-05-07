@@ -19,6 +19,7 @@
 	<Script file="Items\Mounts.lua"/>
 	<Script file="Items\Toys.lua"/>
 	<Script file="Items\Transmog.lua"/>
+    <Script file="Items\MaterialPrices.lua"/>
 
     <Script file="Items\Profession\Enchanting.lua"/>
     <Script file="Items\Profession\Inscription.lua"/>

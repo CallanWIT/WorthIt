@@ -16,7 +16,11 @@ function GridColumns.ResultsValueColumn(options)
     end
 
     function self.GetItemPrice(item)
-        return core.TSMHelper.GetItemPrice(item.Id == core.TSMHelper.PetCageItemId and 'p:'.. item.PetId or item.Id, self.PriceSource)
+        if self.PriceSource ~= nil and not tContains(core.PriceSourceHelper.GetPriceSources(), self.PriceSource) then
+            return 0
+        end
+
+        return core.PriceSourceHelper.GetItemPrice(item.Id == core.PriceSourceHelper.PetCageItemId and 'p:'.. item.PetId or item.Id, self.PriceSource)
     end
 
     function self.Value(data)
@@ -44,7 +48,12 @@ function GridColumns.ResultsValueColumn(options)
     function self.GetRowText(row)
         row[self.Name] = row[self.Name] or self.Value(row.Data)
 
-        return core.TSMHelper.ToMoneyString(row[self.Name])
+        return core.PriceSourceHelper.ToMoneyString(row[self.Name])
+    end
+
+    local baseIsVisible = self.IsVisible
+    function self.IsVisible()
+        return baseIsVisible() and (self.PriceSource == nil or tContains(core.PriceSourceHelper.GetPriceSources(), self.PriceSource))
     end
     
     return self

@@ -5,7 +5,7 @@ local AceGUI = LibStub("AceGUI-3.0")
 function core.UI.ItemLinkLabel(item, options)
     options = options or {}
     local link = AceGUI:Create("InteractiveLabel")
-    local itemLink = item.ItemLink or core.TSMHelper.GetItemLink(item.Id)
+    local itemLink = item.ItemLink or core.PriceSourceHelper.GetItemLink(item.Id)
 
     link:SetText(options.Prefix .. itemLink .. options.Suffix)
     link:SetWidth(link.label:GetStringWidth() + 7)

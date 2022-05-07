@@ -1,6 +1,20 @@
 local WIT, core = ...
 
 local sections = {
+    core.GuideSections.Heading('DataSourceSection_1'),
+    core.GuideSections.Text('DataSourceSection_2'),
+    core.GuideSections.Section('DataSourceSection_3'),
+    core.GuideSections.Text('DataSourceSection_4'),
+    core.GuideSections.Section('DataSourceSection_5'),
+    core.GuideSections.Text('DataSourceSection_6'),
+    core.GuideSections.Section('DataSourceSection_7'),
+    core.GuideSections.Text('DataSourceSection_8'),
+    core.GuideSections.Text('DataSourceSection_9'),
+}
+
+table.insert(core.Modules, core.GuideModule('DataSource', sections, 'Help'))
+
+sections = {
     core.GuideSections.Heading('AddonsGuideSection_1'),
     core.GuideSections.Text('AddonsGuideSection_2'),
     core.GuideSections.Section('AddonsGuideSection_3'),
@@ -13,6 +27,8 @@ local sections = {
     core.GuideSections.Text('AddonsGuideSection_10'),
     core.GuideSections.Section('AddonsGuideSection_11'),
     core.GuideSections.Text('AddonsGuideSection_12'),
+    core.GuideSections.Section('AddonsGuideSection_13'),
+    core.GuideSections.Text('AddonsGuideSection_14'),
 }
 
 table.insert(core.Modules, core.GuideModule('AddonsGuide', sections, 'Help'))
